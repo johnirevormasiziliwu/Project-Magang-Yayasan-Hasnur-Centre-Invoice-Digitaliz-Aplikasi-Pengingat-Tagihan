@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required Meta Tags Always Come First -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Title -->
+  <title>Buttons - Documentation | Front - Multipurpose Responsive Template</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../favicon.ico">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS Implementing Plugins -->
+  <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/font/bootstrap-icons.css">
+
+  <!-- CSS Front Template -->
+
+  <link rel="preload" href="../assets/css/theme.min.css" data-hs-appearance="default" as="style">
+  <link rel="preload" href="../assets/css/docs.min.css" data-hs-appearance="default" as="style">
+  <link rel="preload" href="../assets/css/theme-dark.min.css" data-hs-appearance="dark" as="style">
+  <link rel="preload" href="../assets/css/docs-dark.min.css" data-hs-appearance="dark" as="style">
+
+  <style data-hs-appearance-onload-styles>
+    *
+    {
+      transition: unset !important;
+    }
+
+    body
+    {
+      opacity: 0;
+    }
+  </style>
+
+  <script>
+            window.hs_config = {"autopath":"@@autopath","deleteLine":"hs-builder:delete","deleteLine:build":"hs-builder:build-delete","deleteLine:dist":"hs-builder:dist-delete","previewMode":false,"startPath":"/index.html","vars":{"themeFont":"https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap","version":"?v=1.0"},"layoutBuilder":{"extend":{"switcherSupport":true},"header":{"layoutMode":"default","containerMode":"container-fluid"},"sidebarLayout":"default"},"themeAppearance":{"layoutSkin":"default","sidebarSkin":"default","styles":{"colors":{"primary":"#377dff","transparent":"transparent","white":"#fff","dark":"132144","gray":{"100":"#f9fafc","900":"#1e2022"}},"font":"Inter"}},"languageDirection":{"lang":"en"},"skipFilesFromBundle":{"dist":["assets/js/hs.theme-appearance.js","assets/js/hs.theme-appearance-charts.js","assets/js/demo.js"],"build":["assets/css/theme.css","assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js","assets/js/demo.js","assets/css/theme-dark.css","assets/css/docs.css","assets/vendor/icon-set/style.css","assets/js/hs.theme-appearance.js","assets/js/hs.theme-appearance-charts.js","node_modules/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js","assets/js/demo.js"]},"minifyCSSFiles":["assets/css/theme.css","assets/css/theme-dark.css"],"copyDependencies":{"dist":{"*assets/js/theme-custom.js":""},"build":{"*assets/js/theme-custom.js":"","node_modules/bootstrap-icons/font/*fonts/**":"assets/css"}},"buildFolder":"","replacePathsToCDN":{},"directoryNames":{"src":"./src","dist":"./dist","build":"./build"},"fileNames":{"dist":{"js":"theme.min.js","css":"theme.min.css"},"build":{"css":"theme.min.css","js":"theme.min.js","vendorCSS":"vendor.min.css","vendorJS":"vendor.min.js"}},"fileTypes":"jpg|png|svg|mp4|webm|ogv|json"}
+            window.hs_config.gulpRGBA = (p1) => {
+  const options = p1.split(',')
+  const hex = options[0].toString()
+  const transparent = options[1].toString()
+
+  var c;
+  if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+    c= hex.substring(1).split('');
+    if(c.length== 3){
+      c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+    }
+    c= '0x'+c.join('');
+    return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',' + transparent + ')';
+  }
+  throw new Error('Bad Hex');
+}
+            window.hs_config.gulpDarken = (p1) => {
+  const options = p1.split(',')
+
+  let col = options[0].toString()
+  let amt = -parseInt(options[1])
+  var usePound = false
+
+  if (col[0] == "#") {
+    col = col.slice(1)
+    usePound = true
+  }
+  var num = parseInt(col, 16)
+  var r = (num >> 16) + amt
+  if (r > 255) {
+    r = 255
+  } else if (r < 0) {
+    r = 0
+  }
+  var b = ((num >> 8) & 0x00FF) + amt
+  if (b > 255) {
+    b = 255
+  } else if (b < 0) {
+    b = 0
+  }
+  var g = (num & 0x0000FF) + amt
+  if (g > 255) {
+    g = 255
+  } else if (g < 0) {
+    g = 0
+  }
+  return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16)
+}
+            window.hs_config.gulpLighten = (p1) => {
+  const options = p1.split(',')
+
+  let col = options[0].toString()
+  let amt = parseInt(options[1])
+  var usePound = false
+
+  if (col[0] == "#") {
+    col = col.slice(1)
+    usePound = true
+  }
+  var num = parseInt(col, 16)
+  var r = (num >> 16) + amt
+  if (r > 255) {
+    r = 255
+  } else if (r < 0) {
+    r = 0
+  }
+  var b = ((num >> 8) & 0x00FF) + amt
+  if (b > 255) {
+    b = 255
+  } else if (b < 0) {
+    b = 0
+  }
+  var g = (num & 0x0000FF) + amt
+  if (g > 255) {
+    g = 255
+  } else if (g < 0) {
+    g = 0
+  }
+  return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16)
+}
+            </script>
+</head>
+
+<body class="navbar-sidebar-aside-lg">
+
+  <script src="../assets/js/hs.theme-appearance.js"></script>
+
+  <!-- ========== HEADER ========== -->
+  <header id="header" class="navbar navbar-expand navbar-end navbar-light navbar-sticky-lg-top bg-white">
+    <div class="container-fluid">
+      <nav class="navbar-nav-wrap">
+        <div class="row flex-grow-1">
+          <!-- Default Logo -->
+          <div class="docs-navbar-sidebar-container d-flex align-items-center mb-2 mb-lg-0">
+            <a class="navbar-brand" href="../documentation/index.html" aria-label="Front">
+              <img class="navbar-brand-logo" src="../assets/svg/logos/logo.svg" alt="Logo" data-hs-theme-appearance="default">
+              <img class="navbar-brand-logo" src="../assets/svg/logos-light/logo.svg" alt="Logo" data-hs-theme-appearance="dark">
+            </a>
+            <a href="../documentation/changelog.html">
+              <span class="badge bg-soft-primary text-primary">v2.1</span>
+            </a>
+          </div>
+          <!-- End Default Logo -->
+
+          <div class="col-md px-lg-0">
+            <div class="d-flex justify-content-between align-items-center px-lg-5 px-xl-10">
+              <div class="d-none d-md-block">
+                <!-- Search Form -->
+                <form id="docsSearch" class="position-relative" data-hs-list-options='{
+                       "searchMenu": true,
+                       "keyboard": true,
+                       "item": "searchTemplate",
+                       "valueNames": ["component", "category", {"name": "link", "attr": "href"}],
+                       "empty": "#searchNoResults"
+                     }'>
+                  <!-- Input Group -->
+                  <div class="input-group input-group-merge navbar-input-group">
+                    <div class="input-group-prepend input-group-text">
+                      <i class="bi-search"></i>
+                    </div>
+
+                    <input type="search" class="search form-control form-control-sm" placeholder="Search in docs" aria-label="Search in docs">
+
+                    <a class="input-group-append input-group-text" href="javascript:;">
+                      <i id="clearSearchResultsIcon" class="bi-x" style="display: none;"></i>
+                    </a>
+                  </div>
+                  <!-- End Input Group -->
+
+                  <!-- List -->
+                  <div class="list dropdown-menu navbar-dropdown-menu-borderless w-100 overflow-auto" style="max-height: 16rem;"></div>
+                  <!-- End List -->
+
+                  <!-- Empty -->
+                  <div id="searchNoResults" style="display: none;">
+                    <div class="text-center p-4">
+                      <img class="mb-3" src="../assets/svg/illustrations/oc-error.svg" alt="Image Description" data-hs-theme-appearance="default" style="width: 7rem;">
+                      <img class="mb-3" src="../assets/svg/illustrations-light/oc-error.svg" alt="Image Description" data-hs-theme-appearance="dark" style="width: 7rem;">
+                      <p class="mb-0">No Results</p>
+                    </div>
+                  </div>
+                  <!-- End Empty -->
+                </form>
+                <!-- End Search Form -->
+
+                <!-- List Item Template -->
+                <div class="d-none">
+                  <div id="searchTemplate" class="dropdown-item">
+                    <a class="d-block link" href="#">
+                      <span class="category d-block fw-normal text-muted mb-1"></span>
+                      <span class="component text-dark"></span>
+                    </a>
+                  </div>
+                </div>
+                <!-- End List Item Template -->
+              </div>
+
+              <!-- Navbar -->
+              <ul class="navbar-nav p-0">
+                <li class="nav-item">
+                  <a class="btn btn-ghost-secondary btn-sm" href="https://htmlstream.com/contact-us" target="_blank">
+                    Get Support <i class="bi-box-arrow-up-right ms-1"></i>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="btn btn-primary btn-sm" href="../index.html">
+                    <i class="bi-eye me-1"></i> Preview Demo
+                  </a>
+                </li>
+              </ul>
+              <!-- End Navbar -->
+            </div>
+          </div>
+          <!-- End Col -->
+        </div>
+        <!-- End Row -->
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========== END HEADER ========== -->
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main id="content" role="main">
+    <!-- Navbar -->
+    <nav class="js-nav-scroller navbar navbar-expand-lg navbar-sidebar navbar-vertical navbar-light bg-white border-end" data-hs-nav-scroller-options='{
+            "type": "vertical",
+            "target": ".navbar-nav .active",
+            "offset": 80
+           }'>
+      <!-- Navbar Toggle -->
+      <div class="d-grid flex-grow-1 px-2">
+        <button type="button" class="navbar-toggler btn btn-white" data-bs-toggle="collapse" data-bs-target="#navbarVerticalNavMenu" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navbarVerticalNavMenu">
+          <span class="d-flex justify-content-between align-items-center">
+            <span class="h3 mb-0">Nav menu</span>
+
+            <span class="navbar-toggler-default">
+              <i class="bi-list"></i>
+            </span>
+
+            <span class="navbar-toggler-toggled">
+              <i class="bi-x"></i>
+            </span>
+          </span>
+        </button>
+      </div>
+      <!-- End Navbar Toggle -->
+
+      <!-- Navbar Collapse -->
+      <div id="navbarVerticalNavMenu" class="collapse navbar-collapse">
+        <div class="navbar-brand-wrapper border-end" style="height: auto;">
+          <!-- Default Logo -->
+          <div class="d-flex align-items-center mb-3">
+            <a class="navbar-brand" href="../documentation/index.html" aria-label="Front">
+              <img class="navbar-brand-logo" src="../assets/svg/logos/logo.svg" alt="Logo" data-hs-theme-appearance="default">
+              <img class="navbar-brand-logo" src="../assets/svg/logos-light/logo.svg" alt="Logo" data-hs-theme-appearance="dark">
+            </a>
+            <a class="navbar-brand-badge" href="../documentation/changelog.html">
+              <span class="badge bg-soft-primary text-primary ms-2">v2.1</span>
+            </a>
+          </div>
+          <!-- End Default Logo -->
+        </div>
+
+        <div class="docs-navbar-sidebar-aside-body navbar-sidebar-aside-body">
+          <ul id="navbarSettings" class="navbar-nav nav nav-vertical nav-tabs nav-tabs-borderless nav-sm">
+            <li class="nav-item">
+              <span class="nav-subtitle">Documentation</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/index.html">Introduction</a>
+            </li>
+
+            <li class="nav-item my-2 my-lg-5"></li>
+
+            <li class="nav-item">
+              <span class="nav-subtitle">Getting started</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/getting-started.html">Getting Started</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/gulp.html">Gulp</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/darkmode.html">Dark Mode <span class="badge bg-soft-dark text-dark lh-base ms-1">New</span></a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/customization.html">Customization</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/credits.html">Credits</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/changelog.html">Changelog</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <span class="nav-subtitle">Design &amp; Graphics</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/bs-icons.html">Bootstrap Icons</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/illustrations.html">Illustrations</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <span class="nav-subtitle">Components</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/accordion.html">Accordion</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/alerts.html">Alerts</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/avatars.html">Avatars</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/badge.html">Badge</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/breadcrumb.html">Breadcrumb</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/buttons.html">Buttons</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link active" href="../documentation/button-group.html">Button Group</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/cards.html">Cards</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/collapse.html">Collapse</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/column-divider.html">Column Divider</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/devices.html">Devices</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/divider.html">Divider</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/dropdowns.html">Dropdowns</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/icons.html">Icons</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/list-group.html">List Group</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/lists.html">Lists</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/legend-indicator.html">Legend Indicator</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/modal.html">Modal</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/offcanvas.html">Offcanvas</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/page-header.html">Page Header</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/pagination.html">Pagination</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/popovers.html">Popovers</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/progress.html">Progress</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/profile.html">Profile</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/shapes.html">Shapes</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sliding-img.html">Sliding Image</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/spinners.html">Spinners</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/steps.html">Steps</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/tab.html">Tab</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/toasts.html">Toasts</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/tooltips.html">Tooltips</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/typography.html">Typography</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Navbars</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/navbar.html">Navbar</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/navs.html">Navs</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/mega-menu.html">Mega Menu</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/navbar-vertical-aside.html">Navbar Vertical Aside</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/scrollspy.html">Scrollspy</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Tables</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/tables.html">Tables</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/datatables.html">Datatables</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/table-sticky-header.html">Sticky Header</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Basic forms</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/basic-forms.html">Basic Forms</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/checks-and-switches.html">Checks &amp; Switches</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/input-group.html">Input Group</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle">Advanced Forms</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/select.html">Advanced Select</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/datepicker.html">Datepicker (Flatpickr)</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/daterangepicker.html">Date Range Picker</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/calendar.html">Calendar (Fullcalendar)</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/file-attachments.html">File Attachments</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/dropzone.html">Drag’ n’ Drop File Uploads</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/quill.html">WYSIWYG Editor</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/quantity-counter.html">Quantity Counter</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/copy-to-clipboard.html">Copy to Clipboard</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/input-mask.html">Input Mask</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/step-forms.html">Step Forms (Wizards)</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/add-field.html">Add Field</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/toggle-password.html">Toggle Password</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/count-characters.html">Count Characters</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/form-search.html">Form Search</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/toggle-switch.html">Toggle Switch</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/google-recaptcha.html">Google reCAPTCHA</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle">Charts</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/chartjs.html">Chart.js</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/counter.html">Counter</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/circles.html">Circles.js (Pie Chart)</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle">Others</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/fslightbox.html">Fullscreen Lightbox</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/maps-leaflet.html">Leaflet</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/maps-jsvectormap.html">JSVectorMap</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sortablejs.html">SortableJS</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sticky-block.html">Sticky Block</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/go-to.html">Go To</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Utilities</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/backgrounds.html">Backgrounds</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/borders.html">Borders</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/colors.html">Colors</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/links.html">Links</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/position.html">Position</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/shadows.html">Shadows</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sizing.html">Sizing</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/spacing.html">Spacing</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/z-index.html">Z-index</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/opacity.html">Opacity</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- End Navbar Collapse -->
+    </nav>
+    <!-- End Navbar -->
+
+    <!-- Content -->
+    <div class="navbar-sidebar-aside-content content-space-1 content-space-md-2 px-lg-5 px-xl-10">
+      <!-- Page Header -->
+      <div class="docs-page-header">
+        <div class="row align-items-center">
+          <div class="col-sm">
+            <h1 class="docs-page-header-title">Button Group</h1>
+            <p class="docs-page-header-text">Group a series of buttons together on a single line or stack them in a vertical column.</p>
+            <a class="link" href="https://getbootstrap.com/docs/5.0/components/button-group/" target="_blank">Bootstrap Button Group documentation <i class="bi-box-arrow-up-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- End Page Header -->
+
+      <!-- Heading -->
+      <h2 id="basic-example" class="hs-docs-heading">
+        Basic example <a class="anchorjs-link" href="#basic-example" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <p>Wrap a series of buttons with <code>.btn</code> in <code>.btn-group</code>.</p>
+
+      <!-- Card -->
+      <div class="card mb-7">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab1" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab1" href="#nav-result1" data-bs-toggle="pill" data-bs-target="#nav-result1" role="tab" aria-controls="nav-result1" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab1" href="#nav-html1" data-bs-toggle="pill" data-bs-target="#nav-html1" role="tab" aria-controls="nav-html1" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent1">
+          <div class="tab-pane fade p-4 show active" id="nav-result1" role="tabpanel" aria-labelledby="nav-resultTab1">
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-primary">Left</button>
+              <button type="button" class="btn btn-primary">Middle</button>
+              <button type="button" class="btn btn-primary">Right</button>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="nav-html1" role="tabpanel" aria-labelledby="nav-htmlTab1">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class="btn-group" role="group" aria-label="Basic example"&gt;
+                  &lt;button type="button" class="btn btn-primary"&gt;Left&lt;/button&gt;
+                  &lt;button type="button" class="btn btn-primary"&gt;Middle&lt;/button&gt;
+                  &lt;button type="button" class="btn btn-primary"&gt;Right&lt;/button&gt;
+                &lt;/div&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <p>These classes can also be added to groups of links, as an alternative to the <a href="https://getbootstrap.com/docs/5.0/components/navs-tabs/"><code>.nav</code> navigation components</a>.</p>
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab2" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab2" href="#nav-result2" data-bs-toggle="pill" data-bs-target="#nav-result2" role="tab" aria-controls="nav-result2" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab2" href="#nav-html2" data-bs-toggle="pill" data-bs-target="#nav-html2" role="tab" aria-controls="nav-html2" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent2">
+          <div class="tab-pane fade p-4 show active" id="nav-result2" role="tabpanel" aria-labelledby="nav-resultTab2">
+            <div class="btn-group">
+              <a href="#" class="btn btn-primary active" aria-current="page">Active link</a>
+              <a href="#" class="btn btn-primary">Link</a>
+              <a href="#" class="btn btn-primary">Link</a>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="nav-html2" role="tabpanel" aria-labelledby="nav-htmlTab2">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class="btn-group"&gt;
+                  &lt;a href="#" class="btn btn-primary active" aria-current="page"&gt;Active link&lt;/a&gt;
+                  &lt;a href="#" class="btn btn-primary"&gt;Link&lt;/a&gt;
+                  &lt;a href="#" class="btn btn-primary"&gt;Link&lt;/a&gt;
+                &lt;/div&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="mixed-styles" class="hs-docs-heading">
+        Mixed styles <a class="anchorjs-link" href="#mixed-styles" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab3" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab3" href="#nav-result3" data-bs-toggle="pill" data-bs-target="#nav-result3" role="tab" aria-controls="nav-result3" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab3" href="#nav-html3" data-bs-toggle="pill" data-bs-target="#nav-html3" role="tab" aria-controls="nav-html3" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent3">
+          <div class="tab-pane fade p-4 show active" id="nav-result3" role="tabpanel" aria-labelledby="nav-resultTab3">
+            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+              <button type="button" class="btn btn-danger">Left</button>
+              <button type="button" class="btn btn-warning">Middle</button>
+              <button type="button" class="btn btn-success">Right</button>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="nav-html3" role="tabpanel" aria-labelledby="nav-htmlTab3">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class="btn-group" role="group" aria-label="Basic mixed styles example"&gt;
+                  &lt;button type="button" class="btn btn-danger"&gt;Left&lt;/button&gt;
+                  &lt;button type="button" class="btn btn-warning"&gt;Middle&lt;/button&gt;
+                  &lt;button type="button" class="btn btn-success"&gt;Right&lt;/button&gt;
+                &lt;/div&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="outlined-styles" class="hs-docs-heading">
+        Outlined styles <a class="anchorjs-link" href="#outlined-styles" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab4" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab4" href="#nav-result4" data-bs-toggle="pill" data-bs-target="#nav-result4" role="tab" aria-controls="nav-result4" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab4" href="#nav-html4" data-bs-toggle="pill" data-bs-target="#nav-html4" role="tab" aria-controls="nav-html4" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent4">
+          <div class="tab-pane fade p-4 show active" id="nav-result4" role="tabpanel" aria-labelledby="nav-resultTab4">
+            <div class="btn-group" role="group" aria-label="Basic outlined styles example">
+              <button type="button" class="btn btn-outline-primary">Left</button>
+              <button type="button" class="btn btn-outline-primary">Middle</button>
+              <button type="button" class="btn btn-outline-primary">Right</button>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="nav-html4" role="tabpanel" aria-labelledby="nav-htmlTab4">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class="btn-group" role="group" aria-label="Basic outlined styles example"&gt;
+                  &lt;button type="button" class="btn btn-outline-primary"&gt;Left&lt;/button&gt;
+                  &lt;button type="button" class="btn btn-outline-primary"&gt;Middle&lt;/button&gt;
+                  &lt;button type="button" class="btn btn-outline-primary"&gt;Right&lt;/button&gt;
+                &lt;/div&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="checkbox-and-radio-button-groups" class="hs-docs-heading">
+        Checkbox and radio button groups <a class="anchorjs-link" href="#checkbox-and-radio-button-groups" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <p>Combine button-like checkbox and radio <a href="https://getbootstrap.com/docs/5.0/forms/checks-radios/">toggle buttons</a> into a seamless looking button group.</p>
+
+      <!-- Card -->
+      <div class="card mb-7">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab5" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab5" href="#nav-result5" data-bs-toggle="pill" data-bs-target="#nav-result5" role="tab" aria-controls="nav-result5" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab5" href="#nav-html5" data-bs-toggle="pill" data-bs-target="#nav-html5" role="tab" aria-controls="nav-html5" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent5">
+          <div class="tab-pane fade p-4 show active" id="nav-result5" role="tabpanel" aria-labelledby="nav-resultTab5">
+            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+              <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+              <label class="btn btn-outline-primary" for="btncheck1">Checkbox 1</label>
+
+              <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+              <label class="btn btn-outline-primary" for="btncheck2">Checkbox 2</label>
+
+              <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+              <label class="btn btn-outline-primary" for="btncheck3">Checkbox 3</label>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="nav-html5" role="tabpanel" aria-labelledby="nav-htmlTab5">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class="btn-group" role="group" aria-label="Basic checkbox toggle button group"&gt;
+                  &lt;input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off"&gt;
+                  &lt;label class="btn btn-outline-primary" for="btncheck1"&gt;Checkbox 1&lt;/label&gt;
+
+                  &lt;input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off"&gt;
+                  &lt;label class="btn btn-outline-primary" for="btncheck2"&gt;Checkbox 2&lt;/label&gt;
+
+                  &lt;input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off"&gt;
+                  &lt;label class="btn btn-outline-primary" for="btncheck3"&gt;Checkbox 3&lt;/label&gt;
+                &lt;/div&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab6" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab6" href="#nav-result6" data-bs-toggle="pill" data-bs-target="#nav-result6" role="tab" aria-controls="nav-result6" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab6" href="#nav-html6" data-bs-toggle="pill" data-bs-target="#nav-html6" role="tab" aria-controls="nav-html6" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent6">
+          <div class="tab-pane fade p-4 show active" id="nav-result6" role="tabpanel" aria-labelledby="nav-resultTab6">
+            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+              <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+              <label class="btn btn-outline-primary" for="btnradio1">Radio 1</label>
+
+              <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+              <label class="btn btn-outline-primary" for="btnradio2">Radio 2</label>
+
+              <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+              <label class="btn btn-outline-primary" for="btnradio3">Radio 3</label>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="nav-html6" role="tabpanel" aria-labelledby="nav-htmlTab6">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class="btn-group" role="group" aria-label="Basic radio toggle button group"&gt;
+                  &lt;input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked&gt;
+                  &lt;label class="btn btn-outline-primary" for="btnradio1"&gt;Radio 1&lt;/label&gt;
+
+                  &lt;input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off"&gt;
+                  &lt;label class="btn btn-outline-primary" for="btnradio2"&gt;Radio 2&lt;/label&gt;
+
+                  &lt;input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off"&gt;
+                  &lt;label class="btn btn-outline-primary" for="btnradio3"&gt;Radio 3&lt;/label&gt;
+                &lt;/div&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="segment-style" class="hs-docs-heading">
+        Segment style <a class="anchorjs-link" href="#segment-style" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab11" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab11" href="#nav-result11" data-bs-toggle="pill" data-bs-target="#nav-result11" role="tab" aria-controls="nav-result11" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab11" href="#nav-html11" data-bs-toggle="pill" data-bs-target="#nav-html11" role="tab" aria-controls="nav-html11" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent11">
+          <div class="tab-pane fade p-4 show active" id="nav-result11" role="tabpanel" aria-labelledby="nav-resultTab11">
+            <div class="btn-group btn-group-segment" role="group" aria-label="Basic segment styles example">
+              <input type="radio" class="btn-check" name="btnGroupSegmentRadio" id="btnGroupSegmentRadioOption1" autocomplete="off" checked>
+              <label class="btn btn-sm" for="btnGroupSegmentRadioOption1">Left</label>
+
+              <input type="radio" class="btn-check" name="btnGroupSegmentRadio" id="btnGroupSegmentRadioOption2" autocomplete="off">
+              <label class="btn btn-sm" for="btnGroupSegmentRadioOption2">Middle</label>
+
+              <input type="radio" class="btn-check" name="btnGroupSegmentRadio" id="btnGroupSegmentRadioOption3" autocomplete="off">
+              <label class="btn btn-sm" for="btnGroupSegmentRadioOption3">Right</label>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="nav-html11" role="tabpanel" aria-labelledby="nav-htmlTab11">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class="btn-group btn-group-segment" role="group" aria-label="Basic segment styles example"&gt;
+                  &lt;input type="radio" class="btn-check" name="btnGroupSegmentRadio" id="btnGroupSegmentRadioOption1" autocomplete="off" checked&gt;
+                  &lt;label class="btn btn-sm" for="btnGroupSegmentRadioOption1"&gt;Left&lt;/label&gt;
+
+                  &lt;input type="radio" class="btn-check" name="btnGroupSegmentRadio" id="btnGroupSegmentRadioOption2" autocomplete="off"&gt;
+                  &lt;label class="btn btn-sm" for="btnGroupSegmentRadioOption2"&gt;Middle&lt;/label&gt;
+
+                  &lt;input type="radio" class="btn-check" name="btnGroupSegmentRadio" id="btnGroupSegmentRadioOption3" autocomplete="off"&gt;
+                  &lt;label class="btn btn-sm" for="btnGroupSegmentRadioOption3"&gt;Right&lt;/label&gt;
+                &lt;/div&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="fill-and-justify" class="hs-docs-heading">
+        Fill and justify <a class="anchorjs-link" href="#fill-and-justify" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <p>Force your .btn-group's contents to extend the full available width one of two modifier classes. To proportionately fill all available space, use <code>.btn-group-fill</code>. Notice that all horizontal space is occupied, but not every button has the same width.</p>
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab12" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab12" href="#nav-result12" data-bs-toggle="pill" data-bs-target="#nav-result12" role="tab" aria-controls="nav-result12" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab12" href="#nav-html12" data-bs-toggle="pill" data-bs-target="#nav-html12" role="tab" aria-controls="nav-html12" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent12">
+          <div class="tab-pane fade p-4 show active" id="nav-result12" role="tabpanel" aria-labelledby="nav-resultTab12">
+            <div class="btn-group btn-group-segment btn-group-fill" role="group" aria-label="Fill and justify styles example">
+              <input type="radio" class="btn-check" name="btnGroupFillRadio" id="btnGroupFillRadioOption1" autocomplete="off" checked>
+              <label class="btn btn-sm" for="btnGroupFillRadioOption1">Left</label>
+
+              <input type="radio" class="btn-check" name="btnGroupFillRadio" id="btnGroupFillRadioOption2" autocomplete="off">
+              <label class="btn btn-sm" for="btnGroupFillRadioOption2">Middle</label>
+
+              <input type="radio" class="btn-check" name="btnGroupFillRadio" id="btnGroupFillRadioOption3" autocomplete="off">
+              <label class="btn btn-sm" for="btnGroupFillRadioOption3">Right</label>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="nav-html12" role="tabpanel" aria-labelledby="nav-htmlTab12">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class="btn-group btn-group-segment btn-group-fill" role="group" aria-label="Fill and justify styles example"&gt;
+                  &lt;input type="radio" class="btn-check" name="btnGroupFillRadio" id="btnGroupFillRadioOption1" autocomplete="off" checked&gt;
+                  &lt;label class="btn btn-sm" for="btnGroupFillRadioOption1"&gt;Left&lt;/label&gt;
+
+                  &lt;input type="radio" class="btn-check" name="btnGroupFillRadio" id="btnGroupFillRadioOption2" autocomplete="off"&gt;
+                  &lt;label class="btn btn-sm" for="btnGroupFillRadioOption2"&gt;Middle&lt;/label&gt;
+
+                  &lt;input type="radio" class="btn-check" name="btnGroupFillRadio" id="btnGroupFillRadioOption3" autocomplete="off"&gt;
+                  &lt;label class="btn btn-sm" for="btnGroupFillRadioOption3"&gt;Right&lt;/label&gt;
+                &lt;/div&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="btn-group-vertical" class="hs-docs-heading">
+        Button Group vertical <a class="anchorjs-link" href="#btn-group-vertical" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <p>Long contents don't fit in small screens? Use <code>.btn-group-{breakpoint}-vertical</code> modifier classes to break horizontal alignment and keep the same style in vertical order. Reduce browser size to see it in action.</p>
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab13" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab13" href="#nav-result13" data-bs-toggle="pill" data-bs-target="#nav-result13" role="tab" aria-controls="nav-result13" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab13" href="#nav-html13" data-bs-toggle="pill" data-bs-target="#nav-html13" role="tab" aria-controls="nav-html13" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent13">
+          <div class="tab-pane fade p-4 show active" id="nav-result13" role="tabpanel" aria-labelledby="nav-resultTab13">
+            <div class="btn-group btn-group-segment btn-group-md-vertical" role="group" aria-label="Button group vertical styles example">
+              <input type="radio" class="btn-check" name="btnGroupDownBreakRadio" id="btnGroupDownBreakRadioOption1" autocomplete="off" checked>
+              <label class="btn btn-sm" for="btnGroupDownBreakRadioOption1">Left</label>
+
+              <input type="radio" class="btn-check" name="btnGroupDownBreakRadio" id="btnGroupDownBreakRadioOption2" autocomplete="off">
+              <label class="btn btn-sm" for="btnGroupDownBreakRadioOption2">Middle</label>
+
+              <input type="radio" class="btn-check" name="btnGroupDownBreakRadio" id="btnGroupDownBreakRadioOption3" autocomplete="off">
+              <label class="btn btn-sm" for="btnGroupDownBreakRadioOption3">Right</label>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="nav-html13" role="tabpanel" aria-labelledby="nav-htmlTab13">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class="btn-group btn-group-segment btn-group-md-vertical" role="group" aria-label="Button group vertical styles example"&gt;
+                  &lt;input type="radio" class="btn-check" name="btnGroupDownBreakRadio" id="btnGroupDownBreakRadioOption1" autocomplete="off" checked&gt;
+                  &lt;label class="btn btn-sm" for="btnGroupDownBreakRadioOption1"&gt;Left&lt;/label&gt;
+
+                  &lt;input type="radio" class="btn-check" name="btnGroupDownBreakRadio" id="btnGroupDownBreakRadioOption2" autocomplete="off"&gt;
+                  &lt;label class="btn btn-sm" for="btnGroupDownBreakRadioOption2"&gt;Middle&lt;/label&gt;
+
+                  &lt;input type="radio" class="btn-check" name="btnGroupDownBreakRadio" id="btnGroupDownBreakRadioOption3" autocomplete="off"&gt;
+                  &lt;label class="btn btn-sm" for="btnGroupFillRadioOption3"&gt;Right&lt;/label&gt;
+                &lt;/div&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="button-toolbar" class="hs-docs-heading">
+        Button toolbar <a class="anchorjs-link" href="#button-toolbar" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <p>Combine sets of button groups into button toolbars for more complex components. Use utility classes as needed to space out groups, buttons, and more.</p>
+
+      <!-- Card -->
+      <div class="card mb-7">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab7" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab7" href="#nav-result7" data-bs-toggle="pill" data-bs-target="#nav-result7" role="tab" aria-controls="nav-result7" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab7" href="#nav-html7" data-bs-toggle="pill" data-bs-target="#nav-html7" role="tab" aria-controls="nav-html7" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent7">
+          <div class="tab-pane fade p-4 show active" id="nav-result7" role="tabpanel" aria-labelledby="nav-resultTab7">
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+              <div class="btn-group me-2" role="group" aria-label="First group">
+                <button type="button" class="btn btn-primary">1</button>
+                <button type="button" class="btn btn-primary">2</button>
+                <button type="button" class="btn btn-primary">3</button>
+                <button type="button" class="btn btn-primary">4</button>
+              </div>
+              <div class="btn-group me-2" role="group" aria-label="Second group">
+                <button type="button" class="btn btn-secondary">5</button>
+                <button type="button" class="btn btn-secondary">6</button>
+                <button type="button" class="btn btn-secondary">7</button>
+              </div>
+              <div class="btn-group" role="group" aria-label="Third group">
+                <button type="button" class="btn btn-info">8</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="nav-html7" role="tabpanel" aria-labelledby="nav-htmlTab7">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups"&gt;
+                  &lt;div class="btn-group me-2" role="group" aria-label="First group"&gt;
+                    &lt;button type="button" class="btn btn-primary"&gt;1&lt;/button&gt;
+                    &lt;button type="button" class="btn btn-primary"&gt;2&lt;/button&gt;
+                    &lt;button type="button" class="btn btn-primary"&gt;3&lt;/button&gt;
+                    &lt;button type="button" class="btn btn-primary"&gt;4&lt;/button&gt;
+                  &lt;/div&gt;
+                  &lt;div class="btn-group me-2" role="group" aria-label="Second group"&gt;
+                    &lt;button type="button" class="btn btn-secondary"&gt;5&lt;/button&gt;
+                    &lt;button type="button" class="btn btn-secondary"&gt;6&lt;/button&gt;
+                    &lt;button type="button" class="btn btn-secondary"&gt;7&lt;/button&gt;
+                  &lt;/div&gt;
+                  &lt;div class="btn-group" role="group" aria-label="Third group"&gt;
+                    &lt;button type="button" class="btn btn-info"&gt;8&lt;/button&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <p>Feel free to mix input groups with button groups in your toolbars. Similar to the example above, you'll likely need some utilities though to space things properly.</p>
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab8" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab8" href="#nav-result8" data-bs-toggle="pill" data-bs-target="#nav-result8" role="tab" aria-controls="nav-result8" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab8" href="#nav-html8" data-bs-toggle="pill" data-bs-target="#nav-html8" role="tab" aria-controls="nav-html8" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent8">
+          <div class="tab-pane fade p-4 show active" id="nav-result8" role="tabpanel" aria-labelledby="nav-resultTab8">
+            <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+              <div class="btn-group me-2" role="group" aria-label="First group">
+                <button type="button" class="btn btn-outline-secondary">1</button>
+                <button type="button" class="btn btn-outline-secondary">2</button>
+                <button type="button" class="btn btn-outline-secondary">3</button>
+                <button type="button" class="btn btn-outline-secondary">4</button>
+              </div>
+              <div class="input-group">
+                <div class="input-group-text" id="btnGroupAddon">@</div>
+                <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon">
+              </div>
+            </div>
+
+            <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+              <div class="btn-group" role="group" aria-label="First group">
+                <button type="button" class="btn btn-outline-secondary">1</button>
+                <button type="button" class="btn btn-outline-secondary">2</button>
+                <button type="button" class="btn btn-outline-secondary">3</button>
+                <button type="button" class="btn btn-outline-secondary">4</button>
+              </div>
+              <div class="input-group">
+                <div class="input-group-text" id="btnGroupAddon2">@</div>
+                <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon2">
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="nav-html8" role="tabpanel" aria-labelledby="nav-htmlTab8">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups"&gt;
+                  &lt;div class="btn-group me-2" role="group" aria-label="First group"&gt;
+                    &lt;button type="button" class="btn btn-outline-secondary"&gt;1&lt;/button&gt;
+                    &lt;button type="button" class="btn btn-outline-secondary"&gt;2&lt;/button&gt;
+                    &lt;button type="button" class="btn btn-outline-secondary"&gt;3&lt;/button&gt;
+                    &lt;button type="button" class="btn btn-outline-secondary"&gt;4&lt;/button&gt;
+                  &lt;/div&gt;
+                  &lt;div class="input-group"&gt;
+                    &lt;div class="input-group-text" id="btnGroupAddon"&gt;@&lt;/div&gt;
+                    &lt;input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon"&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups"&gt;
+                  &lt;div class="btn-group" role="group" aria-label="First group"&gt;
+                    &lt;button type="button" class="btn btn-outline-secondary"&gt;1&lt;/button&gt;
+                    &lt;button type="button" class="btn btn-outline-secondary"&gt;2&lt;/button&gt;
+                    &lt;button type="button" class="btn btn-outline-secondary"&gt;3&lt;/button&gt;
+                    &lt;button type="button" class="btn btn-outline-secondary"&gt;4&lt;/button&gt;
+                  &lt;/div&gt;
+                  &lt;div class="input-group"&gt;
+                    &lt;div class="input-group-text" id="btnGroupAddon2"&gt;@&lt;/div&gt;
+                    &lt;input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon2"&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="sizing" class="hs-docs-heading">
+        Sizing <a class="anchorjs-link" href="#sizing" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <p>Instead of applying button sizing classes to every button in a group, just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including each one when nesting multiple groups.</p>
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab9" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab9" href="#nav-result9" data-bs-toggle="pill" data-bs-target="#nav-result9" role="tab" aria-controls="nav-result9" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab9" href="#nav-html9" data-bs-toggle="pill" data-bs-target="#nav-html9" role="tab" aria-controls="nav-html9" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent9">
+          <div class="tab-pane fade p-4 show active" id="nav-result9" role="tabpanel" aria-labelledby="nav-resultTab9">
+            <div class="btn-group btn-group-lg mb-3" role="group" aria-label="Large button group">
+              <button type="button" class="btn btn-outline-dark">Left</button>
+              <button type="button" class="btn btn-outline-dark">Middle</button>
+              <button type="button" class="btn btn-outline-dark">Right</button>
+            </div>
+            <br>
+            <div class="btn-group mb-3" role="group" aria-label="Default button group">
+              <button type="button" class="btn btn-outline-dark">Left</button>
+              <button type="button" class="btn btn-outline-dark">Middle</button>
+              <button type="button" class="btn btn-outline-dark">Right</button>
+            </div>
+            <br>
+            <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+              <button type="button" class="btn btn-outline-dark">Left</button>
+              <button type="button" class="btn btn-outline-dark">Middle</button>
+              <button type="button" class="btn btn-outline-dark">Right</button>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="nav-html9" role="tabpanel" aria-labelledby="nav-htmlTab9">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class="btn-group btn-group-lg" role="group" aria-label="Large button group"&gt;
+                  &lt;button type="button" class="btn btn-outline-dark"&gt;Left&lt;/button&gt;
+                  &lt;button type="button" class="btn btn-outline-dark"&gt;Middle&lt;/button&gt;
+                  &lt;button type="button" class="btn btn-outline-dark"&gt;Right&lt;/button&gt;
+                &lt;/div&gt;
+                &lt;br&gt;
+                &lt;div class="btn-group" role="group" aria-label="Default button group"&gt;
+                  &lt;button type="button" class="btn btn-outline-dark"&gt;Left&lt;/button&gt;
+                  &lt;button type="button" class="btn btn-outline-dark"&gt;Middle&lt;/button&gt;
+                  &lt;button type="button" class="btn btn-outline-dark"&gt;Right&lt;/button&gt;
+                &lt;/div&gt;
+                &lt;br&gt;
+                &lt;div class="btn-group btn-group-sm" role="group" aria-label="Small button group"&gt;
+                  &lt;button type="button" class="btn btn-outline-dark"&gt;Left&lt;/button&gt;
+                  &lt;button type="button" class="btn btn-outline-dark"&gt;Middle&lt;/button&gt;
+                  &lt;button type="button" class="btn btn-outline-dark"&gt;Right&lt;/button&gt;
+                &lt;/div&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="nesting" class="hs-docs-heading">
+        Nesting <a class="anchorjs-link" href="#nesting" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <p>Place a <code>.btn-group</code> within another <code>.btn-group</code> when you want dropdown menus mixed with a series of buttons.</p>
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab10" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab10" href="#nav-result10" data-bs-toggle="pill" data-bs-target="#nav-result10" role="tab" aria-controls="nav-result10" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab10" href="#nav-html10" data-bs-toggle="pill" data-bs-target="#nav-html10" role="tab" aria-controls="nav-html10" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent10">
+          <div class="tab-pane fade p-4 show active" id="nav-result10" role="tabpanel" aria-labelledby="nav-resultTab10">
+            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+              <button type="button" class="btn btn-primary">1</button>
+              <button type="button" class="btn btn-primary">2</button>
+
+              <div class="btn-group" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                  <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+                  <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="nav-html10" role="tabpanel" aria-labelledby="nav-htmlTab10">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class="btn-group" role="group" aria-label="Button group with nested dropdown"&gt;
+                  &lt;button type="button" class="btn btn-primary"&gt;1&lt;/button&gt;
+                  &lt;button type="button" class="btn btn-primary"&gt;2&lt;/button&gt;
+
+                  &lt;div class="btn-group" role="group"&gt;
+                    &lt;button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"&gt;
+                      Dropdown
+                    &lt;/button&gt;
+                    &lt;ul class="dropdown-menu" aria-labelledby="btnGroupDrop1"&gt;
+                      &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Dropdown link&lt;/a&gt;&lt;/li&gt;
+                      &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Dropdown link&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="vertical-variation" class="hs-docs-heading">
+        Vertical variation <a class="anchorjs-link" href="#vertical-variation" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <p>Make a set of buttons appear vertically stacked rather than horizontally. <span class="fw-bold">Split button dropdowns are not supported here.</span></p>
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab14" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab14" href="#nav-result14" data-bs-toggle="pill" data-bs-target="#nav-result14" role="tab" aria-controls="nav-result14" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab14" href="#nav-html14" data-bs-toggle="pill" data-bs-target="#nav-html14" role="tab" aria-controls="nav-html14" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent14">
+          <div class="tab-pane fade p-4 show active" id="nav-result14" role="tabpanel" aria-labelledby="nav-resultTab14">
+            <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+              <button type="button" class="btn btn-dark">Button</button>
+              <button type="button" class="btn btn-dark">Button</button>
+              <button type="button" class="btn btn-dark">Button</button>
+              <button type="button" class="btn btn-dark">Button</button>
+              <button type="button" class="btn btn-dark">Button</button>
+              <button type="button" class="btn btn-dark">Button</button>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="nav-html14" role="tabpanel" aria-labelledby="nav-htmlTab14">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class="btn-group-vertical" role="group" aria-label="Vertical button group"&gt;
+                  &lt;button type="button" class="btn btn-dark"&gt;Button&lt;/button&gt;
+                  &lt;button type="button" class="btn btn-dark"&gt;Button&lt;/button&gt;
+                  &lt;button type="button" class="btn btn-dark"&gt;Button&lt;/button&gt;
+                  &lt;button type="button" class="btn btn-dark"&gt;Button&lt;/button&gt;
+                  &lt;button type="button" class="btn btn-dark"&gt;Button&lt;/button&gt;
+                  &lt;button type="button" class="btn btn-dark"&gt;Button&lt;/button&gt;
+                &lt;/div&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab15" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab15" href="#nav-result15" data-bs-toggle="pill" data-bs-target="#nav-result15" role="tab" aria-controls="nav-result15" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab15" href="#nav-html15" data-bs-toggle="pill" data-bs-target="#nav-html15" role="tab" aria-controls="nav-html15" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent15">
+          <div class="tab-pane fade p-4 show active" id="nav-result15" role="tabpanel" aria-labelledby="nav-resultTab15">
+            <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+              <button type="button" class="btn btn-primary">Button</button>
+              <button type="button" class="btn btn-primary">Button</button>
+              <div class="btn-group" role="group">
+                <button id="btnGroupVerticalDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop1">
+                  <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+                  <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+                </ul>
+              </div>
+              <button type="button" class="btn btn-primary">Button</button>
+              <button type="button" class="btn btn-primary">Button</button>
+              <div class="btn-group" role="group">
+                <button id="btnGroupVerticalDrop2" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop2">
+                  <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+                  <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+                </ul>
+              </div>
+              <div class="btn-group" role="group">
+                <button id="btnGroupVerticalDrop3" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop3">
+                  <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+                  <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+                </ul>
+              </div>
+              <div class="btn-group" role="group">
+                <button id="btnGroupVerticalDrop4" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop4">
+                  <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+                  <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="nav-html15" role="tabpanel" aria-labelledby="nav-htmlTab15">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class="btn-group-vertical" role="group" aria-label="Vertical button group"&gt;
+                  &lt;button type="button" class="btn btn-primary"&gt;Button&lt;/button&gt;
+                  &lt;button type="button" class="btn btn-primary"&gt;Button&lt;/button&gt;
+                  &lt;div class="btn-group" role="group"&gt;
+                    &lt;button id="btnGroupVerticalDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"&gt;
+                      Dropdown
+                    &lt;/button&gt;
+                    &lt;ul class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop1"&gt;
+                      &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Dropdown link&lt;/a&gt;&lt;/li&gt;
+                      &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Dropdown link&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;/div&gt;
+                  &lt;button type="button" class="btn btn-primary"&gt;Button&lt;/button&gt;
+                  &lt;button type="button" class="btn btn-primary"&gt;Button&lt;/button&gt;
+                  &lt;div class="btn-group" role="group"&gt;
+                    &lt;button id="btnGroupVerticalDrop2" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"&gt;
+                      Dropdown
+                    &lt;/button&gt;
+                    &lt;ul class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop2"&gt;
+                      &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Dropdown link&lt;/a&gt;&lt;/li&gt;
+                      &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Dropdown link&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;/div&gt;
+                  &lt;div class="btn-group" role="group"&gt;
+                    &lt;button id="btnGroupVerticalDrop3" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"&gt;
+                      Dropdown
+                    &lt;/button&gt;
+                    &lt;ul class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop3"&gt;
+                      &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Dropdown link&lt;/a&gt;&lt;/li&gt;
+                      &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Dropdown link&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;/div&gt;
+                  &lt;div class="btn-group" role="group"&gt;
+                    &lt;button id="btnGroupVerticalDrop4" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"&gt;
+                      Dropdown
+                    &lt;/button&gt;
+                    &lt;ul class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop4"&gt;
+                      &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Dropdown link&lt;/a&gt;&lt;/li&gt;
+                      &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Dropdown link&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab16" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab16" href="#nav-result16" data-bs-toggle="pill" data-bs-target="#nav-result16" role="tab" aria-controls="nav-result16" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab16" href="#nav-html16" data-bs-toggle="pill" data-bs-target="#nav-html16" role="tab" aria-controls="nav-html16" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent16">
+          <div class="tab-pane fade p-4 show active" id="nav-result16" role="tabpanel" aria-labelledby="nav-resultTab16">
+            <div class="btn-group-vertical" role="group" aria-label="Vertical radio toggle button group">
+              <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio1" autocomplete="off" checked>
+              <label class="btn btn-outline-danger" for="vbtn-radio1">Radio 1</label>
+              <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio2" autocomplete="off">
+              <label class="btn btn-outline-danger" for="vbtn-radio2">Radio 2</label>
+              <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio3" autocomplete="off">
+              <label class="btn btn-outline-danger" for="vbtn-radio3">Radio 3</label>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="nav-html16" role="tabpanel" aria-labelledby="nav-htmlTab16">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class="btn-group-vertical" role="group" aria-label="Vertical radio toggle button group"&gt;
+                  &lt;input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio1" autocomplete="off" checked&gt;
+                  &lt;label class="btn btn-outline-danger" for="vbtn-radio1"&gt;Radio 1&lt;/label&gt;
+                  &lt;input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio2" autocomplete="off"&gt;
+                  &lt;label class="btn btn-outline-danger" for="vbtn-radio2"&gt;Radio 2&lt;/label&gt;
+                  &lt;input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio3" autocomplete="off"&gt;
+                  &lt;label class="btn btn-outline-danger" for="vbtn-radio3"&gt;Radio 3&lt;/label&gt;
+                &lt;/div&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+    </div>
+    <!-- End Content -->
+  </main>
+  <!-- ========== END MAIN CONTENT ========== -->
+
+  <!-- ========== SECONDARY CONTENTS ========== -->
+  <!-- Go To -->
+  <a class="js-go-to go-to position-fixed" href="javascript:;" style="visibility: hidden;" data-hs-go-to-options='{
+       "offsetTop": 700,
+       "position": {
+         "init": {
+           "right": "2rem"
+         },
+         "show": {
+           "bottom": "2rem"
+         },
+         "hide": {
+           "bottom": "-2rem"
+         }
+       }
+     }'>
+    <i class="bi-chevron-up"></i>
+  </a>
+  <!-- ========== END SECONDARY CONTENTS ========== -->
+
+  <!-- JS Global Compulsory  -->
+  <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JS Implementing Plugins -->
+  <script src="../assets/vendor/hs-header/dist/hs-header.min.js"></script>
+  <script src="../assets/vendor/hs-nav-scroller/dist/hs-nav-scroller.min.js"></script>
+  <script src="../assets/vendor/list.js/dist/list.min.js"></script>
+  <script src="../assets/vendor/hs-go-to/dist/hs-go-to.min.js"></script>
+  <script src="../assets/vendor/prism/prism.js"></script>
+
+  <!-- JS Front -->
+  <script src="../assets/js/theme.min.js"></script>
+
+  <!-- JS Plugins Init. -->
+  <script>
+    (function() {
+      // INITIALIZATION OF HEADER
+      // =======================================================
+      new HSHeader('#header').init()
+
+
+      // INITIALIZATION OF NAV SCROLLER
+      // =======================================================
+      new HsNavScroller('.js-nav-scroller', {
+        delay: 400,
+        offset: 140
+      })
+
+
+      // INITIALIZATION OF LISTJS COMPONENT
+      // =======================================================
+      HSCore.components.HSList.init('#docsSearch');
+      const docsSearch = HSCore.components.HSList.getItem('docsSearch');
+
+
+      // GET JSON FILE RESULTS
+      // =======================================================
+      fetch('../assets/json/docs-search.json')
+      .then(response => response.json())
+      .then(data => {
+        docsSearch.add(data)
+      })
+
+
+      // INITIALIZATION OF GO TO
+      // =======================================================
+      new HSGoTo('.js-go-to')
+    })()
+  </script>
+</body>
+</html>

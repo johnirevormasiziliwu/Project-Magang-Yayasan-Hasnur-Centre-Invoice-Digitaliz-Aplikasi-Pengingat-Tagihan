@@ -1,0 +1,1911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required Meta Tags Always Come First -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Title -->
+  <title>Dashboard | Front - Admin &amp; Dashboard Template</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../favicon.ico">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS Implementing Plugins -->
+  <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/font/bootstrap-icons.css">
+
+  <!-- CSS Front Template -->
+
+  <link rel="preload" href="../assets/css/theme.min.css" data-hs-appearance="default" as="style">
+  <link rel="preload" href="../assets/css/docs.min.css" data-hs-appearance="default" as="style">
+  <link rel="preload" href="../assets/css/theme-dark.min.css" data-hs-appearance="dark" as="style">
+  <link rel="preload" href="../assets/css/docs-dark.min.css" data-hs-appearance="dark" as="style">
+
+  <style data-hs-appearance-onload-styles>
+    *
+    {
+      transition: unset !important;
+    }
+
+    body
+    {
+      opacity: 0;
+    }
+  </style>
+
+  <script>
+            window.hs_config = {"autopath":"@@autopath","deleteLine":"hs-builder:delete","deleteLine:build":"hs-builder:build-delete","deleteLine:dist":"hs-builder:dist-delete","previewMode":false,"startPath":"/index.html","vars":{"themeFont":"https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap","version":"?v=1.0"},"layoutBuilder":{"extend":{"switcherSupport":true},"header":{"layoutMode":"default","containerMode":"container-fluid"},"sidebarLayout":"default"},"themeAppearance":{"layoutSkin":"default","sidebarSkin":"default","styles":{"colors":{"primary":"#377dff","transparent":"transparent","white":"#fff","dark":"132144","gray":{"100":"#f9fafc","900":"#1e2022"}},"font":"Inter"}},"languageDirection":{"lang":"en"},"skipFilesFromBundle":{"dist":["assets/js/hs.theme-appearance.js","assets/js/hs.theme-appearance-charts.js","assets/js/demo.js"],"build":["assets/css/theme.css","assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js","assets/js/demo.js","assets/css/theme-dark.css","assets/css/docs.css","assets/vendor/icon-set/style.css","assets/js/hs.theme-appearance.js","assets/js/hs.theme-appearance-charts.js","node_modules/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js","assets/js/demo.js"]},"minifyCSSFiles":["assets/css/theme.css","assets/css/theme-dark.css"],"copyDependencies":{"dist":{"*assets/js/theme-custom.js":""},"build":{"*assets/js/theme-custom.js":"","node_modules/bootstrap-icons/font/*fonts/**":"assets/css"}},"buildFolder":"","replacePathsToCDN":{},"directoryNames":{"src":"./src","dist":"./dist","build":"./build"},"fileNames":{"dist":{"js":"theme.min.js","css":"theme.min.css"},"build":{"css":"theme.min.css","js":"theme.min.js","vendorCSS":"vendor.min.css","vendorJS":"vendor.min.js"}},"fileTypes":"jpg|png|svg|mp4|webm|ogv|json"}
+            window.hs_config.gulpRGBA = (p1) => {
+  const options = p1.split(',')
+  const hex = options[0].toString()
+  const transparent = options[1].toString()
+
+  var c;
+  if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+    c= hex.substring(1).split('');
+    if(c.length== 3){
+      c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+    }
+    c= '0x'+c.join('');
+    return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',' + transparent + ')';
+  }
+  throw new Error('Bad Hex');
+}
+            window.hs_config.gulpDarken = (p1) => {
+  const options = p1.split(',')
+
+  let col = options[0].toString()
+  let amt = -parseInt(options[1])
+  var usePound = false
+
+  if (col[0] == "#") {
+    col = col.slice(1)
+    usePound = true
+  }
+  var num = parseInt(col, 16)
+  var r = (num >> 16) + amt
+  if (r > 255) {
+    r = 255
+  } else if (r < 0) {
+    r = 0
+  }
+  var b = ((num >> 8) & 0x00FF) + amt
+  if (b > 255) {
+    b = 255
+  } else if (b < 0) {
+    b = 0
+  }
+  var g = (num & 0x0000FF) + amt
+  if (g > 255) {
+    g = 255
+  } else if (g < 0) {
+    g = 0
+  }
+  return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16)
+}
+            window.hs_config.gulpLighten = (p1) => {
+  const options = p1.split(',')
+
+  let col = options[0].toString()
+  let amt = parseInt(options[1])
+  var usePound = false
+
+  if (col[0] == "#") {
+    col = col.slice(1)
+    usePound = true
+  }
+  var num = parseInt(col, 16)
+  var r = (num >> 16) + amt
+  if (r > 255) {
+    r = 255
+  } else if (r < 0) {
+    r = 0
+  }
+  var b = ((num >> 8) & 0x00FF) + amt
+  if (b > 255) {
+    b = 255
+  } else if (b < 0) {
+    b = 0
+  }
+  var g = (num & 0x0000FF) + amt
+  if (g > 255) {
+    g = 255
+  } else if (g < 0) {
+    g = 0
+  }
+  return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16)
+}
+            </script>
+</head>
+
+<body class="navbar-sidebar-aside-lg">
+
+  <script src="../assets/js/hs.theme-appearance.js"></script>
+
+  <!-- ========== HEADER ========== -->
+  <header id="header" class="navbar navbar-expand navbar-end navbar-light navbar-sticky-lg-top bg-white">
+    <div class="container-fluid">
+      <nav class="navbar-nav-wrap">
+        <div class="row flex-grow-1">
+          <!-- Default Logo -->
+          <div class="docs-navbar-sidebar-container d-flex align-items-center mb-2 mb-lg-0">
+            <a class="navbar-brand" href="../documentation/index.html" aria-label="Front">
+              <img class="navbar-brand-logo" src="../assets/svg/logos/logo.svg" alt="Logo" data-hs-theme-appearance="default">
+              <img class="navbar-brand-logo" src="../assets/svg/logos-light/logo.svg" alt="Logo" data-hs-theme-appearance="dark">
+            </a>
+            <a href="../documentation/changelog.html">
+              <span class="badge bg-soft-primary text-primary">v2.1</span>
+            </a>
+          </div>
+          <!-- End Default Logo -->
+
+          <div class="col-md px-lg-0">
+            <div class="d-flex justify-content-between align-items-center px-lg-5 px-xl-10">
+              <div class="d-none d-md-block">
+                <!-- Search Form -->
+                <form id="docsSearch" class="position-relative" data-hs-list-options='{
+                       "searchMenu": true,
+                       "keyboard": true,
+                       "item": "searchTemplate",
+                       "valueNames": ["component", "category", {"name": "link", "attr": "href"}],
+                       "empty": "#searchNoResults"
+                     }'>
+                  <!-- Input Group -->
+                  <div class="input-group input-group-merge navbar-input-group">
+                    <div class="input-group-prepend input-group-text">
+                      <i class="bi-search"></i>
+                    </div>
+
+                    <input type="search" class="search form-control form-control-sm" placeholder="Search in docs" aria-label="Search in docs">
+
+                    <a class="input-group-append input-group-text" href="javascript:;">
+                      <i id="clearSearchResultsIcon" class="bi-x" style="display: none;"></i>
+                    </a>
+                  </div>
+                  <!-- End Input Group -->
+
+                  <!-- List -->
+                  <div class="list dropdown-menu navbar-dropdown-menu-borderless w-100 overflow-auto" style="max-height: 16rem;"></div>
+                  <!-- End List -->
+
+                  <!-- Empty -->
+                  <div id="searchNoResults" style="display: none;">
+                    <div class="text-center p-4">
+                      <img class="mb-3" src="../assets/svg/illustrations/oc-error.svg" alt="Image Description" data-hs-theme-appearance="default" style="width: 7rem;">
+                      <img class="mb-3" src="../assets/svg/illustrations-light/oc-error.svg" alt="Image Description" data-hs-theme-appearance="dark" style="width: 7rem;">
+                      <p class="mb-0">No Results</p>
+                    </div>
+                  </div>
+                  <!-- End Empty -->
+                </form>
+                <!-- End Search Form -->
+
+                <!-- List Item Template -->
+                <div class="d-none">
+                  <div id="searchTemplate" class="dropdown-item">
+                    <a class="d-block link" href="#">
+                      <span class="category d-block fw-normal text-muted mb-1"></span>
+                      <span class="component text-dark"></span>
+                    </a>
+                  </div>
+                </div>
+                <!-- End List Item Template -->
+              </div>
+
+              <!-- Navbar -->
+              <ul class="navbar-nav p-0">
+                <li class="nav-item">
+                  <a class="btn btn-ghost-secondary btn-sm" href="https://htmlstream.com/contact-us" target="_blank">
+                    Get Support <i class="bi-box-arrow-up-right ms-1"></i>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="btn btn-primary btn-sm" href="../index.html">
+                    <i class="bi-eye me-1"></i> Preview Demo
+                  </a>
+                </li>
+              </ul>
+              <!-- End Navbar -->
+            </div>
+          </div>
+          <!-- End Col -->
+        </div>
+        <!-- End Row -->
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========== END HEADER ========== -->
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main id="content" role="main">
+    <!-- Navbar -->
+    <nav class="js-nav-scroller navbar navbar-expand-lg navbar-sidebar navbar-vertical navbar-light bg-white border-end" data-hs-nav-scroller-options='{
+            "type": "vertical",
+            "target": ".navbar-nav .active",
+            "offset": 80
+           }'>
+      <!-- Navbar Toggle -->
+      <div class="d-grid flex-grow-1 px-2">
+        <button type="button" class="navbar-toggler btn btn-white" data-bs-toggle="collapse" data-bs-target="#navbarVerticalNavMenu" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navbarVerticalNavMenu">
+          <span class="d-flex justify-content-between align-items-center">
+            <span class="h3 mb-0">Nav menu</span>
+
+            <span class="navbar-toggler-default">
+              <i class="bi-list"></i>
+            </span>
+
+            <span class="navbar-toggler-toggled">
+              <i class="bi-x"></i>
+            </span>
+          </span>
+        </button>
+      </div>
+      <!-- End Navbar Toggle -->
+
+      <!-- Navbar Collapse -->
+      <div id="navbarVerticalNavMenu" class="collapse navbar-collapse">
+        <div class="navbar-brand-wrapper border-end" style="height: auto;">
+          <!-- Default Logo -->
+          <div class="d-flex align-items-center mb-3">
+            <a class="navbar-brand" href="../documentation/index.html" aria-label="Front">
+              <img class="navbar-brand-logo" src="../assets/svg/logos/logo.svg" alt="Logo" data-hs-theme-appearance="default">
+              <img class="navbar-brand-logo" src="../assets/svg/logos-light/logo.svg" alt="Logo" data-hs-theme-appearance="dark">
+            </a>
+            <a class="navbar-brand-badge" href="../documentation/changelog.html">
+              <span class="badge bg-soft-primary text-primary ms-2">v2.1</span>
+            </a>
+          </div>
+          <!-- End Default Logo -->
+        </div>
+
+        <div class="docs-navbar-sidebar-aside-body navbar-sidebar-aside-body">
+          <ul id="navbarSettings" class="navbar-nav nav nav-vertical nav-tabs nav-tabs-borderless nav-sm">
+            <li class="nav-item">
+              <span class="nav-subtitle">Documentation</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/index.html">Introduction</a>
+            </li>
+
+            <li class="nav-item my-2 my-lg-5"></li>
+
+            <li class="nav-item">
+              <span class="nav-subtitle">Getting started</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/getting-started.html">Getting Started</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/gulp.html">Gulp</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/darkmode.html">Dark Mode <span class="badge bg-soft-dark text-dark lh-base ms-1">New</span></a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/customization.html">Customization</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/credits.html">Credits</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link active" href="../documentation/changelog.html">Changelog</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <span class="nav-subtitle">Design &amp; Graphics</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/bs-icons.html">Bootstrap Icons</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/illustrations.html">Illustrations</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <span class="nav-subtitle">Components</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/accordion.html">Accordion</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/alerts.html">Alerts</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/avatars.html">Avatars</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/badge.html">Badge</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/breadcrumb.html">Breadcrumb</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/buttons.html">Buttons</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/button-group.html">Button Group</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/cards.html">Cards</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/collapse.html">Collapse</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/column-divider.html">Column Divider</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/devices.html">Devices</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/divider.html">Divider</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/dropdowns.html">Dropdowns</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/icons.html">Icons</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/list-group.html">List Group</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/lists.html">Lists</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/legend-indicator.html">Legend Indicator</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/modal.html">Modal</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/offcanvas.html">Offcanvas</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/page-header.html">Page Header</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/pagination.html">Pagination</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/popovers.html">Popovers</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/progress.html">Progress</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/profile.html">Profile</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/shapes.html">Shapes</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sliding-img.html">Sliding Image</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/spinners.html">Spinners</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/steps.html">Steps</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/tab.html">Tab</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/toasts.html">Toasts</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/tooltips.html">Tooltips</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/typography.html">Typography</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Navbars</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/navbar.html">Navbar</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/navs.html">Navs</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/mega-menu.html">Mega Menu</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/navbar-vertical-aside.html">Navbar Vertical Aside</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/scrollspy.html">Scrollspy</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Tables</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/tables.html">Tables</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/datatables.html">Datatables</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/table-sticky-header.html">Sticky Header</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Basic forms</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/basic-forms.html">Basic Forms</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/checks-and-switches.html">Checks &amp; Switches</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/input-group.html">Input Group</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle">Advanced Forms</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/select.html">Advanced Select</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/datepicker.html">Datepicker (Flatpickr)</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/daterangepicker.html">Date Range Picker</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/calendar.html">Calendar (Fullcalendar)</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/file-attachments.html">File Attachments</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/dropzone.html">Drag’ n’ Drop File Uploads</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/quill.html">WYSIWYG Editor</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/quantity-counter.html">Quantity Counter</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/copy-to-clipboard.html">Copy to Clipboard</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/input-mask.html">Input Mask</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/step-forms.html">Step Forms (Wizards)</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/add-field.html">Add Field</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/toggle-password.html">Toggle Password</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/count-characters.html">Count Characters</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/form-search.html">Form Search</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/toggle-switch.html">Toggle Switch</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/google-recaptcha.html">Google reCAPTCHA</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle">Charts</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/chartjs.html">Chart.js</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/counter.html">Counter</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/circles.html">Circles.js (Pie Chart)</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle">Others</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/fslightbox.html">Fullscreen Lightbox</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/maps-leaflet.html">Leaflet</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/maps-jsvectormap.html">JSVectorMap</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sortablejs.html">SortableJS</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sticky-block.html">Sticky Block</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/go-to.html">Go To</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Utilities</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/backgrounds.html">Backgrounds</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/borders.html">Borders</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/colors.html">Colors</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/links.html">Links</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/position.html">Position</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/shadows.html">Shadows</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sizing.html">Sizing</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/spacing.html">Spacing</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/z-index.html">Z-index</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/opacity.html">Opacity</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- End Navbar Collapse -->
+    </nav>
+    <!-- End Navbar -->
+
+    <!-- Content -->
+    <div class="navbar-sidebar-aside-content content-space-1 content-space-md-2 px-lg-5 px-xl-10">
+      <!-- Page Header -->
+      <div class="docs-page-header">
+        <div class="row align-items-center">
+          <div class="col-sm">
+            <h1 class="docs-page-header-title">Changelog</h1>
+            <p class="docs-page-header-text">See what's new added, changed, fixed, improved or updated in the latest Front versions.</p>
+          </div>
+        </div>
+      </div>
+      <!-- End Page Header -->
+
+      <!-- Alert -->
+      <div class="alert alert-soft-dark" role="alert">
+        <div class="d-flex align-items-baseline">
+          <div class="flex-shrink-0">
+            <i class="bi-info-circle me-1"></i>
+          </div>
+
+          <div class="flex-grow-1 ms-2">
+            <h3>Read this before updating</h3>
+            Do <span class="text-dark fw-semibold">not</span> forget to <span class="text-dark fw-semibold">backup</span> your files and <span class="text-dark fw-semibold">read the changelog</span> before updating your Front copy. If you come across with any problems with Front template during the update and development processes, feel free to contact our support group at <a class="link" href="https://htmlstream.com/contact-us" target="_blank">htmlstream.com/contact-us <i class="fas fa-external-link-alt fa-xs"></i></a> and our team will assist you within a short time.
+          </div>
+        </div>
+      </div>
+      <!-- End Alert -->
+
+      <div id="version2_1" class="content-divider">
+        <h2 class="hs-docs-heading"><code>v2.1</code> - 13 August, 2022 <a class="anchorjs-link" href="#version2_1" aria-label="Anchor" data-anchorjs-icon="#"></a></h2>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-primary text-primary py-2 px-3 me-2">New</span>
+          <a class="link" href="../documentation/select.html#validation">Advanced Select (Tom Select)</a> with validation example
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-info text-info py-2 px-3 me-2">Enhanced</span>
+          Gulp is now compatible with the latest stable NodeJS version
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-info text-info py-2 px-3 me-2">Enhanced</span>
+          Sass Numeric Operators
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-danger text-danger py-2 px-3 me-2">Fixed</span>
+          Soft color variables overriding issue
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Updated</span>
+          Bootstrap from <code>v5.1.3</code> to <code>v5.2.0</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Updated</span>
+          Bootstrap Icons from <code>v1.8.1</code> to <code>v1.9.1</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Updated</span>
+          Chart.js from <code>v2.9.4</code> to <code>v3.8.0</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Updated</span>
+          Chart.js-chart-matrix from <code>v0.1.3</code> to <code>v1.1.1</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Updated</span>
+          Chart.js-plugin-datalabels from <code>v0.7.0</code> to <code>v2.0.0</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Updated</span>
+          Clipboard from <code>v2.0.10</code> to <code>v2.0.11</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Updated</span>
+          Datatables.net-buttons from <code>v1.7.1</code> to <code>v2.2.3</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Updated</span>
+          Flag-icon-css from <code>v3.5.0</code> to <code>v4.1.7</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Updated</span>
+          Flatpickr from <code>v4.6.9</code> to <code>v4.6.13</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Updated</span>
+          Fullcalendar from <code>v5.10.2</code> to <code>v5.11.0</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Updated</span>
+          iMask from <code>v6.1.0</code> to <code>v6.4.2</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Updated</span>
+          jQuery Migrate from <code>v3.3.2</code> to <code>v3.4.0</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Updated</span>
+          Jsvectormap from <code>v1.4.4</code> to <code>v1.4.5</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Updated</span>
+          JSZip from <code>v3.7.1</code> to <code>v3.10.0</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Updated</span>
+          Leaflet from <code>v1.7.1</code> to <code>v1.8.0</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Updated</span>
+          PDFmake from <code>v0.1.72</code> to <code>v0.2.5</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Updated</span>
+          Sortable from <code>v1.14.0</code> to <code>v1.15.0</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Updated</span>
+          Tom Select from <code>v1.7.8</code> to <code>v2.1.0</code>
+        </div>
+
+        <div class="mt-5">
+          <h3>List of updated SCSS-files</h3>
+
+          <ul>
+            <li><code>assets/scss/theme.scss</code></li>
+            <li><code>assets/scss/theme-dark.scss</code></li>
+            <li><code>assets/scss/themes/_default.scss</code></li>
+            <li><code>assets/scss/front-dashboard/_variables.scss</code></li>
+            <li><code>assets/scss/front-dashboard/accordion/_accordion.scss</code></li>
+            <li><code>assets/scss/front-dashboard/avatar/_avatar-group-sizes.scss</code></li>
+            <li><code>assets/scss/front-dashboard/avatar/_avatar-ratio.scss</code></li>
+            <li><code>assets/scss/front-dashboard/avatar/_avatar-sizes.scss</code></li>
+            <li><code>assets/scss/front-dashboard/avatar/_avatar-status.scss</code></li>
+            <li><code>assets/scss/front-dashboard/buttons/_button.scss</code></li>
+            <li><code>assets/scss/front-dashboard/buttons/_button-custom.scss</code></li>
+            <li><code>assets/scss/front-dashboard/buttons/_button-status.scss</code></li>
+            <li><code>assets/scss/front-dashboard/buttons/_button-status-sizes.scss</code></li>
+            <li><code>assets/scss/front-dashboard/devices/_browser.scss</code></li>
+            <li><code>assets/scss/front-dashboard/card/_card.scss</code></li>
+            <li><code>assets/scss/front-dashboard/content/_content.scss</code></li>
+            <li><code>assets/scss/front-dashboard/dropdown/_dropdown.scss</code></li>
+            <li><code>assets/scss/front-dashboard/footer/_footer.scss</code></li>
+            <li><code>assets/scss/front-dashboard/forms/_input-group-merge.scss</code></li>
+            <li><code>assets/scss/front-dashboard/forms/_form-switch.scss</code></li>
+            <li><code>assets/scss/front-dashboard/list/_list-group.scss</code></li>
+            <li><code>assets/scss/front-dashboard/list/_list-separator.scss</code></li>
+            <li><code>assets/scss/front-dashboard/nav/_nav.scss</code></li>
+            <li><code>assets/scss/front-dashboard/navbar/_navbar.scss</code></li>
+            <li><code>assets/scss/front-dashboard/navbar/_navbar-expand.scss</code></li>
+            <li><code>assets/scss/front-dashboard/navbar/_navbar-vertical-aside.scss</code></li>
+            <li><code>assets/scss/front-dashboard/offcanvas/_offcanvas.scss</code></li>
+            <li><code>assets/scss/front-dashboard/profile/_profile-cover.scss</code></li>
+            <li><code>assets/scss/front-dashboard/step/_step.scss</code></li>
+            <li><code>assets/scss/front-dashboard/step/_step-avatar.scss</code></li>
+            <li><code>assets/scss/front-dashboard/step/_step-avatar-sizes.scss</code></li>
+            <li><code>assets/scss/front-dashboard/step/_step-divider.scss</code></li>
+            <li><code>assets/scss/front-dashboard/step/_step-icon.scss</code></li>
+            <li><code>assets/scss/front-dashboard/step/_step-icon-sizes.scss</code></li>
+            <li><code>assets/scss/front-dashboard/step/_step-breakpoints.scss</code></li>
+            <li><code>assets/scss/front-dashboard/step/_step-centered.scss</code></li>
+            <li><code>assets/scss/front-dashboard/step/_step-inline.scss</code></li>
+            <li><code>assets/scss/front-dashboard/vendor/_chartjs.scss</code></li>
+            <li><code>assets/scss/front-dashboard/vendor/_tom-select.scss</code></li>
+            <li><code>assets/scss/front-dashboard/mixins/_buttons.scss</code></li>
+          </ul>
+        </div>
+
+        <div class="mt-5">
+          <h3>List of updated JS-files/folders</h3>
+
+          <ul>
+            <li><code>gulpfiles/</code></li>
+            <li><code>package.json</code></li>
+            <li><code>assets/js/hs.chartjs.js</code></li>
+            <li><code>assets/js/hs.chartjs-matrix.js</code></li>
+            <li><code>assets/js/hs.flatpickr.js</code></li>
+            <li><code>assets/js/hs.tom-select.js</code></li>
+          </ul>
+        </div>
+
+        <div class="mt-5">
+          <h3>List of updated HTML <code>partials/</code> files</h3>
+
+          <ul>
+            <li><code>partials/layouts-components/search.html</code></li>
+            <li><code>partials/layouts-components/search-light.html</code></li>
+            <li><code>partials/layouts-components/search-light-ghost-light.html</code></li>
+            <li><code>partials/layouts-components/dropdown-notifications.html</code></li>
+            <li><code>partials/layouts-components/dropdown-notifications-ghost-light.html</code></li>
+            <li><code>partials/layouts-components/dropdown-apps.html</code></li>
+            <li><code>partials/layouts-components/dropdown-apps-ghost-light.html</code></li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="version4_0-migrating-to-v2" class="content-divider">
+        <h2 class="hs-docs-heading">Migrating to v2 <a class="anchorjs-link" href="#version4_0-migrating-to-v2" aria-label="Anchor" data-anchorjs-icon="#"></a></h2>
+        <p>Front Dashboard v2.0 is a major rewrite of the entire template. The most notable changes are summarized below, followed by more specific changes to relevant components. Hence, below are the breaking changes to bear in mind when moving from <code>v1.x</code> to <code>v2.1</code> or any older version of Front.</p>
+
+        <p>The most notable improvements made in Front Dashboard v2.0</p>
+
+        <ul class="list-py-1">
+          <li><span class="text-dark fw-semibold">Bootstrap v5</span> - Built on top of the latest Bootstrap v5.</li>
+          <li><span class="text-dark fw-semibold">JavaScript</span> - All HS libraries and scripts are fully re-written in vanilla JavaScript, except some third party libraries such as Datatables &amp; Date Range Picker still comes with jQuery dependency.</li>
+          <li><span class="text-dark fw-semibold">HTML</span> - classes and code structure optimized.</li>
+          <li><span class="text-dark fw-semibold">SCSS</span> - all files and styled updated.</li>
+          <li><span class="text-dark fw-semibold">Headers (Navbars)</span> - completely rewritten from scratch.</li>
+        </ul>
+      </div>
+
+      <div id="version2_0" class="content-divider">
+        <h2 class="hs-docs-heading"><code>v2.0</code> - 13 February, 2022 <a class="anchorjs-link" href="#version2_0" aria-label="Anchor" data-anchorjs-icon="#"></a></h2>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-primary text-primary py-2 px-3 me-2">New</span>
+          <a class="link" href="../documentation/darkmode.html">Dark Mode</a>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-primary text-primary py-2 px-3 me-2">New</span>
+          <a class="link" href="../landing.html">Landing Page</a>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-primary text-primary py-2 px-3 me-2">New</span> Office Club <a href="../documentation/illustrations.html">Illustration</a> package
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-primary text-primary py-2 px-3 me-2">New</span>
+          <a class="link" href="../documentation/button-group.html">Button Group</a> page
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-primary text-primary py-2 px-3 me-2">New</span>
+          <a class="link" href="../documentation/cards.html">Card</a> options
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-primary text-primary py-2 px-3 me-2">New</span>
+          <a class="link" href="../documentation/lists.html">List</a> options
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-primary text-primary py-2 px-3 me-2">New</span>
+          <a class="link" href="../documentation/navs.html">Navs</a> options
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-primary text-primary py-2 px-3 me-2">New</span>
+          <a class="link" href="../documentation/shapes.html">Shapes</a> component
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-primary text-primary py-2 px-3 me-2">New</span>
+          <a class="link" href="../documentation/tables.html">Tables</a> component
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-info text-info py-2 px-3 me-2">Enhanced</span>
+          Global font variable changed from <code>Open Sans</code> to <code>Inter</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-info text-info py-2 px-3 me-2">Enhanced</span>
+          <code>.card-body-centered</code> changed to <code>.card-centered</code> and now placed next to a <code>.card</code> class, instead of a <code>.card-body</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-info text-info py-2 px-3 me-2">Enhanced</span>
+          <code>.card-pinned</code> class has
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-info text-info py-2 px-3 me-2">Enhanced</span>
+          <code>.card-dropdown</code> changed to <code>.card-dropdown-btn</code> and now given to the invoker
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-info text-info py-2 px-3 me-2">Enhanced</span>
+          <code>.column-divider-*</code> changed to <code>.col-*-divider</code> and now placed next to a <code>.row</code> class, instead of an individual <code>.col-*</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-info text-info py-2 px-3 me-2">Enhanced</span>
+          <code>.divider</code> divided to <code>.divider-start</code>, <code>.divider-end</code> and <code>.divider-center</code> classes
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-info text-info py-2 px-3 me-2">Enhanced</span>
+          Illustrations
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-info text-info py-2 px-3 me-2">Enhanced</span>
+          <code>.opacity-xs</code> class changed to <code>.opacity-25</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-info text-info py-2 px-3 me-2">Enhanced</span>
+          <code>.opacity</code> class changed to <code>.opacity-50</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-info text-info py-2 px-3 me-2">Enhanced</span>
+          <code>.opacity-lg</code> class changed to <code>.opacity-75</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-info text-info py-2 px-3 me-2">Enhanced</span>
+          Default <code>.card-header</code> content between alignment is now controlled with <code>.card-header-content-between</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-success text-success py-2 px-3 me-2">Updated</span>
+          Bootstrap from <code>4.6.0</code> to <code>v5.0.2</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Updated</span>
+          Bootstrap from <code>v1.7.1</code> to <code>v1.8.1</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          Internet Explorer support
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          The-icon-of dropped in favor of <a class="link" href="../documentation/bs-icons.html">Bootstrap Icons</a>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>HS Transform Tabs to Btn</code> dropped in favor of <code>HS Nav Scroller</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          FancyBox dropped in favor of <a class="link" href="../documentation/fslightbox.html">Fslightbox</a>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          jQuery Validation dropped in favor of <a class="link" href="../documentation/basic-forms.html#validation-states">Bootstrap Validation</a>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          HS Unfold dropped in favor of <a class="link" href="../documentation/dropdowns.html">Bootstrap Dropdowns</a>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>jvectormap</code> plugin dropped in favor of new <code>jsvectormap</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          Input Mask dropped in favor of <a class="link" href="../documentation/input-mask.html">imask.js</a>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.content-centered-*</code> dropped in favor of Bootstrap <a class="link" href="https://getbootstrap.com/docs/5.0/utilities/position/#center-elements">Center elements</a>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.hs-nav-scroller-unfold</code> dropped in favor of <code>.nav-scroller-dropdown</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.avatar-border</code> classes dropped in favor of utility classes
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.avatar-border-lg</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.avatar-border-dashed</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.badge-soft-*</code> color palettes in favor of utility classes, like <a class="link" href="https://getbootstrap.com/docs/5.0/components/badge/#background-colors">Bootstrap Badge</a>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.breadcrumb-no-gutter</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.btn-pill</code> dropped in favor of utility classes
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.card-unfold</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.card-jvectormap</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.card-header-borderless</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.card-body-stretched</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.card-dashed-body</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.card-border-left</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.card-btn</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.close-light</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.nav-divider</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.nav-link-toggle</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.nav-indicator-icon</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.nav-*-down-break</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.navbar-brand-wrapper</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.navbar-brand-wrapper</code> class in favor of <code>.navbar-brand</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.navbar-flush</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.navbar-nav-lg</code> dropped in favor of <code>.nav-lg</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.navbar-nav-mega-menu-body</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.navbar-spacer-y</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.navbar-body</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.navbar-nav-mega-menu</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.navbar-dropdown-submenu-item-invoker</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.dropdown-menu-sm</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.dropdown-menu-lg</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.custom-select-pill</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.form-control-pill</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.input-group-pill</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.input-group-flush</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.custom-checkbox-card</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.custom-checkbox-bookmark</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.link-collapse</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.list-group-lg</code> class
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.sidebar</code> dropped in favor of <code>.offcanvas</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.border-left-*</code> classes
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.shadow-soft</code> dropped in favor of <code>.shadow-sm</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-dark text-dark py-2 px-3 me-2">Dropped</span>
+          <code>.table-column-right-aligned</code> dropped in favor of <code>.table-text-end</code>
+        </div>
+
+        <!-- Card -->
+        <div class="card mt-5">
+          <div class="card-header">
+            <h4 class="card-header-title">Renamed classes</h4>
+          </div>
+
+          <!-- Table -->
+          <div class="table-responsive">
+            <table class="table table-nowrap table-align-middle">
+              <thead class="thead-light">
+                <tr>
+                  <th>Front v1.x</th>
+                  <th>Front v2.0</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>
+                    <code>.avatar-4by3</code>
+                  </td>
+                  <td>
+                    <code>.avatar-4x3</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.column-divider-*</code>
+                  </td>
+                  <td>
+                    <code>.col-*-divider</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.input-label-secondary</code>
+                  </td>
+                  <td>
+                    <code>.form-label-secondary</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.input-group-*-down-break</code>
+                  </td>
+                  <td>
+                    <code>.input-group-*-vertical</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.bg-img-hero</code>
+                  </td>
+                  <td>
+                    <code>.bg-img-start</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.stats-progress</code>
+                  </td>
+                  <td>
+                    <code>.circles-chart</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.list-unstyle-py-2</code>
+                  </td>
+                  <td>
+                    <code>.list-py-2</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.list-unstyle-py-4</code>
+                  </td>
+                  <td>
+                    <code>.list-py-3</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.stats-progress-info</code>
+                  </td>
+                  <td>
+                    <code>.circles-chart-content</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.js-navbar-fix-moment</code>
+                  </td>
+                  <td>
+                    <code>.navbar-scrolled</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.header-abs-top</code>
+                  </td>
+                  <td>
+                    <code>.navbar-absolute-top</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.header-abs-top-inner</code>
+                  </td>
+                  <td>
+                    <code>.navbar-absolute-top-scroller</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.header-sticky-top</code>
+                  </td>
+                  <td>
+                    <code>.navbar-sticky-top</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.header-sticky-top-inner</code>
+                  </td>
+                  <td>
+                    <code>.navbar-sticky-top-scroller</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.header-invisible</code>
+                  </td>
+                  <td>
+                    <code>.navbar-invisible</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.header-moved-up</code>
+                  </td>
+                  <td>
+                    <code>.navbar-moved-up</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.header-faded</code>
+                  </td>
+                  <td>
+                    <code>.navbar-faded</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.header-section-hidden</code>
+                  </td>
+                  <td>
+                    <code>.navbar-section-hidden</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.header-untransitioned</code>
+                  </td>
+                  <td>
+                    <code>.navbar-untransitioned</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.header-fix-top</code>
+                  </td>
+                  <td>
+                    <code>.navbar-fix-top</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.navbar-vertical-aside-toggle</code>
+                  </td>
+                  <td>
+                    <code>.navbar-toggler</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.navbar-vertical-aside-toggle-short-align</code>
+                  </td>
+                  <td>
+                    <code>.navbar-toggler-short-align</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.navbar-vertical-aside-toggle-full-align</code>
+                  </td>
+                  <td>
+                    <code>.navbar-toggler-full-align</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.navbar-nav-wrap-content-left</code>
+                  </td>
+                  <td>
+                    <code>.navbar-nav-wrap-content-start</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.navbar-nav-wrap-content-right</code>
+                  </td>
+                  <td>
+                    <code>.navbar-nav-wrap-content-end</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.table-column-pl-0</code>
+                  </td>
+                  <td>
+                    <code>.table-column-ps-0</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.table-column-pr-0</code>
+                  </td>
+                  <td>
+                    <code>.table-column-pe-0</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.custom-file-btn</code>
+                  </td>
+                  <td>
+                    <code>.profile-cover-uploader</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.custom-file-input</code>
+                  </td>
+                  <td>
+                    <code>.profile-cover-uploader-input</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.custom-file-btn-label</code>
+                  </td>
+                  <td>
+                    <code>.profile-cover-uploader-label</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.custom-checkbox-switch</code>
+                  </td>
+                  <td>
+                    <code>.form-check-switch</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.custom-checkbox-card-label-stretched</code>
+                  </td>
+                  <td>
+                    <code>.form-check-select-stretched</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.dz-dropzone-boxed</code>
+                  </td>
+                  <td>
+                    <code>.dz-dropzone-card</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.left-0</code>
+                  </td>
+                  <td>
+                    <code>.start-0</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.right-0</code>
+                  </td>
+                  <td>
+                    <code>.end-0</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code>.z-index-*</code>
+                  </td>
+                  <td>
+                    <code>.zi-*</code>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- End Table -->
+        </div>
+        <!-- End Card -->
+      </div>
+
+      <div id="version1_2" class="mb-7">
+        <h2 class="hs-docs-heading"><code>v1.2</code> - 29 March, 2021 <a class="anchorjs-link" href="#version1_2" aria-label="Anchor" data-anchorjs-icon="#"></a></h2>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-danger text-danger py-2 px-3 me-2">Fixed</span>
+          Minor navbar fixes
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-danger text-danger py-2 px-3 me-2">Fixed</span>
+          Fixed loading country flags on <a href="../account-settings.html">account-settings.html</a> page in build mode
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-danger text-danger py-2 px-3 me-2">Fixed</span>
+          button box-shadow issue on accessibility
+        </div>
+
+        <div class="mt-5">
+          <h4>List of important updated SCSS files:</h4>
+
+          <ul>
+            <li><code>src/assets/scss/front-dashboard/reboot/_accessibility.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/navbar/_navbar.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/navbar/_navbar-expand.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/navbar/_navbar-options.scss</code></li>
+          </ul>
+        </div>
+
+        <div class="mt-5">
+          <h4>List of important updated JSON files:</h4>
+
+          <ul>
+            <li><code>src/assets/json/flags.json</code></li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="version1_1" class="mb-7">
+        <h2 class="hs-docs-heading"><code>v1.1</code> - 3 December, 2020 <a class="anchorjs-link" href="#version1_1" aria-label="Anchor" data-anchorjs-icon="#"></a></h2>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-primary text-primary py-2 px-3 me-2">New</span>
+          <a href="../ecommerce.html">Ecommerce</a> (11 pages)
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-primary text-primary py-2 px-3 me-2">New</span>
+          <a href="../apps-calendar.html">App Calendar</a> page
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-primary text-primary py-2 px-3 me-2">New</span>
+          <a href="../referrals.html">Referrals</a> page
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-primary text-primary py-2 px-3 me-2">New</span>
+          <a href="../documentation/calendar.html">Calendar (Fullcalendar)</a> plugin
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-primary text-primary py-2 px-3 me-2">New</span>
+          <a href="../documentation/fslightbox.html">Fullscreen Lightbox</a> plugin
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-primary text-primary py-2 px-3 me-2">New</span>
+          <a href="../documentation/popovers.html#dark">Popover dark</a> option <span class="text-body">(Now, by default it's light)</span>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-primary text-primary py-2 px-3 me-2">New</span>
+          <a href="../documentation/chartjs.html#chartjs-methods">Chartjs</a> <code>yearStamp</code> option
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-primary text-primary py-2 px-3 me-2">New</span>
+          <a href="../documentation/checks-and-switches.html">Checks &amp; Switches</a> outlined color options
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-primary text-primary py-2 px-3 me-2">New</span>
+          <a href="../documentation/file-attachments.html#methods">HS File Attach</a> types of upload files
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-primary text-primary py-2 px-3 me-2">New</span>
+          <a href="../documentation/step-forms.html#methods">HS Step Form</a> slide to top option
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-primary text-primary py-2 px-3 me-2">New</span>
+          Utility classes
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-info text-info py-2 px-3 me-2">Enhanced</span>
+          Changed variables names in SCSS-files
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-info text-info py-2 px-3 me-2">Enhanced</span>
+          JS code comment section in the HTML-pages only
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-info text-info py-2 px-3 me-2">Enhanced</span>
+          <code>hs.daterangepicker.js</code> arrows called via JS-file now
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-info text-info py-2 px-3 me-2">Enhanced</span>
+          Extended utility classes
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-info text-info py-2 px-3 me-2">Enhanced</span>
+          <code>.custom-control</code> styles
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-info text-info py-2 px-3 me-2">Enhanced</span>
+          Documentation
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-secondary text-secondary py-2 px-3 me-2">Updated</span>
+          Bootstrap from <code>v4.5.2</code> to <code>v4.5.3</code>
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-danger text-danger py-2 px-3 me-2">Fixed</span>
+          HS Nav Scroller incorrect display of arrows inside the card
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-danger text-danger py-2 px-3 me-2">Fixed</span>
+          HS Navbar Vertical Aside third level dropdown collapse issue
+        </div>
+
+        <div class="mb-3">
+          <span class="badge bg-soft-danger text-danger py-2 px-3 me-2">Fixed</span>
+          HS Unfold "Spacebar" keyboard issue on iPhone X
+        </div>
+
+        <div class="mt-5">
+          <h4>List of important updated SCSS files:</h4>
+
+          <ul>
+            <li><code>src/assets/scss/front-dashboard/_variables.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/avatar/_avatar-group-sizes.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/avatar/_avatar-ratio.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/avatar/_avatar-sizes.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/avatar/_avatar-status.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/buttons/_button-ghost.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/buttons/_button-icon-sizes.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/buttons/_button-custom.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/buttons/_button-soft.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/buttons/_button-sizes.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/buttons/_button-status-sizes.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/close/_close.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/forms/_form.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/forms/_custom-forms.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/forms/input-group/_input-group-flush.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/icon/_icon-sizes.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/page-header/_page-header.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/popover/_popover.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/profile/_profile-cover.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/card/_card-extensions.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/navbar/_navbar-vertical.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/navs/_navs.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/step/_step.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/utilities/_content-centered.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/utilities/_z-index.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/sidebar/_sidebar.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/vendor/_datatables.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/vendor/_daterangepicker.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/vendor/_dropzone.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/vendor/_flatpickr.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/vendor/_jvectormap.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/vendor/_leaflet.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/vendor/_select2.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/vendor/_tagify.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/vendor/_quill.scss</code></li>
+          </ul>
+        </div>
+
+        <div class="mt-5">
+          <h4>List of important added SCSS files:</h4>
+
+          <ul>
+            <li><code>src/assets/scss/front-dashboard/vendor/_fancybox.scss</code></li>
+            <li><code>src/assets/scss/front-dashboard/forms/checkbox/_checkbox-styles.scss</code></li>
+          </ul>
+        </div>
+
+        <div class="mt-5">
+          <h4>List of important updated JS files:</h4>
+
+          <ul>
+            <li><code>src/assets/js/hs.chartjs.js</code></li>
+            <li><code>src/assets/js/hs.daterangepicker.js</code></li>
+            <li><code>src/assets/vendor/hs-file-attach/</code></li>
+            <li><code>src/assets/vendor/hs-navbar-vertical-aside.js</code></li>
+            <li><code>src/assets/vendor/hs-step-form/</code></li>
+            <li><code>src/assets/vendor/hs-unfold/</code></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- End Content -->
+  </main>
+  <!-- ========== END MAIN CONTENT ========== -->
+
+  <!-- ========== SECONDARY CONTENTS ========== -->
+  <!-- Go To -->
+  <a class="js-go-to go-to position-fixed" href="javascript:;" style="visibility: hidden;" data-hs-go-to-options='{
+       "offsetTop": 700,
+       "position": {
+         "init": {
+           "right": "2rem"
+         },
+         "show": {
+           "bottom": "2rem"
+         },
+         "hide": {
+           "bottom": "-2rem"
+         }
+       }
+     }'>
+    <i class="bi-chevron-up"></i>
+  </a>
+  <!-- ========== END SECONDARY CONTENTS ========== -->
+
+  <!-- JS Global Compulsory  -->
+  <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JS Implementing Plugins -->
+  <script src="../assets/vendor/hs-header/dist/hs-header.min.js"></script>
+  <script src="../assets/vendor/list.js/dist/list.min.js"></script>
+  <script src="../assets/vendor/hs-go-to/dist/hs-go-to.min.js"></script>
+  <script src="../assets/vendor/prism/prism.js"></script>
+
+  <!-- JS Front -->
+  <script src="../assets/js/theme.min.js"></script>
+
+  <!-- JS Plugins Init. -->
+  <script>
+    (function() {
+      // INITIALIZATION OF HEADER
+      // =======================================================
+      new HSHeader('#header').init()
+
+
+      // INITIALIZATION OF LISTJS COMPONENT
+      // =======================================================
+      HSCore.components.HSList.init('#docsSearch');
+      const docsSearch = HSCore.components.HSList.getItem('docsSearch');
+
+
+      // GET JSON FILE RESULTS
+      // =======================================================
+      fetch('../assets/json/docs-search.json')
+      .then(response => response.json())
+      .then(data => {
+        docsSearch.add(data)
+      })
+
+
+      // INITIALIZATION OF GO TO
+      // =======================================================
+      new HSGoTo('.js-go-to')
+    })()
+  </script>
+</body>
+</html>

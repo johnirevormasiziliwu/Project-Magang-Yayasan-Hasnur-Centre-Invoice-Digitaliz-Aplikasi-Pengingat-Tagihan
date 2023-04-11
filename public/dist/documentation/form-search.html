@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required Meta Tags Always Come First -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Title -->
+  <title>Form Search - Documentation | Front - Multipurpose Responsive Template</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../favicon.ico">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS Implementing Plugins -->
+  <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/font/bootstrap-icons.css">
+
+  <!-- CSS Front Template -->
+
+  <link rel="preload" href="../assets/css/theme.min.css" data-hs-appearance="default" as="style">
+  <link rel="preload" href="../assets/css/docs.min.css" data-hs-appearance="default" as="style">
+  <link rel="preload" href="../assets/css/theme-dark.min.css" data-hs-appearance="dark" as="style">
+  <link rel="preload" href="../assets/css/docs-dark.min.css" data-hs-appearance="dark" as="style">
+
+  <style data-hs-appearance-onload-styles>
+    *
+    {
+      transition: unset !important;
+    }
+
+    body
+    {
+      opacity: 0;
+    }
+  </style>
+
+  <script>
+            window.hs_config = {"autopath":"@@autopath","deleteLine":"hs-builder:delete","deleteLine:build":"hs-builder:build-delete","deleteLine:dist":"hs-builder:dist-delete","previewMode":false,"startPath":"/index.html","vars":{"themeFont":"https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap","version":"?v=1.0"},"layoutBuilder":{"extend":{"switcherSupport":true},"header":{"layoutMode":"default","containerMode":"container-fluid"},"sidebarLayout":"default"},"themeAppearance":{"layoutSkin":"default","sidebarSkin":"default","styles":{"colors":{"primary":"#377dff","transparent":"transparent","white":"#fff","dark":"132144","gray":{"100":"#f9fafc","900":"#1e2022"}},"font":"Inter"}},"languageDirection":{"lang":"en"},"skipFilesFromBundle":{"dist":["assets/js/hs.theme-appearance.js","assets/js/hs.theme-appearance-charts.js","assets/js/demo.js"],"build":["assets/css/theme.css","assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js","assets/js/demo.js","assets/css/theme-dark.css","assets/css/docs.css","assets/vendor/icon-set/style.css","assets/js/hs.theme-appearance.js","assets/js/hs.theme-appearance-charts.js","node_modules/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js","assets/js/demo.js"]},"minifyCSSFiles":["assets/css/theme.css","assets/css/theme-dark.css"],"copyDependencies":{"dist":{"*assets/js/theme-custom.js":""},"build":{"*assets/js/theme-custom.js":"","node_modules/bootstrap-icons/font/*fonts/**":"assets/css"}},"buildFolder":"","replacePathsToCDN":{},"directoryNames":{"src":"./src","dist":"./dist","build":"./build"},"fileNames":{"dist":{"js":"theme.min.js","css":"theme.min.css"},"build":{"css":"theme.min.css","js":"theme.min.js","vendorCSS":"vendor.min.css","vendorJS":"vendor.min.js"}},"fileTypes":"jpg|png|svg|mp4|webm|ogv|json"}
+            window.hs_config.gulpRGBA = (p1) => {
+  const options = p1.split(',')
+  const hex = options[0].toString()
+  const transparent = options[1].toString()
+
+  var c;
+  if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+    c= hex.substring(1).split('');
+    if(c.length== 3){
+      c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+    }
+    c= '0x'+c.join('');
+    return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',' + transparent + ')';
+  }
+  throw new Error('Bad Hex');
+}
+            window.hs_config.gulpDarken = (p1) => {
+  const options = p1.split(',')
+
+  let col = options[0].toString()
+  let amt = -parseInt(options[1])
+  var usePound = false
+
+  if (col[0] == "#") {
+    col = col.slice(1)
+    usePound = true
+  }
+  var num = parseInt(col, 16)
+  var r = (num >> 16) + amt
+  if (r > 255) {
+    r = 255
+  } else if (r < 0) {
+    r = 0
+  }
+  var b = ((num >> 8) & 0x00FF) + amt
+  if (b > 255) {
+    b = 255
+  } else if (b < 0) {
+    b = 0
+  }
+  var g = (num & 0x0000FF) + amt
+  if (g > 255) {
+    g = 255
+  } else if (g < 0) {
+    g = 0
+  }
+  return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16)
+}
+            window.hs_config.gulpLighten = (p1) => {
+  const options = p1.split(',')
+
+  let col = options[0].toString()
+  let amt = parseInt(options[1])
+  var usePound = false
+
+  if (col[0] == "#") {
+    col = col.slice(1)
+    usePound = true
+  }
+  var num = parseInt(col, 16)
+  var r = (num >> 16) + amt
+  if (r > 255) {
+    r = 255
+  } else if (r < 0) {
+    r = 0
+  }
+  var b = ((num >> 8) & 0x00FF) + amt
+  if (b > 255) {
+    b = 255
+  } else if (b < 0) {
+    b = 0
+  }
+  var g = (num & 0x0000FF) + amt
+  if (g > 255) {
+    g = 255
+  } else if (g < 0) {
+    g = 0
+  }
+  return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16)
+}
+            </script>
+</head>
+
+<body class="navbar-sidebar-aside-lg">
+
+  <script src="../assets/js/hs.theme-appearance.js"></script>
+
+  <!-- ========== HEADER ========== -->
+  <header id="header" class="navbar navbar-expand navbar-end navbar-light navbar-sticky-lg-top bg-white">
+    <div class="container-fluid">
+      <nav class="navbar-nav-wrap">
+        <div class="row flex-grow-1">
+          <!-- Default Logo -->
+          <div class="docs-navbar-sidebar-container d-flex align-items-center mb-2 mb-lg-0">
+            <a class="navbar-brand" href="../documentation/index.html" aria-label="Front">
+              <img class="navbar-brand-logo" src="../assets/svg/logos/logo.svg" alt="Logo" data-hs-theme-appearance="default">
+              <img class="navbar-brand-logo" src="../assets/svg/logos-light/logo.svg" alt="Logo" data-hs-theme-appearance="dark">
+            </a>
+            <a href="../documentation/changelog.html">
+              <span class="badge bg-soft-primary text-primary">v2.1</span>
+            </a>
+          </div>
+          <!-- End Default Logo -->
+
+          <div class="col-md px-lg-0">
+            <div class="d-flex justify-content-between align-items-center px-lg-5 px-xl-10">
+              <div class="d-none d-md-block">
+                <!-- Search Form -->
+                <form id="docsSearch" class="position-relative" data-hs-list-options='{
+                       "searchMenu": true,
+                       "keyboard": true,
+                       "item": "searchTemplate",
+                       "valueNames": ["component", "category", {"name": "link", "attr": "href"}],
+                       "empty": "#searchNoResults"
+                     }'>
+                  <!-- Input Group -->
+                  <div class="input-group input-group-merge navbar-input-group">
+                    <div class="input-group-prepend input-group-text">
+                      <i class="bi-search"></i>
+                    </div>
+
+                    <input type="search" class="search form-control form-control-sm" placeholder="Search in docs" aria-label="Search in docs">
+
+                    <a class="input-group-append input-group-text" href="javascript:;">
+                      <i id="clearSearchResultsIcon" class="bi-x" style="display: none;"></i>
+                    </a>
+                  </div>
+                  <!-- End Input Group -->
+
+                  <!-- List -->
+                  <div class="list dropdown-menu navbar-dropdown-menu-borderless w-100 overflow-auto" style="max-height: 16rem;"></div>
+                  <!-- End List -->
+
+                  <!-- Empty -->
+                  <div id="searchNoResults" style="display: none;">
+                    <div class="text-center p-4">
+                      <img class="mb-3" src="../assets/svg/illustrations/oc-error.svg" alt="Image Description" data-hs-theme-appearance="default" style="width: 7rem;">
+                      <img class="mb-3" src="../assets/svg/illustrations-light/oc-error.svg" alt="Image Description" data-hs-theme-appearance="dark" style="width: 7rem;">
+                      <p class="mb-0">No Results</p>
+                    </div>
+                  </div>
+                  <!-- End Empty -->
+                </form>
+                <!-- End Search Form -->
+
+                <!-- List Item Template -->
+                <div class="d-none">
+                  <div id="searchTemplate" class="dropdown-item">
+                    <a class="d-block link" href="#">
+                      <span class="category d-block fw-normal text-muted mb-1"></span>
+                      <span class="component text-dark"></span>
+                    </a>
+                  </div>
+                </div>
+                <!-- End List Item Template -->
+              </div>
+
+              <!-- Navbar -->
+              <ul class="navbar-nav p-0">
+                <li class="nav-item">
+                  <a class="btn btn-ghost-secondary btn-sm" href="https://htmlstream.com/contact-us" target="_blank">
+                    Get Support <i class="bi-box-arrow-up-right ms-1"></i>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="btn btn-primary btn-sm" href="../index.html">
+                    <i class="bi-eye me-1"></i> Preview Demo
+                  </a>
+                </li>
+              </ul>
+              <!-- End Navbar -->
+            </div>
+          </div>
+          <!-- End Col -->
+        </div>
+        <!-- End Row -->
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========== END HEADER ========== -->
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main id="content" role="main">
+    <!-- Navbar -->
+    <nav class="js-nav-scroller navbar navbar-expand-lg navbar-sidebar navbar-vertical navbar-light bg-white border-end" data-hs-nav-scroller-options='{
+            "type": "vertical",
+            "target": ".navbar-nav .active",
+            "offset": 80
+           }'>
+      <!-- Navbar Toggle -->
+      <div class="d-grid flex-grow-1 px-2">
+        <button type="button" class="navbar-toggler btn btn-white" data-bs-toggle="collapse" data-bs-target="#navbarVerticalNavMenu" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navbarVerticalNavMenu">
+          <span class="d-flex justify-content-between align-items-center">
+            <span class="h3 mb-0">Nav menu</span>
+
+            <span class="navbar-toggler-default">
+              <i class="bi-list"></i>
+            </span>
+
+            <span class="navbar-toggler-toggled">
+              <i class="bi-x"></i>
+            </span>
+          </span>
+        </button>
+      </div>
+      <!-- End Navbar Toggle -->
+
+      <!-- Navbar Collapse -->
+      <div id="navbarVerticalNavMenu" class="collapse navbar-collapse">
+        <div class="navbar-brand-wrapper border-end" style="height: auto;">
+          <!-- Default Logo -->
+          <div class="d-flex align-items-center mb-3">
+            <a class="navbar-brand" href="../documentation/index.html" aria-label="Front">
+              <img class="navbar-brand-logo" src="../assets/svg/logos/logo.svg" alt="Logo" data-hs-theme-appearance="default">
+              <img class="navbar-brand-logo" src="../assets/svg/logos-light/logo.svg" alt="Logo" data-hs-theme-appearance="dark">
+            </a>
+            <a class="navbar-brand-badge" href="../documentation/changelog.html">
+              <span class="badge bg-soft-primary text-primary ms-2">v2.1</span>
+            </a>
+          </div>
+          <!-- End Default Logo -->
+        </div>
+
+        <div class="docs-navbar-sidebar-aside-body navbar-sidebar-aside-body">
+          <ul id="navbarSettings" class="navbar-nav nav nav-vertical nav-tabs nav-tabs-borderless nav-sm">
+            <li class="nav-item">
+              <span class="nav-subtitle">Documentation</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/index.html">Introduction</a>
+            </li>
+
+            <li class="nav-item my-2 my-lg-5"></li>
+
+            <li class="nav-item">
+              <span class="nav-subtitle">Getting started</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/getting-started.html">Getting Started</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/gulp.html">Gulp</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/darkmode.html">Dark Mode <span class="badge bg-soft-dark text-dark lh-base ms-1">New</span></a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/customization.html">Customization</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/credits.html">Credits</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/changelog.html">Changelog</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <span class="nav-subtitle">Design &amp; Graphics</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/bs-icons.html">Bootstrap Icons</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/illustrations.html">Illustrations</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <span class="nav-subtitle">Components</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/accordion.html">Accordion</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/alerts.html">Alerts</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/avatars.html">Avatars</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/badge.html">Badge</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/breadcrumb.html">Breadcrumb</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/buttons.html">Buttons</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/button-group.html">Button Group</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/cards.html">Cards</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/collapse.html">Collapse</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/column-divider.html">Column Divider</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/devices.html">Devices</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/divider.html">Divider</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/dropdowns.html">Dropdowns</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/icons.html">Icons</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/list-group.html">List Group</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/lists.html">Lists</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/legend-indicator.html">Legend Indicator</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/modal.html">Modal</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/offcanvas.html">Offcanvas</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/page-header.html">Page Header</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/pagination.html">Pagination</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/popovers.html">Popovers</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/progress.html">Progress</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/profile.html">Profile</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/shapes.html">Shapes</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sliding-img.html">Sliding Image</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/spinners.html">Spinners</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/steps.html">Steps</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/tab.html">Tab</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/toasts.html">Toasts</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/tooltips.html">Tooltips</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/typography.html">Typography</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Navbars</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/navbar.html">Navbar</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/navs.html">Navs</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/mega-menu.html">Mega Menu</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/navbar-vertical-aside.html">Navbar Vertical Aside</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/scrollspy.html">Scrollspy</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Tables</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/tables.html">Tables</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/datatables.html">Datatables</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/table-sticky-header.html">Sticky Header</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Basic forms</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/basic-forms.html">Basic Forms</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/checks-and-switches.html">Checks &amp; Switches</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/input-group.html">Input Group</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle">Advanced Forms</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/select.html">Advanced Select</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/datepicker.html">Datepicker (Flatpickr)</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/daterangepicker.html">Date Range Picker</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/calendar.html">Calendar (Fullcalendar)</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/file-attachments.html">File Attachments</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/dropzone.html">Drag’ n’ Drop File Uploads</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/quill.html">WYSIWYG Editor</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/quantity-counter.html">Quantity Counter</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/copy-to-clipboard.html">Copy to Clipboard</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/input-mask.html">Input Mask</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/step-forms.html">Step Forms (Wizards)</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/add-field.html">Add Field</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/toggle-password.html">Toggle Password</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/count-characters.html">Count Characters</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link active" href="../documentation/form-search.html">Form Search</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/toggle-switch.html">Toggle Switch</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/google-recaptcha.html">Google reCAPTCHA</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle">Charts</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/chartjs.html">Chart.js</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/counter.html">Counter</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/circles.html">Circles.js (Pie Chart)</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle">Others</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/fslightbox.html">Fullscreen Lightbox</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/maps-leaflet.html">Leaflet</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/maps-jsvectormap.html">JSVectorMap</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sortablejs.html">SortableJS</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sticky-block.html">Sticky Block</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/go-to.html">Go To</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Utilities</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/backgrounds.html">Backgrounds</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/borders.html">Borders</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/colors.html">Colors</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/links.html">Links</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/position.html">Position</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/shadows.html">Shadows</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sizing.html">Sizing</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/spacing.html">Spacing</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/z-index.html">Z-index</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/opacity.html">Opacity</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- End Navbar Collapse -->
+    </nav>
+    <!-- End Navbar -->
+
+    <!-- Content -->
+    <div class="navbar-sidebar-aside-content content-space-1 content-space-md-2 px-lg-5 px-xl-10">
+      <!-- Page Header -->
+      <div class="docs-page-header">
+        <div class="row align-items-center">
+          <div class="col-sm">
+            <h1 class="docs-page-header-title">Form Search</h1>
+            <p class="docs-page-header-text">Form search plugin with clearing value options.</p>
+          </div>
+        </div>
+      </div>
+      <!-- End Page Header -->
+
+      <!-- Heading -->
+      <h2 id="how-to-use" class="hs-docs-heading">
+        How to use <a class="anchorjs-link" href="#how-to-use" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <p>Copy-paste the following <code>&lt;script&gt;</code> near the end of your pages under <em><u>JS Implementing Plugins</u></em> to enable it.</p>
+
+      <pre class="rounded mb-4">
+        <code class="language-html" data-lang="html">
+          &lt;script src="../assets/vendor/hs-form-search/dist/hs-form-search.min.js"&gt;&lt;/script&gt;
+        </code>
+      </pre>
+
+      <p>Copy-paste the init function under <em><u>JS Plugins Init.</u></em>, before the closing <code>&lt;/body&gt;</code> tag, to enable it.</p>
+
+      <pre class="rounded">
+        <code class="language-html" data-lang="html">
+          &lt;script&gt;
+            (function () {
+              // INITIALIZATION OF FORM SEARCH
+              // =======================================================
+              new HSFormSearch('.js-form-search')
+            })()
+          &lt;/script&gt;
+        </code>
+      </pre>
+
+      <!-- Heading -->
+      <h2 id="example" class="hs-docs-heading">
+        Example <a class="anchorjs-link" href="#example" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab1" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab1" data-bs-toggle="pill" href="#nav-result1" role="tab" aria-controls="nav-result1" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab1" data-bs-toggle="pill" href="#nav-html1" role="tab" aria-controls="nav-html1" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent1">
+          <div class="tab-pane fade p-4 show active" id="nav-result1" role="tabpanel" aria-labelledby="nav-resultTab1">
+            <!-- Form -->
+            <div class="mb-4 w-md-50">
+              <div class="input-group input-group-merge">
+                <input type="text" class="js-form-search form-control" placeholder="Search..." data-hs-form-search-options='{
+                         "clearIcon": "#clearIconBasicEg"
+                       }'>
+                <button type="button" class="input-group-append input-group-text">
+                  <i id="clearIconBasicEg" class="bi-x-lg" style="display: none;"></i>
+                </button>
+              </div>
+            </div>
+            <!-- End Form -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html1" role="tabpanel" aria-labelledby="nav-htmlTab1">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;!-- Form --&gt;
+                &lt;div class="mb-4 w-md-50"&gt;
+                  &lt;div class="input-group input-group-merge"&gt;
+                    &lt;input type="text" class="js-form-search form-control" placeholder="Search..."
+                           data-hs-form-search-options='{
+                             "clearIcon": "#clearIconBasicEg"
+                           }'&gt;
+                    &lt;button type="button" class="input-group-append input-group-text"&gt;
+                      &lt;i id="clearIconBasicEg" class="bi-x-lg" style="display: none;"&gt;&lt;/i&gt;
+                    &lt;/button&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- End Form --&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="toggle-icon" class="hs-docs-heading">
+        Toggle icon <a class="anchorjs-link" href="#toggle-icon" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <p>Use <code>defaultIcon: "element"</code></p>
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab2" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab2" data-bs-toggle="pill" href="#nav-result2" role="tab" aria-controls="nav-result2" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab2" data-bs-toggle="pill" href="#nav-html2" role="tab" aria-controls="nav-html2" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent2">
+          <div class="tab-pane fade p-4 show active" id="nav-result2" role="tabpanel" aria-labelledby="nav-resultTab2">
+            <!-- Form -->
+            <div class="mb-4 w-md-50">
+              <div class="input-group input-group-merge">
+                <input type="text" class="js-form-search form-control" placeholder="Search..." data-hs-form-search-options='{
+                         "clearIcon": "#clearIconToggleEg",
+                         "defaultIcon": "#defaultClearIconToggleEg"
+                       }'>
+                <button type="button" class="input-group-append input-group-text">
+                  <i id="clearIconToggleEg" class="bi-x-lg" style="display: none;"></i>
+                  <i id="defaultClearIconToggleEg" class="bi-search" style="display: none;"></i>
+                </button>
+              </div>
+            </div>
+            <!-- End Form -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html2" role="tabpanel" aria-labelledby="nav-htmlTab2">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;!-- Form --&gt;
+                &lt;div class="mb-4 w-md-50"&gt;
+                  &lt;div class="input-group input-group-merge"&gt;
+                    &lt;input type="text" class="js-form-search form-control" placeholder="Search..."
+                           data-hs-form-search-options='{
+                             "clearIcon": "#clearIcon2",
+                             "defaultIcon": "#defaultClearIconToggleEg"
+                           }'&gt;
+                    &lt;button type="button" class="input-group-append input-group-text"&gt;
+                      &lt;i id="clearIcon2" class="bi-x-lg" style="display: none;"&gt;&lt;/i&gt;
+                      &lt;i id="defaultClearIconToggleEg" class="bi-search" style="display: none;"&gt;&lt;/i&gt;
+                    &lt;/button&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- End Form --&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="loading-event" class="hs-docs-heading">
+        Loading event <a class="anchorjs-link" href="#loading-event" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <p>Use <code>loading()</code> method.</p>
+
+      <!-- Card -->
+      <div class="card mb-7">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab3" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab3" data-bs-toggle="pill" href="#nav-result3" role="tab" aria-controls="nav-result3" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab3" data-bs-toggle="pill" href="#nav-html3" role="tab" aria-controls="nav-html3" aria-selected="false">HTML</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-jsTab3" data-bs-toggle="pill" href="#nav-js3" role="tab" aria-controls="nav-js3" aria-selected="false">JS</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent3">
+          <div class="tab-pane fade p-4 show active" id="nav-result3" role="tabpanel" aria-labelledby="nav-resultTab3">
+            <!-- Form -->
+            <div class="mb-4 w-md-50">
+              <div class="input-group input-group-merge">
+                <input type="text" class="form-control" id="type-loading" placeholder="Search..." data-hs-form-search-options='{
+                         "clearIcon": "#clearIconLoadingEg",
+                         "defaultIcon": "#clearIconLoadingDefaultEg",
+                         "loadingIcon": "#typeLoadingIconEg"
+                       }'>
+                <button type="button" class="input-group-append input-group-text">
+                  <i id="clearIconLoadingEg" class="bi-x-lg" style="display: none;"></i>
+                  <i id="clearIconLoadingDefaultEg" class="bi-search" style="display: none;"></i>
+
+                  <span id="typeLoadingIconEg" class="spinner-border spinner-border-sm text-primary" role="status" style="display: none;">
+                    <span class="sr-only"></span>
+                  </span>
+                </button>
+              </div>
+            </div>
+            <!-- End Form -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html3" role="tabpanel" aria-labelledby="nav-htmlTab3">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;!-- Form --&gt;
+                &lt;div class="mb-4 w-md-50"&gt;
+                  &lt;div class="input-group input-group-merge"&gt;
+                    &lt;input type="text" class="form-control" id="type-loading" placeholder="Search..."
+                           data-hs-form-search-options='{
+                             "clearIcon": "#clearIconLoadingEg",
+                             "defaultIcon": "#clearIconLoadingDefaultEg",
+                             "loadingIcon": "#typeLoadingIconEg"
+                           }'&gt;
+                    &lt;button type="button" class="input-group-append input-group-text"&gt;
+                      &lt;i id="clearIconLoadingEg" class="bi-x-lg" style="display: none;"&gt;&lt;/i&gt;
+                      &lt;i id="clearIconLoadingDefaultEg" class="bi-search" style="display: none;"&gt;&lt;/i&gt;
+
+                      &lt;span id="typeLoadingIconEg" class="spinner-border spinner-border-sm text-primary" role="status" style="display: none;"&gt;
+                        &lt;span class="sr-only"&gt;&lt;/span&gt;
+                      &lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- End Form --&gt;
+              </code>
+            </pre>
+          </div>
+
+          <div class="tab-pane fade" id="nav-js3" role="tabpanel" aria-labelledby="nav-jsTab3">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;script&gt;
+                  (function () {
+                     const clearTypeLoading = new HSFormSearch('#type-loading').getItem(0)
+
+                      clearTypeLoading.$el.addEventListener('input', function() {
+                        clearTypeLoading.loading()
+
+                        if (!clearTypeLoading.$el.value.length) {
+                          clearTypeLoading.loading(false)
+                        }
+                      })
+
+                      clearTypeLoading.$el.addEventListener('change', function() {
+                        clearTypeLoading.loading(false)
+                      })
+                  })()
+                &lt;/script&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab4" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab4" data-bs-toggle="pill" href="#nav-result4" role="tab" aria-controls="nav-result4" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab4" data-bs-toggle="pill" href="#nav-html4" role="tab" aria-controls="nav-html4" aria-selected="false">HTML</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-jsTab4" data-bs-toggle="pill" href="#nav-js4" role="tab" aria-controls="nav-js4" aria-selected="false">JS</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent4">
+          <div class="tab-pane fade p-4 show active" id="nav-result4" role="tabpanel" aria-labelledby="nav-resultTab4">
+            <!-- Form -->
+            <div class="mb-4 w-md-50">
+              <div class="input-group input-group-merge">
+                <input type="text" class="form-control" id="clear-input-loading" placeholder="Search..." data-hs-form-search-options='{
+                         "clearIcon": "#clearIconLoadingBtn",
+                         "defaultIcon": "#defaultClearIconLoadingBtn",
+                         "loadingIcon": "#loadingClearIcon"
+                       }'>
+                <button type="button" class="input-group-append input-group-text">
+                  <i id="clearIconLoadingBtn" class="bi-x-lg" style="display: none;"></i>
+                  <i id="defaultClearIconLoadingBtn" class="bi-search" style="display: none;"></i>
+
+                  <span id="loadingClearIcon" class="spinner-border spinner-border-sm text-primary" role="status" style="display: none;">
+                    <span class="sr-only"></span>
+                  </span>
+                </button>
+              </div>
+            </div>
+            <!-- End Form -->
+
+            <button id="loadBtn" class="btn btn-primary">Click for loading</button>
+          </div>
+
+          <div class="tab-pane fade" id="nav-html4" role="tabpanel" aria-labelledby="nav-htmlTab4">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;!-- Form --&gt;
+                &lt;div class="mb-4 w-md-50"&gt;
+                  &lt;div class="input-group input-group-merge"&gt;
+                    &lt;input type="text" class="form-control" id="clear-input-loading" placeholder="Search..."
+                           data-hs-form-search-options='{
+                             "clearIcon": "#clearIconLoadingBtn",
+                             "defaultIcon": "#defaultClearIconLoadingBtn",
+                             "loadingIcon": "#loadingClearIcon"
+                           }'&gt;
+                    &lt;button type="button" class="input-group-append input-group-text"&gt;
+                      &lt;i id="clearIconLoadingBtn" class="bi-x-lg" style="display: none;"&gt;&lt;/i&gt;
+                      &lt;i id="defaultClearIconLoadingBtn" class="bi-search" style="display: none;"&gt;&lt;/i&gt;
+
+                      &lt;span id="loadingClearIcon" class="spinner-border spinner-border-sm text-primary" role="status" style="display: none;"&gt;
+                        &lt;span class="sr-only"&gt;&lt;/span&gt;
+                      &lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- End Form --&gt;
+
+                &lt;button id="loadBtn" class="btn btn-primary"&gt;Click for loading&lt;/button&gt;
+              </code>
+            </pre>
+          </div>
+
+          <div class="tab-pane fade" id="nav-js4" role="tabpanel" aria-labelledby="nav-jsTab4">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;script&gt;
+                  (function () {
+                    const clearInputLoading = new HSFormSearch('#clear-input-loading').getItem(0)
+                    const $loadingBtn = document.querySelector('#loadBtn')
+
+                    $loadingBtn.addEventListener('click', function() {
+                      $loadingBtn.setAttribute('disabled', true);
+                      clearInputLoading.loading()
+
+                      setTimeout(function() {
+                        clearInputLoading.loading(false);
+                        $loadingBtn.removeAttribute('disabled');
+                      }, 2000);
+                    })
+                  })()
+                &lt;/script&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="drop-menu" class="hs-docs-heading">
+        Drop menu <a class="anchorjs-link" href="#drop-menu" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <p>Use <code>dropMenuElement</code></p>
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab5" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab5" data-bs-toggle="pill" href="#nav-result5" role="tab" aria-controls="nav-result5" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab5" data-bs-toggle="pill" href="#nav-html5" role="tab" aria-controls="nav-html5" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent5">
+          <div class="tab-pane fade p-4 show active" id="nav-result5" role="tabpanel" aria-labelledby="nav-resultTab5">
+            <div class="position-relative w-md-50 z-index-2">
+              <!-- Form -->
+              <div class="mb-4">
+                <div class="input-group input-group-merge">
+                  <input type="text" class="js-form-search form-control" placeholder="Search..." data-hs-form-search-options='{
+                           "clearIcon": "#clearIconMenuEg",
+                           "defaultIcon": "#defaultIconMenuEg",
+                           "dropMenuElement": "#dropMenuEg",
+                           "dropMenuOffset": 20
+                         }'>
+                  <button type="button" class="input-group-append input-group-text">
+                    <i id="clearIconMenuEg" class="bi-x-lg" style="display: none;"></i>
+                    <i id="defaultIconMenuEg" class="bi-search" style="display: none;"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- End Form -->
+
+              <!-- Drop Menu -->
+              <div id="dropMenuEg" class="hs-form-search-menu-content dropdown-menu dropdown-menu-form-search navbar-dropdown-menu-borderless">
+                <!-- Body -->
+                <div class="card-body-height">
+                  <span class="dropdown-header">Recent searches</span>
+
+                  <div class="dropdown-item bg-transparent text-wrap">
+                    <a class="btn btn-soft-dark btn-xs rounded-pill" href="../index.html">
+                      Gulp <i class="bi-search ms-1"></i>
+                    </a>
+                    <a class="btn btn-soft-dark btn-xs rounded-pill" href="../index.html">
+                      Notification panel <i class="bi-search ms-1"></i>
+                    </a>
+                  </div>
+
+                  <div class="dropdown-divider"></div>
+
+                  <span class="dropdown-header">Tutorials</span>
+
+                  <a class="dropdown-item" href="../index.html">
+                    <div class="d-flex align-items-center">
+                      <div class="flex-shrink-0">
+                        <span class="icon icon-soft-dark icon-xs icon-circle">
+                          <i class="bi-sliders"></i>
+                        </span>
+                      </div>
+
+                      <div class="flex-grow-1 text-truncate ms-2">
+                        <span>How to set up Gulp?</span>
+                      </div>
+                    </div>
+                  </a>
+
+                  <a class="dropdown-item" href="../index.html">
+                    <div class="d-flex align-items-center">
+                      <div class="flex-shrink-0">
+                        <span class="icon icon-soft-dark icon-xs icon-circle">
+                          <i class="bi-paint-bucket"></i>
+                        </span>
+                      </div>
+
+                      <div class="flex-grow-1 text-truncate ms-2">
+                        <span>How to change theme color?</span>
+                      </div>
+                    </div>
+                  </a>
+
+                  <div class="dropdown-divider"></div>
+
+                  <span class="dropdown-header">Members</span>
+
+                  <a class="dropdown-item" href="../index.html">
+                    <div class="d-flex align-items-center">
+                      <div class="flex-shrink-0">
+                        <img class="avatar avatar-xs avatar-circle" src="../assets/img/160x160/img10.jpg" alt="Image Description">
+                      </div>
+                      <div class="flex-grow-1 text-truncate ms-2">
+                        <span>Amanda Harvey <i class="bi-patch-check-fill text-primary" data-toggle="tooltip" data-placement="top" title="Top endorsed"></i></span>
+                      </div>
+                    </div>
+                  </a>
+
+                  <a class="dropdown-item" href="../index.html">
+                    <div class="d-flex align-items-center">
+                      <div class="flex-shrink-0">
+                        <img class="avatar avatar-xs avatar-circle" src="../assets/img/160x160/img3.jpg" alt="Image Description">
+                      </div>
+                      <div class="flex-grow-1 text-truncate ms-2">
+                        <span>David Harrison</span>
+                      </div>
+                    </div>
+                  </a>
+
+                  <a class="dropdown-item" href="../index.html">
+                    <div class="d-flex align-items-center">
+                      <div class="flex-shrink-0">
+                        <div class="avatar avatar-xs avatar-soft-info avatar-circle">
+                          <span class="avatar-initials">A</span>
+                        </div>
+                      </div>
+                      <div class="flex-grow-1 text-truncate ms-2">
+                        <span>Anne Richard</span>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <!-- End Body -->
+
+                <!-- Footer -->
+                <a class="card-footer text-center" href="../index.html">
+                  See all results <i class="bi-chevron-right small"></i>
+                </a>
+                <!-- End Footer -->
+              </div>
+              <!-- End Drop Menu -->
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="nav-html5" role="tabpanel" aria-labelledby="nav-htmlTab5">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class="position-relative w-md-50 z-index-2"&gt;
+                  &lt;!-- Form --&gt;
+                  &lt;div class="mb-4"&gt;
+                    &lt;div class="input-group input-group-merge"&gt;
+                      &lt;input type="text" class="js-form-search form-control" placeholder="Search..."
+                             data-hs-form-search-options='{
+                               "clearIcon": "#clearIconMenuEg",
+                               "defaultIcon": "#defaultIconMenuEg",
+                               "dropMenuElement": "#dropMenuEg",
+                               "dropMenuOffset": 20
+                             }'&gt;
+                      &lt;button type="button" class="input-group-append input-group-text"&gt;
+                        &lt;i id="clearIconMenuEg" class="bi-x-lg" style="display: none;"&gt;&lt;/i&gt;
+                        &lt;i id="defaultIconMenuEg" class="bi-search" style="display: none;"&gt;&lt;/i&gt;
+                      &lt;/button&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;!-- End Form --&gt;
+
+                  &lt;!-- Drop Menu --&gt;
+                  &lt;div id="dropMenuEg" class="hs-form-search-menu-content dropdown-menu dropdown-menu-form-search navbar-dropdown-menu-borderless"&gt;
+                    &lt;!-- Body --&gt;
+                    &lt;div class="card-body-height"&gt;
+                      &lt;span class="dropdown-header"&gt;Recent searches&lt;/span&gt;
+
+                      &lt;div class="dropdown-item bg-transparent text-wrap"&gt;
+                        &lt;a class="btn btn-soft-dark btn-xs rounded-pill" href="../index.html"&gt;
+                          Gulp &lt;i class="bi-search ms-1"&gt;&lt;/i&gt;
+                        &lt;/a&gt;
+                        &lt;a class="btn btn-soft-dark btn-xs rounded-pill" href="../index.html"&gt;
+                          Notification panel &lt;i class="bi-search ms-1"&gt;&lt;/i&gt;
+                        &lt;/a&gt;
+                      &lt;/div&gt;
+
+                      &lt;div class="dropdown-divider"&gt;&lt;/div&gt;
+
+                      &lt;span class="dropdown-header"&gt;Tutorials&lt;/span&gt;
+
+                      &lt;a class="dropdown-item" href="../index.html"&gt;
+                        &lt;div class="d-flex align-items-center"&gt;
+                          &lt;div class="flex-shrink-0"&gt;
+                            &lt;span class="icon icon-soft-dark icon-xs icon-circle"&gt;
+                              &lt;i class="bi-sliders"&gt;&lt;/i&gt;
+                            &lt;/span&gt;
+                          &lt;/div&gt;
+
+                          &lt;div class="flex-grow-1 text-truncate ms-2"&gt;
+                            &lt;span&gt;How to set up Gulp?&lt;/span&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/a&gt;
+
+                      &lt;a class="dropdown-item" href="../index.html"&gt;
+                        &lt;div class="d-flex align-items-center"&gt;
+                          &lt;div class="flex-shrink-0"&gt;
+                            &lt;span class="icon icon-soft-dark icon-xs icon-circle"&gt;
+                              &lt;i class="bi-paint-bucket"&gt;&lt;/i&gt;
+                            &lt;/span&gt;
+                          &lt;/div&gt;
+
+                          &lt;div class="flex-grow-1 text-truncate ms-2"&gt;
+                            &lt;span&gt;How to change theme color?&lt;/span&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/a&gt;
+
+                      &lt;div class="dropdown-divider"&gt;&lt;/div&gt;
+
+                      &lt;span class="dropdown-header"&gt;Members&lt;/span&gt;
+
+                      &lt;a class="dropdown-item" href="../index.html"&gt;
+                        &lt;div class="d-flex align-items-center"&gt;
+                          &lt;div class="flex-shrink-0"&gt;
+                            &lt;img class="avatar avatar-xs avatar-circle" src="../assets/img/160x160/img10.jpg" alt="Image Description"&gt;
+                          &lt;/div&gt;
+                          &lt;div class="flex-grow-1 text-truncate ms-2"&gt;
+                            &lt;span&gt;Amanda Harvey &lt;i class="bi-patch-check-fill text-primary" data-toggle="tooltip" data-placement="top" title="Top endorsed"&gt;&lt;/i&gt;&lt;/span&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/a&gt;
+
+                      &lt;a class="dropdown-item" href="../index.html"&gt;
+                        &lt;div class="d-flex align-items-center"&gt;
+                          &lt;div class="flex-shrink-0"&gt;
+                            &lt;img class="avatar avatar-xs avatar-circle" src="../assets/img/160x160/img3.jpg" alt="Image Description"&gt;
+                          &lt;/div&gt;
+                          &lt;div class="flex-grow-1 text-truncate ms-2"&gt;
+                            &lt;span&gt;David Harrison&lt;/span&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/a&gt;
+
+                      &lt;a class="dropdown-item" href="../index.html"&gt;
+                        &lt;div class="d-flex align-items-center"&gt;
+                          &lt;div class="flex-shrink-0"&gt;
+                            &lt;div class="avatar avatar-xs avatar-soft-info avatar-circle"&gt;
+                              &lt;span class="avatar-initials"&gt;A&lt;/span&gt;
+                            &lt;/div&gt;
+                          &lt;/div&gt;
+                          &lt;div class="flex-grow-1 text-truncate ms-2"&gt;
+                            &lt;span&gt;Anne Richard&lt;/span&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/a&gt;
+                    &lt;/div&gt;
+                    &lt;!-- End Body --&gt;
+
+                    &lt;!-- Footer --&gt;
+                    &lt;a class="card-footer text-center" href="../index.html"&gt;
+                      See all results &lt;i class="bi-chevron-right small"&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                    &lt;!-- End Footer --&gt;
+                  &lt;/div&gt;
+                  &lt;!-- End Drop Menu --&gt;
+                &lt;/div&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="modal-example" class="hs-docs-heading">
+        Modal example <a class="anchorjs-link" href="#modal-example" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab6" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab6" data-bs-toggle="pill" href="#nav-result6" role="tab" aria-controls="nav-result6" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab6" data-bs-toggle="pill" href="#nav-html6" role="tab" aria-controls="nav-html6" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent6">
+          <div class="tab-pane fade p-4 show active" id="nav-result6" role="tabpanel" aria-labelledby="nav-resultTab6">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Open modal</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Form search</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+
+                  <div class="modal-body">
+                    <!-- Form -->
+                    <div class="mb-4">
+                      <div class="input-group input-group-merge">
+                        <input type="text" class="js-form-search form-control" placeholder="Search..." data-hs-form-search-options='{
+                                 "clearIcon": "#clearIconModalEg"
+                               }'>
+                        <button type="button" class="input-group-append input-group-text">
+                          <i id="clearIconModalEg" class="bi-x-lg" style="display: none;"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <!-- End Form -->
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Modal -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html6" role="tabpanel" aria-labelledby="nav-htmlTab6">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"&gt;Open modal&lt;/button&gt;
+
+                &lt;!-- Modal --&gt;
+                &lt;div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"&gt;
+                  &lt;div class="modal-dialog"&gt;
+                    &lt;div class="modal-content"&gt;
+                      &lt;div class="modal-header"&gt;
+                        &lt;h5 class="modal-title" id="exampleModalLabel"&gt;Form search&lt;/h5&gt;
+                        &lt;button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"&gt;&lt;/button&gt;
+                      &lt;/div&gt;
+
+                      &lt;div class="modal-body"&gt;
+                        &lt;!-- Form --&gt;
+                        &lt;div class="mb-4"&gt;
+                          &lt;div class="input-group input-group-merge"&gt;
+                            &lt;input type="text" class="js-form-search form-control" placeholder="Search..."
+                                   data-hs-form-search-options='{
+                                     "clearIcon": "#clearIconModalEg"
+                                   }'&gt;
+                            &lt;button type="button" class="input-group-append input-group-text"&gt;
+                              &lt;i id="clearIconModalEg" class="bi-x-lg" style="display: none;"&gt;&lt;/i&gt;
+                            &lt;/button&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;!-- End Form --&gt;
+                      &lt;/div&gt;
+
+                      &lt;div class="modal-footer"&gt;
+                        &lt;button type="button" class="btn btn-white" data-bs-dismiss="modal"&gt;Close&lt;/button&gt;
+                        &lt;button type="button" class="btn btn-primary"&gt;Save changes&lt;/button&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- End Modal --&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="methods" class="hs-docs-heading">
+        Methods <a class="anchorjs-link" href="#methods" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card overflow-hidden">
+        <!-- Table -->
+        <div class="table-responsive">
+          <table class="table table-thead-bordered card-table">
+            <thead class="thead-light">
+              <tr>
+                <th>Parameters</th>
+                <th style="width: 50%;">Description</th>
+                <th class="text-nowrap">Default value</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>
+                  <code>clearIcon</code>
+                </td>
+                <td>An element that when clicked will clear the field.</td>
+                <td>
+                  <code>null</code>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <code>defaultIcon</code>
+                </td>
+                <td>The element that will be the default instead <code>clearIcon</code>.</td>
+                <td>
+                  <code>null</code>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <code>loadingIcon</code>
+                </td>
+                <td>The element that will be instead <code>clearIcon and defaultIcon</code> on loading.</td>
+                <td>
+                  <code>null</code>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <code>delay</code>
+                </td>
+                <td>Animation delay.</td>
+                <td>
+                  <code>300</code>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <code>dropMenuElement</code>
+                </td>
+                <td>Drop menu element.</td>
+                <td>
+                  <code>null</code>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <code>dropMenuOffset</code>
+                </td>
+                <td>Drop menu top offset.</td>
+                <td>
+                  <code>0</code>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <code>activeClass</code>
+                </td>
+                <td> Class which will be added when input search is active.</td>
+                <td>
+                  <code>null</code>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- End Table -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="events" class="hs-docs-heading">
+        Events <a class="anchorjs-link" href="#events" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card overflow-hidden">
+        <!-- Table -->
+        <div class="table-responsive">
+          <table class="table table-thead-bordered card-table">
+            <thead class="thead-light">
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td><code>clear</code></td>
+                <td>Triggered when the field is cleared</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- End Table -->
+      </div>
+      <!-- End Card -->
+    </div>
+    <!-- End Content -->
+  </main>
+  <!-- ========== END MAIN CONTENT ========== -->
+
+  <!-- ========== SECONDARY CONTENTS ========== -->
+  <!-- Go To -->
+  <a class="js-go-to go-to position-fixed" href="javascript:;" style="visibility: hidden;" data-hs-go-to-options='{
+       "offsetTop": 700,
+       "position": {
+         "init": {
+           "right": "2rem"
+         },
+         "show": {
+           "bottom": "2rem"
+         },
+         "hide": {
+           "bottom": "-2rem"
+         }
+       }
+     }'>
+    <i class="bi-chevron-up"></i>
+  </a>
+  <!-- ========== END SECONDARY CONTENTS ========== -->
+
+  <!-- JS Global Compulsory  -->
+  <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JS Implementing Plugins -->
+  <script src="../assets/vendor/hs-header/dist/hs-header.min.js"></script>
+  <script src="../assets/vendor/hs-nav-scroller/dist/hs-nav-scroller.min.js"></script>
+  <script src="../assets/vendor/list.js/dist/list.min.js"></script>
+  <script src="../assets/vendor/hs-go-to/dist/hs-go-to.min.js"></script>
+  <script src="../assets/vendor/prism/prism.js"></script>
+  <script src="../assets/vendor/hs-form-search/dist/hs-form-search.min.js"></script>
+
+  <!-- JS Front -->
+  <script src="../assets/js/theme.min.js"></script>
+
+  <!-- JS Plugins Init. -->
+  <script>
+    (function() {
+      // INITIALIZATION OF HEADER
+      // =======================================================
+      new HSHeader('#header').init()
+
+
+      // INITIALIZATION OF NAV SCROLLER
+      // =======================================================
+      new HsNavScroller('.js-nav-scroller', {
+        delay: 400,
+        offset: 140
+      })
+
+
+      // INITIALIZATION OF LISTJS COMPONENT
+      // =======================================================
+      HSCore.components.HSList.init('#docsSearch');
+      const docsSearch = HSCore.components.HSList.getItem('docsSearch');
+
+
+      // GET JSON FILE RESULTS
+      // =======================================================
+      fetch('../assets/json/docs-search.json')
+      .then(response => response.json())
+      .then(data => {
+        docsSearch.add(data)
+      })
+
+
+      // INITIALIZATION OF GO TO
+      // =======================================================
+      new HSGoTo('.js-go-to')
+
+
+      // INITIALIZATION OF HS FORM SEARCH
+      // =======================================================
+      new HSFormSearch('.js-form-search')
+
+      const clearTypeLoading = new HSFormSearch('#type-loading').getItem(0)
+
+      clearTypeLoading.$el.addEventListener('input', function() {
+        clearTypeLoading.loading()
+
+        if (!clearTypeLoading.$el.value.length) {
+          clearTypeLoading.loading(false)
+        }
+      })
+
+      clearTypeLoading.$el.addEventListener('change', function() {
+        clearTypeLoading.loading(false)
+      })
+
+      const clearInputLoading = new HSFormSearch('#clear-input-loading').getItem(0)
+      const $loadingBtn = document.querySelector('#loadBtn')
+
+      $loadingBtn.addEventListener('click', function() {
+        $loadingBtn.setAttribute('disabled', true);
+        clearInputLoading.loading()
+
+        setTimeout(function() {
+          clearInputLoading.loading(false);
+          $loadingBtn.removeAttribute('disabled');
+        }, 2000);
+      })
+    })()
+  </script>
+</body>
+</html>

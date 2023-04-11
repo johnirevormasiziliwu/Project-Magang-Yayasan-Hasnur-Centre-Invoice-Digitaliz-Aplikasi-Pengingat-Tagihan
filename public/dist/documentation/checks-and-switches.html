@@ -1,0 +1,2777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required Meta Tags Always Come First -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Title -->
+  <title>Checks & Switches - Documentation | Front - Multipurpose Responsive Template</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../favicon.ico">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS Implementing Plugins -->
+  <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/font/bootstrap-icons.css">
+
+  <!-- CSS Front Template -->
+
+  <link rel="preload" href="../assets/css/theme.min.css" data-hs-appearance="default" as="style">
+  <link rel="preload" href="../assets/css/docs.min.css" data-hs-appearance="default" as="style">
+  <link rel="preload" href="../assets/css/theme-dark.min.css" data-hs-appearance="dark" as="style">
+  <link rel="preload" href="../assets/css/docs-dark.min.css" data-hs-appearance="dark" as="style">
+
+  <style data-hs-appearance-onload-styles>
+    *
+    {
+      transition: unset !important;
+    }
+
+    body
+    {
+      opacity: 0;
+    }
+  </style>
+
+  <script>
+            window.hs_config = {"autopath":"@@autopath","deleteLine":"hs-builder:delete","deleteLine:build":"hs-builder:build-delete","deleteLine:dist":"hs-builder:dist-delete","previewMode":false,"startPath":"/index.html","vars":{"themeFont":"https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap","version":"?v=1.0"},"layoutBuilder":{"extend":{"switcherSupport":true},"header":{"layoutMode":"default","containerMode":"container-fluid"},"sidebarLayout":"default"},"themeAppearance":{"layoutSkin":"default","sidebarSkin":"default","styles":{"colors":{"primary":"#377dff","transparent":"transparent","white":"#fff","dark":"132144","gray":{"100":"#f9fafc","900":"#1e2022"}},"font":"Inter"}},"languageDirection":{"lang":"en"},"skipFilesFromBundle":{"dist":["assets/js/hs.theme-appearance.js","assets/js/hs.theme-appearance-charts.js","assets/js/demo.js"],"build":["assets/css/theme.css","assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js","assets/js/demo.js","assets/css/theme-dark.css","assets/css/docs.css","assets/vendor/icon-set/style.css","assets/js/hs.theme-appearance.js","assets/js/hs.theme-appearance-charts.js","node_modules/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js","assets/js/demo.js"]},"minifyCSSFiles":["assets/css/theme.css","assets/css/theme-dark.css"],"copyDependencies":{"dist":{"*assets/js/theme-custom.js":""},"build":{"*assets/js/theme-custom.js":"","node_modules/bootstrap-icons/font/*fonts/**":"assets/css"}},"buildFolder":"","replacePathsToCDN":{},"directoryNames":{"src":"./src","dist":"./dist","build":"./build"},"fileNames":{"dist":{"js":"theme.min.js","css":"theme.min.css"},"build":{"css":"theme.min.css","js":"theme.min.js","vendorCSS":"vendor.min.css","vendorJS":"vendor.min.js"}},"fileTypes":"jpg|png|svg|mp4|webm|ogv|json"}
+            window.hs_config.gulpRGBA = (p1) => {
+  const options = p1.split(',')
+  const hex = options[0].toString()
+  const transparent = options[1].toString()
+
+  var c;
+  if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+    c= hex.substring(1).split('');
+    if(c.length== 3){
+      c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+    }
+    c= '0x'+c.join('');
+    return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',' + transparent + ')';
+  }
+  throw new Error('Bad Hex');
+}
+            window.hs_config.gulpDarken = (p1) => {
+  const options = p1.split(',')
+
+  let col = options[0].toString()
+  let amt = -parseInt(options[1])
+  var usePound = false
+
+  if (col[0] == "#") {
+    col = col.slice(1)
+    usePound = true
+  }
+  var num = parseInt(col, 16)
+  var r = (num >> 16) + amt
+  if (r > 255) {
+    r = 255
+  } else if (r < 0) {
+    r = 0
+  }
+  var b = ((num >> 8) & 0x00FF) + amt
+  if (b > 255) {
+    b = 255
+  } else if (b < 0) {
+    b = 0
+  }
+  var g = (num & 0x0000FF) + amt
+  if (g > 255) {
+    g = 255
+  } else if (g < 0) {
+    g = 0
+  }
+  return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16)
+}
+            window.hs_config.gulpLighten = (p1) => {
+  const options = p1.split(',')
+
+  let col = options[0].toString()
+  let amt = parseInt(options[1])
+  var usePound = false
+
+  if (col[0] == "#") {
+    col = col.slice(1)
+    usePound = true
+  }
+  var num = parseInt(col, 16)
+  var r = (num >> 16) + amt
+  if (r > 255) {
+    r = 255
+  } else if (r < 0) {
+    r = 0
+  }
+  var b = ((num >> 8) & 0x00FF) + amt
+  if (b > 255) {
+    b = 255
+  } else if (b < 0) {
+    b = 0
+  }
+  var g = (num & 0x0000FF) + amt
+  if (g > 255) {
+    g = 255
+  } else if (g < 0) {
+    g = 0
+  }
+  return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16)
+}
+            </script>
+</head>
+
+<body class="navbar-sidebar-aside-lg">
+
+  <script src="../assets/js/hs.theme-appearance.js"></script>
+
+  <!-- ========== HEADER ========== -->
+  <header id="header" class="navbar navbar-expand navbar-end navbar-light navbar-sticky-lg-top bg-white">
+    <div class="container-fluid">
+      <nav class="navbar-nav-wrap">
+        <div class="row flex-grow-1">
+          <!-- Default Logo -->
+          <div class="docs-navbar-sidebar-container d-flex align-items-center mb-2 mb-lg-0">
+            <a class="navbar-brand" href="../documentation/index.html" aria-label="Front">
+              <img class="navbar-brand-logo" src="../assets/svg/logos/logo.svg" alt="Logo" data-hs-theme-appearance="default">
+              <img class="navbar-brand-logo" src="../assets/svg/logos-light/logo.svg" alt="Logo" data-hs-theme-appearance="dark">
+            </a>
+            <a href="../documentation/changelog.html">
+              <span class="badge bg-soft-primary text-primary">v2.1</span>
+            </a>
+          </div>
+          <!-- End Default Logo -->
+
+          <div class="col-md px-lg-0">
+            <div class="d-flex justify-content-between align-items-center px-lg-5 px-xl-10">
+              <div class="d-none d-md-block">
+                <!-- Search Form -->
+                <form id="docsSearch" class="position-relative" data-hs-list-options='{
+                       "searchMenu": true,
+                       "keyboard": true,
+                       "item": "searchTemplate",
+                       "valueNames": ["component", "category", {"name": "link", "attr": "href"}],
+                       "empty": "#searchNoResults"
+                     }'>
+                  <!-- Input Group -->
+                  <div class="input-group input-group-merge navbar-input-group">
+                    <div class="input-group-prepend input-group-text">
+                      <i class="bi-search"></i>
+                    </div>
+
+                    <input type="search" class="search form-control form-control-sm" placeholder="Search in docs" aria-label="Search in docs">
+
+                    <a class="input-group-append input-group-text" href="javascript:;">
+                      <i id="clearSearchResultsIcon" class="bi-x" style="display: none;"></i>
+                    </a>
+                  </div>
+                  <!-- End Input Group -->
+
+                  <!-- List -->
+                  <div class="list dropdown-menu navbar-dropdown-menu-borderless w-100 overflow-auto" style="max-height: 16rem;"></div>
+                  <!-- End List -->
+
+                  <!-- Empty -->
+                  <div id="searchNoResults" style="display: none;">
+                    <div class="text-center p-4">
+                      <img class="mb-3" src="../assets/svg/illustrations/oc-error.svg" alt="Image Description" data-hs-theme-appearance="default" style="width: 7rem;">
+                      <img class="mb-3" src="../assets/svg/illustrations-light/oc-error.svg" alt="Image Description" data-hs-theme-appearance="dark" style="width: 7rem;">
+                      <p class="mb-0">No Results</p>
+                    </div>
+                  </div>
+                  <!-- End Empty -->
+                </form>
+                <!-- End Search Form -->
+
+                <!-- List Item Template -->
+                <div class="d-none">
+                  <div id="searchTemplate" class="dropdown-item">
+                    <a class="d-block link" href="#">
+                      <span class="category d-block fw-normal text-muted mb-1"></span>
+                      <span class="component text-dark"></span>
+                    </a>
+                  </div>
+                </div>
+                <!-- End List Item Template -->
+              </div>
+
+              <!-- Navbar -->
+              <ul class="navbar-nav p-0">
+                <li class="nav-item">
+                  <a class="btn btn-ghost-secondary btn-sm" href="https://htmlstream.com/contact-us" target="_blank">
+                    Get Support <i class="bi-box-arrow-up-right ms-1"></i>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="btn btn-primary btn-sm" href="../index.html">
+                    <i class="bi-eye me-1"></i> Preview Demo
+                  </a>
+                </li>
+              </ul>
+              <!-- End Navbar -->
+            </div>
+          </div>
+          <!-- End Col -->
+        </div>
+        <!-- End Row -->
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========== END HEADER ========== -->
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main id="content" role="main">
+    <!-- Navbar -->
+    <nav class="js-nav-scroller navbar navbar-expand-lg navbar-sidebar navbar-vertical navbar-light bg-white border-end" data-hs-nav-scroller-options='{
+            "type": "vertical",
+            "target": ".navbar-nav .active",
+            "offset": 80
+           }'>
+      <!-- Navbar Toggle -->
+      <div class="d-grid flex-grow-1 px-2">
+        <button type="button" class="navbar-toggler btn btn-white" data-bs-toggle="collapse" data-bs-target="#navbarVerticalNavMenu" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navbarVerticalNavMenu">
+          <span class="d-flex justify-content-between align-items-center">
+            <span class="h3 mb-0">Nav menu</span>
+
+            <span class="navbar-toggler-default">
+              <i class="bi-list"></i>
+            </span>
+
+            <span class="navbar-toggler-toggled">
+              <i class="bi-x"></i>
+            </span>
+          </span>
+        </button>
+      </div>
+      <!-- End Navbar Toggle -->
+
+      <!-- Navbar Collapse -->
+      <div id="navbarVerticalNavMenu" class="collapse navbar-collapse">
+        <div class="navbar-brand-wrapper border-end" style="height: auto;">
+          <!-- Default Logo -->
+          <div class="d-flex align-items-center mb-3">
+            <a class="navbar-brand" href="../documentation/index.html" aria-label="Front">
+              <img class="navbar-brand-logo" src="../assets/svg/logos/logo.svg" alt="Logo" data-hs-theme-appearance="default">
+              <img class="navbar-brand-logo" src="../assets/svg/logos-light/logo.svg" alt="Logo" data-hs-theme-appearance="dark">
+            </a>
+            <a class="navbar-brand-badge" href="../documentation/changelog.html">
+              <span class="badge bg-soft-primary text-primary ms-2">v2.1</span>
+            </a>
+          </div>
+          <!-- End Default Logo -->
+        </div>
+
+        <div class="docs-navbar-sidebar-aside-body navbar-sidebar-aside-body">
+          <ul id="navbarSettings" class="navbar-nav nav nav-vertical nav-tabs nav-tabs-borderless nav-sm">
+            <li class="nav-item">
+              <span class="nav-subtitle">Documentation</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/index.html">Introduction</a>
+            </li>
+
+            <li class="nav-item my-2 my-lg-5"></li>
+
+            <li class="nav-item">
+              <span class="nav-subtitle">Getting started</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/getting-started.html">Getting Started</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/gulp.html">Gulp</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/darkmode.html">Dark Mode <span class="badge bg-soft-dark text-dark lh-base ms-1">New</span></a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/customization.html">Customization</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/credits.html">Credits</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/changelog.html">Changelog</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <span class="nav-subtitle">Design &amp; Graphics</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/bs-icons.html">Bootstrap Icons</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/illustrations.html">Illustrations</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <span class="nav-subtitle">Components</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/accordion.html">Accordion</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/alerts.html">Alerts</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/avatars.html">Avatars</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/badge.html">Badge</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/breadcrumb.html">Breadcrumb</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/buttons.html">Buttons</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/button-group.html">Button Group</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/cards.html">Cards</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/collapse.html">Collapse</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/column-divider.html">Column Divider</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/devices.html">Devices</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/divider.html">Divider</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/dropdowns.html">Dropdowns</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/icons.html">Icons</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/list-group.html">List Group</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/lists.html">Lists</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/legend-indicator.html">Legend Indicator</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/modal.html">Modal</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/offcanvas.html">Offcanvas</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/page-header.html">Page Header</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/pagination.html">Pagination</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/popovers.html">Popovers</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/progress.html">Progress</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/profile.html">Profile</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/shapes.html">Shapes</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sliding-img.html">Sliding Image</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/spinners.html">Spinners</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/steps.html">Steps</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/tab.html">Tab</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/toasts.html">Toasts</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/tooltips.html">Tooltips</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/typography.html">Typography</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Navbars</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/navbar.html">Navbar</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/navs.html">Navs</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/mega-menu.html">Mega Menu</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/navbar-vertical-aside.html">Navbar Vertical Aside</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/scrollspy.html">Scrollspy</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Tables</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/tables.html">Tables</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/datatables.html">Datatables</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/table-sticky-header.html">Sticky Header</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Basic forms</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/basic-forms.html">Basic Forms</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link active" href="../documentation/checks-and-switches.html">Checks &amp; Switches</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/input-group.html">Input Group</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle">Advanced Forms</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/select.html">Advanced Select</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/datepicker.html">Datepicker (Flatpickr)</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/daterangepicker.html">Date Range Picker</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/calendar.html">Calendar (Fullcalendar)</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/file-attachments.html">File Attachments</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/dropzone.html">Drag’ n’ Drop File Uploads</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/quill.html">WYSIWYG Editor</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/quantity-counter.html">Quantity Counter</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/copy-to-clipboard.html">Copy to Clipboard</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/input-mask.html">Input Mask</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/step-forms.html">Step Forms (Wizards)</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/add-field.html">Add Field</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/toggle-password.html">Toggle Password</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/count-characters.html">Count Characters</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/form-search.html">Form Search</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/toggle-switch.html">Toggle Switch</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/google-recaptcha.html">Google reCAPTCHA</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle">Charts</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/chartjs.html">Chart.js</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/counter.html">Counter</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/circles.html">Circles.js (Pie Chart)</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle">Others</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/fslightbox.html">Fullscreen Lightbox</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/maps-leaflet.html">Leaflet</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/maps-jsvectormap.html">JSVectorMap</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sortablejs.html">SortableJS</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sticky-block.html">Sticky Block</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/go-to.html">Go To</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Utilities</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/backgrounds.html">Backgrounds</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/borders.html">Borders</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/colors.html">Colors</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/links.html">Links</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/position.html">Position</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/shadows.html">Shadows</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sizing.html">Sizing</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/spacing.html">Spacing</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/z-index.html">Z-index</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/opacity.html">Opacity</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- End Navbar Collapse -->
+    </nav>
+    <!-- End Navbar -->
+
+    <!-- Content -->
+    <div class="navbar-sidebar-aside-content content-space-1 content-space-md-2 px-lg-5 px-xl-10">
+      <!-- Page Header -->
+      <div class="docs-page-header">
+        <div class="row align-items-center">
+          <div class="col-sm">
+            <h1 class="docs-page-header-title">Checks & Switches</h1>
+            <p class="docs-page-header-text">Examples and usage guidelines for checkboxes, switches, and custom components for creating a wide variety of checkboxes.</p>
+            <a class="link" href="https://getbootstrap.com/docs/5.0/forms/checks-radios/" target="_blank">Bootstrap Checks &amp; radios documentation <i class="bi-box-arrow-up-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- End Page Header -->
+
+      <!-- Heading -->
+      <h2 id="checkbox-and-radios" class="hs-docs-heading">
+        Checkbox and radios <a class="anchorjs-link" href="#checkbox-and-radios" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <p>Default bootstrap examples.</p>
+
+      <!-- Card -->
+      <div class="card mb-7">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab1" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab1" href="#nav-result1" data-bs-toggle="pill" data-bs-target="#nav-result1" role="tab" aria-controls="nav-result1" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab1" href="#nav-html1" data-bs-toggle="pill" data-bs-target="#nav-html1" role="tab" aria-controls="nav-html1" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent1">
+          <div class="tab-pane fade p-4 show active" id="nav-result1" role="tabpanel" aria-labelledby="nav-resultTab1">
+            <!-- Check -->
+            <div class="form-check mb-3">
+              <input type="checkbox" id="formCheck11" class="form-check-input">
+              <label class="form-check-label" for="formCheck11">Unchecked</label>
+            </div>
+            <!-- End Check -->
+
+            <!-- Check -->
+            <div class="form-check mb-3">
+              <input type="checkbox" id="formCheck12" class="form-check-input" checked>
+              <label class="form-check-label" for="formCheck12">Checked</label>
+            </div>
+            <!-- End Check -->
+
+            <!-- Check -->
+            <div class="form-check mb-3">
+              <input type="checkbox" id="formCheck13" class="form-check-input indeterminate-checkbox" checked>
+              <label class="form-check-label" for="formCheck13">Indeterminate</label>
+            </div>
+            <!-- End Check -->
+
+            <!-- Check -->
+            <div class="form-check mb-3">
+              <input type="checkbox" id="formHelperCheck1" class="form-check-input">
+              <label class="form-check-label" for="formHelperCheck1">Notify about new notifications</label>
+              <div class="text-muted">You will receive notifications about actions to your email.</div>
+            </div>
+
+            <!-- Check -->
+            <div class="form-check mb-3">
+              <input type="checkbox" id="formCheck14" class="form-check-input" disabled>
+              <label class="form-check-label" for="formCheck14">Unchecked and disabled</label>
+            </div>
+            <!-- End Check -->
+
+            <!-- Check -->
+            <div class="form-check mb-3">
+              <input type="checkbox" id="formCheck15" class="form-check-input" checked disabled>
+              <label class="form-check-label" for="formCheck15">Checked and disabled</label>
+            </div>
+            <!-- End Check -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html1" role="tabpanel" aria-labelledby="nav-htmlTab1">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;!-- Checkbox --&gt;
+                &lt;div class="form-check mb-3"&gt;
+                  &lt;input type="checkbox" id="formCheck11" class="form-check-input"&gt;
+                  &lt;label class="form-check-label" for="formCheck11"&gt;Unchecked&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;!-- End Checkbox --&gt;
+
+                &lt;!-- Checkbox --&gt;
+                &lt;div class="form-check mb-3"&gt;
+                  &lt;input type="checkbox" id="formCheck12" class="form-check-input" checked&gt;
+                  &lt;label class="form-check-label" for="formCheck12"&gt;Checked&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;!-- End Checkbox --&gt;
+
+                &lt;!-- Checkbox --&gt;
+                &lt;div class="form-check mb-3"&gt;
+                  &lt;input type="checkbox" id="formCheck13" class="form-check-input indeterminate-checkbox" checked&gt;
+                  &lt;label class="form-check-label" for="formCheck13"&gt;Indeterminate&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;!-- End Checkbox --&gt;
+
+                &lt;!-- Checkbox --&gt;
+                &lt;div class="form-check mb-3"&gt;
+                  &lt;input type="checkbox" id="formHelperCheck1" class="form-check-input"&gt;
+                  &lt;label class="form-check-label" for="formHelperCheck1"&gt;Notify about new notifications&lt;/label&gt;
+                  &lt;div class="text-muted"&gt;You will receive notifications about actions to your email.&lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Checkbox --&gt;
+                &lt;div class="form-check mb-3"&gt;
+                  &lt;input type="checkbox" id="formCheck14" class="form-check-input" disabled&gt;
+                  &lt;label class="form-check-label" for="formCheck14"&gt;Unchecked and disabled&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;!-- End Checkbox --&gt;
+
+                &lt;!-- Checkbox --&gt;
+                &lt;div class="form-check mb-3"&gt;
+                  &lt;input type="checkbox" id="formCheck15" class="form-check-input" checked disabled&gt;
+                  &lt;label class="form-check-label" for="formCheck15"&gt;Checked and disabled&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;!-- End Checkbox --&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Card -->
+      <div class="card mb-7">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab2" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab2" href="#nav-result2" data-bs-toggle="pill" data-bs-target="#nav-result2" role="tab" aria-controls="nav-result2" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab2" href="#nav-html2" data-bs-toggle="pill" data-bs-target="#nav-html2" role="tab" aria-controls="nav-html2" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent2">
+          <div class="tab-pane fade p-4 show active" id="nav-result2" role="tabpanel" aria-labelledby="nav-resultTab2">
+            <!-- Check -->
+            <div class="form-check mb-3">
+              <input type="radio" id="formRadio1" class="form-check-input" name="formRadio">
+              <label class="form-check-label" for="formRadio1">Unchecked</label>
+            </div>
+            <!-- End Check -->
+
+            <!-- Check -->
+            <div class="form-check mb-3">
+              <input type="radio" id="formRadio2" class="form-check-input" checked name="formRadio">
+              <label class="form-check-label" for="formRadio2">Checked</label>
+            </div>
+            <!-- End Check -->
+
+            <!-- Check -->
+            <div class="form-check mb-3">
+              <input type="radio" id="formRadio4" class="form-check-input" name="formRadio">
+              <label class="form-check-label" for="formRadio4">Notify about new notifications</label>
+              <div class="text-muted">You will receive notifications about actions to your email.</div>
+            </div>
+
+            <!-- Check -->
+            <div class="form-check mb-3">
+              <input type="radio" id="formRadio5" class="form-check-input" disabled name="formRadio">
+              <label class="form-check-label" for="formRadio5">Unchecked and disabled</label>
+            </div>
+            <!-- End Check -->
+
+            <!-- Check -->
+            <div class="form-check mb-3">
+              <input type="radio" id="formRadio6" class="form-check-input" checked disabled>
+              <label class="form-check-label" for="formRadio6">Checked and disabled</label>
+            </div>
+            <!-- End Check -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html2" role="tabpanel" aria-labelledby="nav-htmlTab2">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;!-- Checkbox --&gt;
+                &lt;div class="form-check mb-3"&gt;
+                  &lt;input type="radio" id="formRadio1" class="form-check-input" name="formRadio"&gt;
+                  &lt;label class="form-check-label" for="formRadio1"&gt;Unchecked&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;!-- End Checkbox --&gt;
+
+                &lt;!-- Checkbox --&gt;
+                &lt;div class="form-check mb-3"&gt;
+                  &lt;input type="radio" id="formRadio2" class="form-check-input" checked name="formRadio"&gt;
+                  &lt;label class="form-check-label" for="formRadio2"&gt;Checked&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;!-- End Checkbox --&gt;
+
+                &lt;!-- Checkbox --&gt;
+                &lt;div class="form-check mb-3"&gt;
+                  &lt;input type="radio" id="formRadio4" class="form-check-input" name="formRadio"&gt;
+                  &lt;label class="form-check-label" for="formRadio4"&gt;Notify about new notifications&lt;/label&gt;
+                  &lt;div class="text-muted"&gt;You will receive notifications about actions to your email.&lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Checkbox --&gt;
+                &lt;div class="form-check mb-3"&gt;
+                  &lt;input type="radio" id="formRadio5" class="form-check-input" disabled name="formRadio"&gt;
+                  &lt;label class="form-check-label" for="formRadio5"&gt;Unchecked and disabled&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;!-- End Checkbox --&gt;
+
+                &lt;!-- Checkbox --&gt;
+                &lt;div class="form-check mb-3"&gt;
+                  &lt;input type="radio" id="formRadio6" class="form-check-input" checked disabled&gt;
+                  &lt;label class="form-check-label" for="formRadio6"&gt;Checked and disabled&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;!-- End Checkbox --&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <p>Group checkboxes or radios on the same horizontal row by adding <code>.form-check-inline</code> to any <code>.form-check</code>.</p>
+
+      <!-- Card -->
+      <div class="card mb-7">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab3" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab3" href="#nav-result3" data-bs-toggle="pill" data-bs-target="#nav-result3" role="tab" aria-controls="nav-result3" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab3" href="#nav-html3" data-bs-toggle="pill" data-bs-target="#nav-html3" role="tab" aria-controls="nav-html3" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent3">
+          <div class="tab-pane fade p-4 show active" id="nav-result3" role="tabpanel" aria-labelledby="nav-resultTab3">
+            <!-- Form Check -->
+            <div class="form-check form-check-inline">
+              <input type="checkbox" id="formInlineCheck1" class="form-check-input">
+              <label class="form-check-label" for="formInlineCheck1">Unchecked</label>
+            </div>
+            <!-- End Form Check -->
+
+            <!-- Form Check -->
+            <div class="form-check form-check-inline">
+              <input type="checkbox" id="formInlineCheck2" class="form-check-input indeterminate-checkbox" checked>
+              <label class="form-check-label" for="formInlineCheck2">Indeterminate</label>
+            </div>
+            <!-- End Form Check -->
+
+            <!-- Form Check -->
+            <div class="form-check form-check-inline">
+              <input type="checkbox" id="formInlineCheck3" class="form-check-input" checked>
+              <label class="form-check-label" for="formInlineCheck3">Checked</label>
+            </div>
+            <!-- End Form Check -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html3" role="tabpanel" aria-labelledby="nav-htmlTab3">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;!-- Form Check --&gt;
+                &lt;div class="form-check form-check-inline"&gt;
+                  &lt;input type="checkbox" id="formInlineCheck1" class="form-check-input"&gt;
+                  &lt;label class="form-check-label" for="formInlineCheck1"&gt;Unchecked&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;!-- End Form Check --&gt;
+
+                &lt;!-- Form Check --&gt;
+                &lt;div class="form-check form-check-inline"&gt;
+                  &lt;input type="checkbox" id="formInlineCheck2" class="form-check-input indeterminate-checkbox" checked&gt;
+                  &lt;label class="form-check-label" for="formInlineCheck2"&gt;Indeterminate&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;!-- End Form Check --&gt;
+
+                &lt;!-- Form Check --&gt;
+                &lt;div class="form-check form-check-inline"&gt;
+                  &lt;input type="checkbox" id="formInlineCheck3" class="form-check-input" checked&gt;
+                  &lt;label class="form-check-label" for="formInlineCheck3"&gt;Checked&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;!-- End Form Check --&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Card -->
+      <div class="card mb-7">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab4" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab4" href="#nav-result4" data-bs-toggle="pill" data-bs-target="#nav-result4" role="tab" aria-controls="nav-result4" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab4" href="#nav-html4" data-bs-toggle="pill" data-bs-target="#nav-html4" role="tab" aria-controls="nav-html4" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent4">
+          <div class="tab-pane fade p-4 show active" id="nav-result4" role="tabpanel" aria-labelledby="nav-resultTab4">
+            <!-- Form Check -->
+            <div class="form-check form-check-inline">
+              <input type="radio" id="formInlineRadio1" class="form-check-input" name="formInlineRadio">
+              <label class="form-check-label" for="formInlineRadio1">Unchecked</label>
+            </div>
+            <!-- End Form Check -->
+
+            <!-- Form Check -->
+            <div class="form-check form-check-inline">
+              <input type="radio" id="formInlineRadio2" class="form-check-input indeterminate-checkbox" checked name="formInlineRadio">
+              <label class="form-check-label" for="formInlineRadio2">Checked</label>
+            </div>
+            <!-- End Form Check -->
+
+            <!-- Form Check -->
+            <div class="form-check form-check-inline">
+              <input type="radio" id="formInlineRadio3" class="form-check-input indeterminate-checkbox" name="formInlineRadio">
+              <label class="form-check-label" for="formInlineRadio3">Unchecked</label>
+            </div>
+            <!-- End Form Check -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html4" role="tabpanel" aria-labelledby="nav-htmlTab4">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;!-- Form Check --&gt;
+                &lt;div class="form-check form-check-inline"&gt;
+                  &lt;input type="radio" id="formInlineRadio1" class="form-check-input" name="formInlineRadio"&gt;
+                  &lt;label class="form-check-label" for="formInlineRadio1"&gt;Unchecked&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;!-- End Form Check --&gt;
+
+                &lt;!-- Form Check --&gt;
+                &lt;div class="form-check form-check-inline"&gt;
+                  &lt;input type="radio" id="formInlineRadio2" class="form-check-input indeterminate-checkbox" checked name="formInlineRadio"&gt;
+                  &lt;label class="form-check-label" for="formInlineRadio2"&gt;Checked&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;!-- End Form Check --&gt;
+
+                &lt;!-- Form Check --&gt;
+                &lt;div class="form-check form-check-inline"&gt;
+                  &lt;input type="radio" id="formInlineRadio3" class="form-check-input indeterminate-checkbox" name="formInlineRadio"&gt;
+                  &lt;label class="form-check-label" for="formInlineRadio3"&gt;Unchecked&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;!-- End Form Check --&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <p>Radio checkbox within a <code>.form-control</code></p>
+
+      <!-- Card -->
+      <div class="card mb-7">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab5" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab5" href="#nav-result5" data-bs-toggle="pill" data-bs-target="#nav-result5" role="tab" aria-controls="nav-result5" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab5" href="#nav-html5" data-bs-toggle="pill" data-bs-target="#nav-html5" role="tab" aria-controls="nav-html5" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent5">
+          <div class="tab-pane fade p-4 show active" id="nav-result5" role="tabpanel" aria-labelledby="nav-resultTab5">
+            <div class="row">
+              <div class="col-sm mb-2 mb-sm-0">
+                <!-- Form Radio -->
+                <label class="form-control" for="formControlRadioEg1">
+                  <span class="form-check">
+                    <input type="radio" class="form-check-input" name="formControlRadioEg" id="formControlRadioEg1" checked>
+                    <span class="form-check-label">Checked</span>
+                  </span>
+                </label>
+                <!-- End Form Radio -->
+              </div>
+
+              <div class="col-sm mb-2 mb-sm-0">
+                <!-- Form Radio -->
+                <label class="form-control" for="formControlRadioEg2">
+                  <span class="form-check">
+                    <input type="radio" class="form-check-input" name="formControlRadioEg" id="formControlRadioEg2">
+                    <span class="form-check-label">Unchecked</span>
+                  </span>
+                </label>
+                <!-- End Form Radio -->
+              </div>
+
+              <div class="col-sm mb-2 mb-sm-0">
+                <!-- Form Radio -->
+                <label class="form-control" for="formControlRadioEg3">
+                  <span class="form-check">
+                    <input type="radio" class="form-check-input" name="formControlRadioEg" id="formControlRadioEg3" disabled>
+                    <span class="form-check-label">Disabled</span>
+                  </span>
+                </label>
+                <!-- End Form Radio -->
+              </div>
+            </div>
+            <!-- End Row -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html5" role="tabpanel" aria-labelledby="nav-htmlTab5">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class="row"&gt;
+                  &lt;div class="col-sm mb-2 mb-sm-0"&gt;
+                    &lt;!-- Form Radio --&gt;
+                    &lt;label class="form-control" for="formControlRadioEg1"&gt;
+                      &lt;span class="form-check"&gt;
+                        &lt;input type="radio" class="form-check-input" name="formControlRadioEg" id="formControlRadioEg1" checked&gt;
+                        &lt;span class="form-check-label"&gt;Checked&lt;/span&gt;
+                      &lt;/span&gt;
+                    &lt;/label&gt;
+                    &lt;!-- End Form Radio --&gt;
+                  &lt;/div&gt;
+
+                  &lt;div class="col-sm mb-2 mb-sm-0"&gt;
+                    &lt;!-- Form Radio --&gt;
+                    &lt;label class="form-control" for="formControlRadioEg2"&gt;
+                      &lt;span class="form-check"&gt;
+                        &lt;input type="radio" class="form-check-input" name="formControlRadioEg" id="formControlRadioEg2"&gt;
+                        &lt;span class="form-check-label"&gt;Unchecked&lt;/span&gt;
+                      &lt;/span&gt;
+                    &lt;/label&gt;
+                    &lt;!-- End Form Radio --&gt;
+                  &lt;/div&gt;
+
+                  &lt;div class="col-sm mb-2 mb-sm-0"&gt;
+                    &lt;!-- Form Radio --&gt;
+                    &lt;label class="form-control" for="formControlRadioEg3"&gt;
+                      &lt;span class="form-check"&gt;
+                        &lt;input type="radio" class="form-check-input" name="formControlRadioEg" id="formControlRadioEg3" disabled&gt;
+                        &lt;span class="form-check-label"&gt;Disabled&lt;/span&gt;
+                      &lt;/span&gt;
+                    &lt;/label&gt;
+                    &lt;!-- End Form Radio --&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- End Row --&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="form-check-reverse" class="hs-docs-heading">
+        Checkbox reverse <a class="anchorjs-link" href="#form-check-reverse" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <p>Use <code>.form-check-reverse</code> to place the checkbox icon on the right side.</p>
+
+      <!-- Card -->
+      <div class="card mb-7">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab15" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab15" href="#nav-result15" data-bs-toggle="pill" data-bs-target="#nav-result15" role="tab" aria-controls="nav-result15" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab15" href="#nav-html15" data-bs-toggle="pill" data-bs-target="#nav-html15" role="tab" aria-controls="nav-html15" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent15">
+          <div class="tab-pane fade p-4 show active" id="nav-result15" role="tabpanel" aria-labelledby="nav-resultTab15">
+            <div class="row">
+              <div class="col-sm mb-2 mb-sm-0">
+                <!-- Form Radio -->
+                <label class="form-control" for="formControlRadioReverseEg1">
+                  <span class="form-check form-check-reverse">
+                    <input type="radio" class="form-check-input" name="formControlRadioReverseEg" id="formControlRadioReverseEg1" checked>
+                    <span class="form-check-label">Checked</span>
+                  </span>
+                </label>
+                <!-- End Form Radio -->
+              </div>
+
+              <div class="col-sm mb-2 mb-sm-0">
+                <!-- Form Radio -->
+                <label class="form-control" for="formControlRadioReverseEg2">
+                  <span class="form-check form-check-reverse">
+                    <input type="radio" class="form-check-input" name="formControlRadioReverseEg" id="formControlRadioReverseEg2">
+                    <span class="form-check-label">Unchecked</span>
+                  </span>
+                </label>
+                <!-- End Form Radio -->
+              </div>
+
+              <div class="col-sm mb-2 mb-sm-0">
+                <!-- Form Radio -->
+                <label class="form-control" for="formControlRadioReverseEg3">
+                  <span class="form-check form-check-reverse">
+                    <input type="radio" class="form-check-input" name="formControlRadioReverseEg" id="formControlRadioReverseEg3" disabled>
+                    <span class="form-check-label">Disabled</span>
+                  </span>
+                </label>
+                <!-- End Form Radio -->
+              </div>
+            </div>
+            <!-- End Row -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html15" role="tabpanel" aria-labelledby="nav-htmlTab15">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class="row"&gt;
+                  &lt;div class="col-sm mb-2 mb-sm-0"&gt;
+                    &lt;!-- Form Radio --&gt;
+                    &lt;label class="form-control" for="formControlRadioReverseEg1"&gt;
+                      &lt;span class="form-check form-check-reverse"&gt;
+                        &lt;input type="radio" class="form-check-input" name="formControlRadioReverseEg" id="formControlRadioReverseEg1" checked&gt;
+                        &lt;span class="form-check-label"&gt;Checked&lt;/span&gt;
+                      &lt;/span&gt;
+                    &lt;/label&gt;
+                    &lt;!-- End Form Radio --&gt;
+                  &lt;/div&gt;
+
+                  &lt;div class="col-sm mb-2 mb-sm-0"&gt;
+                    &lt;!-- Form Radio --&gt;
+                    &lt;label class="form-control" for="formControlRadioReverseEg2"&gt;
+                      &lt;span class="form-check form-check-reverse"&gt;
+                        &lt;input type="radio" class="form-check-input" name="formControlRadioReverseEg" id="formControlRadioReverseEg2"&gt;
+                        &lt;span class="form-check-label"&gt;Unchecked&lt;/span&gt;
+                      &lt;/span&gt;
+                    &lt;/label&gt;
+                    &lt;!-- End Form Radio --&gt;
+                  &lt;/div&gt;
+
+                  &lt;div class="col-sm mb-2 mb-sm-0"&gt;
+                    &lt;!-- Form Radio --&gt;
+                    &lt;label class="form-control" for="formControlRadioReverseEg3"&gt;
+                      &lt;span class="form-check form-check-reverse"&gt;
+                        &lt;input type="radio" class="form-check-input" name="formControlRadioReverseEg" id="formControlRadioReverseEg3" disabled&gt;
+                        &lt;span class="form-check-label"&gt;Disabled&lt;/span&gt;
+                      &lt;/span&gt;
+                    &lt;/label&gt;
+                    &lt;!-- End Form Radio --&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- End Row --&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="colorful-form-check" class="hs-docs-heading">
+        Colorful checkbox <a class="anchorjs-link" href="#colorful-form-check" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <p>Use <code>.form-check-[color-name]</code> to apply other theme color style checkbox options.</p>
+
+      <!-- Card -->
+      <div class="card mb-7">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab14" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab14" href="#nav-result14" data-bs-toggle="pill" data-bs-target="#nav-result14" role="tab" aria-controls="nav-result14" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab14" href="#nav-html14" data-bs-toggle="pill" data-bs-target="#nav-html14" role="tab" aria-controls="nav-html14" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent14">
+          <div class="tab-pane fade p-4 show active" id="nav-result14" role="tabpanel" aria-labelledby="nav-resultTab14">
+            <!-- Form Check -->
+            <div class="form-check form-check-inline form-check-primary">
+              <input type="checkbox" id="colorfulFormInlineCheck1" class="form-check-input" checked>
+              <label class="form-check-label" for="colorfulFormInlineCheck1">Primary</label>
+            </div>
+            <!-- End Form Check -->
+
+            <!-- Form Check -->
+            <div class="form-check form-check-inline form-check-success">
+              <input type="checkbox" id="colorfulFormInlineCheck2" class="form-check-input indeterminate-checkbox" checked>
+              <label class="form-check-label" for="colorfulFormInlineCheck2">Success</label>
+            </div>
+            <!-- End Form Check -->
+
+            <!-- Form Check -->
+            <div class="form-check form-check-inline form-check-danger">
+              <input type="checkbox" id="colorfulFormInlineCheck3" class="form-check-input" checked>
+              <label class="form-check-label" for="colorfulFormInlineCheck3">Danger</label>
+            </div>
+            <!-- End Form Check -->
+
+            <!-- Form Check -->
+            <div class="form-check form-check-inline form-check-info">
+              <input type="checkbox" id="colorfulFormInlineCheck4" class="form-check-input" checked>
+              <label class="form-check-label" for="colorfulFormInlineCheck4">Info</label>
+            </div>
+            <!-- End Form Check -->
+
+            <!-- Form Check -->
+            <div class="form-check form-check-inline form-check-warning">
+              <input type="checkbox" id="colorfulFormInlineCheck5" class="form-check-input" checked>
+              <label class="form-check-label" for="colorfulFormInlineCheck5">Warning</label>
+            </div>
+            <!-- End Form Check -->
+
+            <!-- Form Check -->
+            <div class="form-check form-check-inline form-check-secondary">
+              <input type="checkbox" id="colorfulFormInlineCheck6" class="form-check-input" checked>
+              <label class="form-check-label" for="colorfulFormInlineCheck6">Secondary</label>
+            </div>
+            <!-- End Form Check -->
+
+            <!-- Form Check -->
+            <div class="form-check form-check-inline form-check-dark">
+              <input type="checkbox" id="colorfulFormInlineCheck7" class="form-check-input" checked>
+              <label class="form-check-label" for="colorfulFormInlineCheck7">Dark</label>
+            </div>
+            <!-- End Form Check -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html14" role="tabpanel" aria-labelledby="nav-htmlTab14">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class="row"&gt;
+                  &lt;div class="col-sm mb-2 mb-sm-0"&gt;
+                    &lt;!-- Form Radio --&gt;
+                    &lt;label class="form-control" for="formControlRadioReverseEg1"&gt;
+                      &lt;span class="form-check"&gt;
+                        &lt;input type="radio" class="form-check-input" name="formControlRadioReverseEg" id="formControlRadioReverseEg1" checked&gt;
+                        &lt;span class="form-check-label"&gt;Checked&lt;/span&gt;
+                      &lt;/span&gt;
+                    &lt;/label&gt;
+                    &lt;!-- End Form Radio --&gt;
+                  &lt;/div&gt;
+
+                  &lt;div class="col-sm mb-2 mb-sm-0"&gt;
+                    &lt;!-- Form Radio --&gt;
+                    &lt;label class="form-control" for="formControlRadioReverseEg2"&gt;
+                      &lt;span class="form-check"&gt;
+                        &lt;input type="radio" class="form-check-input" name="formControlRadioReverseEg" id="formControlRadioReverseEg2"&gt;
+                        &lt;span class="form-check-label"&gt;Unchecked&lt;/span&gt;
+                      &lt;/span&gt;
+                    &lt;/label&gt;
+                    &lt;!-- End Form Radio --&gt;
+                  &lt;/div&gt;
+
+                  &lt;div class="col-sm mb-2 mb-sm-0"&gt;
+                    &lt;!-- Form Radio --&gt;
+                    &lt;label class="form-control" for="formControlRadioReverseEg3"&gt;
+                      &lt;span class="form-check"&gt;
+                        &lt;input type="radio" class="form-check-input" name="formControlRadioReverseEg" id="formControlRadioReverseEg3" disabled&gt;
+                        &lt;span class="form-check-label"&gt;Disabled&lt;/span&gt;
+                      &lt;/span&gt;
+                    &lt;/label&gt;
+                    &lt;!-- End Form Radio --&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- End Row --&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="input-group-break" class="hs-docs-heading">
+        Input group break <a class="anchorjs-link" href="#input-group-break" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <p>Long contents don't fit in small screens? Use <code>.input-group-{breakpoint}-vertical</code> modifier classes to break horizontal alignment and keep the same style in vertical order. Reduce browser size to see it in action.</p>
+
+      <!-- Card -->
+      <div class="card mb-7">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab6" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab6" href="#nav-result6" data-bs-toggle="pill" data-bs-target="#nav-result6" role="tab" aria-controls="nav-result6" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab6" href="#nav-html6" data-bs-toggle="pill" data-bs-target="#nav-html6" role="tab" aria-controls="nav-html6" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent6">
+          <div class="tab-pane fade p-4 show active" id="nav-result6" role="tabpanel" aria-labelledby="nav-resultTab6">
+            <div class="input-group input-group-sm-vertical" style="max-width: 30rem;">
+              <!-- Radio Check -->
+              <label class="form-control" for="editUserModalAccountTypeModalRadioEg1_1">
+                <span class="form-check">
+                  <input type="radio" class="form-check-input" name="editUserModalAccountTypeModalRadioEg1_" id="editUserModalAccountTypeModalRadioEg1_1" checked>
+                  <span class="form-check-label">Individual</span>
+                </span>
+              </label>
+              <!-- End Radio Check -->
+
+              <!-- Radio Check -->
+              <label class="form-control" for="editUserModalAccountTypeModalRadioEg1_2">
+                <span class="form-check">
+                  <input type="radio" class="form-check-input" name="editUserModalAccountTypeModalRadioEg1_" id="editUserModalAccountTypeModalRadioEg1_2">
+                  <span class="form-check-label">Company</span>
+                </span>
+              </label>
+              <!-- End Radio Check -->
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="nav-html6" role="tabpanel" aria-labelledby="nav-htmlTab6">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class="input-group input-group-sm-vertical"&gt;
+                  &lt;!-- Radio Check --&gt;
+                  &lt;label class="form-control" for="editUserModalAccountTypeModalRadioEg1_1"&gt;
+                    &lt;span class="form-check"&gt;
+                      &lt;input type="radio" class="form-check-input" name="editUserModalAccountTypeModalRadioEg1_" id="editUserModalAccountTypeModalRadioEg1_1" checked&gt;
+                      &lt;span class="form-check-label"&gt;Individual&lt;/span&gt;
+                    &lt;/span&gt;
+                  &lt;/label&gt;
+                  &lt;!-- End Radio Check --&gt;
+
+                  &lt;!-- Radio Check --&gt;
+                  &lt;label class="form-control" for="editUserModalAccountTypeModalRadioEg1_2"&gt;
+                    &lt;span class="form-check"&gt;
+                      &lt;input type="radio" class="form-check-input" name="editUserModalAccountTypeModalRadioEg1_" id="editUserModalAccountTypeModalRadioEg1_2"&gt;
+                      &lt;span class="form-check-label"&gt;Company&lt;/span&gt;
+                    &lt;/span&gt;
+                  &lt;/label&gt;
+                  &lt;!-- End Radio Check --&gt;
+                &lt;/div&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <p>Vertical example:</p>
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab7" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab7" href="#nav-result7" data-bs-toggle="pill" data-bs-target="#nav-result7" role="tab" aria-controls="nav-result7" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab7" href="#nav-html7" data-bs-toggle="pill" data-bs-target="#nav-html7" role="tab" aria-controls="nav-html7" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent7">
+          <div class="tab-pane fade p-4 show active" id="nav-result7" role="tabpanel" aria-labelledby="nav-resultTab7">
+            <div class="input-group input-group-vertical" style="max-width: 30rem;">
+              <!-- Radio Check -->
+              <label class="form-control" for="editUserModalAccountTypeModalRadioEg2_1">
+                <span class="form-check">
+                  <input type="radio" class="form-check-input" name="editUserModalAccountTypeModalRadioEg2_" id="editUserModalAccountTypeModalRadioEg2_1" checked>
+                  <span class="form-check-label">Individual</span>
+                </span>
+              </label>
+              <!-- End Radio Check -->
+
+              <!-- Radio Check -->
+              <label class="form-control" for="editUserModalAccountTypeModalRadioEg2_2">
+                <span class="form-check">
+                  <input type="radio" class="form-check-input" name="editUserModalAccountTypeModalRadioEg2_" id="editUserModalAccountTypeModalRadioEg2_2">
+                  <span class="form-check-label">Company</span>
+                </span>
+              </label>
+              <!-- End Radio Check -->
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="nav-html7" role="tabpanel" aria-labelledby="nav-htmlTab7">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class="input-group input-group-vertical"&gt;
+                  &lt;!-- Radio Check --&gt;
+                  &lt;label class="form-control" for="editUserModalAccountTypeModalRadioEg2_1"&gt;
+                    &lt;span class="form-check"&gt;
+                      &lt;input type="radio" class="form-check-input" name="editUserModalAccountTypeModalRadioEg2_" id="editUserModalAccountTypeModalRadioEg2_1" checked&gt;
+                      &lt;span class="form-check-label"&gt;Individual&lt;/span&gt;
+                    &lt;/span&gt;
+                  &lt;/label&gt;
+                  &lt;!-- End Radio Check --&gt;
+
+                  &lt;!-- Radio Check --&gt;
+                  &lt;label class="form-control" for="editUserModalAccountTypeModalRadioEg2_2"&gt;
+                    &lt;span class="form-check"&gt;
+                      &lt;input type="radio" class="form-check-input" name="editUserModalAccountTypeModalRadioEg2_" id="editUserModalAccountTypeModalRadioEg2_2"&gt;
+                      &lt;span class="form-check-label"&gt;Company&lt;/span&gt;
+                    &lt;/span&gt;
+                  &lt;/label&gt;
+                  &lt;!-- End Radio Check --&gt;
+                &lt;/div&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="checkbox-select" class="hs-docs-heading">
+        Checkbox select <a class="anchorjs-link" href="#checkbox-select" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab8" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab8" href="#nav-result8" data-bs-toggle="pill" data-bs-target="#nav-result8" role="tab" aria-controls="nav-result8" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab8" href="#nav-html8" data-bs-toggle="pill" data-bs-target="#nav-html8" role="tab" aria-controls="nav-html8" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent8">
+          <div class="tab-pane fade p-4 show active" id="nav-result8" role="tabpanel" aria-labelledby="nav-resultTab8">
+            <!-- List Group -->
+            <ul class="list-group list-group-flush navbar-card-list-group">
+              <!-- Item -->
+              <li class="list-group-item form-check-select">
+                <div class="row">
+                  <div class="col-auto">
+                    <div class="d-flex align-items-center">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="notificationCheck1" checked>
+                        <label class="form-check-label" for="notificationCheck1"></label>
+                        <span class="form-check-stretched-bg"></span>
+                      </div>
+                      <img class="avatar avatar-sm avatar-circle" src="../assets/img/160x160/img3.jpg" alt="Image Description">
+                    </div>
+                  </div>
+                  <!-- End Col -->
+
+                  <div class="col ms-n2">
+                    <h5 class="mb-1">Brian Warner</h5>
+                    <p class="text-body fs-5">changed an issue from "In Progress" to <span class="badge bg-success">Review</span></p>
+                  </div>
+                  <!-- End Col -->
+
+                  <small class="col-auto text-muted text-cap">2hr</small>
+                  <!-- End Col -->
+                </div>
+                <!-- End Row -->
+
+                <a class="stretched-link" href="#"></a>
+              </li>
+              <!-- End Item -->
+
+              <!-- Item -->
+              <li class="list-group-item form-check-select">
+                <div class="row">
+                  <div class="col-auto">
+                    <div class="d-flex align-items-center">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="notificationCheck2" checked>
+                        <label class="form-check-label" for="notificationCheck2"></label>
+                        <span class="form-check-stretched-bg"></span>
+                      </div>
+                      <div class="avatar avatar-sm avatar-soft-dark avatar-circle">
+                        <span class="avatar-initials">K</span>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End Col -->
+
+                  <div class="col ms-n2">
+                    <h5 class="mb-1">Klara Hampton</h5>
+                    <p class="text-body fs-5">mentioned you in a comment</p>
+                    <blockquote class="blockquote blockquote-sm">
+                      Nice work, love! You really nailed it. Keep it up!
+                    </blockquote>
+                  </div>
+                  <!-- End Col -->
+
+                  <small class="col-auto text-muted text-cap">10hr</small>
+                  <!-- End Col -->
+                </div>
+                <!-- End Row -->
+
+                <a class="stretched-link" href="#"></a>
+              </li>
+              <!-- End Item -->
+
+              <!-- Item -->
+              <li class="list-group-item form-check-select">
+                <div class="row">
+                  <div class="col-auto">
+                    <div class="d-flex align-items-center">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="notificationCheck3" checked>
+                        <label class="form-check-label" for="notificationCheck3"></label>
+                        <span class="form-check-stretched-bg"></span>
+                      </div>
+                      <div class="avatar avatar-sm avatar-circle">
+                        <img class="avatar-img" src="../assets/img/160x160/img10.jpg" alt="Image Description">
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End Col -->
+
+                  <div class="col ms-n2">
+                    <h5 class="mb-1">Ruby Walter</h5>
+                    <p class="text-body fs-5">joined the Slack group HS Team</p>
+                  </div>
+                  <!-- End Col -->
+
+                  <small class="col-auto text-muted text-cap">3dy</small>
+                  <!-- End Col -->
+                </div>
+                <!-- End Row -->
+
+                <a class="stretched-link" href="#"></a>
+              </li>
+              <!-- End Item -->
+
+              <!-- Item -->
+              <li class="list-group-item form-check-select">
+                <div class="row">
+                  <div class="col-auto">
+                    <div class="d-flex align-items-center">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="notificationCheck4">
+                        <label class="form-check-label" for="notificationCheck4"></label>
+                        <span class="form-check-stretched-bg"></span>
+                      </div>
+                      <div class="avatar avatar-sm avatar-circle">
+                        <img class="avatar-img" src="../assets/svg/brands/google-icon.svg" alt="Image Description">
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End Col -->
+
+                  <div class="col ms-n2">
+                    <h5 class="mb-1">from Google</h5>
+                    <p class="text-body fs-5">Start using forms to capture the information of prospects visiting your Google website</p>
+                  </div>
+                  <!-- End Col -->
+
+                  <small class="col-auto text-muted text-cap">17dy</small>
+                  <!-- End Col -->
+                </div>
+                <!-- End Row -->
+
+                <a class="stretched-link" href="#"></a>
+              </li>
+              <!-- End Item -->
+
+              <!-- Item -->
+              <li class="list-group-item form-check-select">
+                <div class="row">
+                  <div class="col-auto">
+                    <div class="d-flex align-items-center">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="notificationCheck5">
+                        <label class="form-check-label" for="notificationCheck5"></label>
+                        <span class="form-check-stretched-bg"></span>
+                      </div>
+                      <div class="avatar avatar-sm avatar-circle">
+                        <img class="avatar-img" src="../assets/img/160x160/img7.jpg" alt="Image Description">
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End Col -->
+
+                  <div class="col ms-n2">
+                    <h5 class="mb-1">Sara Villar</h5>
+                    <p class="text-body fs-5">completed <i class="bi-journal-bookmark-fill text-primary"></i> FD-7 task</p>
+                  </div>
+                  <!-- End Col -->
+
+                  <small class="col-auto text-muted text-cap">2mn</small>
+                  <!-- End Col -->
+                </div>
+                <!-- End Row -->
+
+                <a class="stretched-link" href="#"></a>
+              </li>
+              <!-- End Item -->
+            </ul>
+            <!-- End List Group -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html8" role="tabpanel" aria-labelledby="nav-htmlTab8">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;!-- List Group --&gt;
+                &lt;ul class="list-group list-group-flush navbar-card-list-group"&gt;
+                  &lt;!-- Item --&gt;
+                  &lt;li class="list-group-item form-check-select"&gt;
+                    &lt;div class="row"&gt;
+                      &lt;div class="col-auto"&gt;
+                        &lt;div class="d-flex align-items-center"&gt;
+                          &lt;div class="form-check"&gt;
+                            &lt;input class="form-check-input" type="checkbox" value="" id="notificationCheck1" checked&gt;
+                            &lt;label class="form-check-label" for="notificationCheck1"&gt;&lt;/label&gt;
+                            &lt;span class="form-check-stretched-bg"&gt;&lt;/span&gt;
+                          &lt;/div&gt;
+                          &lt;img class="avatar avatar-sm avatar-circle" src="../assets/img/160x160/img3.jpg" alt="Image Description"&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;!-- End Col --&gt;
+
+                      &lt;div class="col ms-n2"&gt;
+                        &lt;h5 class="mb-1"&gt;Brian Warner&lt;/h5&gt;
+                        &lt;p class="text-body fs-5"&gt;changed an issue from "In Progress" to &lt;span class="badge bg-success"&gt;Review&lt;/span&gt;&lt;/p&gt;
+                      &lt;/div&gt;
+                      &lt;!-- End Col --&gt;
+
+                      &lt;small class="col-auto text-muted text-cap"&gt;2hr&lt;/small&gt;
+                      &lt;!-- End Col --&gt;
+                    &lt;/div&gt;
+                    &lt;!-- End Row --&gt;
+
+                    &lt;a class="stretched-link" href="#"&gt;&lt;/a&gt;
+                  &lt;/li&gt;
+                  &lt;!-- End Item --&gt;
+
+                  &lt;!-- Item --&gt;
+                  &lt;li class="list-group-item form-check-select"&gt;
+                    &lt;div class="row"&gt;
+                      &lt;div class="col-auto"&gt;
+                        &lt;div class="d-flex align-items-center"&gt;
+                          &lt;div class="form-check"&gt;
+                            &lt;input class="form-check-input" type="checkbox" value="" id="notificationCheck2" checked&gt;
+                            &lt;label class="form-check-label" for="notificationCheck2"&gt;&lt;/label&gt;
+                            &lt;span class="form-check-stretched-bg"&gt;&lt;/span&gt;
+                          &lt;/div&gt;
+                          &lt;div class="avatar avatar-sm avatar-soft-dark avatar-circle"&gt;
+                            &lt;span class="avatar-initials"&gt;K&lt;/span&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;!-- End Col --&gt;
+
+                      &lt;div class="col ms-n2"&gt;
+                        &lt;h5 class="mb-1"&gt;Klara Hampton&lt;/h5&gt;
+                        &lt;p class="text-body fs-5"&gt;mentioned you in a comment&lt;/p&gt;
+                        &lt;blockquote class="blockquote blockquote-sm"&gt;
+                          Nice work, love! You really nailed it. Keep it up!
+                        &lt;/blockquote&gt;
+                      &lt;/div&gt;
+                      &lt;!-- End Col --&gt;
+
+                      &lt;small class="col-auto text-muted text-cap"&gt;10hr&lt;/small&gt;
+                      &lt;!-- End Col --&gt;
+                    &lt;/div&gt;
+                    &lt;!-- End Row --&gt;
+
+                    &lt;a class="stretched-link" href="#"&gt;&lt;/a&gt;
+                  &lt;/li&gt;
+                  &lt;!-- End Item --&gt;
+
+                  &lt;!-- Item --&gt;
+                  &lt;li class="list-group-item form-check-select"&gt;
+                    &lt;div class="row"&gt;
+                      &lt;div class="col-auto"&gt;
+                        &lt;div class="d-flex align-items-center"&gt;
+                          &lt;div class="form-check"&gt;
+                            &lt;input class="form-check-input" type="checkbox" value="" id="notificationCheck3" checked&gt;
+                            &lt;label class="form-check-label" for="notificationCheck3"&gt;&lt;/label&gt;
+                            &lt;span class="form-check-stretched-bg"&gt;&lt;/span&gt;
+                          &lt;/div&gt;
+                          &lt;div class="avatar avatar-sm avatar-circle"&gt;
+                            &lt;img class="avatar-img" src="../assets/img/160x160/img10.jpg" alt="Image Description"&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;!-- End Col --&gt;
+
+                      &lt;div class="col ms-n2"&gt;
+                        &lt;h5 class="mb-1"&gt;Ruby Walter&lt;/h5&gt;
+                        &lt;p class="text-body fs-5"&gt;joined the Slack group HS Team&lt;/p&gt;
+                      &lt;/div&gt;
+                      &lt;!-- End Col --&gt;
+
+                      &lt;small class="col-auto text-muted text-cap"&gt;3dy&lt;/small&gt;
+                      &lt;!-- End Col --&gt;
+                    &lt;/div&gt;
+                    &lt;!-- End Row --&gt;
+
+                    &lt;a class="stretched-link" href="#"&gt;&lt;/a&gt;
+                  &lt;/li&gt;
+                  &lt;!-- End Item --&gt;
+
+                  &lt;!-- Item --&gt;
+                  &lt;li class="list-group-item form-check-select"&gt;
+                    &lt;div class="row"&gt;
+                      &lt;div class="col-auto"&gt;
+                        &lt;div class="d-flex align-items-center"&gt;
+                          &lt;div class="form-check"&gt;
+                            &lt;input class="form-check-input" type="checkbox" value="" id="notificationCheck4"&gt;
+                            &lt;label class="form-check-label" for="notificationCheck4"&gt;&lt;/label&gt;
+                            &lt;span class="form-check-stretched-bg"&gt;&lt;/span&gt;
+                          &lt;/div&gt;
+                          &lt;div class="avatar avatar-sm avatar-circle"&gt;
+                            &lt;img class="avatar-img" src="../assets/svg/brands/google-icon.svg" alt="Image Description"&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;!-- End Col --&gt;
+
+                      &lt;div class="col ms-n2"&gt;
+                        &lt;h5 class="mb-1"&gt;from Google&lt;/h5&gt;
+                        &lt;p class="text-body fs-5"&gt;Start using forms to capture the information of prospects visiting your Google website&lt;/p&gt;
+                      &lt;/div&gt;
+                      &lt;!-- End Col --&gt;
+
+                      &lt;small class="col-auto text-muted text-cap"&gt;17dy&lt;/small&gt;
+                      &lt;!-- End Col --&gt;
+                    &lt;/div&gt;
+                    &lt;!-- End Row --&gt;
+
+                    &lt;a class="stretched-link" href="#"&gt;&lt;/a&gt;
+                  &lt;/li&gt;
+                  &lt;!-- End Item --&gt;
+
+                  &lt;!-- Item --&gt;
+                  &lt;li class="list-group-item form-check-select"&gt;
+                    &lt;div class="row"&gt;
+                      &lt;div class="col-auto"&gt;
+                        &lt;div class="d-flex align-items-center"&gt;
+                          &lt;div class="form-check"&gt;
+                            &lt;input class="form-check-input" type="checkbox" value="" id="notificationCheck5"&gt;
+                            &lt;label class="form-check-label" for="notificationCheck5"&gt;&lt;/label&gt;
+                            &lt;span class="form-check-stretched-bg"&gt;&lt;/span&gt;
+                          &lt;/div&gt;
+                          &lt;div class="avatar avatar-sm avatar-circle"&gt;
+                            &lt;img class="avatar-img" src="../assets/img/160x160/img7.jpg" alt="Image Description"&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;!-- End Col --&gt;
+
+                      &lt;div class="col ms-n2"&gt;
+                        &lt;h5 class="mb-1"&gt;Sara Villar&lt;/h5&gt;
+                        &lt;p class="text-body fs-5"&gt;completed &lt;i class="bi-journal-bookmark-fill text-primary"&gt;&lt;/i&gt; FD-7 task&lt;/p&gt;
+                      &lt;/div&gt;
+                      &lt;!-- End Col --&gt;
+
+                      &lt;small class="col-auto text-muted text-cap"&gt;2mn&lt;/small&gt;
+                      &lt;!-- End Col --&gt;
+                    &lt;/div&gt;
+                    &lt;!-- End Row --&gt;
+
+                    &lt;a class="stretched-link" href="#"&gt;&lt;/a&gt;
+                  &lt;/li&gt;
+                  &lt;!-- End Item --&gt;
+                &lt;/ul&gt;
+                &lt;!-- End List Group --&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="checkbox-switch" class="hs-docs-heading">
+        Checkbox switch <a class="anchorjs-link" href="#checkbox-switch" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab9" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab9" href="#nav-result9" data-bs-toggle="pill" data-bs-target="#nav-result9" role="tab" aria-controls="nav-result9" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab9" href="#nav-html9" data-bs-toggle="pill" data-bs-target="#nav-html9" role="tab" aria-controls="nav-html9" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent9">
+          <div class="tab-pane fade p-4 show active" id="nav-result9" role="tabpanel" aria-labelledby="nav-resultTab9">
+            <!-- Form Check -->
+            <div class="form-check form-check-inline form-check-switch">
+              <input class="form-check-input" type="checkbox" value="" id="connectionsCheckbox1">
+              <label class="form-check-label btn-sm" for="connectionsCheckbox1">
+                <span class="form-check-default">
+                  <i class="bi-person-plus-fill"></i> Connect
+                </span>
+                <span class="form-check-active">
+                  <i class="bi-check-lg me-2"></i> Connected
+                </span>
+              </label>
+            </div>
+            <!-- End Form Check -->
+
+            <!-- Form Check -->
+            <div class="form-check form-check-inline form-check-switch">
+              <input class="form-check-input" type="checkbox" value="" id="starredCheckbox1" checked>
+              <label class="form-check-label btn-icon btn-sm rounded-circle" for="starredCheckbox1">
+                <span class="form-check-default" data-bs-toggle="tooltip" data-bs-placement="top" title="Pin">
+                  <i class="bi-star"></i>
+                </span>
+                <span class="form-check-active" data-bs-toggle="tooltip" data-bs-placement="top" title="Pinned">
+                  <i class="bi-star-fill"></i>
+                </span>
+              </label>
+            </div>
+            <!-- End Form Check -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html9" role="tabpanel" aria-labelledby="nav-htmlTab9">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;!-- Form Check --&gt;
+                &lt;div class="form-check form-check-switch"&gt;
+                  &lt;input class="form-check-input" type="checkbox" value="" id="connectionsCheckbox1"&gt;
+                  &lt;label class="form-check-label btn-sm" for="connectionsCheckbox1"&gt;
+                    &lt;span class="form-check-default"&gt;
+                      &lt;i class="bi-person-plus-fill"&gt;&lt;/i&gt; Connect
+                    &lt;/span&gt;
+                    &lt;span class="form-check-active"&gt;
+                      &lt;i class="bi-check-lg me-2"&gt;&lt;/i&gt; Connected
+                    &lt;/span&gt;
+                  &lt;/label&gt;
+                &lt;/div&gt;
+                &lt;!-- End Form Check --&gt;
+
+                &lt;!-- Form Check --&gt;
+                &lt;div class="form-check form-check-switch"&gt;
+                  &lt;input class="form-check-input" type="checkbox" value="" id="starredCheckbox1" checked&gt;
+                  &lt;label class="form-check-label btn-icon btn-sm rounded-circle" for="starredCheckbox1"&gt;
+                    &lt;span class="form-check-default" data-bs-toggle="tooltip" data-bs-placement="top" title="Pin"&gt;
+                      &lt;i class="bi-star"&gt;&lt;/i&gt;
+                    &lt;/span&gt;
+                    &lt;span class="form-check-active" data-bs-toggle="tooltip" data-bs-placement="top" title="Pinned"&gt;
+                      &lt;i class="bi-star-fill"&gt;&lt;/i&gt;
+                    &lt;/span&gt;
+                  &lt;/label&gt;
+                &lt;/div&gt;
+                &lt;!-- End Form Check --&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="checkbox-dashed" class="hs-docs-heading">
+        Checkbox dashed <a class="anchorjs-link" href="#checkbox-dashed" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab10" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab10" href="#nav-result10" data-bs-toggle="pill" data-bs-target="#nav-result10" role="tab" aria-controls="nav-result10" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab10" href="#nav-html10" data-bs-toggle="pill" data-bs-target="#nav-html10" role="tab" aria-controls="nav-html10" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent10">
+          <div class="tab-pane fade p-4 show active" id="nav-result10" role="tabpanel" aria-labelledby="nav-resultTab10">
+            <label class="form-check form-check-dashed" for="logoUploader" style="max-width: 25rem;">
+              <img id="logoImg" class="avatar avatar-xl avatar-4x3 avatar-centered h-100 mb-2" src="../assets/svg/illustrations/oc-browse.svg" alt="Image Description" data-hs-theme-appearance="default">
+              <img id="logoImg" class="avatar avatar-xl avatar-4x3 avatar-centered h-100 mb-2" src="../assets/svg/illustrations-light/oc-browse.svg" alt="Image Description" data-hs-theme-appearance="dark">
+
+              <span class="d-block">Browse your file here</span>
+
+              <input type="file" class="form-check-input" id="logoUploader">
+            </label>
+          </div>
+
+          <div class="tab-pane fade" id="nav-html10" role="tabpanel" aria-labelledby="nav-htmlTab10">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;label class="form-check form-check-dashed" for="logoUploader"&gt;
+                  &lt;img id="logoImg" class="avatar avatar-xl avatar-4x3 avatar-centered h-100 mb-2" src="../assets/svg/illustrations/oc-browse.svg" alt="Image Description"&gt;
+
+                  &lt;span class="d-block"&gt;Browse your file here&lt;/span&gt;
+
+                  &lt;input type="file" class="form-check-input" id="logoUploader"&gt;
+                &lt;/label&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="checkbox-pinned" class="hs-docs-heading">
+        Select stretched <a class="anchorjs-link" href="#checkbox-pinned" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab11" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab11" href="#nav-result11" data-bs-toggle="pill" data-bs-target="#nav-result11" role="tab" aria-controls="nav-result11" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab11" href="#nav-html11" data-bs-toggle="pill" data-bs-target="#nav-html11" role="tab" aria-controls="nav-html11" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent11">
+          <div class="tab-pane fade p-4 show active" id="nav-result11" role="tabpanel" aria-labelledby="nav-resultTab11">
+            <div class="row">
+              <div class="col-md mb-3">
+                <!-- Card -->
+                <div class="card card-lg form-check form-check-select-stretched h-100 zi-1">
+                  <div class="card-header text-center">
+                    <!-- Form Check -->
+                    <input type="radio" class="form-check-input" name="billingPricingRadio" id="billingPricingRadio1" value="basic">
+                    <label class="form-check-label" for="billingPricingRadio1"></label>
+                    <!-- End Form Check -->
+
+                    <span class="card-subtitle">Basic</span>
+                    <h2 class="card-title display-3 text-dark">Free</h2>
+                    <p class="card-text">Forever free</p>
+                  </div>
+
+                  <div class="card-body d-flex justify-content-center">
+                    <!-- List Checked -->
+                    <ul class="list-checked list-checked-primary mb-0">
+                      <li class="list-checked-item">1 user</li>
+                      <li class="list-checked-item">Front plan features</li>
+                      <li class="list-checked-item">1 app</li>
+                    </ul>
+                    <!-- End List Checked -->
+                  </div>
+
+                  <div class="card-footer border-0 text-center">
+                    <div class="d-grid mb-2">
+                      <button type="button" class="form-check-select-stretched-btn btn btn-white">Select plan</button>
+                    </div>
+                    <p class="card-text small">
+                      <i class="bi-question-circle me-1"></i> Terms &amp; conditions apply
+                    </p>
+                  </div>
+                </div>
+                <!-- End Card -->
+              </div>
+              <!-- End Col -->
+
+              <div class="col-md mb-3">
+                <!-- Card -->
+                <div class="card card-lg form-check form-check-select-stretched h-100 zi-1">
+                  <div class="card-header text-center">
+                    <!-- Form Check -->
+                    <input type="radio" class="form-check-input" name="billingPricingRadio" id="billingPricingRadio2" checked value="starter">
+                    <label class="form-check-label" for="billingPricingRadio2"></label>
+                    <!-- End Form Check -->
+
+                    <span class="card-subtitle">Starter</span>
+                    <h2 class="card-title display-3 text-dark">
+                      $<span id="pricingCount1" data-hs-toggle-switch-item-options='{
+                               "min": 22,
+                               "max": 32
+                             }'>32</span>
+                      <span class="fs-6 text-muted">/ mon</span>
+                    </h2>
+                    <p class="card-text">Or prepay monthly</p>
+                  </div>
+
+                  <div class="card-body d-flex justify-content-center">
+                    <!-- List Checked -->
+                    <ul class="list-checked list-checked-primary mb-0">
+                      <li class="list-checked-item">3 users</li>
+                      <li class="list-checked-item">Front plan features</li>
+                      <li class="list-checked-item">3 apps</li>
+                      <li class="list-checked-item">Product support</li>
+                    </ul>
+                    <!-- End List Checked -->
+                  </div>
+
+                  <div class="card-footer border-0 text-center">
+                    <div class="d-grid mb-2">
+                      <button type="button" class="form-check-select-stretched-btn btn btn-white">Select plan</button>
+                    </div>
+                    <p class="card-text small">
+                      <i class="bi-question-circle me-1"></i> Terms &amp; conditions apply
+                    </p>
+                  </div>
+                </div>
+                <!-- End Card -->
+              </div>
+              <!-- End Col -->
+
+              <div class="col-md mb-3">
+                <!-- Card -->
+                <div class="card card-lg form-check form-check-select-stretched h-100 zi-1">
+                  <div class="card-header text-center">
+                    <!-- Form Check -->
+                    <input type="radio" class="form-check-input" name="billingPricingRadio" id="billingPricingRadio3" value="enterprise">
+                    <label class="form-check-label" for="billingPricingRadio3"></label>
+                    <!-- End Form Check -->
+
+                    <span class="card-subtitle">Enterprise</span>
+                    <h2 class="card-title display-3 text-dark">
+                      $<span id="pricingCount2" data-hs-toggle-switch-item-options='{
+                               "min": 42,
+                               "max": 54
+                             }'>54</span>
+                      <span class="fs-6 text-muted">/ mon</span>
+                    </h2>
+                    <p class="card-text">Or prepay annually</p>
+                  </div>
+
+                  <div class="card-body d-flex justify-content-center">
+                    <!-- List Checked -->
+                    <ul class="list-checked list-checked-primary mb-0">
+                      <li class="list-checked-item">Unlimited users</li>
+                      <li class="list-checked-item">Front plan features</li>
+                      <li class="list-checked-item">Unlimited apps</li>
+                      <li class="list-checked-item">Product support</li>
+                    </ul>
+                    <!-- End List Checked -->
+                  </div>
+
+                  <div class="card-footer border-0 text-center">
+                    <div class="d-grid mb-2">
+                      <button type="button" class="form-check-select-stretched-btn btn btn-white">Select plan</button>
+                    </div>
+                    <p class="card-text small">
+                      <i class="bi-question-circle me-1"></i> Terms &amp; conditions apply
+                    </p>
+                  </div>
+                </div>
+                <!-- End Card -->
+              </div>
+              <!-- End Col -->
+            </div>
+            <!-- End Row -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html11" role="tabpanel" aria-labelledby="nav-htmlTab11">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class="row"&gt;
+                  &lt;div class="col-md mb-3"&gt;
+                    &lt;!-- Card --&gt;
+                    &lt;div class="card card-lg form-check form-check-select-stretched h-100 zi-1"&gt;
+                      &lt;div class="card-header text-center"&gt;
+                        &lt;!-- Form Check --&gt;
+                        &lt;input type="radio" class="form-check-input" name="billingPricingRadio" id="billingPricingRadio1" value="basic"&gt;
+                        &lt;label class="form-check-label" for="billingPricingRadio1"&gt;&lt;/label&gt;
+                        &lt;!-- End Form Check --&gt;
+
+                        &lt;span class="card-subtitle"&gt;Basic&lt;/span&gt;
+                        &lt;h2 class="card-title display-3 text-dark"&gt;Free&lt;/h2&gt;
+                        &lt;p class="card-text"&gt;Forever free&lt;/p&gt;
+                      &lt;/div&gt;
+
+                      &lt;div class="card-body d-flex justify-content-center"&gt;
+                        &lt;!-- List Checked --&gt;
+                        &lt;ul class="list-checked list-checked-primary mb-0"&gt;
+                          &lt;li class="list-checked-item"&gt;1 user&lt;/li&gt;
+                          &lt;li class="list-checked-item"&gt;Front plan features&lt;/li&gt;
+                          &lt;li class="list-checked-item"&gt;1 app&lt;/li&gt;
+                        &lt;/ul&gt;
+                        &lt;!-- End List Checked --&gt;
+                      &lt;/div&gt;
+
+                      &lt;div class="card-footer border-0 text-center"&gt;
+                        &lt;div class="d-grid mb-2"&gt;
+                          &lt;button type="button" class="form-check-select-stretched-btn btn btn-white"&gt;Select plan&lt;/button&gt;
+                        &lt;/div&gt;
+                        &lt;p class="card-text small"&gt;
+                          &lt;i class="bi-question-circle me-1"&gt;&lt;/i&gt; Terms &amp; conditions apply
+                        &lt;/p&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;!-- End Card --&gt;
+                  &lt;/div&gt;
+                  &lt;!-- End Col --&gt;
+
+                  &lt;div class="col-md mb-3"&gt;
+                    &lt;!-- Card --&gt;
+                    &lt;div class="card card-lg form-check form-check-select-stretched h-100 zi-1"&gt;
+                      &lt;div class="card-header text-center"&gt;
+                        &lt;!-- Form Check --&gt;
+                        &lt;input type="radio" class="form-check-input" name="billingPricingRadio" id="billingPricingRadio2" checked value="starter"&gt;
+                        &lt;label class="form-check-label" for="billingPricingRadio2"&gt;&lt;/label&gt;
+                        &lt;!-- End Form Check --&gt;
+
+                        &lt;span class="card-subtitle"&gt;Starter&lt;/span&gt;
+                        &lt;h2 class="card-title display-3 text-dark"&gt;
+                          $&lt;span id="pricingCount1"
+                                 data-hs-toggle-switch-item-options='{
+                                   "min": 22,
+                                   "max": 32
+                                 }'&gt;32&lt;/span&gt;
+                          &lt;span class="fs-6 text-muted"&gt;/ mon&lt;/span&gt;
+                        &lt;/h2&gt;
+                        &lt;p class="card-text"&gt;Or prepay monthly&lt;/p&gt;
+                      &lt;/div&gt;
+
+                      &lt;div class="card-body d-flex justify-content-center"&gt;
+                        &lt;!-- List Checked --&gt;
+                        &lt;ul class="list-checked list-checked-primary mb-0"&gt;
+                          &lt;li class="list-checked-item"&gt;3 users&lt;/li&gt;
+                          &lt;li class="list-checked-item"&gt;Front plan features&lt;/li&gt;
+                          &lt;li class="list-checked-item"&gt;3 apps&lt;/li&gt;
+                          &lt;li class="list-checked-item"&gt;Product support&lt;/li&gt;
+                        &lt;/ul&gt;
+                        &lt;!-- End List Checked --&gt;
+                      &lt;/div&gt;
+
+                      &lt;div class="card-footer border-0 text-center"&gt;
+                        &lt;div class="d-grid mb-2"&gt;
+                          &lt;button type="button" class="form-check-select-stretched-btn btn btn-white"&gt;Select plan&lt;/button&gt;
+                        &lt;/div&gt;
+                        &lt;p class="card-text small"&gt;
+                          &lt;i class="bi-question-circle me-1"&gt;&lt;/i&gt; Terms &amp; conditions apply
+                        &lt;/p&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;!-- End Card --&gt;
+                  &lt;/div&gt;
+                  &lt;!-- End Col --&gt;
+                  
+                  &lt;div class="col-md mb-3"&gt;
+                    &lt;!-- Card --&gt;
+                    &lt;div class="card card-lg form-check form-check-select-stretched h-100 zi-1"&gt;
+                      &lt;div class="card-header text-center"&gt;
+                        &lt;!-- Form Check --&gt;
+                        &lt;input type="radio" class="form-check-input" name="billingPricingRadio" id="billingPricingRadio3" value="enterprise"&gt;
+                        &lt;label class="form-check-label" for="billingPricingRadio3"&gt;&lt;/label&gt;
+                        &lt;!-- End Form Check --&gt;
+
+                        &lt;span class="card-subtitle"&gt;Enterprise&lt;/span&gt;
+                        &lt;h2 class="card-title display-3 text-dark"&gt;
+                          $&lt;span id="pricingCount2"
+                                 data-hs-toggle-switch-item-options='{
+                                   "min": 42,
+                                   "max": 54
+                                 }'&gt;54&lt;/span&gt;
+                          &lt;span class="fs-6 text-muted"&gt;/ mon&lt;/span&gt;
+                        &lt;/h2&gt;
+                        &lt;p class="card-text"&gt;Or prepay annually&lt;/p&gt;
+                      &lt;/div&gt;
+
+                      &lt;div class="card-body d-flex justify-content-center"&gt;
+                        &lt;!-- List Checked --&gt;
+                        &lt;ul class="list-checked list-checked-primary mb-0"&gt;
+                          &lt;li class="list-checked-item"&gt;Unlimited users&lt;/li&gt;
+                          &lt;li class="list-checked-item"&gt;Front plan features&lt;/li&gt;
+                          &lt;li class="list-checked-item"&gt;Unlimited apps&lt;/li&gt;
+                          &lt;li class="list-checked-item"&gt;Product support&lt;/li&gt;
+                        &lt;/ul&gt;
+                        &lt;!-- End List Checked --&gt;
+                      &lt;/div&gt;
+
+                      &lt;div class="card-footer border-0 text-center"&gt;
+                        &lt;div class="d-grid mb-2"&gt;
+                          &lt;button type="button" class="form-check-select-stretched-btn btn btn-white"&gt;Select plan&lt;/button&gt;
+                        &lt;/div&gt;
+                        &lt;p class="card-text small"&gt;
+                          &lt;i class="bi-question-circle me-1"&gt;&lt;/i&gt; Terms &amp; conditions apply
+                        &lt;/p&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;!-- End Card --&gt;
+                  &lt;/div&gt;
+                  &lt;!-- End Col --&gt;
+                &lt;/div&gt;
+                &lt;!-- End Row --&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="label-highlighter" class="hs-docs-heading">
+        Label Highlighter <a class="anchorjs-link" href="#label-highlighter" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab16" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab16" href="#nav-result16" data-bs-toggle="pill" data-bs-target="#nav-result16" role="tab" aria-controls="nav-result16" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab16" href="#nav-html16" data-bs-toggle="pill" data-bs-target="#nav-html16" role="tab" aria-controls="nav-html16" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent16">
+          <div class="tab-pane fade p-4 show active" id="nav-result16" role="tabpanel" aria-labelledby="nav-resultTab16">
+            <div class="w-md-50">
+              <div class="row gx-3">
+                <!-- Check -->
+                <div class="col-6">
+                  <div class="form-check form-check-label-highlighter text-center">
+                    <input type="radio" class="form-check-input" name="labelHighlighterRadio" id="labelHighlighterRadio1" checked value="default">
+                    <label class="form-check-label mb-2" for="labelHighlighterRadio1">
+                      <img class="form-check-img" src="../assets/img/900x562/img1.jpg" alt="Image Description">
+                    </label>
+                    <span class="form-check-text">Light</span>
+                  </div>
+                </div>
+                <!-- End Check -->
+
+                <!-- Check -->
+                <div class="col-6">
+                  <div class="form-check form-check-label-highlighter text-center">
+                    <input type="radio" class="form-check-input" name="labelHighlighterRadio" id="labelHighlighterRadio2" value="dark">
+                    <label class="form-check-label mb-2" for="labelHighlighterRadio2">
+                      <img class="form-check-img" src="../assets/img/900x562/img6.jpg" alt="Image Description">
+                    </label>
+                    <span class="form-check-text">Dark</span>
+                  </div>
+                </div>
+                <!-- End Check -->
+              </div>
+              <!-- End Row -->
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="nav-html16" role="tabpanel" aria-labelledby="nav-htmlTab16">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class="row gx-3"&gt;
+                  &lt;!-- Check --&gt;
+                  &lt;div class="col-6"&gt;
+                    &lt;div class="form-check form-check-label-highlighter text-center"&gt;
+                      &lt;input type="radio" class="form-check-input" name="labelHighlighterRadio" id="labelHighlighterRadio1" checked value="default"&gt;
+                      &lt;label class="form-check-label mb-2" for="labelHighlighterRadio1"&gt;
+                        &lt;img class="form-check-img" src="../assets/img/900x562/img1.jpg" alt="Image Description"&gt;
+                      &lt;/label&gt;
+                      &lt;span class="form-check-text"&gt;Light&lt;/span&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;!-- End Check --&gt;
+
+                  &lt;!-- Check --&gt;
+                  &lt;div class="col-6"&gt;
+                    &lt;div class="form-check form-check-label-highlighter text-center"&gt;
+                      &lt;input type="radio" class="form-check-input" name="labelHighlighterRadio" id="labelHighlighterRadio2" value="dark"&gt;
+                      &lt;label class="form-check-label mb-2" for="labelHighlighterRadio2"&gt;
+                        &lt;img class="form-check-img" src="../assets/img/900x562/img6.jpg" alt="Image Description"&gt;
+                      &lt;/label&gt;
+                      &lt;span class="form-check-text"&gt;Dark&lt;/span&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;!-- End Check --&gt;
+                &lt;/div&gt;
+                &lt;!-- End Row --&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="switches" class="hs-docs-heading">
+        Switches <a class="anchorjs-link" href="#switches" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <p>Replace a standard checkbox input with a toggle switch.</p>
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab12" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab12" href="#nav-result12" data-bs-toggle="pill" data-bs-target="#nav-result12" role="tab" aria-controls="nav-result12" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab12" href="#nav-html12" data-bs-toggle="pill" data-bs-target="#nav-html12" role="tab" aria-controls="nav-html12" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent12">
+          <div class="tab-pane fade p-4 show active" id="nav-result12" role="tabpanel" aria-labelledby="nav-resultTab12">
+            <!-- Checkbox Switch -->
+            <div class="form-check form-switch mb-4">
+              <input type="checkbox" class="form-check-input" id="formSwitch1">
+              <label class="form-check-label" for="formSwitch1">Unchecked</label>
+            </div>
+            <!-- End Checkbox Switch -->
+
+            <!-- Checkbox Switch -->
+            <div class="form-check form-switch mb-4">
+              <input type="checkbox" class="form-check-input" id="formSwitch2" checked>
+              <label class="form-check-label" for="formSwitch2">Checked</label>
+            </div>
+            <!-- End Checkbox Switch -->
+
+            <!-- Checkbox Switch -->
+            <div class="form-check form-switch form-switch-between mb-4">
+              <label class="form-check-label">Off</label>
+              <input type="checkbox" class="form-check-input">
+              <label class="form-check-label">On</label>
+            </div>
+            <!-- End Checkbox Switch -->
+
+            <!-- Checkbox Switch -->
+            <div class="form-check form-switch mb-4">
+              <input type="checkbox" class="form-check-input" id="formSwitch4" disabled>
+              <label class="form-check-label" for="formSwitch4">Disabled</label>
+            </div>
+            <!-- End Checkbox Switch -->
+
+            <!-- Checkbox Switch -->
+            <div class="form-check form-switch mb-4">
+              <input type="checkbox" class="form-check-input" id="formSwitch5" checked disabled>
+              <label class="form-check-label" for="formSwitch5">Checked &amp; disabled</label>
+            </div>
+            <!-- End Checkbox Switch -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html12" role="tabpanel" aria-labelledby="nav-htmlTab12">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;!-- Checkbox Switch --&gt;
+                &lt;div class="form-check form-switch mb-4"&gt;
+                  &lt;input type="checkbox" class="form-check-input" id="formSwitch1"&gt;
+                  &lt;label class="form-check-label" for="formSwitch1"&gt;Unchecked&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;!-- End Checkbox Switch --&gt;
+
+                &lt;!-- Checkbox Switch --&gt;
+                &lt;div class="form-check form-switch mb-4"&gt;
+                  &lt;input type="checkbox" class="form-check-input" id="formSwitch2" checked&gt;
+                  &lt;label class="form-check-label" for="formSwitch2"&gt;Checked&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;!-- End Checkbox Switch --&gt;
+
+                &lt;!-- Checkbox Switch --&gt;
+                &lt;div class="form-check form-switch form-switch-between mb-4"&gt;
+                  &lt;label class="form-check-label"&gt;Off&lt;/label&gt;
+                  &lt;input type="checkbox" class="form-check-input"&gt;
+                  &lt;label class="form-check-label"&gt;On&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;!-- End Checkbox Switch --&gt;
+
+                &lt;!-- Checkbox Switch --&gt;
+                &lt;div class="form-check form-switch mb-4"&gt;
+                  &lt;input type="checkbox" class="form-check-input" id="formSwitch4" disabled&gt;
+                  &lt;label class="form-check-label" for="formSwitch4"&gt;Disabled&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;!-- End Checkbox Switch --&gt;
+
+                &lt;!-- Checkbox Switch --&gt;
+                &lt;div class="form-check form-switch mb-4"&gt;
+                  &lt;input type="checkbox" class="form-check-input" id="formSwitch5" checked disabled&gt;
+                  &lt;label class="form-check-label" for="formSwitch5"&gt;Checked &amp; disabled&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;!-- End Checkbox Switch --&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="switch-validation-states" class="hs-docs-heading">
+        Validation states <a class="anchorjs-link" href="#switch-validation-states" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <p>It provides valuable, actionable feedback to your users with HTML5 form validation.</p>
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab13" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab13" href="#nav-result13" data-bs-toggle="pill" data-bs-target="#nav-result13" role="tab" aria-controls="nav-result13" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab13" href="#nav-html13" data-bs-toggle="pill" data-bs-target="#nav-html13" role="tab" aria-controls="nav-html13" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent13">
+          <div class="tab-pane fade p-4 show active" id="nav-result13" role="tabpanel" aria-labelledby="nav-resultTab13">
+            <!-- Check -->
+            <div class="form-check mb-3">
+              <input type="checkbox" id="validCheck" class="form-check-input is-valid" checked>
+              <label class="form-check-valid" for="validCheck">Valid check</label>
+            </div>
+            <!-- End Check -->
+
+            <!-- Check -->
+            <div class="form-check mb-3">
+              <input type="checkbox" id="invalidCheck" class="form-check-input is-invalid" checked>
+              <label class="form-check-invalid" for="invalidCheck">Invalid check</label>
+            </div>
+            <!-- End Check -->
+
+            <!-- Check -->
+            <div class="form-check mb-3">
+              <input type="radio" id="validRadio" class="form-check-input is-valid" checked>
+              <label class="form-check-valid" for="validRadio">Valid radio</label>
+            </div>
+            <!-- End Check -->
+
+            <!-- Check -->
+            <div class="form-check mb-3">
+              <input type="radio" id="invalidRadio" class="form-check-input is-invalid" checked>
+              <label class="form-check-invalid" for="invalidRadio">Invalid radio</label>
+            </div>
+            <!-- End Check -->
+
+            <!-- Checkbox Switch -->
+            <div class="form-check form-switch mb-4">
+              <input type="checkbox" class="form-check-input is-valid" id="validSwitch" checked>
+              <label class="form-check-valid">Valid toggle switch</label>
+            </div>
+            <!-- End Checkbox Switch -->
+
+            <!-- Checkbox Switch -->
+            <div class="form-check form-switch mb-4">
+              <input type="checkbox" class="form-check-input is-invalid" id="invalidSwitch" checked>
+              <label class="form-check-invalid">Invalid toggle switch</label>
+            </div>
+            <!-- End Checkbox Switch -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html13" role="tabpanel" aria-labelledby="nav-htmlTab13">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;!-- Check --&gt;
+                &lt;div class="form-check mb-3"&gt;
+                  &lt;input type="checkbox" id="validCheck" class="form-check-input is-valid" checked&gt;
+                  &lt;label class="form-check-valid" for="validCheck"&gt;Valid check&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;!-- End Check --&gt;
+
+                &lt;!-- Check --&gt;
+                &lt;div class="form-check mb-3"&gt;
+                  &lt;input type="checkbox" id="invalidCheck" class="form-check-input is-invalid" checked&gt;
+                  &lt;label class="form-check-invalid" for="invalidCheck"&gt;Invalid check&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;!-- End Check --&gt;
+
+                &lt;!-- Check --&gt;
+                &lt;div class="form-check mb-3"&gt;
+                  &lt;input type="radio" id="validRadio" class="form-check-input is-valid" checked&gt;
+                  &lt;label class="form-check-valid" for="validRadio"&gt;Valid radio&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;!-- End Check --&gt;
+
+                &lt;!-- Check --&gt;
+                &lt;div class="form-check mb-3"&gt;
+                  &lt;input type="radio" id="invalidRadio" class="form-check-input is-invalid" checked&gt;
+                  &lt;label class="form-check-invalid" for="invalidRadio"&gt;Invalid radio&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;!-- End Check --&gt;
+
+                &lt;!-- Checkbox Switch --&gt;
+                &lt;div class="form-check form-switch mb-4"&gt;
+                  &lt;input type="checkbox" class="form-check-input is-valid" id="validSwitch" checked&gt;
+                  &lt;label class="form-check-valid"&gt;Valid toggle switch&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;!-- End Checkbox Switch --&gt;
+
+                &lt;!-- Checkbox Switch --&gt;
+                &lt;div class="form-check form-switch mb-4"&gt;
+                  &lt;input type="checkbox" class="form-check-input is-invalid" id="invalidSwitch" checked&gt;
+                  &lt;label class="form-check-invalid"&gt;Invalid toggle switch&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;!-- End Checkbox Switch --&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+    </div>
+    <!-- End Content -->
+  </main>
+  <!-- ========== END MAIN CONTENT ========== -->
+
+  <!-- ========== SECONDARY CONTENTS ========== -->
+  <!-- Go To -->
+  <a class="js-go-to go-to position-fixed" href="javascript:;" style="visibility: hidden;" data-hs-go-to-options='{
+       "offsetTop": 700,
+       "position": {
+         "init": {
+           "right": "2rem"
+         },
+         "show": {
+           "bottom": "2rem"
+         },
+         "hide": {
+           "bottom": "-2rem"
+         }
+       }
+     }'>
+    <i class="bi-chevron-up"></i>
+  </a>
+  <!-- ========== END SECONDARY CONTENTS ========== -->
+
+  <!-- JS Global Compulsory  -->
+  <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JS Implementing Plugins -->
+  <script src="../assets/vendor/hs-header/dist/hs-header.min.js"></script>
+  <script src="../assets/vendor/hs-nav-scroller/dist/hs-nav-scroller.min.js"></script>
+  <script src="../assets/vendor/list.js/dist/list.min.js"></script>
+  <script src="../assets/vendor/hs-go-to/dist/hs-go-to.min.js"></script>
+  <script src="../assets/vendor/prism/prism.js"></script>
+
+  <!-- JS Front -->
+  <script src="../assets/js/theme.min.js"></script>
+
+  <!-- JS Plugins Init. -->
+  <script>
+    (function() {
+      // INITIALIZATION OF HEADER
+      // =======================================================
+      new HSHeader('#header').init()
+
+
+      // INITIALIZATION OF NAV SCROLLER
+      // =======================================================
+      new HsNavScroller('.js-nav-scroller', {
+        delay: 400,
+        offset: 140
+      })
+
+
+      // INITIALIZATION OF LISTJS COMPONENT
+      // =======================================================
+      HSCore.components.HSList.init('#docsSearch');
+      const docsSearch = HSCore.components.HSList.getItem('docsSearch');
+
+
+      // GET JSON FILE RESULTS
+      // =======================================================
+      fetch('../assets/json/docs-search.json')
+      .then(response => response.json())
+      .then(data => {
+        docsSearch.add(data)
+      })
+
+
+      // INITIALIZATION OF GO TO
+      // =======================================================
+      new HSGoTo('.js-go-to')
+    })()
+  </script>
+</body>
+</html>

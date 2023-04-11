@@ -1,0 +1,1982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required Meta Tags Always Come First -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Title -->
+  <title>Sticky Header - Documentation | Front - Multipurpose Responsive Template</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../favicon.ico">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS Implementing Plugins -->
+  <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../assets/vendor/hs-table-sticky-header/src/hs.table-sticky-header.css">
+
+  <!-- CSS Front Template -->
+
+  <link rel="preload" href="../assets/css/theme.min.css" data-hs-appearance="default" as="style">
+  <link rel="preload" href="../assets/css/docs.min.css" data-hs-appearance="default" as="style">
+  <link rel="preload" href="../assets/css/theme-dark.min.css" data-hs-appearance="dark" as="style">
+  <link rel="preload" href="../assets/css/docs-dark.min.css" data-hs-appearance="dark" as="style">
+
+  <style data-hs-appearance-onload-styles>
+    *
+    {
+      transition: unset !important;
+    }
+
+    body
+    {
+      opacity: 0;
+    }
+  </style>
+
+  <script>
+            window.hs_config = {"autopath":"@@autopath","deleteLine":"hs-builder:delete","deleteLine:build":"hs-builder:build-delete","deleteLine:dist":"hs-builder:dist-delete","previewMode":false,"startPath":"/index.html","vars":{"themeFont":"https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap","version":"?v=1.0"},"layoutBuilder":{"extend":{"switcherSupport":true},"header":{"layoutMode":"default","containerMode":"container-fluid"},"sidebarLayout":"default"},"themeAppearance":{"layoutSkin":"default","sidebarSkin":"default","styles":{"colors":{"primary":"#377dff","transparent":"transparent","white":"#fff","dark":"132144","gray":{"100":"#f9fafc","900":"#1e2022"}},"font":"Inter"}},"languageDirection":{"lang":"en"},"skipFilesFromBundle":{"dist":["assets/js/hs.theme-appearance.js","assets/js/hs.theme-appearance-charts.js","assets/js/demo.js"],"build":["assets/css/theme.css","assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js","assets/js/demo.js","assets/css/theme-dark.css","assets/css/docs.css","assets/vendor/icon-set/style.css","assets/js/hs.theme-appearance.js","assets/js/hs.theme-appearance-charts.js","node_modules/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js","assets/js/demo.js"]},"minifyCSSFiles":["assets/css/theme.css","assets/css/theme-dark.css"],"copyDependencies":{"dist":{"*assets/js/theme-custom.js":""},"build":{"*assets/js/theme-custom.js":"","node_modules/bootstrap-icons/font/*fonts/**":"assets/css"}},"buildFolder":"","replacePathsToCDN":{},"directoryNames":{"src":"./src","dist":"./dist","build":"./build"},"fileNames":{"dist":{"js":"theme.min.js","css":"theme.min.css"},"build":{"css":"theme.min.css","js":"theme.min.js","vendorCSS":"vendor.min.css","vendorJS":"vendor.min.js"}},"fileTypes":"jpg|png|svg|mp4|webm|ogv|json"}
+            window.hs_config.gulpRGBA = (p1) => {
+  const options = p1.split(',')
+  const hex = options[0].toString()
+  const transparent = options[1].toString()
+
+  var c;
+  if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+    c= hex.substring(1).split('');
+    if(c.length== 3){
+      c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+    }
+    c= '0x'+c.join('');
+    return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',' + transparent + ')';
+  }
+  throw new Error('Bad Hex');
+}
+            window.hs_config.gulpDarken = (p1) => {
+  const options = p1.split(',')
+
+  let col = options[0].toString()
+  let amt = -parseInt(options[1])
+  var usePound = false
+
+  if (col[0] == "#") {
+    col = col.slice(1)
+    usePound = true
+  }
+  var num = parseInt(col, 16)
+  var r = (num >> 16) + amt
+  if (r > 255) {
+    r = 255
+  } else if (r < 0) {
+    r = 0
+  }
+  var b = ((num >> 8) & 0x00FF) + amt
+  if (b > 255) {
+    b = 255
+  } else if (b < 0) {
+    b = 0
+  }
+  var g = (num & 0x0000FF) + amt
+  if (g > 255) {
+    g = 255
+  } else if (g < 0) {
+    g = 0
+  }
+  return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16)
+}
+            window.hs_config.gulpLighten = (p1) => {
+  const options = p1.split(',')
+
+  let col = options[0].toString()
+  let amt = parseInt(options[1])
+  var usePound = false
+
+  if (col[0] == "#") {
+    col = col.slice(1)
+    usePound = true
+  }
+  var num = parseInt(col, 16)
+  var r = (num >> 16) + amt
+  if (r > 255) {
+    r = 255
+  } else if (r < 0) {
+    r = 0
+  }
+  var b = ((num >> 8) & 0x00FF) + amt
+  if (b > 255) {
+    b = 255
+  } else if (b < 0) {
+    b = 0
+  }
+  var g = (num & 0x0000FF) + amt
+  if (g > 255) {
+    g = 255
+  } else if (g < 0) {
+    g = 0
+  }
+  return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16)
+}
+            </script>
+</head>
+
+<body class="navbar-sidebar-aside-lg">
+
+  <script src="../assets/js/hs.theme-appearance.js"></script>
+
+  <!-- ========== HEADER ========== -->
+  <header id="header" class="navbar navbar-expand navbar-end navbar-light navbar-sticky-lg-top bg-white">
+    <div class="container-fluid">
+      <nav class="navbar-nav-wrap">
+        <div class="row flex-grow-1">
+          <!-- Default Logo -->
+          <div class="docs-navbar-sidebar-container d-flex align-items-center mb-2 mb-lg-0">
+            <a class="navbar-brand" href="../documentation/index.html" aria-label="Front">
+              <img class="navbar-brand-logo" src="../assets/svg/logos/logo.svg" alt="Logo" data-hs-theme-appearance="default">
+              <img class="navbar-brand-logo" src="../assets/svg/logos-light/logo.svg" alt="Logo" data-hs-theme-appearance="dark">
+            </a>
+            <a href="../documentation/changelog.html">
+              <span class="badge bg-soft-primary text-primary">v2.1</span>
+            </a>
+          </div>
+          <!-- End Default Logo -->
+
+          <div class="col-md px-lg-0">
+            <div class="d-flex justify-content-between align-items-center px-lg-5 px-xl-10">
+              <div class="d-none d-md-block">
+                <!-- Search Form -->
+                <form id="docsSearch" class="position-relative" data-hs-list-options='{
+                       "searchMenu": true,
+                       "keyboard": true,
+                       "item": "searchTemplate",
+                       "valueNames": ["component", "category", {"name": "link", "attr": "href"}],
+                       "empty": "#searchNoResults"
+                     }'>
+                  <!-- Input Group -->
+                  <div class="input-group input-group-merge navbar-input-group">
+                    <div class="input-group-prepend input-group-text">
+                      <i class="bi-search"></i>
+                    </div>
+
+                    <input type="search" class="search form-control form-control-sm" placeholder="Search in docs" aria-label="Search in docs">
+
+                    <a class="input-group-append input-group-text" href="javascript:;">
+                      <i id="clearSearchResultsIcon" class="bi-x" style="display: none;"></i>
+                    </a>
+                  </div>
+                  <!-- End Input Group -->
+
+                  <!-- List -->
+                  <div class="list dropdown-menu navbar-dropdown-menu-borderless w-100 overflow-auto" style="max-height: 16rem;"></div>
+                  <!-- End List -->
+
+                  <!-- Empty -->
+                  <div id="searchNoResults" style="display: none;">
+                    <div class="text-center p-4">
+                      <img class="mb-3" src="../assets/svg/illustrations/oc-error.svg" alt="Image Description" data-hs-theme-appearance="default" style="width: 7rem;">
+                      <img class="mb-3" src="../assets/svg/illustrations-light/oc-error.svg" alt="Image Description" data-hs-theme-appearance="dark" style="width: 7rem;">
+                      <p class="mb-0">No Results</p>
+                    </div>
+                  </div>
+                  <!-- End Empty -->
+                </form>
+                <!-- End Search Form -->
+
+                <!-- List Item Template -->
+                <div class="d-none">
+                  <div id="searchTemplate" class="dropdown-item">
+                    <a class="d-block link" href="#">
+                      <span class="category d-block fw-normal text-muted mb-1"></span>
+                      <span class="component text-dark"></span>
+                    </a>
+                  </div>
+                </div>
+                <!-- End List Item Template -->
+              </div>
+
+              <!-- Navbar -->
+              <ul class="navbar-nav p-0">
+                <li class="nav-item">
+                  <a class="btn btn-ghost-secondary btn-sm" href="https://htmlstream.com/contact-us" target="_blank">
+                    Get Support <i class="bi-box-arrow-up-right ms-1"></i>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="btn btn-primary btn-sm" href="../index.html">
+                    <i class="bi-eye me-1"></i> Preview Demo
+                  </a>
+                </li>
+              </ul>
+              <!-- End Navbar -->
+            </div>
+          </div>
+          <!-- End Col -->
+        </div>
+        <!-- End Row -->
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========== END HEADER ========== -->
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main id="content" role="main">
+    <!-- Navbar -->
+    <nav class="js-nav-scroller navbar navbar-expand-lg navbar-sidebar navbar-vertical navbar-light bg-white border-end" data-hs-nav-scroller-options='{
+            "type": "vertical",
+            "target": ".navbar-nav .active",
+            "offset": 80
+           }'>
+      <!-- Navbar Toggle -->
+      <div class="d-grid flex-grow-1 px-2">
+        <button type="button" class="navbar-toggler btn btn-white" data-bs-toggle="collapse" data-bs-target="#navbarVerticalNavMenu" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navbarVerticalNavMenu">
+          <span class="d-flex justify-content-between align-items-center">
+            <span class="h3 mb-0">Nav menu</span>
+
+            <span class="navbar-toggler-default">
+              <i class="bi-list"></i>
+            </span>
+
+            <span class="navbar-toggler-toggled">
+              <i class="bi-x"></i>
+            </span>
+          </span>
+        </button>
+      </div>
+      <!-- End Navbar Toggle -->
+
+      <!-- Navbar Collapse -->
+      <div id="navbarVerticalNavMenu" class="collapse navbar-collapse">
+        <div class="navbar-brand-wrapper border-end" style="height: auto;">
+          <!-- Default Logo -->
+          <div class="d-flex align-items-center mb-3">
+            <a class="navbar-brand" href="../documentation/index.html" aria-label="Front">
+              <img class="navbar-brand-logo" src="../assets/svg/logos/logo.svg" alt="Logo" data-hs-theme-appearance="default">
+              <img class="navbar-brand-logo" src="../assets/svg/logos-light/logo.svg" alt="Logo" data-hs-theme-appearance="dark">
+            </a>
+            <a class="navbar-brand-badge" href="../documentation/changelog.html">
+              <span class="badge bg-soft-primary text-primary ms-2">v2.1</span>
+            </a>
+          </div>
+          <!-- End Default Logo -->
+        </div>
+
+        <div class="docs-navbar-sidebar-aside-body navbar-sidebar-aside-body">
+          <ul id="navbarSettings" class="navbar-nav nav nav-vertical nav-tabs nav-tabs-borderless nav-sm">
+            <li class="nav-item">
+              <span class="nav-subtitle">Documentation</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/index.html">Introduction</a>
+            </li>
+
+            <li class="nav-item my-2 my-lg-5"></li>
+
+            <li class="nav-item">
+              <span class="nav-subtitle">Getting started</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/getting-started.html">Getting Started</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/gulp.html">Gulp</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/darkmode.html">Dark Mode <span class="badge bg-soft-dark text-dark lh-base ms-1">New</span></a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/customization.html">Customization</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/credits.html">Credits</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/changelog.html">Changelog</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <span class="nav-subtitle">Design &amp; Graphics</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/bs-icons.html">Bootstrap Icons</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/illustrations.html">Illustrations</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <span class="nav-subtitle">Components</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/accordion.html">Accordion</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/alerts.html">Alerts</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/avatars.html">Avatars</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/badge.html">Badge</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/breadcrumb.html">Breadcrumb</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/buttons.html">Buttons</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/button-group.html">Button Group</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/cards.html">Cards</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/collapse.html">Collapse</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/column-divider.html">Column Divider</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/devices.html">Devices</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/divider.html">Divider</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/dropdowns.html">Dropdowns</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/icons.html">Icons</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/list-group.html">List Group</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/lists.html">Lists</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/legend-indicator.html">Legend Indicator</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/modal.html">Modal</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/offcanvas.html">Offcanvas</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/page-header.html">Page Header</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/pagination.html">Pagination</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/popovers.html">Popovers</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/progress.html">Progress</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/profile.html">Profile</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/shapes.html">Shapes</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sliding-img.html">Sliding Image</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/spinners.html">Spinners</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/steps.html">Steps</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/tab.html">Tab</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/toasts.html">Toasts</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/tooltips.html">Tooltips</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/typography.html">Typography</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Navbars</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/navbar.html">Navbar</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/navs.html">Navs</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/mega-menu.html">Mega Menu</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/navbar-vertical-aside.html">Navbar Vertical Aside</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/scrollspy.html">Scrollspy</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Tables</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/tables.html">Tables</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/datatables.html">Datatables</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link active" href="../documentation/table-sticky-header.html">Sticky Header</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Basic forms</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/basic-forms.html">Basic Forms</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/checks-and-switches.html">Checks &amp; Switches</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/input-group.html">Input Group</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle">Advanced Forms</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/select.html">Advanced Select</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/datepicker.html">Datepicker (Flatpickr)</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/daterangepicker.html">Date Range Picker</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/calendar.html">Calendar (Fullcalendar)</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/file-attachments.html">File Attachments</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/dropzone.html">Drag’ n’ Drop File Uploads</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/quill.html">WYSIWYG Editor</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/quantity-counter.html">Quantity Counter</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/copy-to-clipboard.html">Copy to Clipboard</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/input-mask.html">Input Mask</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/step-forms.html">Step Forms (Wizards)</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/add-field.html">Add Field</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/toggle-password.html">Toggle Password</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/count-characters.html">Count Characters</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/form-search.html">Form Search</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/toggle-switch.html">Toggle Switch</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/google-recaptcha.html">Google reCAPTCHA</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle">Charts</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/chartjs.html">Chart.js</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/counter.html">Counter</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/circles.html">Circles.js (Pie Chart)</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle">Others</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/fslightbox.html">Fullscreen Lightbox</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/maps-leaflet.html">Leaflet</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/maps-jsvectormap.html">JSVectorMap</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sortablejs.html">SortableJS</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sticky-block.html">Sticky Block</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/go-to.html">Go To</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Utilities</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/backgrounds.html">Backgrounds</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/borders.html">Borders</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/colors.html">Colors</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/links.html">Links</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/position.html">Position</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/shadows.html">Shadows</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sizing.html">Sizing</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/spacing.html">Spacing</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/z-index.html">Z-index</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/opacity.html">Opacity</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- End Navbar Collapse -->
+    </nav>
+    <!-- End Navbar -->
+
+    <!-- Content -->
+    <div class="navbar-sidebar-aside-content content-space-1 content-space-md-2 px-lg-5 px-xl-10">
+      <!-- Page Header -->
+      <div class="docs-page-header">
+        <div class="row align-items-center">
+          <div class="col-sm">
+            <h1 class="docs-page-header-title">Sticky Header</h1>
+            <p class="docs-page-header-text">Make a table thead sticky to the top of a page, card or any other content.</p>
+          </div>
+        </div>
+      </div>
+      <!-- End Page Header -->
+
+      <!-- Heading -->
+      <h2 id="how-to-use" class="hs-docs-heading">
+        How to use <a class="anchorjs-link" href="#how-to-use" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <p>Copy-paste the stylesheet <code>&lt;link&gt;</code> into your <code>&lt;head&gt;</code> to load the CSS.</p>
+
+      <pre class="rounded mb-4">
+        <code class="language-html" data-lang="html">
+          &lt;link rel="stylesheet" href="./assets/vendor/hs-table-sticky-header/src/hs.table-sticky-header.css"&gt;
+        </code>
+      </pre>
+
+      <p>Copy-paste the init function under <em><u>JS Plugins Init.</u></em>, before the closing <code>&lt;/body&gt;</code> tag, to enable it.</p>
+
+      <pre class="rounded">
+        <code class="language-html" data-lang="html">
+          &lt;script src="./assets/vendor/hs-table-sticky-header/src/hs.table-sticky-header.js"&gt;&lt;/script&gt;
+
+          &lt;script&gt;
+            $(document).on('ready', function () {
+              // INITIALIZATION OF STICKY HEADER
+              // =======================================================
+              new HSTableStickyHeader('.js-sticky-header', {
+                offsetTop: "60px"
+              }).init();
+            });
+          &lt;/script&gt;
+        </code>
+      </pre>
+
+      <!-- Heading -->
+      <h2 id="example" class="hs-docs-heading">
+        Example <a class="anchorjs-link" href="#example" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab13" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab13" data-bs-toggle="pill" href="#nav-result13" role="tab" aria-controls="nav-result13" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab13" data-bs-toggle="pill" href="#nav-html13" role="tab" aria-controls="nav-html13" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent13">
+          <div class="tab-pane fade p-4 show active" id="nav-result13" role="tabpanel" aria-labelledby="nav-resultTab13">
+            <div class="js-sticky-header">
+              <!-- Table -->
+              <div class="table-responsive">
+                <table class="table table-lg table-borderless table-thead-bordered table-nowrap table-align-middle">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">Name</th>
+                      <th scope="col">Position</th>
+                      <th scope="col">Country</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>
+                        <a class="d-flex align-items-center" href="../user-profile.html">
+                          <div class="avatar avatar-circle">
+                            <img class="avatar-img" src="../assets/img/160x160/img10.jpg" alt="Image Description">
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                            <span class="d-block h5 text-inherit mb-0">Amanda Harvey <i class="tio-verified text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i></span>
+                            <span class="d-block fs-6 text-body">amanda@example.com</span>
+                          </div>
+                        </a>
+                      </td>
+                      <td>
+                        <span class="d-block h5 mb-0">Director</span>
+                        <span class="d-block fs-6">Human resources</span>
+                      </td>
+                      <td>United Kingdom <span class="visually-hidden">Code: GB</span></td>
+                      <td>
+                        <span class="legend-indicator bg-success"></span>Active
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <a class="d-flex align-items-center" href="../user-profile.html">
+                          <div class="avatar avatar-soft-primary avatar-circle">
+                            <span class="avatar-initials">A</span>
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                            <span class="d-block h5 text-inherit mb-0">Anne Richard</span>
+                            <span class="d-block fs-6 text-body">anne@example.com</span>
+                          </div>
+                        </a>
+                      </td>
+                      <td>
+                        <span class="d-block h5 mb-0">Seller</span>
+                        <span class="d-block fs-6">Branding products</span>
+                      </td>
+                      <td>United States <span class="visually-hidden">Code: US</span></td>
+                      <td>
+                        <span class="legend-indicator bg-warning"></span>Pending
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <a class="d-flex align-items-center" href="../user-profile.html">
+                          <div class="avatar avatar-circle">
+                            <img class="avatar-img" src="../assets/img/160x160/img3.jpg" alt="Image Description">
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                            <span class="d-block h5 text-inherit mb-0">David Harrison</span>
+                            <span class="d-block fs-6 text-body">david@example.com</span>
+                          </div>
+                        </a>
+                      </td>
+                      <td>
+                        <span class="d-block h5 mb-0">Unknown</span>
+                        <span class="d-block fs-6">Unknown</span>
+                      </td>
+                      <td>United States <span class="visually-hidden">Code: US</span></td>
+                      <td>
+                        <span class="legend-indicator bg-success"></span>Active
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <a class="d-flex align-items-center" href="../user-profile.html">
+                          <div class="avatar avatar-circle">
+                            <img class="avatar-img" src="../assets/img/160x160/img5.jpg" alt="Image Description">
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                            <span class="d-block h5 text-inherit mb-0">Finch Hoot</span>
+                            <span class="d-block fs-6 text-body">finch@example.com</span>
+                          </div>
+                        </a>
+                      </td>
+                      <td>
+                        <span class="d-block h5 mb-0">Designer</span>
+                        <span class="d-block fs-6">IT department</span>
+                      </td>
+                      <td>Argentina <span class="visually-hidden">Code: AR</span></td>
+                      <td>
+                        <span class="legend-indicator bg-danger"></span>Suspended
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <a class="d-flex align-items-center" href="../user-profile.html">
+                          <div class="avatar avatar-soft-dark avatar-circle">
+                            <span class="avatar-initials">B</span>
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                            <span class="d-block h5 text-inherit mb-0">Bob Dean</span>
+                            <span class="d-block fs-6 text-body">bob@example.com</span>
+                          </div>
+                        </a>
+                      </td>
+                      <td>
+                        <span class="d-block h5 mb-0">Executive director</span>
+                        <span class="d-block fs-6">Marketing</span>
+                      </td>
+                      <td>Austria <span class="visually-hidden">Code: AT</span></td>
+                      <td>
+                        <span class="legend-indicator bg-success"></span>Active
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <a class="d-flex align-items-center" href="../user-profile.html">
+                          <div class="avatar avatar-circle">
+                            <img class="avatar-img" src="../assets/img/160x160/img9.jpg" alt="Image Description">
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                            <span class="d-block h5 text-inherit mb-0">Ella Lauda <i class="tio-verified text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i></span>
+                            <span class="d-block fs-6 text-body">ella@example.com</span>
+                          </div>
+                        </a>
+                      </td>
+                      <td>
+                        <span class="d-block h5 mb-0">Co-founder</span>
+                        <span class="d-block fs-6">All departments</span>
+                      </td>
+                      <td>United Kingdom <span class="visually-hidden">Code: GB</span></td>
+                      <td>
+                        <span class="legend-indicator bg-success"></span>Active
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <a class="d-flex align-items-center" href="../user-profile.html">
+                          <div class="avatar avatar-soft-info avatar-circle">
+                            <span class="avatar-initials">L</span>
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                            <span class="d-block h5 text-inherit mb-0">Lori Hunter</span>
+                            <span class="d-block fs-6 text-body">hunter@example.com</span>
+                          </div>
+                        </a>
+                      </td>
+                      <td>
+                        <span class="d-block h5 mb-0">Developer</span>
+                        <span class="d-block fs-6">Mobile app</span>
+                      </td>
+                      <td>Estonia <span class="visually-hidden">Code: EE</span></td>
+                      <td>
+                        <span class="legend-indicator bg-success"></span>Active
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <a class="d-flex align-items-center" href="../user-profile.html">
+                          <div class="avatar avatar-soft-primary avatar-circle">
+                            <span class="avatar-initials">M</span>
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                            <span class="d-block h5 text-inherit mb-0">Mark Colbert</span>
+                            <span class="d-block fs-6 text-body">mark@example.com</span>
+                          </div>
+                        </a>
+                      </td>
+                      <td>
+                        <span class="d-block h5 mb-0">Executive director</span>
+                        <span class="d-block fs-6">Human resources</span>
+                      </td>
+                      <td>Canada <span class="visually-hidden">Code: CA</span></td>
+                      <td>
+                        <span class="legend-indicator bg-success"></span>Active
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <a class="d-flex align-items-center" href="../user-profile.html">
+                          <div class="avatar avatar-circle">
+                            <img class="avatar-img" src="../assets/img/160x160/img6.jpg" alt="Image Description">
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                            <span class="d-block h5 text-inherit mb-0">Costa Quinn</span>
+                            <span class="d-block fs-6 text-body">costa@example.com</span>
+                          </div>
+                        </a>
+                      </td>
+                      <td>
+                        <span class="d-block h5 mb-0">Co-founder</span>
+                        <span class="d-block fs-6">All departments</span>
+                      </td>
+                      <td>France <span class="visually-hidden">Code: FR</span></td>
+                      <td>
+                        <span class="legend-indicator bg-warning"></span>Pending
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <a class="d-flex align-items-center" href="../user-profile.html">
+                          <div class="avatar avatar-soft-danger avatar-circle">
+                            <span class="avatar-initials">R</span>
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                            <span class="d-block h5 text-inherit mb-0">Rachel Doe <i class="tio-verified text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i></span>
+                            <span class="d-block fs-6 text-body">rachel@example.com</span>
+                          </div>
+                        </a>
+                      </td>
+                      <td>
+                        <span class="d-block h5 mb-0">Accountant</span>
+                        <span class="d-block fs-6">Finance</span>
+                      </td>
+                      <td>United States <span class="visually-hidden">Code: US</span></td>
+                      <td>
+                        <span class="legend-indicator bg-success"></span>Active
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <a class="d-flex align-items-center" href="../user-profile.html">
+                          <div class="avatar avatar-circle">
+                            <img class="avatar-img" src="../assets/img/160x160/img8.jpg" alt="Image Description">
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                            <span class="d-block h5 text-inherit mb-0">Linda Bates</span>
+                            <span class="d-block fs-6 text-body">linda@example.com</span>
+                          </div>
+                        </a>
+                      </td>
+                      <td>
+                        <span class="d-block h5 mb-0">Unknown</span>
+                        <span class="d-block fs-6">Unknown</span>
+                      </td>
+                      <td>United Kingdom <span class="visually-hidden">Code: UK</span></td>
+                      <td>
+                        <span class="legend-indicator bg-danger"></span>Suspended
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <a class="d-flex align-items-center" href="../user-profile.html">
+                          <div class="avatar avatar-soft-info avatar-circle">
+                            <span class="avatar-initials">B</span>
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                            <span class="d-block h5 text-inherit mb-0">Brian Halligan</span>
+                            <span class="d-block fs-6 text-body">brian@example.com</span>
+                          </div>
+                        </a>
+                      </td>
+                      <td>
+                        <span class="d-block h5 mb-0">Director</span>
+                        <span class="d-block fs-6">Accounting</span>
+                      </td>
+                      <td>France <span class="visually-hidden">Code: FR</span></td>
+                      <td>
+                        <span class="legend-indicator bg-success"></span>Active
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <a class="d-flex align-items-center" href="../user-profile.html">
+                          <div class="avatar avatar-soft-dark avatar-circle">
+                            <span class="avatar-initials">C</span>
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                            <span class="d-block h5 text-inherit mb-0">Chris Mathew</span>
+                            <span class="d-block fs-6 text-body">chris@example.com</span>
+                          </div>
+                        </a>
+                      </td>
+                      <td>
+                        <span class="d-block h5 mb-0">Developer</span>
+                        <span class="d-block fs-6">Mobile app</span>
+                      </td>
+                      <td>Switzerland <span class="visually-hidden">Code: CH</span></td>
+                      <td>
+                        <span class="legend-indicator bg-warning"></span>Pending
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <a class="d-flex align-items-center" href="../user-profile.html">
+                          <div class="avatar avatar-circle">
+                            <img class="avatar-img" src="../assets/img/160x160/img7.jpg" alt="Image Description">
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                            <span class="d-block h5 text-inherit mb-0">Clarice Boone <i class="tio-verified text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i></span>
+                            <span class="d-block fs-6 text-body">clarice@example.com</span>
+                          </div>
+                        </a>
+                      </td>
+                      <td>
+                        <span class="d-block h5 mb-0">Seller</span>
+                        <span class="d-block fs-6">Branding products</span>
+                      </td>
+                      <td>United Kingdom <span class="visually-hidden">Code: UK</span></td>
+                      <td>
+                        <span class="legend-indicator bg-success"></span>Active
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <a class="d-flex align-items-center" href="../user-profile.html">
+                          <div class="avatar avatar-soft-dark avatar-circle">
+                            <span class="avatar-initials">L</span>
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                            <span class="d-block h5 text-inherit mb-0">Lewis Clarke</span>
+                            <span class="d-block fs-6 text-body">lewis@example.com</span>
+                          </div>
+                        </a>
+                      </td>
+                      <td>
+                        <span class="d-block h5 mb-0">Co-founder</span>
+                        <span class="d-block fs-6">IT department</span>
+                      </td>
+                      <td>Switzerland <span class="visually-hidden">Code: CH</span></td>
+                      <td>
+                        <span class="legend-indicator bg-warning"></span>Pending
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <a class="d-flex align-items-center" href="../user-profile.html">
+                          <div class="avatar avatar-circle">
+                            <img class="avatar-img" src="../assets/img/160x160/img4.jpg" alt="Image Description">
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                            <span class="d-block h5 text-inherit mb-0">Sam Kart</span>
+                            <span class="d-block fs-6 text-body">sam@example.com</span>
+                          </div>
+                        </a>
+                      </td>
+                      <td>
+                        <span class="d-block h5 mb-0">Designer</span>
+                        <span class="d-block fs-6">Branding</span>
+                      </td>
+                      <td>Canada <span class="visually-hidden">Code: CA</span></td>
+                      <td>
+                        <span class="legend-indicator bg-warning"></span>Pending
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <a class="d-flex align-items-center" href="../user-profile.html">
+                          <div class="avatar avatar-soft-danger avatar-circle">
+                            <span class="avatar-initials">J</span>
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                            <span class="d-block h5 text-inherit mb-0">Johnny Appleseed</span>
+                            <span class="d-block fs-6 text-body">johnny@example.com</span>
+                          </div>
+                        </a>
+                      </td>
+                      <td>
+                        <span class="d-block h5 mb-0">Accountant</span>
+                        <span class="d-block fs-6">Human resources</span>
+                      </td>
+                      <td>United States <span class="visually-hidden">Code: US</span></td>
+                      <td>
+                        <span class="legend-indicator bg-success"></span>Active
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <a class="d-flex align-items-center" href="../user-profile.html">
+                          <div class="avatar avatar-soft-danger avatar-circle">
+                            <span class="avatar-initials">P</span>
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                            <span class="d-block h5 text-inherit mb-0">Phileas Fogg</span>
+                            <span class="d-block fs-6 text-body">phileas@example.com</span>
+                          </div>
+                        </a>
+                      </td>
+                      <td>
+                        <span class="d-block h5 mb-0">Designer</span>
+                        <span class="d-block fs-6">Branding</span>
+                      </td>
+                      <td>Spain <span class="visually-hidden">Code: ES</span></td>
+                      <td>
+                        <span class="legend-indicator bg-danger"></span>Suspended
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <a class="d-flex align-items-center" href="../user-profile.html">
+                          <div class="avatar avatar-circle">
+                            <img class="avatar-img" src="../assets/img/160x160/img6.jpg" alt="Image Description">
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                            <span class="d-block h5 text-inherit mb-0">Mark Williams <i class="tio-verified text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i></span>
+                            <span class="d-block fs-6 text-body">mark@example.com</span>
+                          </div>
+                        </a>
+                      </td>
+                      <td>
+                        <span class="d-block h5 mb-0">Co-founder</span>
+                        <span class="d-block fs-6">Branding</span>
+                      </td>
+                      <td>United Kingdom <span class="visually-hidden">Code: GB</span></td>
+                      <td>
+                        <span class="legend-indicator bg-success"></span>Active
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <a class="d-flex align-items-center" href="../user-profile.html">
+                          <div class="avatar avatar-soft-dark avatar-circle">
+                            <span class="avatar-initials">T</span>
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                            <span class="d-block h5 text-inherit mb-0">Timothy Silva</span>
+                            <span class="d-block fs-6 text-body">timothy@example.com</span>
+                          </div>
+                        </a>
+                      </td>
+                      <td>
+                        <span class="d-block h5 mb-0">Developer</span>
+                        <span class="d-block fs-6">Mobile app</span>
+                      </td>
+                      <td>Italy <span class="visually-hidden">Code: IT</span></td>
+                      <td>
+                        <span class="legend-indicator bg-warning"></span>Pending
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <a class="d-flex align-items-center" href="../user-profile.html">
+                          <div class="avatar avatar-soft-dark avatar-circle">
+                            <span class="avatar-initials">G</span>
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                            <span class="d-block h5 text-inherit mb-0">Gary Bishop <i class="tio-verified text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i></span>
+                            <span class="d-block fs-6 text-body">gary@example.com</span>
+                          </div>
+                        </a>
+                      </td>
+                      <td>
+                        <span class="d-block h5 mb-0">Developer</span>
+                        <span class="d-block fs-6">Mobile app</span>
+                      </td>
+                      <td>Latvia <span class="visually-hidden">Code: LV</span></td>
+                      <td>
+                        <span class="legend-indicator bg-success"></span>Active
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <a class="d-flex align-items-center" href="../user-profile.html">
+                          <div class="avatar avatar-soft-dark avatar-circle">
+                            <span class="avatar-initials">Y</span>
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                            <span class="d-block h5 text-inherit mb-0">Yorker Scogings</span>
+                            <span class="d-block fs-6 text-body">yorker@example.com</span>
+                          </div>
+                        </a>
+                      </td>
+                      <td>
+                        <span class="d-block h5 mb-0">Seller</span>
+                        <span class="d-block fs-6">Branding products</span>
+                      </td>
+                      <td>Norway <span class="visually-hidden">Code: NO</span></td>
+                      <td>
+                        <span class="legend-indicator bg-danger"></span>Suspended
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <a class="d-flex align-items-center" href="../user-profile.html">
+                          <div class="avatar avatar-soft-info avatar-circle">
+                            <span class="avatar-initials">F</span>
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                            <span class="d-block h5 text-inherit mb-0">Frank Phillips</span>
+                            <span class="d-block fs-6 text-body">frank@example.com</span>
+                          </div>
+                        </a>
+                      </td>
+                      <td>
+                        <span class="d-block h5 mb-0">Unknown</span>
+                        <span class="d-block fs-6">Unknown</span>
+                      </td>
+                      <td>Norway <span class="visually-hidden">Code: NO</span></td>
+                      <td>
+                        <span class="legend-indicator bg-danger"></span>Suspended
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <a class="d-flex align-items-center" href="../user-profile.html">
+                          <div class="avatar avatar-soft-primary avatar-circle">
+                            <span class="avatar-initials">E</span>
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                            <span class="d-block h5 text-inherit mb-0">Elizabeth Carter</span>
+                            <span class="d-block fs-6 text-body">eliz@example.com</span>
+                          </div>
+                        </a>
+                      </td>
+                      <td>
+                        <span class="d-block h5 mb-0">Unknown</span>
+                        <span class="d-block fs-6">Unknown</span>
+                      </td>
+                      <td>United States <span class="visually-hidden">Code: UK</span></td>
+                      <td>
+                        <span class="legend-indicator bg-warning"></span>Pending
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- End Table -->
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="nav-html13" role="tabpanel" aria-labelledby="nav-htmlTab13">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class="js-sticky-header"&gt;
+                  &lt;!-- Table --&gt;
+                  &lt;div class="table-responsive"&gt;
+                    &lt;table class="table table-lg table-borderless table-thead-bordered table-nowrap table-align-middle"&gt;
+                      &lt;thead class="thead-light"&gt;
+                        &lt;tr&gt;
+                          &lt;th scope="col"&gt;Name&lt;/th&gt;
+                          &lt;th scope="col"&gt;Position&lt;/th&gt;
+                          &lt;th scope="col"&gt;Country&lt;/th&gt;
+                          &lt;th scope="col"&gt;Status&lt;/th&gt;
+                        &lt;/tr&gt;
+                      &lt;/thead&gt;
+
+                      &lt;tbody&gt;
+                        &lt;tr&gt;
+                          &lt;td&gt;
+                            &lt;a class="d-flex align-items-center" href="../user-profile.html"&gt;
+                              &lt;div class="avatar avatar-circle"&gt;
+                                &lt;img class="avatar-img" src="../assets/img/160x160/img10.jpg" alt="Image Description"&gt;
+                              &lt;/div&gt;
+                              &lt;div class="flex-grow-1 ms-3"&gt;
+                                &lt;span class="d-block h5 text-inherit mb-0"&gt;Amanda Harvey &lt;i class="tio-verified text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"&gt;&lt;/i&gt;&lt;/span&gt;
+                                &lt;span class="d-block fs-6 text-body"&gt;amanda@example.com&lt;/span&gt;
+                              &lt;/div&gt;
+                            &lt;/a&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="d-block h5 mb-0"&gt;Director&lt;/span&gt;
+                            &lt;span class="d-block fs-6"&gt;Human resources&lt;/span&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;United Kingdom &lt;span class="visually-hidden"&gt;Code: GB&lt;/span&gt;&lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="legend-indicator bg-success"&gt;&lt;/span&gt;Active
+                          &lt;/td&gt;
+                        &lt;/tr&gt;
+
+                        &lt;tr&gt;
+                          &lt;td&gt;
+                            &lt;a class="d-flex align-items-center" href="../user-profile.html"&gt;
+                              &lt;div class="avatar avatar-soft-primary avatar-circle"&gt;
+                                &lt;span class="avatar-initials"&gt;A&lt;/span&gt;
+                              &lt;/div&gt;
+                              &lt;div class="flex-grow-1 ms-3"&gt;
+                                &lt;span class="d-block h5 text-inherit mb-0"&gt;Anne Richard&lt;/span&gt;
+                                &lt;span class="d-block fs-6 text-body"&gt;anne@example.com&lt;/span&gt;
+                              &lt;/div&gt;
+                            &lt;/a&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="d-block h5 mb-0"&gt;Seller&lt;/span&gt;
+                            &lt;span class="d-block fs-6"&gt;Branding products&lt;/span&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;United States &lt;span class="visually-hidden"&gt;Code: US&lt;/span&gt;&lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="legend-indicator bg-warning"&gt;&lt;/span&gt;Pending
+                          &lt;/td&gt;
+                        &lt;/tr&gt;
+
+                        &lt;tr&gt;
+                          &lt;td&gt;
+                            &lt;a class="d-flex align-items-center" href="../user-profile.html"&gt;
+                              &lt;div class="avatar avatar-circle"&gt;
+                                &lt;img class="avatar-img" src="../assets/img/160x160/img3.jpg" alt="Image Description"&gt;
+                              &lt;/div&gt;
+                              &lt;div class="flex-grow-1 ms-3"&gt;
+                                &lt;span class="d-block h5 text-inherit mb-0"&gt;David Harrison&lt;/span&gt;
+                                &lt;span class="d-block fs-6 text-body"&gt;david@example.com&lt;/span&gt;
+                              &lt;/div&gt;
+                            &lt;/a&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="d-block h5 mb-0"&gt;Unknown&lt;/span&gt;
+                            &lt;span class="d-block fs-6"&gt;Unknown&lt;/span&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;United States &lt;span class="visually-hidden"&gt;Code: US&lt;/span&gt;&lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="legend-indicator bg-success"&gt;&lt;/span&gt;Active
+                          &lt;/td&gt;
+                        &lt;/tr&gt;
+
+                        &lt;tr&gt;
+                          &lt;td&gt;
+                            &lt;a class="d-flex align-items-center" href="../user-profile.html"&gt;
+                              &lt;div class="avatar avatar-circle"&gt;
+                                &lt;img class="avatar-img" src="../assets/img/160x160/img5.jpg" alt="Image Description"&gt;
+                              &lt;/div&gt;
+                              &lt;div class="flex-grow-1 ms-3"&gt;
+                                &lt;span class="d-block h5 text-inherit mb-0"&gt;Finch Hoot&lt;/span&gt;
+                                &lt;span class="d-block fs-6 text-body"&gt;finch@example.com&lt;/span&gt;
+                              &lt;/div&gt;
+                            &lt;/a&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="d-block h5 mb-0"&gt;Designer&lt;/span&gt;
+                            &lt;span class="d-block fs-6"&gt;IT department&lt;/span&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;Argentina &lt;span class="visually-hidden"&gt;Code: AR&lt;/span&gt;&lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="legend-indicator bg-danger"&gt;&lt;/span&gt;Suspended
+                          &lt;/td&gt;
+                        &lt;/tr&gt;
+
+                        &lt;tr&gt;
+                          &lt;td&gt;
+                            &lt;a class="d-flex align-items-center" href="../user-profile.html"&gt;
+                              &lt;div class="avatar avatar-soft-dark avatar-circle"&gt;
+                                &lt;span class="avatar-initials"&gt;B&lt;/span&gt;
+                              &lt;/div&gt;
+                              &lt;div class="flex-grow-1 ms-3"&gt;
+                                &lt;span class="d-block h5 text-inherit mb-0"&gt;Bob Dean&lt;/span&gt;
+                                &lt;span class="d-block fs-6 text-body"&gt;bob@example.com&lt;/span&gt;
+                              &lt;/div&gt;
+                            &lt;/a&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="d-block h5 mb-0"&gt;Executive director&lt;/span&gt;
+                            &lt;span class="d-block fs-6"&gt;Marketing&lt;/span&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;Austria &lt;span class="visually-hidden"&gt;Code: AT&lt;/span&gt;&lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="legend-indicator bg-success"&gt;&lt;/span&gt;Active
+                          &lt;/td&gt;
+                        &lt;/tr&gt;
+
+                        &lt;tr&gt;
+                          &lt;td&gt;
+                            &lt;a class="d-flex align-items-center" href="../user-profile.html"&gt;
+                              &lt;div class="avatar avatar-circle"&gt;
+                                &lt;img class="avatar-img" src="../assets/img/160x160/img9.jpg" alt="Image Description"&gt;
+                              &lt;/div&gt;
+                              &lt;div class="flex-grow-1 ms-3"&gt;
+                                &lt;span class="d-block h5 text-inherit mb-0"&gt;Ella Lauda &lt;i class="tio-verified text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"&gt;&lt;/i&gt;&lt;/span&gt;
+                                &lt;span class="d-block fs-6 text-body"&gt;ella@example.com&lt;/span&gt;
+                              &lt;/div&gt;
+                            &lt;/a&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="d-block h5 mb-0"&gt;Co-founder&lt;/span&gt;
+                            &lt;span class="d-block fs-6"&gt;All departments&lt;/span&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;United Kingdom &lt;span class="visually-hidden"&gt;Code: GB&lt;/span&gt;&lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="legend-indicator bg-success"&gt;&lt;/span&gt;Active
+                          &lt;/td&gt;
+                        &lt;/tr&gt;
+
+                        &lt;tr&gt;
+                          &lt;td&gt;
+                            &lt;a class="d-flex align-items-center" href="../user-profile.html"&gt;
+                              &lt;div class="avatar avatar-soft-info avatar-circle"&gt;
+                                &lt;span class="avatar-initials"&gt;L&lt;/span&gt;
+                              &lt;/div&gt;
+                              &lt;div class="flex-grow-1 ms-3"&gt;
+                                &lt;span class="d-block h5 text-inherit mb-0"&gt;Lori Hunter&lt;/span&gt;
+                                &lt;span class="d-block fs-6 text-body"&gt;hunter@example.com&lt;/span&gt;
+                              &lt;/div&gt;
+                            &lt;/a&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="d-block h5 mb-0"&gt;Developer&lt;/span&gt;
+                            &lt;span class="d-block fs-6"&gt;Mobile app&lt;/span&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;Estonia &lt;span class="visually-hidden"&gt;Code: EE&lt;/span&gt;&lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="legend-indicator bg-success"&gt;&lt;/span&gt;Active
+                          &lt;/td&gt;
+                        &lt;/tr&gt;
+
+                        &lt;tr&gt;
+                          &lt;td&gt;
+                            &lt;a class="d-flex align-items-center" href="../user-profile.html"&gt;
+                              &lt;div class="avatar avatar-soft-primary avatar-circle"&gt;
+                                &lt;span class="avatar-initials"&gt;M&lt;/span&gt;
+                              &lt;/div&gt;
+                              &lt;div class="flex-grow-1 ms-3"&gt;
+                                &lt;span class="d-block h5 text-inherit mb-0"&gt;Mark Colbert&lt;/span&gt;
+                                &lt;span class="d-block fs-6 text-body"&gt;mark@example.com&lt;/span&gt;
+                              &lt;/div&gt;
+                            &lt;/a&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="d-block h5 mb-0"&gt;Executive director&lt;/span&gt;
+                            &lt;span class="d-block fs-6"&gt;Human resources&lt;/span&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;Canada &lt;span class="visually-hidden"&gt;Code: CA&lt;/span&gt;&lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="legend-indicator bg-success"&gt;&lt;/span&gt;Active
+                          &lt;/td&gt;
+                        &lt;/tr&gt;
+
+                        &lt;tr&gt;
+                          &lt;td&gt;
+                            &lt;a class="d-flex align-items-center" href="../user-profile.html"&gt;
+                              &lt;div class="avatar avatar-circle"&gt;
+                                &lt;img class="avatar-img" src="../assets/img/160x160/img6.jpg" alt="Image Description"&gt;
+                              &lt;/div&gt;
+                              &lt;div class="flex-grow-1 ms-3"&gt;
+                                &lt;span class="d-block h5 text-inherit mb-0"&gt;Costa Quinn&lt;/span&gt;
+                                &lt;span class="d-block fs-6 text-body"&gt;costa@example.com&lt;/span&gt;
+                              &lt;/div&gt;
+                            &lt;/a&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="d-block h5 mb-0"&gt;Co-founder&lt;/span&gt;
+                            &lt;span class="d-block fs-6"&gt;All departments&lt;/span&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;France &lt;span class="visually-hidden"&gt;Code: FR&lt;/span&gt;&lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="legend-indicator bg-warning"&gt;&lt;/span&gt;Pending
+                          &lt;/td&gt;
+                        &lt;/tr&gt;
+
+                        &lt;tr&gt;
+                          &lt;td&gt;
+                            &lt;a class="d-flex align-items-center" href="../user-profile.html"&gt;
+                              &lt;div class="avatar avatar-soft-danger avatar-circle"&gt;
+                                &lt;span class="avatar-initials"&gt;R&lt;/span&gt;
+                              &lt;/div&gt;
+                              &lt;div class="flex-grow-1 ms-3"&gt;
+                                &lt;span class="d-block h5 text-inherit mb-0"&gt;Rachel Doe &lt;i class="tio-verified text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"&gt;&lt;/i&gt;&lt;/span&gt;
+                                &lt;span class="d-block fs-6 text-body"&gt;rachel@example.com&lt;/span&gt;
+                              &lt;/div&gt;
+                            &lt;/a&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="d-block h5 mb-0"&gt;Accountant&lt;/span&gt;
+                            &lt;span class="d-block fs-6"&gt;Finance&lt;/span&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;United States &lt;span class="visually-hidden"&gt;Code: US&lt;/span&gt;&lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="legend-indicator bg-success"&gt;&lt;/span&gt;Active
+                          &lt;/td&gt;
+                        &lt;/tr&gt;
+
+                        &lt;tr&gt;
+                          &lt;td&gt;
+                            &lt;a class="d-flex align-items-center" href="../user-profile.html"&gt;
+                              &lt;div class="avatar avatar-circle"&gt;
+                                &lt;img class="avatar-img" src="../assets/img/160x160/img8.jpg" alt="Image Description"&gt;
+                              &lt;/div&gt;
+                              &lt;div class="flex-grow-1 ms-3"&gt;
+                                &lt;span class="d-block h5 text-inherit mb-0"&gt;Linda Bates&lt;/span&gt;
+                                &lt;span class="d-block fs-6 text-body"&gt;linda@example.com&lt;/span&gt;
+                              &lt;/div&gt;
+                            &lt;/a&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="d-block h5 mb-0"&gt;Unknown&lt;/span&gt;
+                            &lt;span class="d-block fs-6"&gt;Unknown&lt;/span&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;United Kingdom &lt;span class="visually-hidden"&gt;Code: UK&lt;/span&gt;&lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="legend-indicator bg-danger"&gt;&lt;/span&gt;Suspended
+                          &lt;/td&gt;
+                        &lt;/tr&gt;
+
+                        &lt;tr&gt;
+                          &lt;td&gt;
+                            &lt;a class="d-flex align-items-center" href="../user-profile.html"&gt;
+                              &lt;div class="avatar avatar-soft-info avatar-circle"&gt;
+                                &lt;span class="avatar-initials"&gt;B&lt;/span&gt;
+                              &lt;/div&gt;
+                              &lt;div class="flex-grow-1 ms-3"&gt;
+                                &lt;span class="d-block h5 text-inherit mb-0"&gt;Brian Halligan&lt;/span&gt;
+                                &lt;span class="d-block fs-6 text-body"&gt;brian@example.com&lt;/span&gt;
+                              &lt;/div&gt;
+                            &lt;/a&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="d-block h5 mb-0"&gt;Director&lt;/span&gt;
+                            &lt;span class="d-block fs-6"&gt;Accounting&lt;/span&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;France &lt;span class="visually-hidden"&gt;Code: FR&lt;/span&gt;&lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="legend-indicator bg-success"&gt;&lt;/span&gt;Active
+                          &lt;/td&gt;
+                        &lt;/tr&gt;
+
+                        &lt;tr&gt;
+                          &lt;td&gt;
+                            &lt;a class="d-flex align-items-center" href="../user-profile.html"&gt;
+                              &lt;div class="avatar avatar-soft-dark avatar-circle"&gt;
+                                &lt;span class="avatar-initials"&gt;C&lt;/span&gt;
+                              &lt;/div&gt;
+                              &lt;div class="flex-grow-1 ms-3"&gt;
+                                &lt;span class="d-block h5 text-inherit mb-0"&gt;Chris Mathew&lt;/span&gt;
+                                &lt;span class="d-block fs-6 text-body"&gt;chris@example.com&lt;/span&gt;
+                              &lt;/div&gt;
+                            &lt;/a&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="d-block h5 mb-0"&gt;Developer&lt;/span&gt;
+                            &lt;span class="d-block fs-6"&gt;Mobile app&lt;/span&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;Switzerland &lt;span class="visually-hidden"&gt;Code: CH&lt;/span&gt;&lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="legend-indicator bg-warning"&gt;&lt;/span&gt;Pending
+                          &lt;/td&gt;
+                        &lt;/tr&gt;
+
+                        &lt;tr&gt;
+                          &lt;td&gt;
+                            &lt;a class="d-flex align-items-center" href="../user-profile.html"&gt;
+                              &lt;div class="avatar avatar-circle"&gt;
+                                &lt;img class="avatar-img" src="../assets/img/160x160/img7.jpg" alt="Image Description"&gt;
+                              &lt;/div&gt;
+                              &lt;div class="flex-grow-1 ms-3"&gt;
+                                &lt;span class="d-block h5 text-inherit mb-0"&gt;Clarice Boone &lt;i class="tio-verified text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"&gt;&lt;/i&gt;&lt;/span&gt;
+                                &lt;span class="d-block fs-6 text-body"&gt;clarice@example.com&lt;/span&gt;
+                              &lt;/div&gt;
+                            &lt;/a&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="d-block h5 mb-0"&gt;Seller&lt;/span&gt;
+                            &lt;span class="d-block fs-6"&gt;Branding products&lt;/span&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;United Kingdom &lt;span class="visually-hidden"&gt;Code: UK&lt;/span&gt;&lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="legend-indicator bg-success"&gt;&lt;/span&gt;Active
+                          &lt;/td&gt;
+                        &lt;/tr&gt;
+
+                        &lt;tr&gt;
+                          &lt;td&gt;
+                            &lt;a class="d-flex align-items-center" href="../user-profile.html"&gt;
+                              &lt;div class="avatar avatar-soft-dark avatar-circle"&gt;
+                                &lt;span class="avatar-initials"&gt;L&lt;/span&gt;
+                              &lt;/div&gt;
+                              &lt;div class="flex-grow-1 ms-3"&gt;
+                                &lt;span class="d-block h5 text-inherit mb-0"&gt;Lewis Clarke&lt;/span&gt;
+                                &lt;span class="d-block fs-6 text-body"&gt;lewis@example.com&lt;/span&gt;
+                              &lt;/div&gt;
+                            &lt;/a&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="d-block h5 mb-0"&gt;Co-founder&lt;/span&gt;
+                            &lt;span class="d-block fs-6"&gt;IT department&lt;/span&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;Switzerland &lt;span class="visually-hidden"&gt;Code: CH&lt;/span&gt;&lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="legend-indicator bg-warning"&gt;&lt;/span&gt;Pending
+                          &lt;/td&gt;
+                        &lt;/tr&gt;
+
+                        &lt;tr&gt;
+                          &lt;td&gt;
+                            &lt;a class="d-flex align-items-center" href="../user-profile.html"&gt;
+                              &lt;div class="avatar avatar-circle"&gt;
+                                &lt;img class="avatar-img" src="../assets/img/160x160/img4.jpg" alt="Image Description"&gt;
+                              &lt;/div&gt;
+                              &lt;div class="flex-grow-1 ms-3"&gt;
+                                &lt;span class="d-block h5 text-inherit mb-0"&gt;Sam Kart&lt;/span&gt;
+                                &lt;span class="d-block fs-6 text-body"&gt;sam@example.com&lt;/span&gt;
+                              &lt;/div&gt;
+                            &lt;/a&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="d-block h5 mb-0"&gt;Designer&lt;/span&gt;
+                            &lt;span class="d-block fs-6"&gt;Branding&lt;/span&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;Canada &lt;span class="visually-hidden"&gt;Code: CA&lt;/span&gt;&lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="legend-indicator bg-warning"&gt;&lt;/span&gt;Pending
+                          &lt;/td&gt;
+                        &lt;/tr&gt;
+
+                        &lt;tr&gt;
+                          &lt;td&gt;
+                            &lt;a class="d-flex align-items-center" href="../user-profile.html"&gt;
+                              &lt;div class="avatar avatar-soft-danger avatar-circle"&gt;
+                                &lt;span class="avatar-initials"&gt;J&lt;/span&gt;
+                              &lt;/div&gt;
+                              &lt;div class="flex-grow-1 ms-3"&gt;
+                                &lt;span class="d-block h5 text-inherit mb-0"&gt;Johnny Appleseed&lt;/span&gt;
+                                &lt;span class="d-block fs-6 text-body"&gt;johnny@example.com&lt;/span&gt;
+                              &lt;/div&gt;
+                            &lt;/a&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="d-block h5 mb-0"&gt;Accountant&lt;/span&gt;
+                            &lt;span class="d-block fs-6"&gt;Human resources&lt;/span&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;United States &lt;span class="visually-hidden"&gt;Code: US&lt;/span&gt;&lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="legend-indicator bg-success"&gt;&lt;/span&gt;Active
+                          &lt;/td&gt;
+                        &lt;/tr&gt;
+
+                        &lt;tr&gt;
+                          &lt;td&gt;
+                            &lt;a class="d-flex align-items-center" href="../user-profile.html"&gt;
+                              &lt;div class="avatar avatar-soft-danger avatar-circle"&gt;
+                                &lt;span class="avatar-initials"&gt;P&lt;/span&gt;
+                              &lt;/div&gt;
+                              &lt;div class="flex-grow-1 ms-3"&gt;
+                                &lt;span class="d-block h5 text-inherit mb-0"&gt;Phileas Fogg&lt;/span&gt;
+                                &lt;span class="d-block fs-6 text-body"&gt;phileas@example.com&lt;/span&gt;
+                              &lt;/div&gt;
+                            &lt;/a&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="d-block h5 mb-0"&gt;Designer&lt;/span&gt;
+                            &lt;span class="d-block fs-6"&gt;Branding&lt;/span&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;Spain &lt;span class="visually-hidden"&gt;Code: ES&lt;/span&gt;&lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="legend-indicator bg-danger"&gt;&lt;/span&gt;Suspended
+                          &lt;/td&gt;
+                        &lt;/tr&gt;
+
+                        &lt;tr&gt;
+                          &lt;td&gt;
+                            &lt;a class="d-flex align-items-center" href="../user-profile.html"&gt;
+                              &lt;div class="avatar avatar-circle"&gt;
+                                &lt;img class="avatar-img" src="../assets/img/160x160/img6.jpg" alt="Image Description"&gt;
+                              &lt;/div&gt;
+                              &lt;div class="flex-grow-1 ms-3"&gt;
+                                &lt;span class="d-block h5 text-inherit mb-0"&gt;Mark Williams &lt;i class="tio-verified text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"&gt;&lt;/i&gt;&lt;/span&gt;
+                                &lt;span class="d-block fs-6 text-body"&gt;mark@example.com&lt;/span&gt;
+                              &lt;/div&gt;
+                            &lt;/a&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="d-block h5 mb-0"&gt;Co-founder&lt;/span&gt;
+                            &lt;span class="d-block fs-6"&gt;Branding&lt;/span&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;United Kingdom &lt;span class="visually-hidden"&gt;Code: GB&lt;/span&gt;&lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="legend-indicator bg-success"&gt;&lt;/span&gt;Active
+                          &lt;/td&gt;
+                        &lt;/tr&gt;
+
+                        &lt;tr&gt;
+                          &lt;td&gt;
+                            &lt;a class="d-flex align-items-center" href="../user-profile.html"&gt;
+                              &lt;div class="avatar avatar-soft-dark avatar-circle"&gt;
+                                &lt;span class="avatar-initials"&gt;T&lt;/span&gt;
+                              &lt;/div&gt;
+                              &lt;div class="flex-grow-1 ms-3"&gt;
+                                &lt;span class="d-block h5 text-inherit mb-0"&gt;Timothy Silva&lt;/span&gt;
+                                &lt;span class="d-block fs-6 text-body"&gt;timothy@example.com&lt;/span&gt;
+                              &lt;/div&gt;
+                            &lt;/a&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="d-block h5 mb-0"&gt;Developer&lt;/span&gt;
+                            &lt;span class="d-block fs-6"&gt;Mobile app&lt;/span&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;Italy &lt;span class="visually-hidden"&gt;Code: IT&lt;/span&gt;&lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="legend-indicator bg-warning"&gt;&lt;/span&gt;Pending
+                          &lt;/td&gt;
+                        &lt;/tr&gt;
+
+                        &lt;tr&gt;
+                          &lt;td&gt;
+                            &lt;a class="d-flex align-items-center" href="../user-profile.html"&gt;
+                              &lt;div class="avatar avatar-soft-dark avatar-circle"&gt;
+                                &lt;span class="avatar-initials"&gt;G&lt;/span&gt;
+                              &lt;/div&gt;
+                              &lt;div class="flex-grow-1 ms-3"&gt;
+                                &lt;span class="d-block h5 text-inherit mb-0"&gt;Gary Bishop &lt;i class="tio-verified text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"&gt;&lt;/i&gt;&lt;/span&gt;
+                                &lt;span class="d-block fs-6 text-body"&gt;gary@example.com&lt;/span&gt;
+                              &lt;/div&gt;
+                            &lt;/a&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="d-block h5 mb-0"&gt;Developer&lt;/span&gt;
+                            &lt;span class="d-block fs-6"&gt;Mobile app&lt;/span&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;Latvia &lt;span class="visually-hidden"&gt;Code: LV&lt;/span&gt;&lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="legend-indicator bg-success"&gt;&lt;/span&gt;Active
+                          &lt;/td&gt;
+                        &lt;/tr&gt;
+
+                        &lt;tr&gt;
+                          &lt;td&gt;
+                            &lt;a class="d-flex align-items-center" href="../user-profile.html"&gt;
+                              &lt;div class="avatar avatar-soft-dark avatar-circle"&gt;
+                                &lt;span class="avatar-initials"&gt;Y&lt;/span&gt;
+                              &lt;/div&gt;
+                              &lt;div class="flex-grow-1 ms-3"&gt;
+                                &lt;span class="d-block h5 text-inherit mb-0"&gt;Yorker Scogings&lt;/span&gt;
+                                &lt;span class="d-block fs-6 text-body"&gt;yorker@example.com&lt;/span&gt;
+                              &lt;/div&gt;
+                            &lt;/a&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="d-block h5 mb-0"&gt;Seller&lt;/span&gt;
+                            &lt;span class="d-block fs-6"&gt;Branding products&lt;/span&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;Norway &lt;span class="visually-hidden"&gt;Code: NO&lt;/span&gt;&lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="legend-indicator bg-danger"&gt;&lt;/span&gt;Suspended
+                          &lt;/td&gt;
+                        &lt;/tr&gt;
+
+                        &lt;tr&gt;
+                          &lt;td&gt;
+                            &lt;a class="d-flex align-items-center" href="../user-profile.html"&gt;
+                              &lt;div class="avatar avatar-soft-info avatar-circle"&gt;
+                                &lt;span class="avatar-initials"&gt;F&lt;/span&gt;
+                              &lt;/div&gt;
+                              &lt;div class="flex-grow-1 ms-3"&gt;
+                                &lt;span class="d-block h5 text-inherit mb-0"&gt;Frank Phillips&lt;/span&gt;
+                                &lt;span class="d-block fs-6 text-body"&gt;frank@example.com&lt;/span&gt;
+                              &lt;/div&gt;
+                            &lt;/a&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="d-block h5 mb-0"&gt;Unknown&lt;/span&gt;
+                            &lt;span class="d-block fs-6"&gt;Unknown&lt;/span&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;Norway &lt;span class="visually-hidden"&gt;Code: NO&lt;/span&gt;&lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="legend-indicator bg-danger"&gt;&lt;/span&gt;Suspended
+                          &lt;/td&gt;
+                        &lt;/tr&gt;
+
+                        &lt;tr&gt;
+                          &lt;td&gt;
+                            &lt;a class="d-flex align-items-center" href="../user-profile.html"&gt;
+                              &lt;div class="avatar avatar-soft-primary avatar-circle"&gt;
+                                &lt;span class="avatar-initials"&gt;E&lt;/span&gt;
+                              &lt;/div&gt;
+                              &lt;div class="flex-grow-1 ms-3"&gt;
+                                &lt;span class="d-block h5 text-inherit mb-0"&gt;Elizabeth Carter&lt;/span&gt;
+                                &lt;span class="d-block fs-6 text-body"&gt;eliz@example.com&lt;/span&gt;
+                              &lt;/div&gt;
+                            &lt;/a&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="d-block h5 mb-0"&gt;Unknown&lt;/span&gt;
+                            &lt;span class="d-block fs-6"&gt;Unknown&lt;/span&gt;
+                          &lt;/td&gt;
+                          &lt;td&gt;United States &lt;span class="visually-hidden"&gt;Code: UK&lt;/span&gt;&lt;/td&gt;
+                          &lt;td&gt;
+                            &lt;span class="legend-indicator bg-warning"&gt;&lt;/span&gt;Pending
+                          &lt;/td&gt;
+                        &lt;/tr&gt;
+                      &lt;/tbody&gt;
+                    &lt;/table&gt;
+                  &lt;/div&gt;
+                  &lt;!-- End Table --&gt;
+                &lt;/div&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="methods" class="hs-docs-heading">
+        Methods <a class="anchorjs-link" href="#methods" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card overflow-hidden">
+        <!-- Table -->
+        <div class="table-responsive">
+          <table class="table table-thead-bordered card-table">
+            <thead class="thead-light">
+              <tr>
+                <th>Parameters</th>
+                <th style="width: 50%;">Description</th>
+                <th class="text-nowrap">Default value</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>
+                  <p><code>offsetTop</code></p>
+                </td>
+                <td>Add custom offset from top in px</td>
+                <td><code>0</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- End Table -->
+      </div>
+      <!-- End Card -->
+    </div>
+    <!-- End Content -->
+  </main>
+  <!-- ========== END MAIN CONTENT ========== -->
+
+  <!-- ========== SECONDARY CONTENTS ========== -->
+  <!-- Go To -->
+  <a class="js-go-to go-to position-fixed" href="javascript:;" style="visibility: hidden;" data-hs-go-to-options='{
+       "offsetTop": 700,
+       "position": {
+         "init": {
+           "right": "2rem"
+         },
+         "show": {
+           "bottom": "2rem"
+         },
+         "hide": {
+           "bottom": "-2rem"
+         }
+       }
+     }'>
+    <i class="bi-chevron-up"></i>
+  </a>
+  <!-- ========== END SECONDARY CONTENTS ========== -->
+
+  <!-- JS Global Compulsory  -->
+  <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JS Implementing Plugins -->
+  <script src="../assets/vendor/hs-header/dist/hs-header.min.js"></script>
+  <script src="../assets/vendor/hs-nav-scroller/dist/hs-nav-scroller.min.js"></script>
+  <script src="../assets/vendor/list.js/dist/list.min.js"></script>
+  <script src="../assets/vendor/hs-go-to/dist/hs-go-to.min.js"></script>
+  <script src="../assets/vendor/prism/prism.js"></script>
+  <script src="../assets/vendor/hs-table-sticky-header/dist/hs-table-sticky-header.min.js"></script>
+
+  <!-- JS Front -->
+  <script src="../assets/js/theme.min.js"></script>
+
+  <!-- JS Plugins Init. -->
+  <script>
+    (function() {
+      // INITIALIZATION OF HEADER
+      // =======================================================
+      new HSHeader('#header').init()
+
+
+      // INITIALIZATION OF NAV SCROLLER
+      // =======================================================
+      new HsNavScroller('.js-nav-scroller', {
+        delay: 400,
+        offset: 140
+      })
+
+
+      // INITIALIZATION OF LISTJS COMPONENT
+      // =======================================================
+      HSCore.components.HSList.init('#docsSearch');
+      const docsSearch = HSCore.components.HSList.getItem('docsSearch');
+
+
+      // GET JSON FILE RESULTS
+      // =======================================================
+      fetch('../assets/json/docs-search.json')
+      .then(response => response.json())
+      .then(data => {
+        docsSearch.add(data)
+      })
+
+
+      // INITIALIZATION OF GO TO
+      // =======================================================
+      new HSGoTo('.js-go-to')
+
+
+      // INITIALIZATION OF STICKY HEADER
+      // =======================================================
+      new HSTableStickyHeader('.js-sticky-header', {
+        offsetTop: "60px"
+      }).init();
+    })()
+  </script>
+</body>
+</html>

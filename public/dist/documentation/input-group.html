@@ -1,0 +1,1800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required Meta Tags Always Come First -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Title -->
+  <title>Input Group - Documentation | Front - Multipurpose Responsive Template</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../favicon.ico">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS Implementing Plugins -->
+  <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/font/bootstrap-icons.css">
+
+  <!-- CSS Front Template -->
+
+  <link rel="preload" href="../assets/css/theme.min.css" data-hs-appearance="default" as="style">
+  <link rel="preload" href="../assets/css/docs.min.css" data-hs-appearance="default" as="style">
+  <link rel="preload" href="../assets/css/theme-dark.min.css" data-hs-appearance="dark" as="style">
+  <link rel="preload" href="../assets/css/docs-dark.min.css" data-hs-appearance="dark" as="style">
+
+  <style data-hs-appearance-onload-styles>
+    *
+    {
+      transition: unset !important;
+    }
+
+    body
+    {
+      opacity: 0;
+    }
+  </style>
+
+  <script>
+            window.hs_config = {"autopath":"@@autopath","deleteLine":"hs-builder:delete","deleteLine:build":"hs-builder:build-delete","deleteLine:dist":"hs-builder:dist-delete","previewMode":false,"startPath":"/index.html","vars":{"themeFont":"https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap","version":"?v=1.0"},"layoutBuilder":{"extend":{"switcherSupport":true},"header":{"layoutMode":"default","containerMode":"container-fluid"},"sidebarLayout":"default"},"themeAppearance":{"layoutSkin":"default","sidebarSkin":"default","styles":{"colors":{"primary":"#377dff","transparent":"transparent","white":"#fff","dark":"132144","gray":{"100":"#f9fafc","900":"#1e2022"}},"font":"Inter"}},"languageDirection":{"lang":"en"},"skipFilesFromBundle":{"dist":["assets/js/hs.theme-appearance.js","assets/js/hs.theme-appearance-charts.js","assets/js/demo.js"],"build":["assets/css/theme.css","assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js","assets/js/demo.js","assets/css/theme-dark.css","assets/css/docs.css","assets/vendor/icon-set/style.css","assets/js/hs.theme-appearance.js","assets/js/hs.theme-appearance-charts.js","node_modules/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js","assets/js/demo.js"]},"minifyCSSFiles":["assets/css/theme.css","assets/css/theme-dark.css"],"copyDependencies":{"dist":{"*assets/js/theme-custom.js":""},"build":{"*assets/js/theme-custom.js":"","node_modules/bootstrap-icons/font/*fonts/**":"assets/css"}},"buildFolder":"","replacePathsToCDN":{},"directoryNames":{"src":"./src","dist":"./dist","build":"./build"},"fileNames":{"dist":{"js":"theme.min.js","css":"theme.min.css"},"build":{"css":"theme.min.css","js":"theme.min.js","vendorCSS":"vendor.min.css","vendorJS":"vendor.min.js"}},"fileTypes":"jpg|png|svg|mp4|webm|ogv|json"}
+            window.hs_config.gulpRGBA = (p1) => {
+  const options = p1.split(',')
+  const hex = options[0].toString()
+  const transparent = options[1].toString()
+
+  var c;
+  if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+    c= hex.substring(1).split('');
+    if(c.length== 3){
+      c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+    }
+    c= '0x'+c.join('');
+    return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',' + transparent + ')';
+  }
+  throw new Error('Bad Hex');
+}
+            window.hs_config.gulpDarken = (p1) => {
+  const options = p1.split(',')
+
+  let col = options[0].toString()
+  let amt = -parseInt(options[1])
+  var usePound = false
+
+  if (col[0] == "#") {
+    col = col.slice(1)
+    usePound = true
+  }
+  var num = parseInt(col, 16)
+  var r = (num >> 16) + amt
+  if (r > 255) {
+    r = 255
+  } else if (r < 0) {
+    r = 0
+  }
+  var b = ((num >> 8) & 0x00FF) + amt
+  if (b > 255) {
+    b = 255
+  } else if (b < 0) {
+    b = 0
+  }
+  var g = (num & 0x0000FF) + amt
+  if (g > 255) {
+    g = 255
+  } else if (g < 0) {
+    g = 0
+  }
+  return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16)
+}
+            window.hs_config.gulpLighten = (p1) => {
+  const options = p1.split(',')
+
+  let col = options[0].toString()
+  let amt = parseInt(options[1])
+  var usePound = false
+
+  if (col[0] == "#") {
+    col = col.slice(1)
+    usePound = true
+  }
+  var num = parseInt(col, 16)
+  var r = (num >> 16) + amt
+  if (r > 255) {
+    r = 255
+  } else if (r < 0) {
+    r = 0
+  }
+  var b = ((num >> 8) & 0x00FF) + amt
+  if (b > 255) {
+    b = 255
+  } else if (b < 0) {
+    b = 0
+  }
+  var g = (num & 0x0000FF) + amt
+  if (g > 255) {
+    g = 255
+  } else if (g < 0) {
+    g = 0
+  }
+  return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16)
+}
+            </script>
+</head>
+
+<body class="navbar-sidebar-aside-lg">
+
+  <script src="../assets/js/hs.theme-appearance.js"></script>
+
+  <!-- ========== HEADER ========== -->
+  <header id="header" class="navbar navbar-expand navbar-end navbar-light navbar-sticky-lg-top bg-white">
+    <div class="container-fluid">
+      <nav class="navbar-nav-wrap">
+        <div class="row flex-grow-1">
+          <!-- Default Logo -->
+          <div class="docs-navbar-sidebar-container d-flex align-items-center mb-2 mb-lg-0">
+            <a class="navbar-brand" href="../documentation/index.html" aria-label="Front">
+              <img class="navbar-brand-logo" src="../assets/svg/logos/logo.svg" alt="Logo" data-hs-theme-appearance="default">
+              <img class="navbar-brand-logo" src="../assets/svg/logos-light/logo.svg" alt="Logo" data-hs-theme-appearance="dark">
+            </a>
+            <a href="../documentation/changelog.html">
+              <span class="badge bg-soft-primary text-primary">v2.1</span>
+            </a>
+          </div>
+          <!-- End Default Logo -->
+
+          <div class="col-md px-lg-0">
+            <div class="d-flex justify-content-between align-items-center px-lg-5 px-xl-10">
+              <div class="d-none d-md-block">
+                <!-- Search Form -->
+                <form id="docsSearch" class="position-relative" data-hs-list-options='{
+                       "searchMenu": true,
+                       "keyboard": true,
+                       "item": "searchTemplate",
+                       "valueNames": ["component", "category", {"name": "link", "attr": "href"}],
+                       "empty": "#searchNoResults"
+                     }'>
+                  <!-- Input Group -->
+                  <div class="input-group input-group-merge navbar-input-group">
+                    <div class="input-group-prepend input-group-text">
+                      <i class="bi-search"></i>
+                    </div>
+
+                    <input type="search" class="search form-control form-control-sm" placeholder="Search in docs" aria-label="Search in docs">
+
+                    <a class="input-group-append input-group-text" href="javascript:;">
+                      <i id="clearSearchResultsIcon" class="bi-x" style="display: none;"></i>
+                    </a>
+                  </div>
+                  <!-- End Input Group -->
+
+                  <!-- List -->
+                  <div class="list dropdown-menu navbar-dropdown-menu-borderless w-100 overflow-auto" style="max-height: 16rem;"></div>
+                  <!-- End List -->
+
+                  <!-- Empty -->
+                  <div id="searchNoResults" style="display: none;">
+                    <div class="text-center p-4">
+                      <img class="mb-3" src="../assets/svg/illustrations/oc-error.svg" alt="Image Description" data-hs-theme-appearance="default" style="width: 7rem;">
+                      <img class="mb-3" src="../assets/svg/illustrations-light/oc-error.svg" alt="Image Description" data-hs-theme-appearance="dark" style="width: 7rem;">
+                      <p class="mb-0">No Results</p>
+                    </div>
+                  </div>
+                  <!-- End Empty -->
+                </form>
+                <!-- End Search Form -->
+
+                <!-- List Item Template -->
+                <div class="d-none">
+                  <div id="searchTemplate" class="dropdown-item">
+                    <a class="d-block link" href="#">
+                      <span class="category d-block fw-normal text-muted mb-1"></span>
+                      <span class="component text-dark"></span>
+                    </a>
+                  </div>
+                </div>
+                <!-- End List Item Template -->
+              </div>
+
+              <!-- Navbar -->
+              <ul class="navbar-nav p-0">
+                <li class="nav-item">
+                  <a class="btn btn-ghost-secondary btn-sm" href="https://htmlstream.com/contact-us" target="_blank">
+                    Get Support <i class="bi-box-arrow-up-right ms-1"></i>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="btn btn-primary btn-sm" href="../index.html">
+                    <i class="bi-eye me-1"></i> Preview Demo
+                  </a>
+                </li>
+              </ul>
+              <!-- End Navbar -->
+            </div>
+          </div>
+          <!-- End Col -->
+        </div>
+        <!-- End Row -->
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========== END HEADER ========== -->
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main id="content" role="main">
+    <!-- Navbar -->
+    <nav class="js-nav-scroller navbar navbar-expand-lg navbar-sidebar navbar-vertical navbar-light bg-white border-end" data-hs-nav-scroller-options='{
+            "type": "vertical",
+            "target": ".navbar-nav .active",
+            "offset": 80
+           }'>
+      <!-- Navbar Toggle -->
+      <div class="d-grid flex-grow-1 px-2">
+        <button type="button" class="navbar-toggler btn btn-white" data-bs-toggle="collapse" data-bs-target="#navbarVerticalNavMenu" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navbarVerticalNavMenu">
+          <span class="d-flex justify-content-between align-items-center">
+            <span class="h3 mb-0">Nav menu</span>
+
+            <span class="navbar-toggler-default">
+              <i class="bi-list"></i>
+            </span>
+
+            <span class="navbar-toggler-toggled">
+              <i class="bi-x"></i>
+            </span>
+          </span>
+        </button>
+      </div>
+      <!-- End Navbar Toggle -->
+
+      <!-- Navbar Collapse -->
+      <div id="navbarVerticalNavMenu" class="collapse navbar-collapse">
+        <div class="navbar-brand-wrapper border-end" style="height: auto;">
+          <!-- Default Logo -->
+          <div class="d-flex align-items-center mb-3">
+            <a class="navbar-brand" href="../documentation/index.html" aria-label="Front">
+              <img class="navbar-brand-logo" src="../assets/svg/logos/logo.svg" alt="Logo" data-hs-theme-appearance="default">
+              <img class="navbar-brand-logo" src="../assets/svg/logos-light/logo.svg" alt="Logo" data-hs-theme-appearance="dark">
+            </a>
+            <a class="navbar-brand-badge" href="../documentation/changelog.html">
+              <span class="badge bg-soft-primary text-primary ms-2">v2.1</span>
+            </a>
+          </div>
+          <!-- End Default Logo -->
+        </div>
+
+        <div class="docs-navbar-sidebar-aside-body navbar-sidebar-aside-body">
+          <ul id="navbarSettings" class="navbar-nav nav nav-vertical nav-tabs nav-tabs-borderless nav-sm">
+            <li class="nav-item">
+              <span class="nav-subtitle">Documentation</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/index.html">Introduction</a>
+            </li>
+
+            <li class="nav-item my-2 my-lg-5"></li>
+
+            <li class="nav-item">
+              <span class="nav-subtitle">Getting started</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/getting-started.html">Getting Started</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/gulp.html">Gulp</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/darkmode.html">Dark Mode <span class="badge bg-soft-dark text-dark lh-base ms-1">New</span></a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/customization.html">Customization</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/credits.html">Credits</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/changelog.html">Changelog</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <span class="nav-subtitle">Design &amp; Graphics</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/bs-icons.html">Bootstrap Icons</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/illustrations.html">Illustrations</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <span class="nav-subtitle">Components</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/accordion.html">Accordion</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/alerts.html">Alerts</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/avatars.html">Avatars</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/badge.html">Badge</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/breadcrumb.html">Breadcrumb</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/buttons.html">Buttons</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/button-group.html">Button Group</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/cards.html">Cards</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/collapse.html">Collapse</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/column-divider.html">Column Divider</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/devices.html">Devices</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/divider.html">Divider</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/dropdowns.html">Dropdowns</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/icons.html">Icons</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/list-group.html">List Group</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/lists.html">Lists</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/legend-indicator.html">Legend Indicator</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/modal.html">Modal</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/offcanvas.html">Offcanvas</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/page-header.html">Page Header</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/pagination.html">Pagination</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/popovers.html">Popovers</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/progress.html">Progress</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/profile.html">Profile</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/shapes.html">Shapes</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sliding-img.html">Sliding Image</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/spinners.html">Spinners</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/steps.html">Steps</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/tab.html">Tab</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/toasts.html">Toasts</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/tooltips.html">Tooltips</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/typography.html">Typography</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Navbars</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/navbar.html">Navbar</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/navs.html">Navs</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/mega-menu.html">Mega Menu</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/navbar-vertical-aside.html">Navbar Vertical Aside</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/scrollspy.html">Scrollspy</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Tables</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/tables.html">Tables</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/datatables.html">Datatables</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/table-sticky-header.html">Sticky Header</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Basic forms</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/basic-forms.html">Basic Forms</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/checks-and-switches.html">Checks &amp; Switches</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link active" href="../documentation/input-group.html">Input Group</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle">Advanced Forms</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/select.html">Advanced Select</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/datepicker.html">Datepicker (Flatpickr)</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/daterangepicker.html">Date Range Picker</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/calendar.html">Calendar (Fullcalendar)</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/file-attachments.html">File Attachments</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/dropzone.html">Drag’ n’ Drop File Uploads</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/quill.html">WYSIWYG Editor</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/quantity-counter.html">Quantity Counter</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/copy-to-clipboard.html">Copy to Clipboard</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/input-mask.html">Input Mask</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/step-forms.html">Step Forms (Wizards)</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/add-field.html">Add Field</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/toggle-password.html">Toggle Password</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/count-characters.html">Count Characters</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/form-search.html">Form Search</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/toggle-switch.html">Toggle Switch</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/google-recaptcha.html">Google reCAPTCHA</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle">Charts</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/chartjs.html">Chart.js</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/counter.html">Counter</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/circles.html">Circles.js (Pie Chart)</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle">Others</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/fslightbox.html">Fullscreen Lightbox</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/maps-leaflet.html">Leaflet</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/maps-jsvectormap.html">JSVectorMap</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sortablejs.html">SortableJS</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sticky-block.html">Sticky Block</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/go-to.html">Go To</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Utilities</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/backgrounds.html">Backgrounds</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/borders.html">Borders</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/colors.html">Colors</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/links.html">Links</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/position.html">Position</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/shadows.html">Shadows</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sizing.html">Sizing</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/spacing.html">Spacing</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/z-index.html">Z-index</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/opacity.html">Opacity</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- End Navbar Collapse -->
+    </nav>
+    <!-- End Navbar -->
+
+    <!-- Content -->
+    <div class="navbar-sidebar-aside-content content-space-1 content-space-md-2 px-lg-5 px-xl-10">
+      <!-- Page Header -->
+      <div class="docs-page-header">
+        <div class="row align-items-center">
+          <div class="col-sm">
+            <h1 class="docs-page-header-title">Input Group</h1>
+            <p class="docs-page-header-text">Easily extend form controls by adding text, buttons, or button groups on either side of textual inputs, custom selects, and custom file inputs.</p>
+            <a class="link" href="https://getbootstrap.com/docs/5.0/forms/input-group/" target="_blank">Bootstrap Input group documentation <i class="bi-box-arrow-up-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- End Page Header -->
+
+      <!-- Heading -->
+      <h2 id="basic-examples" class="hs-docs-heading">
+        Basic examples <a class="anchorjs-link" href="#basic-examples" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <p>Use <code>.input-group-prepend</code> and <code>.input-group-append</code> in <code>.input-group</code></p>
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab1" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab1" href="#nav-result1" data-bs-toggle="pill" data-bs-target="#nav-result1" role="tab" aria-controls="nav-result1" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab1" href="#nav-html1" data-bs-toggle="pill" data-bs-target="#nav-html1" role="tab" aria-controls="nav-html1" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent1">
+          <div class="tab-pane fade p-4 show active" id="nav-result1" role="tabpanel" aria-labelledby="nav-resultTab1">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">@</span>
+              <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+              <span class="input-group-text" id="basic-addon2">@example.com</span>
+            </div>
+
+            <label for="basic-url" class="form-label">Your vanity URL</label>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+              <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">$</span>
+              <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+              <span class="input-group-text">.00</span>
+            </div>
+
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Username" aria-label="Username">
+              <span class="input-group-text">@</span>
+              <input type="text" class="form-control" placeholder="Server" aria-label="Server">
+            </div>
+
+            <div class="input-group">
+              <span class="input-group-text">With textarea</span>
+              <textarea class="form-control" aria-label="With textarea"></textarea>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="nav-html1" role="tabpanel" aria-labelledby="nav-htmlTab1">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class="input-group mb-3"&gt;
+                  &lt;span class="input-group-text" id="basic-addon1"&gt;@&lt;/span&gt;
+                  &lt;input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"&gt;
+                &lt;/div&gt;
+
+                &lt;div class="input-group mb-3"&gt;
+                  &lt;input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"&gt;
+                  &lt;span class="input-group-text" id="basic-addon2"&gt;@example.com&lt;/span&gt;
+                &lt;/div&gt;
+
+                &lt;label for="basic-url" class="form-label"&gt;Your vanity URL&lt;/label&gt;
+                &lt;div class="input-group mb-3"&gt;
+                  &lt;span class="input-group-text" id="basic-addon3"&gt;https://example.com/users/&lt;/span&gt;
+                  &lt;input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3"&gt;
+                &lt;/div&gt;
+
+                &lt;div class="input-group mb-3"&gt;
+                  &lt;span class="input-group-text"&gt;$&lt;/span&gt;
+                  &lt;input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"&gt;
+                  &lt;span class="input-group-text"&gt;.00&lt;/span&gt;
+                &lt;/div&gt;
+
+                &lt;div class="input-group mb-3"&gt;
+                  &lt;input type="text" class="form-control" placeholder="Username" aria-label="Username"&gt;
+                  &lt;span class="input-group-text"&gt;@&lt;/span&gt;
+                  &lt;input type="text" class="form-control" placeholder="Server" aria-label="Server"&gt;
+                &lt;/div&gt;
+
+                &lt;div class="input-group"&gt;
+                  &lt;span class="input-group-text"&gt;With textarea&lt;/span&gt;
+                  &lt;textarea class="form-control" aria-label="With textarea"&gt;&lt;/textarea&gt;
+                &lt;/div&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="input-group-merge" class="hs-docs-heading">
+        Input group merge <a class="anchorjs-link" href="#input-group-merge" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <p>Use <code>.input-group-merge</code> to place one add-on on either side of an input that keeps icons as a part of the form control. You may also place one on both sides of an input.</p>
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab2" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab2" href="#nav-result2" data-bs-toggle="pill" data-bs-target="#nav-result2" role="tab" aria-controls="nav-result2" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab2" href="#nav-html2" data-bs-toggle="pill" data-bs-target="#nav-html2" role="tab" aria-controls="nav-html2" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent2">
+          <div class="tab-pane fade p-4 show active" id="nav-result2" role="tabpanel" aria-labelledby="nav-resultTab2">
+            <!-- Input Group -->
+            <div class="mb-3">
+              <label for="inputGroupMergeFullName" class="form-label">Full name</label>
+
+              <div class="input-group input-group-merge">
+                <div class="input-group-prepend input-group-text" id="inputGroupMergeFullNameAddOn">
+                  <i class="bi-person"></i>
+                </div>
+                <input type="text" class="form-control" id="inputGroupMergeFullName" placeholder="Mark Williams" aria-label="Mark Williams" aria-describedby="inputGroupMergeFullNameAddOn">
+              </div>
+            </div>
+            <!-- End Input Group -->
+
+            <!-- Input Group -->
+            <div class="mb-3">
+              <label for="inputGroupMergeEmail" class="form-label">Email</label>
+
+              <div class="input-group input-group-merge">
+                <div class="input-group-prepend input-group-text" id="inputGroupMergeEmailAddOn">
+                  <i class="bi-envelope-open"></i>
+                </div>
+                <input type="text" class="form-control" id="inputGroupMergeEmail" placeholder="mark@example.com" aria-label="mark@example.com" aria-describedby="inputGroupMergeEmailAddOn">
+              </div>
+            </div>
+            <!-- End Input Group -->
+
+            <!-- Input Group -->
+            <div class="mb-3">
+              <label for="inputGroupMergeEmailOptional" class="form-label">Email <span class="form-label-secondary">(Optional)</span></label>
+
+              <div class="input-group input-group-merge">
+                <input type="text" class="form-control" id="inputGroupMergeEmailOptional" placeholder="mark@example.com" aria-label="mark@example.com" aria-describedby="inputGroupMergeEmailOptionalAddOn">
+                <div class="input-group-append input-group-text" id="inputGroupMergeEmailOptionalAddOn">
+                  <i class="bi-envelope-open"></i>
+                </div>
+              </div>
+            </div>
+            <!-- End Input Group -->
+
+            <!-- Input Group -->
+            <div class="mb-3">
+              <label for="inputGroupMergeGenderSelect" class="form-label">Gender</label>
+
+              <div class="input-group input-group-merge">
+                <div class="input-group-prepend input-group-text">
+                  <i class="bi-person"></i>
+                </div>
+                <select id="inputGroupMergeGenderSelect" class="form-select">
+                  <option>Choose a gender</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            <!-- End Input Group -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html2" role="tabpanel" aria-labelledby="nav-htmlTab2">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;!-- Input Group --&gt;
+                &lt;div class="mb-3"&gt;
+                  &lt;label for="inputGroupMergeFullName" class="form-label"&gt;Full name&lt;/label&gt;
+
+                  &lt;div class="input-group input-group-merge"&gt;
+                    &lt;div class="input-group-prepend input-group-text" id="inputGroupMergeFullNameAddOn"&gt;
+                      &lt;i class="bi-person"&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;input type="text" class="form-control" id="inputGroupMergeFullName" placeholder="Mark Williams" aria-label="Mark Williams" aria-describedby="inputGroupMergeFullNameAddOn"&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- End Input Group --&gt;
+
+                &lt;!-- Input Group --&gt;
+                &lt;div class="mb-3"&gt;
+                  &lt;label for="inputGroupMergeEmail" class="form-label"&gt;Email&lt;/label&gt;
+
+                  &lt;div class="input-group input-group-merge"&gt;
+                    &lt;div class="input-group-prepend input-group-text" id="inputGroupMergeEmailAddOn"&gt;
+                      &lt;i class="bi-envelope-open"&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;input type="text" class="form-control" id="inputGroupMergeEmail" placeholder="mark@example.com" aria-label="mark@example.com" aria-describedby="inputGroupMergeEmailAddOn"&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- End Input Group --&gt;
+
+                &lt;!-- Input Group --&gt;
+                &lt;div class="mb-3"&gt;
+                  &lt;label for="inputGroupMergeEmailOptional" class="form-label"&gt;Email &lt;span class="form-label-secondary"&gt;(Optional)&lt;/span&gt;&lt;/label&gt;
+
+                  &lt;div class="input-group input-group-merge"&gt;
+                    &lt;input type="text" class="form-control" id="inputGroupMergeEmailOptional" placeholder="mark@example.com" aria-label="mark@example.com" aria-describedby="inputGroupMergeEmailOptionalAddOn"&gt;
+                    &lt;div class="input-group-append input-group-text" id="inputGroupMergeEmailOptionalAddOn"&gt;
+                      &lt;i class="bi-envelope-open"&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- End Input Group --&gt;
+
+                &lt;!-- Input Group --&gt;
+                &lt;div class="mb-3"&gt;
+                  &lt;label for="inputGroupMergeGenderSelect" class="form-label"&gt;Gender&lt;/label&gt;
+
+                  &lt;div class="input-group input-group-merge"&gt;
+                    &lt;div class="input-group-prepend input-group-text"&gt;
+                      &lt;i class="bi-person"&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;select id="inputGroupMergeGenderSelect" class="form-select"&gt;
+                      &lt;option&gt;Choose a gender&lt;/option&gt;
+                      &lt;option&gt;Male&lt;/option&gt;
+                      &lt;option&gt;Female&lt;/option&gt;
+                      &lt;option&gt;Other&lt;/option&gt;
+                    &lt;/select&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- End Input Group --&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="input-group-break" class="hs-docs-heading">
+        Input group break <a class="anchorjs-link" href="#input-group-break" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <p>Long contents don't fit in small screens? Use <code>.input-group-{breakpoint}-vertical</code> modifier classes to break horizontal alignment and keep the same style in vertical order. Reduce browser size to see it in action.</p>
+
+      <!-- Card -->
+      <div class="card mb-7">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab4" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab4" data-bs-toggle="pill" href="#nav-result4" role="tab" aria-controls="nav-result4" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab4" data-bs-toggle="pill" href="#nav-html4" role="tab" aria-controls="nav-html4" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent4">
+          <div class="tab-pane fade p-4 show active" id="nav-result4" role="tabpanel" aria-labelledby="nav-resultTab4">
+            <!-- Input Group -->
+            <div class="input-group input-group-md-vertical">
+              <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+              <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+            </div>
+            <!-- End Input Group -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html4" role="tabpanel" aria-labelledby="nav-htmlTab4">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;!-- Input Group --&gt;
+                &lt;div class="input-group input-group-md-vertical"&gt;
+                  &lt;input type="text" class="form-control" placeholder="First name" aria-label="First name"&gt;
+                  &lt;input type="text" class="form-control" placeholder="Last name" aria-label="Last name"&gt;
+                &lt;/div&gt;
+                &lt;!-- End Input Group --&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <p>Vertical example:</p>
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab5" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab5" data-bs-toggle="pill" href="#nav-result5" role="tab" aria-controls="nav-result5" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab5" data-bs-toggle="pill" href="#nav-html5" role="tab" aria-controls="nav-html5" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent5">
+          <div class="tab-pane fade p-4 show active" id="nav-result5" role="tabpanel" aria-labelledby="nav-resultTab5">
+            <!-- Input Group -->
+            <div class="input-group input-group-vertical" style="max-width: 18rem;">
+              <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+              <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+            </div>
+            <!-- End Input Group -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html5" role="tabpanel" aria-labelledby="nav-htmlTab5">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;!-- Input Group --&gt;
+                &lt;div class="input-group input-group-vertical" style="max-width: 18rem;"&gt;
+                  &lt;input type="text" class="form-control" placeholder="First name" aria-label="First name"&gt;
+                  &lt;input type="text" class="form-control" placeholder="Last name" aria-label="Last name"&gt;
+                &lt;/div&gt;
+                &lt;!-- End Input Group --&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="input-group-borderless" class="hs-docs-heading">
+        Input group borderless <a class="anchorjs-link" href="#input-group-borderless" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <p>Add <code>.input-group-borderless</code> for an input without borders.</p>
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab6" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab6" data-bs-toggle="pill" href="#nav-result6" role="tab" aria-controls="nav-result6" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab6" data-bs-toggle="pill" href="#nav-html6" role="tab" aria-controls="nav-html6" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent6">
+          <div class="tab-pane fade p-4 show active" id="nav-result6" role="tabpanel" aria-labelledby="nav-resultTab6">
+            <!-- Input Group -->
+            <div class="mb-3">
+              <label for="inputGroupBorderlessFullName" class="form-label">Full name</label>
+
+              <div class="input-group input-group-merge input-group-borderless input-group-flush">
+                <div class="input-group-prepend input-group-text" id="inputGroupBorderlessFullNameAddOn">
+                  <i class="bi-person"></i>
+                </div>
+                <input type="text" class="form-control" id="inputGroupBorderlessFullName" placeholder="Mark Williams" aria-label="Mark Williams" aria-describedby="inputGroupBorderlessFullNameAddOn">
+              </div>
+            </div>
+            <!-- End Input Group -->
+
+            <!-- Input Group -->
+            <div class="mb-3">
+              <label for="inputGroupBorderlessEmail" class="form-label">Email</label>
+
+              <div class="input-group input-group-merge input-group-borderless input-group-flush">
+                <div class="input-group-prepend input-group-text" id="inputGroupBorderlessEmailAddOn">
+                  <i class="bi-envelope-open"></i>
+                </div>
+                <input type="text" class="form-control" id="inputGroupBorderlessEmail" placeholder="mark@example.com" aria-label="mark@example.com" aria-describedby="inputGroupBorderlessEmailAddOn">
+              </div>
+            </div>
+            <!-- End Input Group -->
+
+            <!-- Input Group -->
+            <div class="mb-3">
+              <label for="inputGroupBorderlessEmailOptional" class="form-label">Email <span class="form-label-secondary">(Optional)</span></label>
+
+              <div class="input-group input-group-merge input-group-borderless input-group-flush">
+                <input type="text" class="form-control" id="inputGroupBorderlessEmailOptional" placeholder="mark@example.com" aria-label="mark@example.com" aria-describedby="inputGroupBorderlessEmailOptionalAddOn">
+                <div class="input-group-append input-group-text" id="inputGroupBorderlessEmailOptionalAddOn">
+                  <i class="bi-envelope-open"></i>
+                </div>
+              </div>
+            </div>
+            <!-- End Input Group -->
+
+            <!-- Input Group -->
+            <div class="mb-3">
+              <label for="inputGroupBorderlessGenderSelect" class="form-label">Gender</label>
+
+              <div class="input-group input-group-merge input-group-borderless input-group-flush">
+                <div class="input-group-prepend input-group-text">
+                  <i class="bi-person"></i>
+                </div>
+                <select id="inputGroupBorderlessGenderSelect" class="form-select">
+                  <option>Choose a gender</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            <!-- End Input Group -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html6" role="tabpanel" aria-labelledby="nav-htmlTab6">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;!-- Input Group --&gt;
+                &lt;div class="mb-3"&gt;
+                  &lt;label for="inputGroupBorderlessFullName" class="form-label"&gt;Full name&lt;/label&gt;
+
+                  &lt;div class="input-group input-group-merge input-group-borderless input-group-flush"&gt;
+                    &lt;div class="input-group-prepend input-group-text" id="inputGroupBorderlessFullNameAddOn"&gt;
+                      &lt;i class="bi-person"&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;input type="text" class="form-control" id="inputGroupBorderlessFullName" placeholder="Mark Williams" aria-label="Mark Williams" aria-describedby="inputGroupBorderlessFullNameAddOn"&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- End Input Group --&gt;
+
+                &lt;!-- Input Group --&gt;
+                &lt;div class="mb-3"&gt;
+                  &lt;label for="inputGroupBorderlessEmail" class="form-label"&gt;Email&lt;/label&gt;
+
+                  &lt;div class="input-group input-group-merge input-group-borderless input-group-flush"&gt;
+                    &lt;div class="input-group-prepend input-group-text" id="inputGroupBorderlessEmailAddOn"&gt;
+                      &lt;i class="bi-envelope-open"&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;input type="text" class="form-control" id="inputGroupBorderlessEmail" placeholder="mark@example.com" aria-label="mark@example.com" aria-describedby="inputGroupBorderlessEmailAddOn"&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- End Input Group --&gt;
+
+                &lt;!-- Input Group --&gt;
+                &lt;div class="mb-3"&gt;
+                  &lt;label for="inputGroupBorderlessEmailOptional" class="form-label"&gt;Email &lt;span class="form-label-secondary"&gt;(Optional)&lt;/span&gt;&lt;/label&gt;
+
+                  &lt;div class="input-group input-group-merge input-group-borderless input-group-flush"&gt;
+                    &lt;div class="input-group-prepend input-group-text" id="inputGroupBorderlessEmailOptionalAddOn"&gt;
+                      &lt;i class="bi-envelope-open"&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;input type="text" class="form-control" id="inputGroupBorderlessEmailOptional" placeholder="mark@example.com" aria-label="mark@example.com" aria-describedby="inputGroupBorderlessEmailOptionalAddOn"&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- End Input Group --&gt;
+
+                &lt;!-- Input Group --&gt;
+                &lt;div class="mb-3"&gt;
+                  &lt;label for="inputGroupBorderlessGenderSelect" class="form-label"&gt;Gender&lt;/label&gt;
+
+                  &lt;div class="input-group input-group-merge input-group-borderless input-group-flush"&gt;
+                    &lt;div class="input-group-prepend input-group-text"&gt;
+                      &lt;i class="bi-person"&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;select id="inputGroupBorderlessGenderSelect" class="form-select"&gt;
+                      &lt;option&gt;Choose a gender&lt;/option&gt;
+                      &lt;option&gt;Male&lt;/option&gt;
+                      &lt;option&gt;Female&lt;/option&gt;
+                      &lt;option&gt;Other&lt;/option&gt;
+                    &lt;/select&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- End Input Group --&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="input-group-flush" class="hs-docs-heading">
+        Input group flush <a class="anchorjs-link" href="#input-group-flush" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <p>Add <code>.input-group-flush</code> to remove some borders and rounded corners to render <code>input</code> edge-to-edge in a parent container.</p>
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab7" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab7" data-bs-toggle="pill" href="#nav-result7" role="tab" aria-controls="nav-result7" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab7" data-bs-toggle="pill" href="#nav-html7" role="tab" aria-controls="nav-html7" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent7">
+          <div class="tab-pane fade p-4 show active" id="nav-result7" role="tabpanel" aria-labelledby="nav-resultTab7">
+            <!-- Input Group -->
+            <div class="mb-3">
+              <label for="inputGroupFlushFullName" class="form-label">Full name</label>
+
+              <div class="input-group input-group-merge input-group-flush">
+                <div class="input-group-prepend input-group-text" id="inputGroupFlushFullNameAddOn">
+                  <i class="bi-person"></i>
+                </div>
+                <input type="text" class="form-control" id="inputGroupFlushFullName" placeholder="Mark Williams" aria-label="Mark Williams" aria-describedby="inputGroupFlushFullNameAddOn">
+              </div>
+            </div>
+            <!-- End Input Group -->
+
+            <!-- Input Group -->
+            <div class="mb-3">
+              <label for="inputGroupFlushEmail" class="form-label">Email</label>
+
+              <div class="input-group input-group-merge input-group-flush">
+                <div class="input-group-prepend input-group-text" id="inputGroupFlushEmailAddOn">
+                  <i class="bi-envelope-open"></i>
+                </div>
+                <input type="text" class="form-control" id="inputGroupFlushEmail" placeholder="mark@example.com" aria-label="mark@example.com" aria-describedby="inputGroupFlushEmailAddOn">
+              </div>
+            </div>
+            <!-- End Input Group -->
+
+            <!-- Input Group -->
+            <div class="mb-3">
+              <label for="inputGroupFlushEmailOptional" class="form-label">Email <span class="form-label-secondary">(Optional)</span></label>
+
+              <div class="input-group input-group-merge input-group-flush">
+                <input type="text" class="form-control" id="inputGroupFlushEmailOptional" placeholder="mark@example.com" aria-label="mark@example.com" aria-describedby="inputGroupFlushEmailOptionalAddOn">
+                <div class="input-group-append input-group-text" id="inputGroupFlushEmailOptionalAddOn">
+                  <i class="bi-envelope-open"></i>
+                </div>
+              </div>
+            </div>
+            <!-- End Input Group -->
+
+            <!-- Input Group -->
+            <div class="mb-3">
+              <label for="inputGroupFlushGenderSelect" class="form-label">Gender</label>
+
+              <div class="input-group input-group-merge input-group-flush">
+                <div class="input-group-prepend input-group-text">
+                  <i class="bi-person"></i>
+                </div>
+                <select id="inputGroupFlushGenderSelect" class="form-select">
+                  <option>Choose a gender</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            <!-- End Input Group -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html7" role="tabpanel" aria-labelledby="nav-htmlTab7">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;!-- Input Group --&gt;
+                &lt;div class="mb-3"&gt;
+                  &lt;label for="inputGroupFlushFullName" class="form-label"&gt;Full name&lt;/label&gt;
+
+                  &lt;div class="input-group input-group-merge input-group-flush"&gt;
+                    &lt;div class="input-group-prepend input-group-text" id="inputGroupFlushFullNameAddOn"&gt;
+                      &lt;i class="bi-person"&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;input type="text" class="form-control" id="inputGroupFlushFullName" placeholder="Mark Williams" aria-label="Mark Williams" aria-describedby="inputGroupFlushFullNameAddOn"&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- End Input Group --&gt;
+
+                &lt;!-- Input Group --&gt;
+                &lt;div class="mb-3"&gt;
+                  &lt;label for="inputGroupFlushEmail" class="form-label"&gt;Email&lt;/label&gt;
+
+                  &lt;div class="input-group input-group-merge input-group-flush"&gt;
+                    &lt;div class="input-group-prepend input-group-text" id="inputGroupFlushEmailAddOn"&gt;
+                      &lt;i class="bi-envelope-open"&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;input type="text" class="form-control" id="inputGroupFlushEmail" placeholder="mark@example.com" aria-label="mark@example.com" aria-describedby="inputGroupFlushEmailAddOn"&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- End Input Group --&gt;
+
+                &lt;!-- Input Group --&gt;
+                &lt;div class="mb-3"&gt;
+                  &lt;label for="inputGroupFlushEmailOptional" class="form-label"&gt;Email &lt;span class="form-label-secondary"&gt;(Optional)&lt;/span&gt;&lt;/label&gt;
+
+                  &lt;div class="input-group input-group-merge input-group-flush"&gt;
+                    &lt;div class="input-group-prepend input-group-text" id="inputGroupFlushEmailOptionalAddOn"&gt;
+                      &lt;i class="bi-envelope-open"&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;input type="text" class="form-control" id="inputGroupFlushEmailOptional" placeholder="mark@example.com" aria-label="mark@example.com" aria-describedby="inputGroupFlushEmailOptionalAddOn"&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- End Input Group --&gt;
+
+                &lt;!-- Input Group --&gt;
+                &lt;div class="mb-3"&gt;
+                  &lt;label for="inputGroupFlushGenderSelect" class="form-label"&gt;Gender&lt;/label&gt;
+
+                  &lt;div class="input-group input-group-merge input-group-flush"&gt;
+                    &lt;div class="input-group-prepend input-group-text"&gt;
+                      &lt;i class="bi-person"&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;select id="inputGroupFlushGenderSelect" class="form-select"&gt;
+                      &lt;option&gt;Choose a gender&lt;/option&gt;
+                      &lt;option&gt;Male&lt;/option&gt;
+                      &lt;option&gt;Female&lt;/option&gt;
+                      &lt;option&gt;Other&lt;/option&gt;
+                    &lt;/select&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- End Input Group --&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="input-group-light" class="hs-docs-heading">
+        Input group light <a class="anchorjs-link" href="#input-group-light" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <p><code>.input-group-hover-light</code> adds light background color on hover.</p>
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab8" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab8" data-bs-toggle="pill" href="#nav-result8" role="tab" aria-controls="nav-result8" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab8" data-bs-toggle="pill" href="#nav-html8" role="tab" aria-controls="nav-html8" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent8">
+          <div class="tab-pane fade p-4 show active" id="nav-result8" role="tabpanel" aria-labelledby="nav-resultTab8">
+            <!-- Input Group -->
+            <div class="mb-3">
+              <label for="inputGroupLightFullName" class="form-label">Full name</label>
+
+              <div class="input-group input-group-merge input-group-light">
+                <div class="input-group-prepend input-group-text" id="inputGroupLightFullNameAddOn">
+                  <i class="bi-person"></i>
+                </div>
+                <input type="text" class="form-control" id="inputGroupLightFullName" placeholder="Mark Williams" aria-label="Mark Williams" aria-describedby="inputGroupLightFullNameAddOn">
+              </div>
+            </div>
+            <!-- End Input Group -->
+
+            <!-- Input Group -->
+            <div class="mb-3">
+              <label for="inputGroupLightEmail" class="form-label">Email</label>
+
+              <div class="input-group input-group-merge input-group-light">
+                <div class="input-group-prepend input-group-text" id="inputGroupLightEmailAddOn">
+                  <i class="bi-envelope-open"></i>
+                </div>
+                <input type="text" class="form-control" id="inputGroupLightEmail" placeholder="mark@example.com" aria-label="mark@example.com" aria-describedby="inputGroupLightEmailAddOn">
+              </div>
+            </div>
+            <!-- End Input Group -->
+
+            <!-- Input Group -->
+            <div class="mb-3">
+              <label for="inputGroupLightEmailOptional" class="form-label">Email <span class="form-label-secondary">(Optional)</span></label>
+
+              <div class="input-group input-group-merge input-group-light">
+                <input type="text" class="form-control" id="inputGroupLightEmailOptional" placeholder="mark@example.com" aria-label="mark@example.com" aria-describedby="inputGroupLightEmailOptionalAddOn">
+                <div class="input-group-append input-group-text" id="inputGroupLightEmailOptionalAddOn">
+                  <i class="bi-envelope-open"></i>
+                </div>
+              </div>
+            </div>
+            <!-- End Input Group -->
+
+            <!-- Input Group -->
+            <div class="mb-3">
+              <label for="inputGroupLightGenderSelect" class="form-label">Gender</label>
+
+              <div class="input-group input-group-merge input-group-light">
+                <div class="input-group-prepend input-group-text">
+                  <i class="bi-person"></i>
+                </div>
+                <select id="inputGroupLightGenderSelect" class="form-select">
+                  <option>Choose a gender</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            <!-- End Input Group -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html8" role="tabpanel" aria-labelledby="nav-htmlTab8">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;!-- Input Group --&gt;
+                &lt;div class="mb-3"&gt;
+                  &lt;label for="inputGroupLightFullName" class="form-label"&gt;Full name&lt;/label&gt;
+
+                  &lt;div class="input-group input-group-merge input-group-light"&gt;
+                    &lt;div class="input-group-prepend input-group-text" id="inputGroupLightFullNameAddOn"&gt;
+                      &lt;i class="bi-person"&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;input type="text" class="form-control" id="inputGroupLightFullName" placeholder="Mark Williams" aria-label="Mark Williams" aria-describedby="inputGroupLightFullNameAddOn"&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- End Input Group --&gt;
+
+                &lt;!-- Input Group --&gt;
+                &lt;div class="mb-3"&gt;
+                  &lt;label for="inputGroupLightEmail" class="form-label"&gt;Email&lt;/label&gt;
+
+                  &lt;div class="input-group input-group-merge input-group-light"&gt;
+                    &lt;div class="input-group-prepend input-group-text" id="inputGroupLightEmailAddOn"&gt;
+                      &lt;i class="bi-envelope-open"&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;input type="text" class="form-control" id="inputGroupLightEmail" placeholder="mark@example.com" aria-label="mark@example.com" aria-describedby="inputGroupLightEmailAddOn"&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- End Input Group --&gt;
+
+                &lt;!-- Input Group --&gt;
+                &lt;div class="mb-3"&gt;
+                  &lt;label for="inputGroupLightEmailOptional" class="form-label"&gt;Email &lt;span class="form-label-secondary"&gt;(Optional)&lt;/span&gt;&lt;/label&gt;
+
+                  &lt;div class="input-group input-group-merge input-group-light"&gt;
+                    &lt;div class="input-group-prepend input-group-text" id="inputGroupLightEmailOptionalAddOn"&gt;
+                      &lt;i class="bi-envelope-open"&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;input type="text" class="form-control" id="inputGroupLightEmailOptional" placeholder="mark@example.com" aria-label="mark@example.com" aria-describedby="inputGroupLightEmailOptionalAddOn"&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- End Input Group --&gt;
+
+                &lt;!-- Input Group --&gt;
+                &lt;div class="mb-3"&gt;
+                  &lt;label for="inputGroupLightGenderSelect" class="form-label"&gt;Gender&lt;/label&gt;
+
+                  &lt;div class="input-group input-group-merge input-group-light"&gt;
+                    &lt;div class="input-group-prepend input-group-text"&gt;
+                      &lt;i class="bi-person"&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;select id="inputGroupLightGenderSelect" class="form-select"&gt;
+                      &lt;option&gt;Choose a gender&lt;/option&gt;
+                      &lt;option&gt;Male&lt;/option&gt;
+                      &lt;option&gt;Female&lt;/option&gt;
+                      &lt;option&gt;Other&lt;/option&gt;
+                    &lt;/select&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- End Input Group --&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="input-group-hover-light" class="hs-docs-heading">
+        Input group hover light <a class="anchorjs-link" href="#input-group-hover-light" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <p><code>.input-group-light</code> adds light background color.</p>
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab9" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab9" data-bs-toggle="pill" href="#nav-result9" role="tab" aria-controls="nav-result9" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab9" data-bs-toggle="pill" href="#nav-html9" role="tab" aria-controls="nav-html9" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent9">
+          <div class="tab-pane fade p-4 show active" id="nav-result9" role="tabpanel" aria-labelledby="nav-resultTab9">
+            <!-- Input Group -->
+            <div class="mb-3">
+              <label for="inputGroupHoverLightFullName" class="form-label">Full name</label>
+
+              <div class="input-group input-group-merge input-group-hover-light">
+                <div class="input-group-prepend input-group-text" id="inputGroupHoverLightFullNameAddOn">
+                  <i class="bi-person"></i>
+                </div>
+                <input type="text" class="form-control" id="inputGroupHoverLightFullName" placeholder="Mark Williams" aria-label="Mark Williams" aria-describedby="inputGroupHoverLightFullNameAddOn">
+              </div>
+            </div>
+            <!-- End Input Group -->
+
+            <!-- Input Group -->
+            <div class="mb-3">
+              <label for="inputGroupHoverLightEmail" class="form-label">Email</label>
+
+              <div class="input-group input-group-merge input-group-hover-light">
+                <div class="input-group-prepend input-group-text" id="inputGroupHoverLightEmailAddOn">
+                  <i class="bi-envelope-open"></i>
+                </div>
+                <input type="text" class="form-control" id="inputGroupHoverLightEmail" placeholder="mark@example.com" aria-label="mark@example.com" aria-describedby="inputGroupHoverLightEmailAddOn">
+              </div>
+            </div>
+            <!-- End Input Group -->
+
+            <!-- Input Group -->
+            <div class="mb-3">
+              <label for="inputGroupHoverLightEmailOptional" class="form-label">Email <span class="form-label-secondary">(Optional)</span></label>
+
+              <div class="input-group input-group-merge input-group-hover-light">
+                <input type="text" class="form-control" id="inputGroupHoverLightEmailOptional" placeholder="mark@example.com" aria-label="mark@example.com" aria-describedby="inputGroupHoverLightEmailOptionalAddOn">
+                <div class="input-group-append input-group-text" id="inputGroupHoverLightEmailOptionalAddOn">
+                  <i class="bi-envelope-open"></i>
+                </div>
+              </div>
+            </div>
+            <!-- End Input Group -->
+
+            <!-- Input Group -->
+            <div class="mb-3">
+              <label for="inputGroupHoverLightGenderSelect" class="form-label">Gender</label>
+
+              <div class="input-group input-group-merge input-group-hover-light">
+                <div class="input-group-prepend input-group-text">
+                  <i class="bi-person"></i>
+                </div>
+                <select id="inputGroupHoverLightGenderSelect" class="form-select">
+                  <option>Choose a gender</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            <!-- End Input Group -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html9" role="tabpanel" aria-labelledby="nav-htmlTab9">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;!-- Input Group --&gt;
+                &lt;div class="mb-3"&gt;
+                  &lt;label for="inputGroupHoverLightFullName" class="form-label"&gt;Full name&lt;/label&gt;
+
+                  &lt;div class="input-group input-group-merge input-group-hover-light"&gt;
+                    &lt;div class="input-group-prepend input-group-text" id="inputGroupHoverLightFullNameAddOn"&gt;
+                      &lt;i class="bi-person"&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;input type="text" class="form-control" id="inputGroupHoverLightFullName" placeholder="Mark Williams" aria-label="Mark Williams" aria-describedby="inputGroupHoverLightFullNameAddOn"&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- End Input Group --&gt;
+
+                &lt;!-- Input Group --&gt;
+                &lt;div class="mb-3"&gt;
+                  &lt;label for="inputGroupHoverLightEmail" class="form-label"&gt;Email&lt;/label&gt;
+
+                  &lt;div class="input-group input-group-merge input-group-hover-light"&gt;
+                    &lt;div class="input-group-prepend input-group-text" id="inputGroupHoverLightEmailAddOn"&gt;
+                      &lt;i class="bi-envelope-open"&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;input type="text" class="form-control" id="inputGroupHoverLightEmail" placeholder="mark@example.com" aria-label="mark@example.com" aria-describedby="inputGroupHoverLightEmailAddOn"&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- End Input Group --&gt;
+
+                &lt;!-- Input Group --&gt;
+                &lt;div class="mb-3"&gt;
+                  &lt;label for="inputGroupHoverLightEmailOptional" class="form-label"&gt;Email &lt;span class="form-label-secondary"&gt;(Optional)&lt;/span&gt;&lt;/label&gt;
+
+                  &lt;div class="input-group input-group-merge input-group-hover-light"&gt;
+                    &lt;div class="input-group-prepend input-group-text" id="inputGroupHoverLightEmailOptionalAddOn"&gt;
+                      &lt;i class="bi-envelope-open"&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;input type="text" class="form-control" id="inputGroupHoverLightEmailOptional" placeholder="mark@example.com" aria-label="mark@example.com" aria-describedby="inputGroupHoverLightEmailOptionalAddOn"&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- End Input Group --&gt;
+
+                &lt;!-- Input Group --&gt;
+                &lt;div class="mb-3"&gt;
+                  &lt;label for="inputGroupHoverLightGenderSelect" class="form-label"&gt;Gender&lt;/label&gt;
+
+                  &lt;div class="input-group input-group-merge input-group-hover-light"&gt;
+                    &lt;div class="input-group-prepend input-group-text"&gt;
+                      &lt;i class="bi-person"&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;select id="inputGroupHoverLightGenderSelect" class="form-select"&gt;
+                      &lt;option&gt;Choose a gender&lt;/option&gt;
+                      &lt;option&gt;Male&lt;/option&gt;
+                      &lt;option&gt;Female&lt;/option&gt;
+                      &lt;option&gt;Other&lt;/option&gt;
+                    &lt;/select&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- End Input Group --&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="input-card" class="hs-docs-heading">
+        Input card <a class="anchorjs-link" href="#input-card" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab10" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab10" href="#nav-result10" data-bs-toggle="pill" data-bs-target="#nav-result10" role="tab" aria-controls="nav-result10" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab10" href="#nav-html10" data-bs-toggle="pill" data-bs-target="#nav-html10" role="tab" aria-controls="nav-html10" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent10">
+          <div class="tab-pane fade p-4 show active" id="nav-result10" role="tabpanel" aria-labelledby="nav-resultTab10">
+            <div class="w-md-50">
+              <div class="input-card input-card-sm">
+                <div class="input-card-form">
+                  <input type="text" class="form-control form-control-lg" placeholder="Your business email" aria-label="Your business email">
+                </div>
+                <button type="button" class="btn btn-primary btn-lg">Get started</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="nav-html10" role="tabpanel" aria-labelledby="nav-htmlTab10">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class="input-card input-card-sm"&gt;
+                  &lt;div class="input-card-form"&gt;
+                    &lt;input type="text" class="form-control form-control-lg" placeholder="Your business email" aria-label="Your business email"&gt;
+                  &lt;/div&gt;
+                  &lt;button type="button" class="btn btn-primary btn-lg"&gt;Get started&lt;/button&gt;
+                &lt;/div&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+    </div>
+    <!-- End Content -->
+  </main>
+  <!-- ========== END MAIN CONTENT ========== -->
+
+  <!-- ========== SECONDARY CONTENTS ========== -->
+  <!-- Go To -->
+  <a class="js-go-to go-to position-fixed" href="javascript:;" style="visibility: hidden;" data-hs-go-to-options='{
+       "offsetTop": 700,
+       "position": {
+         "init": {
+           "right": "2rem"
+         },
+         "show": {
+           "bottom": "2rem"
+         },
+         "hide": {
+           "bottom": "-2rem"
+         }
+       }
+     }'>
+    <i class="bi-chevron-up"></i>
+  </a>
+  <!-- ========== END SECONDARY CONTENTS ========== -->
+
+  <!-- JS Global Compulsory  -->
+  <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JS Implementing Plugins -->
+  <script src="../assets/vendor/hs-header/dist/hs-header.min.js"></script>
+  <script src="../assets/vendor/hs-nav-scroller/dist/hs-nav-scroller.min.js"></script>
+  <script src="../assets/vendor/list.js/dist/list.min.js"></script>
+  <script src="../assets/vendor/hs-go-to/dist/hs-go-to.min.js"></script>
+  <script src="../assets/vendor/prism/prism.js"></script>
+
+  <!-- JS Front -->
+  <script src="../assets/js/theme.min.js"></script>
+
+  <!-- JS Plugins Init. -->
+  <script>
+    (function() {
+      // INITIALIZATION OF HEADER
+      // =======================================================
+      new HSHeader('#header').init()
+
+
+      // INITIALIZATION OF NAV SCROLLER
+      // =======================================================
+      new HsNavScroller('.js-nav-scroller', {
+        delay: 400,
+        offset: 140
+      })
+
+
+      // INITIALIZATION OF LISTJS COMPONENT
+      // =======================================================
+      HSCore.components.HSList.init('#docsSearch');
+      const docsSearch = HSCore.components.HSList.getItem('docsSearch');
+
+
+      // GET JSON FILE RESULTS
+      // =======================================================
+      fetch('../assets/json/docs-search.json')
+      .then(response => response.json())
+      .then(data => {
+        docsSearch.add(data)
+      })
+
+
+      // INITIALIZATION OF GO TO
+      // =======================================================
+      new HSGoTo('.js-go-to')
+    })()
+  </script>
+</body>
+</html>
