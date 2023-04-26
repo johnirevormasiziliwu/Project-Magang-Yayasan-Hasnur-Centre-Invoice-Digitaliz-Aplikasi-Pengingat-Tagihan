@@ -8,6 +8,8 @@ use App\Models\Invoice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class CustomerController extends Controller
 {
@@ -46,13 +48,18 @@ class CustomerController extends Controller
         ]);
 
         // Mendapatkan user yang sedang login
-        $user = Auth::user();
+        //$user = Auth::user();
+
+        $user = User::create([
+            'name' => $request->name_agency,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
 
         // Menambahkan user_id ke dalam data yang akan disimpan
         $validate['user_id'] = $user->id;
-
-
         Customer::create($validate);
+
         toast('Successfully Data User Di Tambahkan', 'success');
         return redirect()->route('admin.customer.index');
     }
@@ -92,7 +99,17 @@ class CustomerController extends Controller
         ]);
 
         $customer = Customer::findOrFail($id);
+
+        $user = User::where('id', $customer->user_id)->first();
+        $userUpdate = [
+            'name' => $request->name_agency,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ];
+
+        $user->update($userUpdate);
         $customer->update($validate);
+
         toast('Successfully Data User Di Ubah', 'success');
         return redirect()->route('admin.customer.index');
     }
