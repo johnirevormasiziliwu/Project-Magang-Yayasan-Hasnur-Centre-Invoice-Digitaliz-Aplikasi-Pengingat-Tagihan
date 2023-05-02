@@ -5,7 +5,6 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 use Symfony\Component\HttpFoundation\Response;
 
 class Admin
@@ -17,9 +16,9 @@ class Admin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!Auth::user()->is_admin || Auth::user()->is_admin == 0) {
-
-            return Redirect::route('admin.invoice.index');
+        if(!Auth::check() || Auth::user()->is_admin == false)
+        {
+            return redirect('login');
         }
         return $next($request);
     }

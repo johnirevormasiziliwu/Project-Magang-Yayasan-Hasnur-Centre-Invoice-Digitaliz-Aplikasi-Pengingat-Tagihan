@@ -8,6 +8,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
@@ -25,17 +26,19 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        
+
         $request->authenticate();
 
         $request->session()->regenerate();
 
-        if (Auth::user()->is_admin) {
+        if(Auth::user()->hasRole('admin')) {
             return redirect()->route('admin.dashboard');
         } else {
             return redirect()->route('user.invoice.index');
         }
-
     }
+
 
     /**
      * Destroy an authenticated session.
@@ -48,6 +51,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('login');
     }
 }

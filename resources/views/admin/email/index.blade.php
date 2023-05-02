@@ -29,14 +29,7 @@
                     </div>
                 </div>
 
-                <div class="col-sm-auto">
-                    @if (Auth::user()->is_admin)
-                        <a class="btn btn-sm text-white fw-bold" href="{{ route('admin.invoice.create') }}"
-                            style="background: #6e11f4">
-                            <i class="bi bi-plus fs-4"></i> Buat Invoice
-                        </a>
-                    @endif
-                </div>
+
             </div>
         </div>
         <!-- End Page Header -->
@@ -60,23 +53,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col-3">
-                <div class="container">
-                    <form class="form-inline">
 
-                        <label for="#" class="form-label fs-5 fw-bold">Filter</label>
-                        <!-- Select -->
-                        <select class="form-select form-control fs-5 fw-bold">
-                            <option selected="">All</option>
-                            <option value="1">Paid</option>
-                            <option value="2">Unpaid</option>
-                            <option value="3">Processing</option>
-                        </select>
-
-                        <!-- End Select -->
-                    </form>
-                </div>
-            </div>
         </div>
         <!-- endtombol pencarian  dan filter -->
 
@@ -104,13 +81,7 @@
                                 @if ($invoice->is_paid == false && $invoice->payment_receipt == false)
                                     <tr>
                                         <td>
-                                            @if (Auth::user()->is_admin)
-                                                {{ $invoice->invoice_id }}
-                                            @else
-                                                <a href="{{ route('user.invoice.show', $invoice) }}">
-                                                    <u>{{ $invoice->invoice_id }}</u>
-                                                </a>
-                                            @endif
+                                            {{ $invoice->invoice_number }}
                                         </td>
                                         <td>{{ $invoice->title }}</td>
                                         <td>{{ $invoice->customer->name_unit }}</td>
@@ -120,19 +91,16 @@
                                                 style=" color:  #CD412E; font-size: 10px; font-weight: 700; font-style: normal; line-height: 150%; background: #FFEDEB; display: flex; flex-direction: row; justify-content:center; padding:4px;gap:10px ">Unpaid</span>
                                         </td>
 
-                                        <td>{{\App\Helper\Util::rupiah($invoice->nominal)}}</td>
+                                        <td>{{ \App\Helper\Util::rupiah($invoice->nominal) }}</td>
                                         <td style="display: flex; flex-direction: row;">
-                                            @if (Auth::user()->is_admin)
-                                                <a href="{{ route('admin.sendemail', $invoice->id) }}"
-                                                    class="btn btn-sm btn-warning">
-                                                    <i class="bi bi-send"></i>
-                                                </a>
-                                            @else
-                                                <a href="{{ route('user.payment_receipt', $invoice) }}"
-                                                    class="btn btn-sm btn-info" style="margin-left:10px;">
-                                                    <i class="bi bi-file-earmark-arrow-up"></i>
-                                                </a>
-                                            @endif
+
+                                            <a href="{{ route('admin.showemail', $invoice) }}"
+                                                class="btn btn-sm btn-warning">
+                                                <i class="bi bi-send"></i>
+                                            </a>
+
+
+
                                         </td>
                                     </tr>
                                 @endif

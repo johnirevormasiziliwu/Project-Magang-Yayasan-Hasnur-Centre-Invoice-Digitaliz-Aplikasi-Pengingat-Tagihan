@@ -40,6 +40,7 @@
         <!-- End Page Header -->
 
         <!-- Stars Form-->
+
         <div class="card mt-5">
             <div class="card-body">
                 <form action="{{ $url }}" method="post">
@@ -49,12 +50,13 @@
                     @endif
 
                     <div class="mb-3">
-                        <label for="invoice_id" class="form-label fs-4 fw-bold">ID Invoice</label>
-                        <input type="text" name="invoice_id" id="invoice_id"
-                            class="form-control @error('invoice_id') is-invalid @enderror"
-                            placeholder="inputkan ID invoice" value="{{ old('invoice_id', @$invoice->invoice_id) }}"
+                        <label for="invoice_number" class="form-label fs-4 fw-bold">ID Invoice</label>
+                        <input type="text" name="invoice_number" id="invoice_number"
+                            class="form-control @error('invoice_number') is-invalid @enderror"
+                            placeholder="inputkan ID invoice"
+                            value="{{ old('invoice_number', @$invoice->invoice_number) }}"
                             {{ @$invoice ? 'disabled' : '' }}>
-                        @error('invoice_id')
+                        @error('invoice_number')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -80,12 +82,12 @@
                                 <input type="date" name="invoice_date" id="invoice_date"
                                     class="form-control @error('invoice_date') is-invalid @enderror "
                                     value="{{ old('invoice_date', @$invoice->invoice_date) }}">
+                                @error('invoice_date')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
-                            @error('invoice_date')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
                         </div>
                         <div class="col">
                             <div class="mb-3">
@@ -93,12 +95,12 @@
                                 <input type="date" name="due_date" id="due_date"
                                     class="form-control @error('due_date') is-invalid @enderror"
                                     value="{{ old('due_date', @$invoice->due_date) }}">
+                                @error('due_date')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
-                            @error('due_date')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
                         </div>
                     </div>
                     <div class="row">
@@ -130,19 +132,22 @@
                         </div>
                         <div class="col">
                             <label for="name_pic" class="form-label fs-4 fw-bold">Name PIC</label>
-                            <input type="text" name="name_pic" id="name_pic" value="{{ @$invoice->customer->name_pic }}" class="form-control">
+                            <input type="text" name="name_pic" id="name_pic"
+                                value="{{ @$invoice->customer->name_pic }}" class="form-control">
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col">
                             <div class="mb-3">
                                 <label for="email" class="form-label fs-4 fw-bold">Alamat E-mail</label>
-                                <input type="email" name="email" id="email" value="{{ @$invoice->customer->email }}" class="form-control">
+                                <input type="email" name="email" id="email"
+                                    value="{{ @$invoice->customer->email }}" class="form-control">
                             </div>
                         </div>
                         <div class="col">
                             <label for="no_handphone" class="form-label fs-4 fw-bold">No. Handphone</label>
-                            <input type="text" name="no_handphone" id="no_handphone" value="{{ @$invoice->customer->no_handphone }}" class="form-control">
+                            <input type="text" name="no_handphone" id="no_handphone"
+                                value="{{ @$invoice->customer->no_handphone }}" class="form-control">
                         </div>
                     </div>
                     <div class="mb-3">
@@ -150,158 +155,61 @@
                                 Jalan,Gedung,RT/RW,Kecamatan,Kabupate,Kode Pos dll)</i></label>
                         <textarea name="address" id="address" cols="30" rows="8" class="form-control">{{ @$invoice->customer->address }}</textarea>
                     </div>
-
-
-                    <div class="row mt-3">
-                        <div class="col">
-                            <label for="images" class="form-label fs-4 fw-bold">File Tambahan</label>
-
-                            <div id="basicExampleDropzone"
-                                class="js-dropzone row dz-dropzone dz-dropzone-card bg-white">
-                                <div class="dz-message ">
-                                    <span class="svg-icon svg-icon-lg mb-3"></span>
-                                    <i class="bi bi-cloud-arrow-up" style="font-size:3rem"></i>
-                                    <h5>Drag and drop your file here</h5>
-
-                                    <p class="mb-2">or</p>
-
-                                    <span class="btn btn-white btn-sm">Browse files</span>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col">
-                            <div class="mb-3">
-                                <label for="price" class="form-label fs-4 fw-bold">Harga Satuan</label>
-                                <div class="input-group">
-                                    <span class="input-group-text fw-bold">Rp</span>
-                                    <input type="number" name="price" id="price"
-                                        class="form-control @error('price') is-invalid @enderror"
-                                        value="{{ old('price', @$invoice->price) }}"
-                                        placeholder="inputkan harga satuan">
-                                    @error('price')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <label for="stock" class="form-label fs-4 fw-bold">Jumlah</label>
-                                    <input type="number" name="stock" id="stock"
-                                        value="{{ old('stock', @$invoice->stock) }}"
-                                        class="form-control @error('stock') is-invalid @enderror"
-                                        placeholder="inputkan jumlah">
-                                    @error('stock')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                                <div class="col-4 mt-5">
-                                    <!-- Select -->
-
-                                    <select class="form-select fs-5 fw-bold @error('unit') is-invalid @enderror"
-                                        name="unit">
-                                        <option value="">Pilih Unit</option>
-                                        <option value="pcs" @if (old('unit', @$invoice->unit) == 'pcs') selected @endif>
-                                            PCS</option>
-                                        <option value="jam" @if (old('unit', @$invoice->unit) == 'jam') selected @endif>
-                                            Jam</option>
-                                        <option value="meter" @if (old('unit', @$invoice->unit) == 'meter') selected @endif>
-                                            Meter</option>
-                                        <option value="ls" @if (old('unit', @$invoice->unit) == 'ls') selected @endif>
-                                            LS</option>
-                                    </select>
-                                    <!-- End Select -->
-                                    @error('unit')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col mt-5">
-                                <label for="nominal" class="form-label fs-4 fw-bold">Harga Total</label>
-                                <div class="input-group">
-                                    <span class="input-group-text fw-bold">Rp</span>
-                                    <input type="number" name="nominal" id="nominal" class="form-control"
-                                        value="{{ old('nominal', @$invoice->nominal) }}" readonly>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="row mt-5 float-end">
-                        <div class="col">
-                            <a href="{{ route('admin.invoice.index') }}" class="btn"
-                                style="border-color: #6e11f4; color: 
+                    <div class="text-end">
+                        <a href="{{ route('admin.invoice.index') }}" class="btn me-3"
+                            style="border-color: #6e11f4; color: 
                             ">
-                                Batal
-                            </a>
-                        </div>
-                        <div class="col">
-                            <button type="submit" class="btn"
-                                style="background: #6e11f4; color:#fff">Selesai</button>
-                        </div>
+                            Batal
+                        </a>
+                        <button type="submit" class="btn" style="background: #6e11f4; color:#fff">Selesai</button>
                     </div>
+
                 </form>
             </div>
         </div>
-        <script>
-            // script mengihitung price dan stock secara otomatis
-            const priceInput = document.getElementById('price');
-            const stockInput = document.getElementById('stock');
-            const totalPriceInput = document.getElementById('nominal');
-            
-            function calculateTotalPrice() {
-                const price = parseInt(priceInput.value) || 0;
-                const stock = parseInt(stockInput.value) || 0;
-                const totalPrice = price * stock;
-                totalPriceInput.value = totalPrice;
-            }
-            
-            priceInput.addEventListener('input', calculateTotalPrice);
-            stockInput.addEventListener('input', calculateTotalPrice);
-            // end script mengihitung price dan stock secara otomatis
-            
-
-            
 
 
 
-            // mengambil data user secara otomatis ketika di select
-            
-            const selectElement = document.getElementById('my-select');
-            const relatedDataContainer = document.getElementById('related-data-container');
-            
-            
-            function getCustomer(id) {
-                const addressInput = document.getElementById('address');
-                const emailInput = document.getElementById('email');
-                const no_handphoneInput = document.getElementById('no_handphone');
-                const name_picInput = document.getElementById('name_pic');
-                
-                
-                $.ajax({
-                    type: 'POST',
-                    url: '{{ route('admin.getCustomer') }}',
-                    data: {
-                        _token: '{{ csrf_token() }}',
-                        id: id
-                    },
-                    success: function(response) {
-                        console.log('success');
-                        addressInput.value = response.address
-                        emailInput.value = response.email
-                        no_handphoneInput.value = response.no_handphone
-                        name_picInput.value = response.name_pic
-                    }
-                })
-            }
-            // end mengambil data user secara otomatis ketika di select
-        </script>
+    </div>
+    </div>
+    <script>
+        
 
+
+
+
+        // mengambil data user secara otomatis ketika di select
+
+        const selectElement = document.getElementById('my-select');
+        const relatedDataContainer = document.getElementById('related-data-container');
+
+
+        function getCustomer(id) {
+            const addressInput = document.getElementById('address');
+            const emailInput = document.getElementById('email');
+            const no_handphoneInput = document.getElementById('no_handphone');
+            const name_picInput = document.getElementById('name_pic');
+
+
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('admin.getCustomer') }}',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    id: id
+                },
+                success: function(response) {
+                    console.log('success');
+                    addressInput.value = response.address
+                    emailInput.value = response.email
+                    no_handphoneInput.value = response.no_handphone
+                    name_picInput.value = response.name_pic
+                }
+            })
+        }
+        // end mengambil data user secara otomatis ketika di select
+    </script>
+
+    @include('scripts.addInvoiceItem')
 
 </x-app-layout>
