@@ -5,24 +5,28 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use App\Models\Invoice;
+use App\Models\InvoiceItem;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Carbon;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class InvoiceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index(Request $request )
     {
         $filter = $request->input('filter');
 
         $invoices = Invoice::query();
+      
+      
 
         if ($filter == 'unpaid') {
             $invoices->where('is_paid', false)
@@ -54,11 +58,15 @@ class InvoiceController extends Controller
             'newest_due' => 'Newest Due'
         ];
 
+        $invoiceItems = InvoiceItem::where('invoice_id')->get();
+
         return view('admin.invoice.index', [
             "invoices" => $filteredInvoices,
             "filters" => $filters,
-            "selectedFilter" => $filter // nilai filter yang dipilih
+            "selectedFilter" => $filter, // nilai filter yang dipilih
+            "invoiceItems" => $invoiceItems // data invoice items untuk ditampilkan pada view
         ]);
+        
     }
 
 
@@ -68,11 +76,11 @@ class InvoiceController extends Controller
      */
     public function create(Request $request)
     {
-
         $customers = Customer::all();
         $url = route('admin.invoice.store');
         return view('admin.invoice.form', compact('url', 'customers'));
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -84,22 +92,61 @@ class InvoiceController extends Controller
             'title' => 'required|max:225',
             'invoice_date' => 'required',
             'due_date' => 'required',
-            'customer_id' => 'required',
-      
+            'customer_id' => [
+                'required',
+                Rule::unique('invoices')->where(function ($query) use ($request) {
+                    return $query->where('customer_id', $request->customer_id);
+                })
+            ],
+
         ]);
 
-        // Mendapatkan user yang sedang login
-        $user = Auth::user();
+        DB::beginTransaction();
 
-        // Menambahkan user_id ke dalam data yang akan disimpan
-        $validate['user_id'] = $user->id;
+        try {
+            $user = Auth::user();
 
-       $invoice = Invoice::create($validate);
-        toast('Successfully Data Invoice Ditambahkan', 'success');
-        return redirect()->route('admin.invoice.index');
+            $validate['user_id'] = $user->id;
+            
+            $invoice = Invoice::create($validate);
+
+            foreach ($request->invoiceItems as $item) {
+                $validator = Validator::make($item, [
+                    'description' => 'required|max:255',
+                    'stock' => 'required|integer',
+                    'unit' => 'required|max:50',
+                    'price' => 'required|numeric|min:1',
+                    'nominal' => 'required|numeric|min:1',
+                    'file' => 'required'
+                ]);
+
+                if ($validator->fails()) {
+                    return redirect()->back()->withErrors($validator)->withInput();
+                }
+
+                $invoiceItem = new InvoiceItem([
+                    'description' => $item['description'],
+                    'stock' => $item['stock'],
+                    'unit' => $item['unit'],
+                    'price' => $item['price'],
+                    'nominal' => $item['nominal'],
+                    'file' => $item['file'],
+                ]);
+                $invoice->invoiceItems()->save($invoiceItem);
+            }
+
+            DB::commit();
+
+            toast('Successfully Data Invoice Ditambahkan', 'success');
+            return redirect()->route('admin.invoice.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->withErrors(['Failed to add invoice data'])->withInput();
+        }
     }
 
-   
+
+
 
 
     /**
@@ -108,7 +155,8 @@ class InvoiceController extends Controller
     public function show(string $id)
     {
         $invoice = Invoice::findOrFail($id);
-        return view('admin.invoice.show', compact('invoice'));
+        $invoiceItems = InvoiceItem::where('invoice_id', $id)->get();
+        return view('admin.invoice.show', compact('invoice', 'invoiceItems'));
     }
 
 
@@ -122,9 +170,8 @@ class InvoiceController extends Controller
     public function edit(string $id)
     {
         $invoice = Invoice::findOrFail($id);
-        $url = route('admin.invoice.update', $invoice);
         $customers = Customer::all();
-        return view('admin.invoice.form', compact('url', 'invoice', 'customers'));
+        return view('admin.invoice.edit', compact('invoice', 'customers'));
     }
 
     /**
@@ -136,10 +183,6 @@ class InvoiceController extends Controller
             'title' => 'required|max:225',
             'invoice_date' => 'required',
             'due_date' => 'required',
-            'price' => 'required|numeric|min:1',
-            'stock' => 'required|numeric|min:1',
-            'nominal' => 'required|numeric|min:1',
-            'unit' => 'required', Rule::unique('invoices')->ignore($id),
             'customer_id' => 'required',
         ], [
             'customer_id.required' => 'The user field is required.',
@@ -182,6 +225,7 @@ class InvoiceController extends Controller
             Invoice::whereIn('id', $invoiceIds)->delete();
         } else if ($action == 'confirm') {
 
+            $invoiceItems = InvoiceItem::where('invoice_id')->get();
             $invoices = Invoice::whereIn('id', $invoiceIds)->get();
             return view('admin.invoice.show_payment_receipt', compact('invoices'));
         }
@@ -214,14 +258,14 @@ class InvoiceController extends Controller
         $invoice = Invoice::findOrFail($id);
         $data = ['invoice' => $invoice];
 
-        $view = view('admin.invoice.show', $data)->render(); // memuat view 'admin.invoice.show' dengan data yang diberikan dan merendernya ke dalam bentuk string
+        $view = view('admin.invoice.show', $data)->render(); 
 
-        $posStart = strpos($view, "<title>Invoice #6</title>"); // mencari posisi awal tag <title> dengan isi 'Invoice #6' dalam string view dan menyimpannya dalam variable $posStart
-        
-        $posEnd = strpos($view, "</body>"); // mencari posisi akhir tag </body> dalam string view dan menyimpannya dalam variable $posEnd
-        
-        $view = substr($view, $posStart, $posEnd - $posStart); // memotong string view mulai dari posisi $posStart hingga sebelum posisi $posEnd, dan menyimpannya kembali ke variable $view
-        
+        $posStart = strpos($view, "<title>Invoice #6</title>"); 
+
+        $posEnd = strpos($view, "</body>"); 
+
+        $view = substr($view, $posStart, $posEnd - $posStart); 
+
 
         $pdf = PDF::loadHTML($view);
 

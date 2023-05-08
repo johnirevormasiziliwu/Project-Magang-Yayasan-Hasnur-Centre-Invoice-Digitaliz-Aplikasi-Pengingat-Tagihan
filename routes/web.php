@@ -41,46 +41,59 @@ Route::post('/logout', [AuthLogoutController::class, 'logout'])->name('logout');
         Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 
         //Route admin inovice
-        Route::resource('invoice', AdminInvoiceController::class);
+        Route::resource('/invoice', AdminInvoiceController::class);
+      
 
-        // Route admin form invoice items
-        Route::get('invoice-items/{Invoice}', [AdminInvoiceItemController::class, 'createInvoiceItem'])->name('create-invoice-items');
+        //Route admin show invoice items
+        Route::get('invoices/{invoice}/invoiceitem/{invoiceItem}', [AdminInvoiceItemController::class, 'show'])->name('invoiceitems.show');
 
-        //Route admin invoice item
-        Route::post('invoice-items', [AdminInvoiceItemController::class, 'store'])->name('store-invoice-items');
+
+        // Route admin edit invoice items
+        Route::get('/invoices/{invoice}/invoiceitems/{invoiceitem}/edit', [AdminInvoiceItemController::class, 'edit'])->name('invoiceitems.edit');
+
+        // Route admin update invoice items
+        Route::put('/invoices/{invoice}/invoiceitems/{invoiceitem}/update', [AdminInvoiceItemController::class, 'update'])->name('invoiceitems.update');
+
+        // Route admin delete invoice items
+        Route::delete('/invoices/{invoice}/invoiceitems/{invoiceitem}/destroy', [AdminInvoiceItemController::class, 'destroy'])->name('invoiceitems.destroy');
+
+        
         // Route getCustomer
-        Route::post('get-customer', [AdminInvoiceController::class, 'getCustomer'])->name('getCustomer');
+        Route::post('/get-customer', [AdminInvoiceController::class, 'getCustomer'])->name('getCustomer');
 
         //Route admin user
-        Route::resource('customer', AdminCustomerController::class);
+        Route::resource('/customer', AdminCustomerController::class);
 
-        //Route admin user delete and form edit
-        Route::post('customer/edit', [AdminCustomerController::class, 'deleteEditCustomer'])->name('customer.deleteedit');
+        //Route admin delete customer 
+        Route::post('/customer/delete', [AdminCustomerController::class, 'delete'])->name('customer.delete');
 
         //Route admin Email
-        Route::get('email', [AdminEmailController::class, 'index'])->name('email.index');
+        Route::get('/email', [AdminEmailController::class, 'index'])->name('email.index');
 
 
         //Route admin Show Detail Email
-        Route::get('email/{invoice}', [AdminEmailController::class, 'showEmail'])->name('showemail');
+        Route::get('/email/{invoice}', [AdminEmailController::class, 'showEmail'])->name('showemail');
 
         //Route admin Send Email
-        Route::get('send-email/{invoice}', [AdminEmailController::class, 'sendEmail'])->name('sendemail');
+        Route::get('/send-email/{invoice}', [AdminEmailController::class, 'sendEmail'])->name('sendemail');
 
         //Show_payment_receipt
-        Route::get('showpaymentreceipt/{invoice}', [AdminInvoiceController::class, 'show_payment_receipt'])->name('show_payment_receipt');
+        Route::get('/showpaymentreceipt/{invoice}', [AdminInvoiceController::class, 'show_payment_receipt'])->name('show_payment_receipt');
 
         //Route Confirm and Delete
-        Route::post('confirm', [AdminInvoiceController::class, 'deleteConfirm'])->name('invoice.deleteConfirm');
+        Route::post('/confirm/delete', [AdminInvoiceController::class, 'deleteConfirm'])->name('invoice.deleteConfirm');
 
         //Confirm_payment_receipt
-        Route::post('confirm_payment/{invoice}', [AdminInvoiceController::class, 'confirm_payment'])->name('confirm_payment');
+        Route::post('/confirm_payment/{invoice}', [AdminInvoiceController::class, 'confirm_payment'])->name('confirm_payment');
 
         // Download payment-receipt
         Route::get('/download/{invoice}', [AdminInvoiceController::class, 'downloadPaymentReceipt'])->name('download-payment-receipt');
 
         // Download Invoice
-        Route::get('download/{invoice}/generate', [AdminInvoiceController::class, 'downloadInvoice'])->name('download-invoice');
+        Route::get('/download/{invoice}/generate', [AdminInvoiceController::class, 'downloadInvoice'])->name('download-invoice');
+
+        // search invoice
+        Route::get('/search', [AdminInvoiceController::class, 'search'])->name('search.invoice');
     });
 
 
@@ -88,8 +101,16 @@ Route::post('/logout', [AuthLogoutController::class, 'logout'])->name('logout');
 
     Route::prefix('user')->middleware(['role:user'])->name('user.')->group(function () {
         Route::resource('invoice', UserInvoiceController::class);
+
+        // Route  form payment receipt invoice
         Route::get('invoice/paymentreceipt/{invoice}', [UserInvoiceController::class, 'formPaymentReceipt'])->name('payment-receipt');
+
+        // Route upload payment receipt invoice
         Route::post('invoice/upload/paymentreceipt/{invoice}', [UserInvoiceController::class, 'uploadPaymentReceipt'])->name('upload-payment-receipt');
+
+        // Download Invoice
+        Route::get('/download/{invoice}/generate', [AdminInvoiceController::class, 'downloadInvoice'])->name('download-invoice');
+
     });
 
 

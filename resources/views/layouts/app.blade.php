@@ -5,7 +5,7 @@
     <!-- Required Meta Tags Always Come First -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Title -->
     <title>Inovice</title>
 
@@ -25,11 +25,7 @@
 
     <link rel="preload" href="{{ asset('dist') }}/assets/css/theme.min.css" data-hs-appearance="default"
         as="style">
-    <link rel="preload" href="{{ asset('dist') }}/assets/css/theme-dark.min.css" data-hs-appearance="dark"
-        as="style">
-
-    <script src="{{ asset('dist') }}/node_modules/dropzone/dist/min/dropzone.min.js"></script>
-    <script src="{{ asset('dist') }}/assets/js/hs.dropzone.js"></script>
+    
     <script src="{{ asset('dist') }}/assets/vendor/chart.js/dist/Chart.min.js"></script>
     <script src="{{ asset('dist') }}/assets/vendor/chart.js/dist/Chart.min.js"></script>
 
@@ -235,7 +231,7 @@
         <div class="navbar-nav-wrap">
             <!-- Logo -->
             <a class="navbar-brand" href="./index.html" aria-label="Front">
-                <img src="{{ asset('dist') }}/assets/img/login/logo_digitaliz.png" alt="Logo">
+               
                 <img class="navbar-brand-logo" src="{{ asset('dist') }}/assets/svg/logos-light/logo.svg" alt="Logo"
                     data-hs-theme-appearance="dark">
                 <img class="navbar-brand-logo-mini" src="{{ asset('dist') }}/assets/svg/logos/logo-short.svg"
@@ -453,12 +449,11 @@
     <script src="{{ asset('dist') }}/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- JS Implementing Plugins -->
-    <script src="./node_modules/dropzone/dist/min/dropzone.min.js"></script>
+    
     <script src="{{ asset('dist') }}/assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside.min.js"></script>
     <script src="{{ asset('dist') }}/assets/vendor/hs-form-search/dist/hs-form-search.min.js"></script>
 
     <script src="{{ asset('dist') }}/assets/vendor/chart.js/dist/Chart.min.js"></script>
-    <script src="{{ asset('dist') }}/assets/vendor/chartjs-chart-matrix/dist/chartjs-chart-matrix.min.js"></script>
     <script src="{{ asset('dist') }}/assets/vendor/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js">
     </script>
     <script src="{{ asset('dist') }}/assets/vendor/daterangepicker/moment.min.js"></script>
@@ -471,7 +466,7 @@
     <!-- JS Front -->
     <script src="{{ asset('dist') }}/assets/js/theme.min.js"></script>
     <script src="{{ asset('dist') }}/assets/js/hs.theme-appearance-charts.js"></script>
-    <script src="./assets/js/hs.dropzone.js"></script>
+   
 
     <!-- JS Plugins Init. -->
     <script>
@@ -549,14 +544,7 @@
             })
         })
     </script>
-    <script>
-        (function() {
-          // INITIALIZATION OF DROPZONE
-          // =======================================================
-          HSCore.components.HSDropzone.init('.js-dropzone')
-        })();
-      </script>
-    <!-- JS Plugins Init. -->
+    
     <script>
         (function() {
             localStorage.removeItem('hs_theme')
@@ -758,6 +746,8 @@
             })
         })()
     </script>
+
+
 
     @include('sweetalert::alert')
     @stack('scripts')

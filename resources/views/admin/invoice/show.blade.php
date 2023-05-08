@@ -159,7 +159,8 @@
                 <body>
                     <div class="logo">
                         <img src="https://example.com/logo.png" alt="Logo">
-                   </div>
+                    </div>
+                    @php($total = 0)
                     <table class="order-details">
                         <thead>
                             <tr>
@@ -167,7 +168,7 @@
                                     <h1 class="text-center">INVOICE</h1>
                                 </th>
                                 <th width="50%" colspan="2" class="text-end company-data">
-                                    Invoice Id: <span class="fw-bold">{{ $invoice->invoice_id }}</span> <br>
+                                    Invoice Id: <span class="fw-bold">{{ $invoice->invoice_number }}</span> <br>
                                     <span>Date: {{ date('d M Y', strtotime($invoice->payment_time)) }}</span> <br>
                                     <span>Address: {{ $invoice->customer->address }}</span> <br>
                                 </th>
@@ -180,7 +181,7 @@
                         <tbody>
                             <tr>
                                 <td>Invoice Id:</td>
-                                <td>{{ $invoice->invoice_id }}</td>
+                                <td>{{ $invoice->invoice_number }}</td>
 
                                 <td>Nama Unit:</td>
                                 <td>{{ $invoice->customer->name_unit }}</td>
@@ -202,9 +203,9 @@
                             <tr>
                                 <td>Payment Date:</td>
                                 @if ($invoice->payment_time)
-                                    {{ date('d M Y', strtotime($invoice->payment_time)) }}
+                                  <td>{{ date('d M Y', strtotime($invoice->payment_time)) }}</td>  
                                 @else
-                                    <td>-</td>
+                                   <td><span class="justify-content-center">-</span></td> 
                                 @endif
 
                                 <td>No Handphone</td>
@@ -233,31 +234,34 @@
                                     Detail Tagihan
                                 </th>
                             </tr>
-                            <tr class="bg-blue">
-                                <th>Invoice ID</th>
-                                <th>Judul Invoice</th>
-                                <th>Harga</th>
-                                <th>Stok</th>
-                                <th>Total</th>
+                            <tr class="bg-blue text-center">
+                                <th class="text-center">Nomor</th>
+                                <th class="text-center">Uraian</th>
+                                <th class="text-center">Kuantitas</th>
+                                <th class="text-center">Harga(Rp)</th>
+                                <th class="text-center">Jumlah(Rp)</th>
+
                             </tr>
                         </thead>
+                        @php($nomor = 1)
                         <tbody>
-                            <tr>
-                                <td width="20%">{{ $invoice->invoice_id }}</td>
-                                <td>
-                                    {{ $invoice->title }}
-                                </td>
-                                <td width="10%">{{ \App\Helper\Util::rupiah($invoice->price) }}</td>
-                                <td width="10%">{{ $invoice->stock }}</td>
-                                <td width="15%" class="fw-bold">{{ \App\Helper\Util::rupiah($invoice->nominal) }}
-                                </td>
-                            </tr>
+                            @foreach ($invoice->invoiceItems as $item)
+                                <tr>
+                                    <td width="1%" class="text-center">{{ $nomor++ }}</td>
+                                    <td width="20%">{{ $item->description }}</td>
+                                    <td width="10%" class="text-center">{{ $item->stock }}</td>
+                                    <td width="10%">{{ \App\Helper\Util::rupiah($item->price) }}</td>
+                                    <td width="15%" class="fw-bold">{{ \App\Helper\Util::rupiah($item->nominal) }}
+                                    </td>
+                                </tr>
+                                @php($total += $item->nominal)
+                            @endforeach
 
                             <tr>
                                 <td colspan="4" class="total-heading">Total Harga
                                     :</td>
                                 <td colspan="1" class="total-heading">
-                                    {{ \App\Helper\Util::rupiah($invoice->nominal) }}</td>
+                                    {{ \App\Helper\Util::rupiah($total) }}</td>
                             </tr>
                         </tbody>
                     </table>

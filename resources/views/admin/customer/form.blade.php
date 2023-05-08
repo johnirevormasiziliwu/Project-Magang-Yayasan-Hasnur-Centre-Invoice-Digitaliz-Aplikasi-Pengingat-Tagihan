@@ -103,7 +103,7 @@
                         <label for="address"><span class="form-label fs-4 fw-bold">Alamat</span> <i>(Nama
                                 Jalan,Gedung,RT/RW,Kecamatan,Kabupaten,Kode Pos dll)</i></label>
                         <textarea name="address" id="address" cols="30" rows="8"
-                            class="form-control @error('address') is-invalid @enderror">{{ @$customer->address }}</textarea>
+                            class="form-control @error('address') is-invalid @enderror">{{ old('address',  @$customer->address ) }}</textarea>
                         @error('address')
                             <div class="invalid-feedback">
                                 {{ $message }}

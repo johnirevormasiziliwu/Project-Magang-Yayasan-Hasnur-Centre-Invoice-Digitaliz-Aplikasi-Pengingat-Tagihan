@@ -183,6 +183,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
+
      
 
 
@@ -217,5 +219,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
        
     ])->toArray(),
+    'MediaLibrary' => Spatie\MediaLibrary\MediaLibraryFacade::class,
+
 
 ];

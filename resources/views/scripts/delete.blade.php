@@ -6,13 +6,14 @@
             e.preventDefault();
             var form = $(this).closest('form');
             Swal.fire({
-                title: 'Apakah Anda yakin menghapus data ini?',
-                text: "Setelah dihapus, Anda tidak akan dapat memulihkan data ini!",
+                title: 'Apakah Anda yakin menghapus  data ini?',
+                text: "Data yang telah dihapus tidak bisa dikembalikan lagi",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#9E9E9E',
+                confirmButtonText: 'Hapus',
+                cancelButtonText: 'Batal'
             }).then((result) => {
                 if (result.isConfirmed) {
                     form.submit();

@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Invoice extends Model
+class Invoice extends Model 
 {
     use HasFactory;
+    
+  
 
     protected $fillable = [
         'user_id',
@@ -40,7 +42,7 @@ class Invoice extends Model
     public function scopeFilter($query, array $filters)
     {
         if (isset($filters['search']) ? $filters['search'] : false) {
-            return $query->where('invoice_id', 'like', '%' . $filters['search'] . '%')
+            return $query->where('invoice_number', 'like', '%' . $filters['search'] . '%')
                 ->orWhere('title', 'like', '%' . $filters['search'] . '%')
                 ->orWhere('customer_id', 'like', '%' . $filters['search'] . '%');
         }

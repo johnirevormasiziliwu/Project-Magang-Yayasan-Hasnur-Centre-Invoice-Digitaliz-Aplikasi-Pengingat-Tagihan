@@ -9,32 +9,68 @@ use Illuminate\Http\Request;
 
 class InvoiceItemController extends Controller
 {
-    public function createInvoiceItem(string $id)
+
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
     {
-        $invoiceItems = InvoiceItem::where('invoice_id', $id)->get();
+        $invoiceitems = InvoiceItem::where('invoice_id', $id)->get();
         $invoice = Invoice::findOrFail($id);
-        return view('admin.invoiceitems.addinvoiceitems', compact('invoiceItems', 'invoice'));
+        return view('admin.invoiceitems.showinvoiceitems', compact('invoiceitems', 'invoice'));
     }
 
-    public function store(Request $request)
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Invoice $invoice, InvoiceItem $invoiceitem)
     {
+        // Ambil data invoice item berdasarkan id dan id invoice
+        $invoiceitem = InvoiceItem::where('id', $invoiceitem->id)->where('invoice_id', $invoice->id)->first();
+
+        // Jika data invoice item tidak ditemukan
+        if (!$invoiceitem) {
+            return redirect()->back()->with('error', 'Invoice item not found');
+        }
+
+        // Tampilkan halaman edit invoice item dengan data yang telah diambil
+        return view('admin.invoiceitems.edit', compact('invoice', 'invoiceitem'));
+    }
+
+
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Invoice $invoice, InvoiceItem $invoiceitem)
+    {
+        // Validasi inputan form
         $validate = $request->validate([
-            'description' => 'required|string',
+            'description' => 'required|max:225',
             'stock' => 'required|numeric|min:1',
             'unit' => 'required',
             'price' => 'required|numeric|min:1',
             'nominal' => 'required|numeric|min:1',
-            'file' => 'required'
+            'file' => 'required',
+
         ]);
-        
-        // ambil id invoice terbaru
-        $latestInvoice = Invoice::latest()->first();
-        $validate['invoice_id'] = $latestInvoice->id;
-        
-        InvoiceItem::create($validate);
-        
-        alert()->success('successfully', 'Data Tagihan Invoice Berhasil Ditambahkan');
+
+        $invoiceitem->update($validate);
+        toast('Data Invoice Item Berhasil Update ', 'success');
+        return redirect()->route('admin.invoiceitems.show', ['invoice' => $invoice->id, 'invoiceItem' => $invoiceitem->id]);
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Invoice $invoice, InvoiceItem $invoiceitem)
+    {
+        $invoiceitem = InvoiceItem::where('id', $invoiceitem->id)->where('invoice_id', $invoice->id)->first();
+        $invoiceitem->delete();
+        alert()->success('successfully', 'Data invoice dihapus');
         return redirect()->back();
     }
-    
 }

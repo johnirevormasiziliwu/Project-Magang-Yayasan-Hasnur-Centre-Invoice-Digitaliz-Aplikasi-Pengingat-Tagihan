@@ -149,7 +149,7 @@
                                         <td>
 
                                             <a href="{{ route('admin.invoice.show', $invoice) }}">
-                                                <u>{{ $invoice->invoice_number  }}</u>
+                                                <u>{{ $invoice->invoice_number }}</u>
                                             </a>
 
 
@@ -174,15 +174,20 @@
                                                     style="  color: #CD7B2E; font-size: 10px; font-weight: 700; font-style: normal; line-height: 150%; background:  #FFF7EB; display: flex; flex-direction: row; justify-content:center;padding:4px;gap:10px ">Processing</span>
                                             </td>
                                         @endif
-                                        <td>{{ \App\Helper\Util::rupiah($invoice->nominal) }}</td>
+                                        @php($totalInvoiceNominal = 0)
+                                        @foreach ($invoice->invoiceItems as $invoiceItem)
+                                            @php($totalInvoiceNominal += $invoiceItem->nominal)
+                                        @endforeach
+                                        <td>{{ \App\Helper\Util::rupiah($totalInvoiceNominal) }}</td>
                                         <td style="display: flex; flex-direction: row;">
-
-                                            <a class="text-dark ms-4 fs-5"
-                                                href="{{ route('admin.invoice.edit', $invoice->id) }}">
+                                            <a class="text-dark ms-4 fs-5" href="{{ route('admin.invoice.edit', $invoice->id) }}" style="margin-right: 20px;">
                                                 <i class="bi bi-pencil"></i>
                                             </a>
-                                            <a href="{{ route('admin.create-invoice-items', $invoice) }}" class="btn btn-sm btn-info">Tambah Tagihan</a>
+                                            <a href="{{ route('admin.invoiceitems.show', ['invoice' => $invoice->id, 'invoiceItem' => $invoice->invoiceItems->first()->id]) }}">
+                                                <i class="bi bi-eye"></i>
+                                            </a>
                                         </td>
+                                        
                                     </tr>
                                 @empty
                                     <tr class="text-center">

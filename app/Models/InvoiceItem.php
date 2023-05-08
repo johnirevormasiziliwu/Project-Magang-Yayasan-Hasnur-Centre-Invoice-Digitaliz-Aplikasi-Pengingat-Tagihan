@@ -11,12 +11,12 @@ class InvoiceItem extends Model
 
     protected $fillable = [
        
-        'invoice_id',
         'description',
         'stock',
+        'unit',
         'price',
+        'file',
         'nominal',
-        'file'
     ];
 
     public function invoice()

@@ -1,5 +1,3 @@
-
-
 @push('scripts')
     <!-- Push Script -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -8,13 +6,13 @@
             e.preventDefault();
             var form = $(this).closest('form');
             Swal.fire({
-                title: 'Apakah Anda yakin ingin melakukan konfirmasi pembayaran ini?',
-                text: "Pastikan Anda telah memeriksa kembali data yang diinputkan sebelum melakukan konfirmasi!",
-                icon: 'warning',
+                title: 'Apakah Anda yakin mengkonfirmasi pembayaran ini ?',
+                text: "Setelah mengkonfirmasi pembayaran ini, status invoice akan berubah menjadi paid",
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, confirm it!'
+                confirmButtonColor: '#6E11F4',
+                cancelButtonColor: '#9E9E9E',
+                confirmButtonText: 'Konfirmasi',
+                cancelButtonText: 'Batal'
             }).then((result) => {
                 if (result.isConfirmed) {
                     form.submit();
