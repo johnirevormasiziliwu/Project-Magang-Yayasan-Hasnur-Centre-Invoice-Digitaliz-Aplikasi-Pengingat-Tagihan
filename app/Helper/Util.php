@@ -6,7 +6,7 @@ class Util {
 
    public static function rupiah($angka)
     {
-           return 'Rp '. number_format($angka,'0',',' , '.');
+           return 'Rp. '. number_format($angka,'0',',' , '.');
     }
 
 }

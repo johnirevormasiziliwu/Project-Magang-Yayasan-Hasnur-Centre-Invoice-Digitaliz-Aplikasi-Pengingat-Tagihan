@@ -5,33 +5,69 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Invoice;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class InvoiceController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.invoice.index', [
-            "invoices" => Invoice::latest()->filter(request(['search']))->paginate(5)->withQueryString()
+        $filter = $request->input('filter');
+
+        $invoices = Invoice::query();
+
+        if ($filter == 'unpaid') {
+            $invoices->where('is_paid', false)
+                ->whereNull('payment_receipt');
+        } elseif ($filter == 'paid') {
+            $invoices->where('is_paid', true);
+        } elseif ($filter == 'processing') {
+            $invoices->where('is_paid', false)
+                ->whereNotNull('payment_receipt');
+        } elseif ($filter == 'oldest_due') {
+            $invoices->orderBy('due_date', 'asc');
+        } elseif ($filter == 'newest_due') {
+            $invoices->orderBy('due_date', 'desc');
+        }
+
+        // Logika untuk menampilkan semua faktur
+        if (!$filter || $filter == 'all') {
+            $invoices->get();
+        }
+
+        $filteredInvoices = $invoices->latest()->filter(request(['search']))->paginate(5)->withQueryString();
+
+        $filters = [
+            'all' => 'All', // nilai dan label untuk 'all'
+            'unpaid' => 'Unpaid', // nilai dan label untuk 'unpaid'
+            'paid' => 'Paid', // nilai dan label untuk 'paid'
+            'processing' => 'Processing', // nilai dan label untuk 'processing'
+            'oldest_due' => 'Oldest Due', // nilai dan label untuk 'oldest_due'
+            'newest_due' => 'Newest Due' // nilai dan label untuk 'newest_due'
+        ];
+
+        return view('user.invoice.index', [
+            "invoices" => $filteredInvoices,
+            "filters" => $filters,
+            "selectedFilter" => $filter // nilai filter yang dipilih
         ]);
     }
+
 
     public function show(string $id)
     {
         $invoice = Invoice::findOrFail($id);
-        return view('admin.invoice.show', compact('invoice'));
+        return view('user.invoice.show', compact('invoice'));
     }
 
 
-    public function form_payment_receipt(string $id)
+    public function formPaymentReceipt(string $id)
     {
         $invoice = Invoice::findOrFail($id);
-        return view('admin.invoice.upload_paymentreceipt', compact('invoice'));
+        return view('user.invoice.upload_paymentreceipt', compact('invoice'));
     }
 
 
-    public function upload_payment_receipt(Invoice $invoice, Request $request)
+    public function uploadPaymentReceipt(Invoice $invoice, Request $request)
     {
         // Validate the uploaded file
         $request->validate([

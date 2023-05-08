@@ -13,17 +13,14 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
-            $table->string('invoice_id');
+            $table->string('invoice_number');
             $table->foreignId('customer_id')->constrained('customers')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('title');
             $table->date('invoice_date');
             $table->date('due_date');
-            $table->integer('price');
-            $table->integer('stock');
-            $table->enum('unit', ['pcs','jam','meter','ls']);
-            $table->integer('nominal');
             $table->string('payment_receipt')->nullable();
+            $table->date('payment_time')->nullable();
             $table->boolean('is_paid')->default(false);
             $table->timestamps();
         });

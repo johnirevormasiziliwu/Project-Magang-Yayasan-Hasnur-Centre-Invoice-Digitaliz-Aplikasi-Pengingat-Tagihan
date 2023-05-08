@@ -178,7 +178,7 @@ Dear {{ $invoice->customer->name_unit }},
 
 Saya berharap email ini menemukan Anda dalam keadaan sehat dan baik-baik saja. Saya ingin mengingatkan Anda bahwa faktur kami nomor {{ $invoice->invoice_id }} berjudul {{ $invoice->title }} dengan tanggal jatuh tempo pada tanggal {{ date('d F Y', strtotime($invoice->due_date)) }} masih belum dibayarkan.
 
-Jumlah yang harus dibayarkan adalah {{\App\Helper\Util::rupiah($invoice->nominal)}} seperti yang tertera pada faktur. Sesuai dengan persyaratan kontrak kami, pembayaran harus dibuat tepat waktu. Kami telah memberikan layanan kepada Anda dengan sepenuh hati dan kami berharap Anda juga dapat memenuhi kewajiban Anda dalam hal pembayaran. Kami sangat menghargai hubungan bisnis yang baik dengan Anda dan kami berharap dapat terus bekerja sama dengan Anda dalam jangka panjang.
+Jumlah yang harus dibayarkan adalah {{ \App\Helper\Util::rupiah($invoice->nominal) }} seperti yang tertera pada faktur. Sesuai dengan persyaratan kontrak kami, pembayaran harus dibuat tepat waktu. Kami telah memberikan layanan kepada Anda dengan sepenuh hati dan kami berharap Anda juga dapat memenuhi kewajiban Anda dalam hal pembayaran. Kami sangat menghargai hubungan bisnis yang baik dengan Anda dan kami berharap dapat terus bekerja sama dengan Anda dalam jangka panjang.
 
 Saya meminta Anda untuk segera membayar faktur ini dalam waktu 10 hari. Jika ada masalah dengan faktur atau informasi tambahan yang dibutuhkan, silakan hubungi kami segera.
 
@@ -192,25 +192,25 @@ Yayasan Hasnur Center
                 </div>
 
                 <!-- button email dan whatshap -->
-                <form action="">
-                    <div class="row">
-                        <label for="" class="form-label fs-4 fw-bold">Kirim</label>
-                        <div class="col">
-                            <button class="btn btn-white ">
-                                <img src="{{ asset('img/icon/gmail.png') }}" alt="Gambar Tombol Email"
-                                    style="width: 30px">
-                                <b>{{ $invoice->customer->email }}</b>
-                            </button>
-                        </div>
-                        <div class="col">
-                            <button class="btn btn-white ">
-                                <img src="{{ asset('img/icon/whatsapp.png') }}" alt="Gambar Tombol No Handphone"
-                                    style="width: 25px">
-                                {{ $invoice->customer->no_handphone }}
-                            </button>
-                        </div>
+
+                <div class="row">
+                    <label for="" class="form-label fs-4 fw-bold">Kirim</label>
+                    <div class="col">
+                        <a class="btn btn-white " href="{{ route('admin.sendemail', $invoice) }}">
+                            <img src="{{ asset('img/icon/gmail.png') }}" alt="Gambar Tombol Email"
+                                style="width: 30px">
+                            <b>{{ $invoice->customer->email }}</b>
+                        </a>
                     </div>
-                </form>
+                    <div class="col">
+                        <button class="btn btn-white ">
+                            <img src="{{ asset('img/icon/whatsapp.png') }}" alt="Gambar Tombol No Handphone"
+                                style="width: 25px">
+                            {{ $invoice->customer->no_handphone }}
+                        </button>
+                    </div>
+                </div>
+
 
                 <div class="container mt-5">
                     <div class="row">

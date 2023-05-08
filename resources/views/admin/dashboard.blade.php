@@ -44,32 +44,55 @@
         <!-- Card -->
         <div class="card">
             <div class="card-body d-flex justify-content-around">
+                @php($nomor = 1)
+                @php($totalUnpaid = 0)
+                @php($totalPaid = 0)
                 <div class="paid">
-                    <p class="fs-5 fw-bold text-success"><i
-                            class="bi bi-check-circle-fill me-2 text-success fw-bold fs-5"></i>Paid Bill</p>
-                    <h1 class="fw-bold"><span style="color:#C7C9D9">Rp. </span>5.000.000</h1>
-                </div>
-                |
-                <div class="paid text-center">
-                    <p class="text-danger fw-bold text-danger fs-5"><i class="bi bi-x-circle-fill me-2"></i>Unpaid Bill
+                    <p class="fs-5 fw-bold text-success">
+                        <i class="bi bi-check-circle-fill me-2 text-success fw-bold fs-5"></i>
+                        Paid Bill
+                        @php($totalPaid += $invoices->where('is_paid', true)->sum('nominal'))
                     </p>
-                    <h1 class="fw-bold"> <span style="color:#C7C9D9">Rp. </span> 5.000.000</h1>
+                    <h1 class="fw-bold">
+                        {{ \App\Helper\Util::rupiah($invoices->where('is_paid', true)->sum('nominal')) }}
+                    </h1>
                 </div>
-                |
+                <hr
+                    style="border-right: 2px solid #E0E0E0; height: 50px; position: absolute; top: 0; left:30%; transform: translateX(50%);">
+                <div class="unpaid text-center">
+                    <p class="text-danger fw-bold text-danger fs-5">
+                        <i class="bi bi-x-circle-fill me-2"></i>
+                        Unpaid Bill
+                        @php($totalUnpaid += $invoices->where('is_paid', false)->sum('nominal'))
+                    </p>
+                    <h1 class="fw-bold">
+                        {{ \App\Helper\Util::rupiah($invoices->where('is_paid', false)->sum('nominal')) }}
+                    </h1>
+                </div>
+                <hr
+                    style="border-right: 2px solid #E0E0E0; height: 50px; position: absolute; top: 0; right:30%; transform: translateX(50%);">
                 <div class="paid text-right">
-                    <p class="text-warning fw-bold fs-5"><i
-                            class="bi bi-exclamation-circle-fill me-2 text-warning "></i>Paid Bill</p>
-                    <h1 class="fw-bold"> <span style="color:#C7C9D9">Rp. </span> 5.000.000</h1>
+                    <p class="text-warning fw-bold fs-5">
+                        <i class="bi bi-exclamation-circle-fill me-2 text-warning "></i>
+                        Reminder Bill
+                    </p>
+                    <h1 class="fw-bold">
+                        {{ $invoicesCount }} invoice
+                    </h1>
                 </div>
             </div>
         </div>
+
+
+
         <!-- End Card -->
         <div class="row mt-4">
             <div class="col-md-7">
                 <div class="card">
                     <div class="card-body">
-
-
+                        <div class="d-flex align-items-center mb-4">
+                            <span class="h3 mb-0">Total Transaksi</span>
+                        </div>
                         <!-- Bar Chart -->
                         <div class="chartjs-custom">
                             <canvas id="ecommerce-sales" class="js-chart" style="height: 20rem; width: 25rem;"
@@ -78,7 +101,7 @@
                               "data": {
                                 "labels": ["Okt", "Nov", "Des", "Jan", "Feb", "Maret"],
                                 "datasets": [{
-                                  "data": [200, 300, 290, 350, 150, 350, 300, 100, 125, 220],
+                                  "data": [100, 200, 300, 400, 500,600],
                                   "backgroundColor": "#6E11F4",
                                   "hoverBackgroundColor": "#6E11F4",
                                   "borderColor": "#6E11F4",
@@ -146,8 +169,8 @@
                 <div class="card">
                     <div class="card-body">
                         <h3 class="card-title fw-bold">Due This Week</h3>
-                        @foreach ($invoices as $invoice)
-                            @if ($loop->index < 3)
+                        @if (count($invoicesDueThisWeek) > 0)
+                            @foreach ($invoicesDueThisWeek as $invoiceduethisweek)
                                 <div class="row mt-5 ">
                                     <div class="col">
                                         <div class="d-flex">
@@ -166,37 +189,42 @@
                                             </div>
                                             <div class="flex-grow-1 ms-3">
                                                 <span
-                                                    class="d-block h5 text-inherit mb-0">{{ $invoice->customer->name_unit }}</span>
+                                                    class="d-block h5 text-inherit mb-0">{{ $invoiceduethisweek->customer->name_unit }}</span>
                                                 <span
-                                                    class="d-block font-size-sm text-body mt-2">{{ date('d M Y', strtotime($invoice->due_date)) }}</span>
+                                                    class="d-block font-size-sm text-body mt-2">{{ date('d M Y', strtotime($invoiceduethisweek->due_date)) }}</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-auto">
                                         <span class="fw-bold fs-5"
-                                            style="color:#9E9E9E;">{{ \App\Helper\Util::rupiah($invoice->nominal) }}</span>
+                                            style="color:#9E9E9E;">{{ \App\Helper\Util::rupiah($invoiceduethisweek->nominal) }}</span>
                                     </div>
                                 </div>
-                            @endif
-                        @endforeach
+                            @endforeach
+                        @else
+                            <!-- kode HTML untuk menampilkan pesan "No data" di dalam card -->
+                            <div class="text-center mt-10 ">
+                                <p class="text-muted">Tidak Ada Tagihan Minggu Ini</p>
+                            </div>
+                        @endif
 
                         <div class="d-grid gap-2 mt-10">
-                            <button class="btn fw-bold fs-5" type="button" style="background: #F3ECFF; color:#6e11f4">
-                                Lihat Selengkapnya <i class="bi bi-arrow-right fw-bold fs-5"></i>
-                            </button>
+                            @if (count($invoicesDueThisWeek) > 0)
+                                <a href="{{ route('admin.invoice.index') }}" class="btn fw-bold fs-5" type="button"
+                                    style="background: #F3ECFF; color:#6e11f4">
+                                    Lihat Selengkapnya <i class="bi bi-arrow-right fw-bold fs-5"></i>
+                                </a>
+                            @endif
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </div>
         <div class="card mt-5">
-            <div class="card-body ">
+            <div class="card-body">
                 <!-- Table -->
                 <div class="table-responsive">
-
-                    <table class="table table-borderless table-thead-bordered ">
+                    <table class="table table-borderless table-thead-bordered">
                         <thead style="background: #F7F1FF">
                             <tr class="rounded-pill">
                                 <th scope="col" class="fw-bold">Invoice ID</th>
@@ -205,16 +233,17 @@
                                 <th scope="col" class="fw-bold">Due Date</th>
                                 <th scope="col" class="fw-bold">Status</th>
                                 <th scope="col" class="fw-bold">Nominal</th>
-
                             </tr>
                         </thead>
-
                         <tbody>
                             @php($nomor = 1)
                             @forelse ($invoices as $invoice)
                                 <tr>
-
-                                    <td>{{ $invoice->invoice_id }}</td>
+                                    <td>
+                                        <a href="{{ route('admin.invoice.show', $invoice) }}">
+                                            {{ $invoice->invoice_id }}
+                                        </a>
+                                    </td>
                                     <td>{{ $invoice->customer->name_unit }}</td>
                                     <td>
                                         @if ($invoice->payment_time)
@@ -224,38 +253,42 @@
                                         @endif
                                     </td>
                                     <td>{{ date('d M Y', strtotime($invoice->due_date)) }}</td>
-
                                     @if ($invoice->is_paid == true)
                                         <td>
                                             <span class="rounded"
-                                                style=" border-radius: 4px; color: #1a251f; font-size: 10px; font-weight: 700; font-style: normal; line-height: 150%; background: #D4F1E0; display: flex; flex-direction: row; justify-content:center; padding:4px;gap:10px ">Paid</span>
+                                                style="border-radius: 4px; color: #1a251f; font-size: 10px; font-weight: 700; font-style: normal; line-height: 150%; background: #D4F1E0; display: flex; flex-direction: row; justify-content:center; padding:4px; gap:10px ">Paid</span>
                                         </td>
                                     @elseif ($invoice->is_paid == false && $invoice->payment_receipt == null)
                                         <td>
                                             <span class="rounded"
-                                                style=" border-radius: 4px; color: #CD412E; font-size: 10px; font-weight: 700; font-style: normal; line-height: 150%; background:  #FFEDEB; display: flex; flex-direction: row; justify-content:center;padding:4px;gap:10px ">Unpaid</span>
+                                                style="border-radius: 4px; color: #CD412E; font-size: 10px; font-weight: 700; font-style: normal; line-height: 150%; background:  #FFEDEB; display: flex; flex-direction: row; justify-content:center;padding:4px;gap:10px ">Unpaid</span>
                                         </td>
                                     @else
                                         <td>
                                             <span class="rounded"
-                                                style="  color: #CD7B2E; font-size: 10px; font-weight: 700; font-style: normal; line-height: 150%; background:  #FFF7EB; display: flex; flex-direction: row; justify-content:center;padding:4px;gap:10px ">Processing</span>
+                                                style="color: #CD7B2E; font-size: 10px; font-weight: 700; font-style: normal; line-height: 150%; background:  #FFF7EB; display: flex; flex-direction: row; justify-content:center;padding:4px;gap:10px ">Processing</span>
                                         </td>
                                     @endif
                                     <td>{{ \App\Helper\Util::rupiah($invoice->nominal) }}</td>
-
                                 </tr>
                             @empty
                                 <tr class="text-center">
                                     <td class="text-center fs-4 fw-bold">No Data</td>
                                 </tr>
                             @endforelse
-
                         </tbody>
                     </table>
                 </div>
                 <!-- End Table -->
+                <!-- Stars Menu Pagination-->
+                <div class="d-flex justify-content-center mt-5">
+                    {{ $invoices->links() }}
+                </div>
+                <!-- End Menu Pagination-->
+
             </div>
         </div>
+
     </div>
 
     <script>
@@ -269,7 +302,7 @@
 
         var adaTotalTransaksi = false; // Ubah menjadi true jika ada total transaksi
         var warnaBatang = adaTotalTransaksi ? "#6E11F4" :
-        "#DECBFB"; // Warna batang berdasarkan ada atau tidak adanya total transaksi
+            "#DECBFB"; // Warna batang berdasarkan ada atau tidak adanya total transaksi
 
         // Mendapatkan referensi ke elemen canvas grafik
         var canvas = document.getElementById("ecommerce-sales");

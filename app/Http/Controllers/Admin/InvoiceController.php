@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use App\Models\Invoice;
-use App\Models\invoiceUser;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Carbon;
+
 
 class InvoiceController extends Controller
 {
@@ -19,31 +20,48 @@ class InvoiceController extends Controller
      */
     public function index(Request $request)
     {
-        $is_paid = $request->input('is_paid');
-        $payment_receipt = $request->input('payment_receipt');
-    
+        $filter = $request->input('filter');
+
         $invoices = Invoice::query();
-    
-        if ($is_paid == 'unpaid') {
-            $invoices->where('is_paid', false);
-        } elseif ($is_paid == 'paid') {
+
+        if ($filter == 'unpaid') {
+            $invoices->where('is_paid', false)
+                ->whereNull('payment_receipt');
+        } elseif ($filter == 'paid') {
             $invoices->where('is_paid', true);
-        } elseif ($is_paid == false && $payment_receipt == true) {
-            $invoices->whereNull('is_paid');
+        } elseif ($filter == 'processing') {
+            $invoices->where('is_paid', false)
+                ->whereNotNull('payment_receipt');
+        } elseif ($filter == 'newest_due') {
+            $invoices->orderBy('due_date', 'asc');
+        } elseif ($filter == 'oldest_due') {
+            $invoices->orderBy('due_date', 'desc');
         }
-    
-        if (!$is_paid || $is_paid == 'all') {
+
+        // Logika untuk menampilkan semua faktur
+        if (!$filter || $filter == 'all') {
             $invoices->get();
         }
-    
+
         $filteredInvoices = $invoices->latest()->filter(request(['search']))->paginate(5)->withQueryString();
-    
+
+        $filters = [
+            'all' => 'All',
+            'unpaid' => 'Unpaid',
+            'paid' => 'Paid',
+            'processing' => 'Processing',
+            'oldest_due' => 'Oldest Due',
+            'newest_due' => 'Newest Due'
+        ];
+
         return view('admin.invoice.index', [
-            "invoices" => $filteredInvoices
+            "invoices" => $filteredInvoices,
+            "filters" => $filters,
+            "selectedFilter" => $filter // nilai filter yang dipilih
         ]);
     }
 
-   
+
 
     /**
      * Show the form for creating a new resource.
@@ -62,17 +80,12 @@ class InvoiceController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'invoice_id' => 'required|unique:invoices,invoice_id',
+            'invoice_number' => 'required|unique:invoices,invoice_number',
             'title' => 'required|max:225',
             'invoice_date' => 'required',
             'due_date' => 'required',
-            'price' => 'required|numeric|min:1',
-            'stock' => 'required|numeric|min:1',
-            'nominal' => 'required|numeric|min:1',
-            'unit' => 'required',
             'customer_id' => 'required',
-        ], [
-            'customer_id.required' => 'The user field is required.',
+      
         ]);
 
         // Mendapatkan user yang sedang login
@@ -81,10 +94,12 @@ class InvoiceController extends Controller
         // Menambahkan user_id ke dalam data yang akan disimpan
         $validate['user_id'] = $user->id;
 
-        $invoice = Invoice::create($validate);
+       $invoice = Invoice::create($validate);
         toast('Successfully Data Invoice Ditambahkan', 'success');
         return redirect()->route('admin.invoice.index');
     }
+
+   
 
 
     /**
@@ -175,6 +190,7 @@ class InvoiceController extends Controller
         return redirect()->back();
     }
 
+    // function untuk confirmasi pembayaran
     public function confirm_payment(Invoice $invoice)
     {
         $invoice->update([
@@ -183,5 +199,41 @@ class InvoiceController extends Controller
 
         alert()->success('successfully', 'Konfirmasi Pembayaran Berhasil');
         return redirect()->route('admin.invoice.index');
+    }
+
+    // function untuk download gambar payment_receipt
+    public function downloadPaymentReceipt(Invoice $invoice)
+    {
+        $path = 'public/' . $invoice->payment_receipt;
+        return Storage::download($path);
+    }
+
+    //function untuk download invoice
+    public function downloadInvoice(string $id)
+    {
+        $invoice = Invoice::findOrFail($id);
+        $data = ['invoice' => $invoice];
+
+        $view = view('admin.invoice.show', $data)->render(); // memuat view 'admin.invoice.show' dengan data yang diberikan dan merendernya ke dalam bentuk string
+
+        $posStart = strpos($view, "<title>Invoice #6</title>"); // mencari posisi awal tag <title> dengan isi 'Invoice #6' dalam string view dan menyimpannya dalam variable $posStart
+        
+        $posEnd = strpos($view, "</body>"); // mencari posisi akhir tag </body> dalam string view dan menyimpannya dalam variable $posEnd
+        
+        $view = substr($view, $posStart, $posEnd - $posStart); // memotong string view mulai dari posisi $posStart hingga sebelum posisi $posEnd, dan menyimpannya kembali ke variable $view
+        
+
+        $pdf = PDF::loadHTML($view);
+
+        // Set the font configuration options
+        $pdf->setOptions([
+            'font_path' => base_path('resources/fonts/'), // Replace with the actual path to your font files
+            'font_family' => 'sans-serif',
+            'font_size' => 10,
+            'tempDir' => public_path('temp/') // Replace with the path to your temporary directory
+        ]);
+
+        $toDay = Carbon::now()->format('d-m-Y');
+        return $pdf->download('invoice' . $invoice->id . '-' . $toDay . '.pdf');
     }
 }

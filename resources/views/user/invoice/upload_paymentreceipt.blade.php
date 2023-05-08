@@ -30,17 +30,11 @@
                 </div>
 
                 <div class="col-sm-auto">
-                    @if (Auth::user()->is_admin)
-                        <a class="btn btn-sm text-white fw-bold" href="{{ route('admin.invoice.index') }}"
+                   <a class="btn btn-sm text-white fw-bold" href="{{ route('user.invoice.index') }}"
                             style="background: #EFEFEF">
                             <i class="bi bi-arrow-left text-black fs-5 fw-bold"></i>
                         </a>
-                        @else 
-                         <a class="btn btn-sm text-white fw-bold" href="{{ route('user.invoice.index') }}"
-                            style="background: #EFEFEF">
-                            <i class="bi bi-arrow-left text-black fs-5 fw-bold"></i>
-                        </a>
-                    @endif
+                    
                 </div>
             </div>
         </div>
@@ -96,12 +90,13 @@
                     <div class="col">
                         <div class="mb-3">
                             <label for="" class="form-label fw-bold fs-4">No Handphone</label>
-                            <input type="text" class="form-control" value="{{\App\Helper\Util::rupiah($invoice->nominal) }}">
+                            <input type="text" class="form-control"
+                                value="{{ \App\Helper\Util::rupiah($invoice->nominal) }}">
                         </div>
                     </div>
                 </div>
                 @if ($invoice->is_paid == null && $invoice->payment_receipt == null)
-                    <form action="{{ route('user.upload_payment_receipt', $invoice) }}" method="POST"
+                    <form action="{{ route('user.upload-payment-receipt', $invoice) }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
                         <div class="row">
@@ -126,26 +121,17 @@
                         <div class="container mt-5">
                             <div class="row">
                                 <div class="text-end">
-                                    @if (Auth::user()->is_admin)
-                                        <a href="{{ route('admin.invoice.index') }}" class="btn fs-5 me-5"
-                                            style="border-color: #6e11f4; color: 
-                           ">
-                                            Kembali
-                                        </a>
-                                    @else
-                                        <a href="{{ route('user.invoice.index') }}" class="btn fs-5 me-5"
-                                            style="border-color: #6e11f4; color: 
-                           ">
-                                            Kembali
-                                        </a>
-                                    @endif
+                                    <a href="{{ route('user.invoice.index') }}" class="btn fs-5 me-5"
+                                        style="border-color: #6e11f4; color: ">
+                                        Kembali
+                                    </a>
+
                                     <button type="submit" class="btn confirm-btn upload-btn"
                                         style="background: #6e11f4; color:#fff">Kirim</button>
                                 </div>
                             </div>
                         </div>
                     </form>
-
                 @endif
 
 

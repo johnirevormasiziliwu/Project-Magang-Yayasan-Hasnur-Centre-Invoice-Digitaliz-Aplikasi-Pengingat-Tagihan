@@ -30,21 +30,22 @@
                 </div>
 
                 <div class="col-sm-auto">
-                    @if (Auth::user()->is_admin)
-                        <a class="btn btn-sm text-white fw-bold" href="{{ route('admin.invoice.create') }}"
-                            style="background: #6e11f4">
-                            <i class="bi bi-plus fs-4"></i> Buat Invoice
-                        </a>
-                    @endif
+
+                    <a class="btn btn-sm text-white fw-bold" href="{{ route('admin.invoice.create') }}"
+                        style="background: #6e11f4">
+                        <i class="bi bi-plus fs-4"></i> Buat Invoice
+                    </a>
+
                 </div>
             </div>
         </div>
         <!-- End Page Header -->
 
+
         <!--  stars tombol pencarian dan filter -->
-        <div class="row mt-5">
-            <div class="col-5">
-                <div class="container">
+        <div class="filter-search">
+            <div class="row">
+                <div class="col-md-4">
                     <label for="#" class="form-label fs-5 fw-bold">Cari</label>
                     <form class="form-inline">
                         <div class="input-group">
@@ -59,150 +60,151 @@
                         </div>
                     </form>
                 </div>
-            </div>
-            <div class="col-3">
-                <div class="container">
+                <div class="col-md-4">
+
                     <form action="{{ route('admin.invoice.index') }}" method="get">
-                        @csrf
-                        <label for="is_paid" class="form-label fs-5 fw-bold">Filter</label>
-                        <select name="is_paid" id="is_paid" class="form-select form-select-lg ">
-                            <option value="all" {{ request('is_paid') == 'all' ? 'selected' : '' }}>All</option>
-                            <option value="unpaid" {{ request('is_paid') == 'unpaid' ? 'selected' : '' }}>Unpaid
+                        <label for="#" class="form-label fs-5 fw-bold">Filter</label>
+                        <select name="filter" id="filter" class="form-select fw-bold">
+                            <option value="all" {{ $selectedFilter == 'all' ? 'selected' : '' }}>
+                                All</option>
+                            <option value="unpaid" {{ $selectedFilter == 'unpaid' ? 'selected' : '' }}>Unpaid
                             </option>
-                            <option value="paid" {{ request('is_paid') == 'paid' ? 'selected' : '' }}>Paid</option>
-                            <option value="processing" {{ request('is_paid') == 'processing' ? 'selected' : '' }}>Processing</option>
+                            <option value="paid" {{ $selectedFilter == 'paid' ? 'selected' : '' }}>Paid</option>
+                            <option value="processing" {{ $selectedFilter == 'processing' ? 'selected' : '' }}>
+                                Processing</option>
+                            <option value="newest_due" {{ $selectedFilter == 'newest_due' ? 'selected' : '' }}>
+                                Newset
+                                Due</option>
+                            <option value="oldest_due" {{ $selectedFilter == 'oldest_due' ? 'selected' : '' }}>
+                                Oldest
+                                Due</option>
                         </select>
                     </form>
+
+
+
                 </div>
             </div>
         </div>
         <!-- endtombol pencarian  dan filter -->
 
+
         <!-- button konfirmasi, hapus dan print -->
         <form action="{{ route('admin.invoice.deleteConfirm') }}" method="post">
-
             @csrf
+            <!-- start konfirmasi, hapus dan print -->
 
-            <div class="container mt-5">
+            <div class="container mt-8">
                 <div class="row">
                     <div class="text-end ">
-                        @if (Auth::user()->is_admin)
-                            <input type="hidden" name="action" value="">
-                            <button type="submit" class="btn bg-white   me-3 border border-dark fs-5 "
-                                onclick="setAction('confirm')" id="btn-confirm" disabled><i
-                                    class="bi bi-file-earmark-text" name="action" value="confirm"></i> Konfirmasi
-                                Pembayaran</button>
-                            <button class="btn bg-white border border-dark fs-5 me-3 ">
-                                <i class="bi bi-printer"></i>
-                            </button>
-                            <button type="submit" class="btn bg-white delete-btn  border border-dark fs-5"
-                                onclick="setAction('delete')" id="btn-delete" disabled><i class="bi bi-trash3"
-                                    name="action" value="delete"></i></button>
-                        @endif
+
+                        <input type="hidden" name="action" value="">
+                        <button type="submit" class="btn bg-white   me-3 border border-dark fs-5 "
+                            onclick="setAction('confirm')" id="btn-confirm" disabled><i class="bi bi-file-earmark-text"
+                                name="action" value="confirm"></i> Konfirmasi
+                            Pembayaran</button>
+                        <button class="btn bg-white border border-dark fs-5 me-3 ">
+                            <i class="bi bi-printer"></i>
+                        </button>
+                        <button type="submit" class="btn bg-white delete-btn  border border-dark fs-5"
+                            onclick="setAction('delete')" id="btn-delete" disabled><i class="bi bi-trash3"
+                                name="action" value="delete"></i></button>
 
                     </div>
                 </div>
+            </div>
+            <!-- end konfirmasi, hapus dan print -->
+
+            <div class="card mt-5">
+                <div class="card-body ">
+                    <!-- Table -->
+                    <div class="table-responsive">
+
+                        <table class="table table-borderless table-thead-bordered ">
+                            <thead style="background: #F7F1FF">
+                                <tr class="rounded-pill">
+
+                                    <th scope="col" class="fw-bold"><input type="checkbox" name="#"
+                                            id="#"></th>
+
+                                    <th scope="col" class="fw-bold">Invoice ID</th>
+                                    <th scope="col" class="fw-bold">Judul</th>
+                                    <th scope="col" class="fw-bold">Unit</th>
+                                    <th scope="col" class="fw-bold">Due Date <i
+                                            class="bi bi-chevron-expand ms-2  fs-5 fw-bold"></i></th>
+                                    <th scope="col" class="fw-bold">Status</th>
+                                    <th scope="col" class="fw-bold">Nominal</th>
+                                    <th scope="col" class="fw-bold">Invoice</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @php($nomor = 1)
+                                @forelse ($invoices as $invoice)
+                                    <tr>
+
+                                        <th><input type="checkbox" name="invoice[]" value="{{ $invoice->id }}">
+                                        </th>
+
+                                        <td>
+
+                                            <a href="{{ route('admin.invoice.show', $invoice) }}">
+                                                <u>{{ $invoice->invoice_number  }}</u>
+                                            </a>
 
 
-                <!-- end konfirmasi, hapus dan print -->
+                                        </td>
+                                        <td>{{ $invoice->title }}</td>
+                                        <td>{{ $invoice->customer->name_unit }}</td>
+                                        <td>{{ date('d-M-Y', strtotime($invoice->due_date)) }}</td>
 
-                <div class="card mt-5">
-                    <div class="card-body ">
-                        <!-- Table -->
-                        <div class="table-responsive">
-
-                            <table class="table table-borderless table-thead-bordered ">
-                                <thead style="background: #F7F1FF">
-                                    <tr class="rounded-pill">
-                                        @if (Auth::user()->is_admin)
-                                            <th scope="col" class="fw-bold"><input type="checkbox" name="#"
-                                                    id="#"></th>
-                                        @endif
-                                        <th scope="col" class="fw-bold">Invoice ID</th>
-                                        <th scope="col" class="fw-bold">Judul</th>
-                                        <th scope="col" class="fw-bold">Unit</th>
-                                        <th scope="col" class="fw-bold">Due Date</th>
-                                        <th scope="col" class="fw-bold">Status</th>
-                                        <th scope="col" class="fw-bold">Nominal</th>
-                                        <th scope="col" class="fw-bold">Invoice</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-                                    @php($nomor = 1)
-                                    @forelse ($invoices as $invoice)
-                                        <tr>
-                                            @if (Auth::user()->is_admin)
-                                                <th><input type="checkbox" name="invoice[]"
-                                                        value="{{ $invoice->id }}">
-                                                </th>
-                                            @endif
+                                        @if ($invoice->is_paid == true)
                                             <td>
-                                                @if (Auth::user()->is_admin)
-                                                    <a href="{{ route('admin.invoice.show', $invoice) }}">
-                                                        <u>{{ $invoice->invoice_id }}</u>
-                                                    </a>
-                                                @else
-                                                    <a href="{{ route('user.invoice.show', $invoice) }}">
-                                                        <u>{{ $invoice->invoice_id }}</u>
-                                                    </a>
-                                                @endif
+                                                <span class="rounded"
+                                                    style=" border-radius: 4px; color: #1a251f; font-size: 10px; font-weight: 700; font-style: normal; line-height: 150%; background: #D4F1E0; display: flex; flex-direction: row; justify-content:center; padding:4px;gap:10px ">Paid</span>
                                             </td>
-                                            <td>{{ $invoice->title }}</td>
-                                            <td>{{ $invoice->customer->name_unit }}</td>
-                                            <td>{{ date('d-M-Y', strtotime($invoice->due_date)) }}</td>
-
-                                            @if ($invoice->is_paid == true)
-                                                <td>
-                                                    <span class="rounded"
-                                                        style=" border-radius: 4px; color: #1a251f; font-size: 10px; font-weight: 700; font-style: normal; line-height: 150%; background: #D4F1E0; display: flex; flex-direction: row; justify-content:center; padding:4px;gap:10px ">Paid</span>
-                                                </td>
-                                            @elseif ($invoice->is_paid == false && $invoice->payment_receipt == null)
-                                                <td>
-                                                    <span class="rounded"
-                                                        style=" border-radius: 4px; color: #CD412E; font-size: 10px; font-weight: 700; font-style: normal; line-height: 150%; background:  #FFEDEB; display: flex; flex-direction: row; justify-content:center;padding:4px;gap:10px ">Unpaid</span>
-                                                </td>
-                                            @elseif ($invoice->is_paid == false && $invoice->payment_receipt == true)
-                                                <td>
-                                                    <span class="rounded"
-                                                        style="  color: #CD7B2E; font-size: 10px; font-weight: 700; font-style: normal; line-height: 150%; background:  #FFF7EB; display: flex; flex-direction: row; justify-content:center;padding:4px;gap:10px ">Processing</span>
-                                                </td>
-                                            @endif
-                                            <td>{{ \App\Helper\Util::rupiah($invoice->nominal) }}</td>
-                                            <td style="display: flex; flex-direction: row;">
-                                                @if (Auth::user()->is_admin)
-                                                    <a class="text-dark ms-4 fs-5"
-                                                        href="{{ route('admin.invoice.edit', $invoice->id) }}">
-                                                        <i class="bi bi-pencil"></i>
-                                                    </a>
-                                                @else
-                                                    <a href="{{ route('user.payment_receipt', $invoice) }}"
-                                                        class="btn btn-sm btn-info" style="margin-left:10px;">
-                                                        <i class="bi bi-file-earmark-arrow-up"></i>
-                                                    </a>
-                                                @endif
+                                        @elseif ($invoice->is_paid == false && $invoice->payment_receipt == null)
+                                            <td>
+                                                <span class="rounded"
+                                                    style=" border-radius: 4px; color: #CD412E; font-size: 10px; font-weight: 700; font-style: normal; line-height: 150%; background:  #FFEDEB; display: flex; flex-direction: row; justify-content:center;padding:4px;gap:10px ">Unpaid</span>
                                             </td>
-                                        </tr>
-                                    @empty
-                                        <tr class="text-center">
-                                            <td class="text-center fs-4 fw-bold">No Data</td>
-                                        </tr>
-                                    @endforelse
+                                        @else
+                                            <td>
+                                                <span class="rounded"
+                                                    style="  color: #CD7B2E; font-size: 10px; font-weight: 700; font-style: normal; line-height: 150%; background:  #FFF7EB; display: flex; flex-direction: row; justify-content:center;padding:4px;gap:10px ">Processing</span>
+                                            </td>
+                                        @endif
+                                        <td>{{ \App\Helper\Util::rupiah($invoice->nominal) }}</td>
+                                        <td style="display: flex; flex-direction: row;">
 
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- End Table -->
+                                            <a class="text-dark ms-4 fs-5"
+                                                href="{{ route('admin.invoice.edit', $invoice->id) }}">
+                                                <i class="bi bi-pencil"></i>
+                                            </a>
+                                            <a href="{{ route('admin.create-invoice-items', $invoice) }}" class="btn btn-sm btn-info">Tambah Tagihan</a>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr class="text-center">
+                                        <td class="text-center fs-4 fw-bold">No Data</td>
+                                    </tr>
+                                @endforelse
+
+                            </tbody>
+                        </table>
                     </div>
+                    <!-- End Table -->
+                </div>
         </form>
 
         <!-- Stars Menu Pagination-->
-        {{-- <div class="d-flex justify-content-center mt-5">
+        <div class="d-flex justify-content-center mt-5">
             {{ $invoices->links() }}
-        </div>  --}}
-
+        </div>
         <!-- End Menu Pagination-->
-    </div>
+
+
+
     </div>
     </div>
     @include('scripts.delete')
@@ -246,9 +248,10 @@
 
         //java script untuk filter is_paid
 
-        document.getElementById('is_paid').addEventListener('change', function() {
-            var is_paid = this.value;
-            window.location.href = '{{ route('admin.invoice.index') }}?is_paid=' + is_paid;
+
+        // Otomatis submit form saat pemilihan opsi select
+        document.getElementById('filter').addEventListener('change', function() {
+            this.form.submit();
         });
     </script>
 </x-app-layout>

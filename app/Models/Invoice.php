@@ -11,17 +11,13 @@ class Invoice extends Model
 
     protected $fillable = [
         'user_id',
-        'invoice_id',
+        'invoice_number',
         'customer_id',
         'title',
         'invoice_date',
         'due_date',
-        'price',
-        'stock',
-        'unit',
-        'nominal',
         'payment_receipt',
-        'payment_time',
+        'payment_time', 
         'is_paid',
         
     ];
@@ -34,6 +30,11 @@ class Invoice extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function invoiceItems()
+    {
+        return $this->hasMany(InvoiceItem::class);
     }
 
     public function scopeFilter($query, array $filters)

@@ -54,13 +54,15 @@
                         <div class="col">
                             <div class="mb-3">
                                 <label for="" class="form-label fw-bold fs-4">A.N/Atas Nama PIC</label>
-                                <input type="text" disabled class="form-control" value="{{ @$invoice->customer->name_pic }}">
+                                <input type="text" disabled class="form-control"
+                                    value="{{ @$invoice->customer->name_pic }}">
                             </div>
                         </div>
                         <div class="col">
                             <div class="mb-3">
                                 <label for="" class="form-label fw-bold fs-4">Name Unit</label>
-                                <input type="text" disabled class="form-control" value="{{ @$invoice->customer->name_unit }}">
+                                <input type="text" disabled class="form-control"
+                                    value="{{ @$invoice->customer->name_unit }}">
                             </div>
                         </div>
                     </div>
@@ -68,7 +70,8 @@
                         <div class="col">
                             <div class="mb-3">
                                 <label for="" class="form-label fw-bold fs-4">Alamat E-mail</label>
-                                <input type="text" disabled class="form-control" value="{{ @$invoice->customer->email }}">
+                                <input type="text" disabled class="form-control"
+                                    value="{{ @$invoice->customer->email }}">
                             </div>
                         </div>
                         <div class="col">
@@ -83,30 +86,42 @@
                         <div class="col">
                             <div class="mb-3">
                                 <label for="" class="form-label fw-bold fs-4">Tanggal Pembayaran</label>
-                                <input type="text" class="form-control" disabled value="{{ @$invoice->created_at }}">
+                                <input type="text" class="form-control" disabled value="{{ @$invoice->payment_time }}">
                             </div>
                         </div>
                         <div class="col">
                             <div class="mb-3">
                                 <label for="" class="form-label fw-bold fs-4">Nominal</label>
-                                <input type="text"  disabled class="form-control"
-                                    value="{{\App\Helper\Util::rupiah($invoice->nominal)}}">
+                                <input type="text" disabled class="form-control"
+                                    value="{{ \App\Helper\Util::rupiah($invoice->nominal) }}">
                             </div>
                         </div>
                     </div>
 
                     <!-- Button trigger modal -->
                     <div class="d-flex justify-content-star ">
-                        <button type="button" class="btn btn-primary d-inline-block me-5" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                            Lihat Bukti Pembayaran
-                        </button>
+                        @if ($invoice->is_paid == false && $invoice->payment_receipt == null)
+                            <button disabled type="button" class="btn btn-primary d-inline-block me-5"
+                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                Lihat Bukti Pembayaran
+                            </button>
+                        @else
+                            <button type="button" class="btn btn-primary d-inline-block me-5" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                                Lihat Bukti Pembayaran
+                            </button>
+                        @endif
                         <form action="{{ route('admin.confirm_payment', $invoice) }}" method="POST">
                             @csrf
                             @if ($invoice->is_paid == true)
                                 <button class="btn btn-success disabled d-inline-block" aria-disabled="true"
                                     tabindex="-1">
                                     <i class="bi bi-check-circle"></i> Success Konfirmasi
+                                </button>
+                            @elseif($invoice->is_paid == false && $invoice->payment_receipt == null)
+                                <button disabled type="submit" class="btn confirm-btn d-inline-block confirm-btn"
+                                    style="background: #6e11f4; color:#fff">
+                                    Konfirmasi Pembayaran
                                 </button>
                             @else
                                 <button type="submit" class="btn confirm-btn d-inline-block confirm-btn"
@@ -137,9 +152,7 @@
                                             <img src="{{ url('storage/', @$invoice->payment_receipt) }}"
                                                 class="img-fluid" alt="Bukti Pembayaran" style="widht:300px;">
                                             <div class="align-items-center d-flex justify-content-between">
-                                                <a href="{{ url('admin/download-image') }}" target="_blank"
-                                                    class="btn btn-primary mt-5">Unduh Bukti Pembayaran</a>
-                                            </div>
+                                                <a href="{{ route('admin.download-payment-receipt', $invoice) }}" class="btn btn-primary">Download Payment Receipt</a> </div>
                                         </div>
                                     </div>
                                 </div>
@@ -151,6 +164,6 @@
             </div>
         @endforeach
     </div>
-     @include('scripts.confirm')
+    @include('scripts.confirm')
     @include('scripts.upload')
 </x-app-layout>
