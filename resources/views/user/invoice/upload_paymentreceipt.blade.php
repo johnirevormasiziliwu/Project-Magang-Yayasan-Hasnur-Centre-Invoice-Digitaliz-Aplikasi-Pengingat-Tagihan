@@ -46,23 +46,23 @@
             <div class="card-body">
                 <div class="mb-3">
                     <label for="" class="form-label fw-bold fs-4">ID Invoice</label>
-                    <input type="text" class="form-control" value="{{ $invoice->invoice_number }}">
+                    <input type="text" disabled class="form-control" value="{{ $invoice->invoice_number }}">
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label fw-bold fs-4">Judul Invoice</label>
-                    <input type="text" class="form-control" value="{{ $invoice->title }}">
+                    <input type="text" disabled class="form-control" value="{{ $invoice->title }}">
                 </div>
                 <div class="row">
                     <div class="col">
                         <div class="mb-3">
                             <label for="" class="form-label fw-bold fs-4">A.N/Atas Nama PIC</label>
-                            <input type="text" class="form-control" value="{{ $invoice->customer->name_pic }}">
+                            <input type="text" disabled class="form-control" value="{{ $invoice->customer->name_pic }}">
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
                             <label for="" class="form-label fw-bold fs-4">Name Unit</label>
-                            <input type="text" class="form-control" value="{{ $invoice->customer->name_unit }}">
+                            <input type="text" disabled class="form-control" value="{{ $invoice->customer->name_unit }}">
                         </div>
                     </div>
                 </div>
@@ -70,13 +70,13 @@
                     <div class="col">
                         <div class="mb-3">
                             <label for="" class="form-label fw-bold fs-4">Alamat E-mail</label>
-                            <input type="text" class="form-control" value="{{ $invoice->customer->email }}">
+                            <input type="text" disabled class="form-control" value="{{ $invoice->customer->email }}">
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
                             <label for="" class="form-label fw-bold fs-4">No Handphone</label>
-                            <input type="text" class="form-control" value="{{ $invoice->customer->no_handphone }}">
+                            <input type="text" disabled class="form-control" value="{{ $invoice->customer->no_handphone }}">
                         </div>
                     </div>
                 </div>
@@ -88,7 +88,7 @@
                 <div class="col">
                     <div class="mb-3">
                         <label for="" class="form-label fw-bold fs-4">Nominal</label>
-                        <input type="text" class="form-control"
+                        <input type="text" disabled class="form-control"
                             value="{{ \App\Helper\Util::rupiah($totalInvoiceNominal) }}">
                     </div>
                 </div>

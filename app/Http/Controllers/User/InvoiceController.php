@@ -88,23 +88,28 @@ class InvoiceController extends Controller
 
     public function uploadPaymentReceipt(Invoice $invoice, Request $request)
     {
-        // Validate the uploaded file
+        
         $request->validate([
             'payment_receipt' => 'required|file|mimes:jpeg,jpg,pdf,png'
         ]);
-
-        // Process the uploaded file
+    
+        
+        $folder = 'invoices'; 
+        Storage::disk('local')->makeDirectory('public/' . $folder);
+    
+       
         $file = $request->file('payment_receipt');
-        $path = time() . '_' . str_replace(' ', '_', $invoice->customer->name_unit) . '_' . $invoice->id . '.' . $file->getClientOriginalExtension();
-        Storage::disk('local')->put('public/paymentreceipt/paymentreceipt' . $path, file_get_contents($file));
-
+        $path = $folder . '/' . time() . '_' . str_replace(' ', '_', $invoice->customer->name_unit) . '_' . $invoice->id . '.' . $file->getClientOriginalExtension();
+        Storage::disk('local')->put('public/' . $path, file_get_contents($file));
+    
         $invoice->update([
             'payment_receipt' => $path,
             'payment_time' => now()
         ]);
-        toast('Succsess Bukti Pembayaran Telah Terkirim', 'success');
+        alert()->success('successfully', 'Data invoice dihapus');
         return redirect()->route('user.invoice.index');
     }
+    
 
     //function untuk download invoice
     public function downloadInvoice(string $id)

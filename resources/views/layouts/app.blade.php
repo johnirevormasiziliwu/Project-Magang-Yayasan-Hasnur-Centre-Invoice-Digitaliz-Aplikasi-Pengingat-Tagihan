@@ -25,7 +25,7 @@
 
     <link rel="preload" href="{{ asset('dist') }}/assets/css/theme.min.css" data-hs-appearance="default"
         as="style">
-    
+
     <script src="{{ asset('dist') }}/assets/vendor/chart.js/dist/Chart.min.js"></script>
     <script src="{{ asset('dist') }}/assets/vendor/chart.js/dist/Chart.min.js"></script>
 
@@ -231,7 +231,7 @@
         <div class="navbar-nav-wrap">
             <!-- Logo -->
             <a class="navbar-brand" href="./index.html" aria-label="Front">
-               
+
                 <img class="navbar-brand-logo" src="{{ asset('dist') }}/assets/svg/logos-light/logo.svg" alt="Logo"
                     data-hs-theme-appearance="dark">
                 <img class="navbar-brand-logo-mini" src="{{ asset('dist') }}/assets/svg/logos/logo-short.svg"
@@ -262,50 +262,43 @@
                         <!-- Account -->
                         <div class="dropdown">
                             <a class="navbar-dropdown-account-wrapper" href="javascript:;" id="accountNavbarDropdown"
-                                data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
-                                data-bs-dropdown-animation>
-                                <div class="avatar avatar-sm avatar-circle">
-                                    <img class="avatar-img" src="{{ asset('dist') }}/assets/img/160x160/img6.jpg"
-                                        alt="Image Description">
-                                    <span class="avatar-status avatar-sm-status avatar-status-success"></span>
-                                </div>
-                            </a>
+                            data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                            data-bs-dropdown-animation
+                            style="color: black; text-decoration: none;">
+                            <span class="fw-bold fs-4">{{ Auth::user()->name }}</span>
+                          </a>
+                          
 
                             <div class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless navbar-dropdown-account"
                                 aria-labelledby="accountNavbarDropdown" style="width: 16rem;">
                                 <div class="dropdown-item-text">
                                     <div class="d-flex align-items-center">
-                                        <div class="avatar avatar-sm avatar-circle">
-                                            <img class="avatar-img"
-                                                src="{{ asset('dist') }}/assets/img/160x160/img6.jpg"
-                                                alt="Image Description">
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar avatar-sm avatar-circle">
+                                                <i class="bi bi-person" style="font-size: 2rem; width: 3.5rem; height: 3.5rem;"></i>
+                                            </div>
+                                            <h4 class="mx-2 mt-3">Hi, {{ Auth::user()->name }}</h4>
                                         </div>
-                                        <div class="flex-grow-1 ms-3">
-                                            <h5 class="mb-0"></h5>
-                                            <p class="card-text text-body"></p>
-                                        </div>
+                                        
                                     </div>
                                 </div>
 
-                                <div class="dropdown-divider"></div>
 
-                                <a class="dropdown-item" href="#">Profile &amp; account</a>
-                                <a class="dropdown-item" href="#">Settings</a>
 
                                 <div class="dropdown-divider"></div>
 
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                    <button class="dropdown-item" href="{{ route('logout') }}"
+                                    <button class="dropdown-item d-flex" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                    this.closest('form').submit();">Sign
-                                        out</button>
+                                    this.closest('form').submit();"><i class="bi bi-arrow-right-circle" style="font-size: 2rem; width: 3.5rem; height: 3.5rem;"></i> <h4 class="mt-3">Logout
+                                        </h4> </button> 
                                 </form>
                             </div>
                         </div>
                         <!-- End Account -->
                     </li>
-                </ul>
+                </ul>                                                                                                   
                 <!-- End Navbar -->
             </div>
         </div>
@@ -322,12 +315,18 @@
             <div class="navbar-vertical-footer-offset">
                 <!-- Logo -->
 
-                <div class="text-center mt-3 me-5">
-                    <a class="navbar-brand" href="./index.html" aria-label="Front">
-                        <img src="{{ asset('dist') }}/assets/img/login/logo_digitaliz.png" alt="Logo"
-                            style="max-width: 150px; height: auto;">
-                    </a>
-                </div>
+                <a class="navbar-brand justify-content-start mt-3" href="#" aria-label="Front">
+                    <img class="navbar-brand-logo " src="{{ asset('dist') }}/assets/img/login/logo_digitaliz.png"
+                        alt="Logo" data-hs-theme-appearance="default">
+                    <img class="navbar-brand-logo" src="{{ asset('dist') }}/assets/img/login/logo_digitaliz.png"
+                        alt="Logo" data-hs-theme-appearance="dark">
+
+                    <img class="navbar-brand-logo-mini" src="{{ asset('dist') }}/assets/img/login/logo_digitaliz.png"
+                        alt="Logo" data-hs-theme-appearance="default">
+
+                    <img class="navbar-brand-logo-mini" src="{{ asset('dist') }}/assets/img/login/logo_digitaliz.png"
+                        alt="Logo" data-hs-theme-appearance="dark">
+                </a>
 
 
                 <!-- End Logo -->
@@ -350,7 +349,8 @@
                         <span class=" dropdown-header ">Menu</span>
                         @role('admin')
                             <div class="nav-item ml-5">
-                                <a class="nav-link {{ Request()->routeIs('admin.dashboard') ? 'active bg-primary text-white' : '' }} "
+                                <a class="nav-link {{ Request()->routeIs('admin.dashboard') ? 'active ' : '' }} "
+                                    @if (Request()->routeIs('admin.dashboard')) style="background-color: #6E11F4; color:#ffff" @endif
                                     href="{{ route('admin.dashboard') }}" data-placement="left">
                                     <i class="nav-icon">
 
@@ -366,7 +366,8 @@
                             </div>
                             <div class="nav-item  mt-2">
                                 <a href="{{ route('admin.invoice.index') }}"
-                                    class="nav-link {{ Request()->routeIs('admin.invoice.*') ? 'active bg-primary text-white' : '' }}">
+                                    class="nav-link {{ Request()->routeIs('admin.invoice.*', 'admin.invoiceitems.show', 'admin.invoiceitems.edit') ? 'active ' : '' }}"
+                                    @if (Request()->routeIs('admin.invoice.*', 'admin.invoiceitems.show', 'admin.invoiceitems.edit') ? 'active ' : '') style="background-color: #6E11F4; color:#ffff" @endif>
                                     <i class="nav-icon ">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 ">
@@ -381,7 +382,8 @@
                             <span class=" dropdown-header ">Setting</span>
                             <div class="nav-item  mt-2">
                                 <a href="{{ route('admin.email.index') }}"
-                                    class="nav-link {{ Request()->routeIs('admin.email.*') ? 'active bg-primary text-white' : '' }}">
+                                    class="nav-link {{ Request()->routeIs('admin.email.*') ? 'active ' : '' }}"
+                                    @if (Request()->routeIs('admin.email.*') ? 'active ' : '') style="background-color: #6E11F4; color:#ffff" @endif>
                                     <i class="nav-icon">
 
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -398,7 +400,8 @@
 
                             <div class="nav-item  mt-2">
                                 <a href="{{ route('admin.customer.index') }}"
-                                    class="nav-link {{ Request()->routeIs('admin.customer.*') ? 'active bg-primary text-white' : '' }}">
+                                    class="nav-link {{ Request()->routeIs('admin.customer.*') ? 'active' : '' }}"
+                                    @if (Request()->routeIs('admin.customer.*') ? 'active' : '') style="background-color: #6E11F4; color:#ffff" @endif>
                                     <i class="nav-icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -416,7 +419,8 @@
                     @role('user')
                         <div class="nav-item  mt-2">
                             <a href="{{ route('user.invoice.index') }}"
-                                class="nav-link {{ Request()->routeIs('user.invoice.*') ? 'active bg-primary text-white' : '' }}">
+                                class="nav-link {{ Request()->routeIs('user.invoice.*', 'user.payment-receipt') ? 'active' : '' }}"
+                                @if (Request()->routeIs('user.invoice.*', 'user.payment-receipt') ? 'active' : '') style="background-color: #6E11F4; color:#ffff" @endif>
                                 <i class="nav-icon ">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 ">
@@ -436,11 +440,11 @@
             </div>
     </aside>
 
-    <main id="content" role="main" class="main bg-light " style="max-width: 100%">
+    <main id="content" role="main" class="main bg-light" style="max-width: 100%">
         {{ $slot }}
     </main>
 
-   
+
     <!-- ========== END SECONDARY CONTENTS ========== -->
 
     <!-- JS Global Compulsory  -->
@@ -449,7 +453,7 @@
     <script src="{{ asset('dist') }}/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- JS Implementing Plugins -->
-    
+
     <script src="{{ asset('dist') }}/assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside.min.js"></script>
     <script src="{{ asset('dist') }}/assets/vendor/hs-form-search/dist/hs-form-search.min.js"></script>
 
@@ -466,7 +470,7 @@
     <!-- JS Front -->
     <script src="{{ asset('dist') }}/assets/js/theme.min.js"></script>
     <script src="{{ asset('dist') }}/assets/js/hs.theme-appearance-charts.js"></script>
-   
+
 
     <!-- JS Plugins Init. -->
     <script>
@@ -544,7 +548,7 @@
             })
         })
     </script>
-    
+
     <script>
         (function() {
             localStorage.removeItem('hs_theme')

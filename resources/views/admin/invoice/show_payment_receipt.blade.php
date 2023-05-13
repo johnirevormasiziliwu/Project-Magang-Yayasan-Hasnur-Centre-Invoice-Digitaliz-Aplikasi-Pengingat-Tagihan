@@ -144,25 +144,22 @@
                         <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Bukti Pembayaran</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Bukti Pembayaran -
-                                                {{ @$invoice->customer->name_pic }}
-                                            </h5>
-                                            <img src="{{ url('storage/', @$invoice->payment_receipt) }}"
-                                                class="img-fluid" alt="Bukti Pembayaran" style="widht:300px;">
-                                            <div class="align-items-center d-flex justify-content-between">
-                                                <a href="{{ route('admin.download-payment-receipt', $invoice) }}"
-                                                    class="btn btn-primary">Download Payment Receipt</a>
-                                            </div>
+                                <div class="modal-body p-3">
+                                    <div class="card-body ">
+                                        <h5 class="card-title">Bukti Pembayaran - {{ @$invoice->customer->name_pic }}
+                                            - {{ @$invoice->payment_time }}</h5>
+                                        <img src="{{ Storage::url(@$invoice->payment_receipt) }}" class="img-fluid"
+                                            alt="Bukti Pembayaran">
+                                        <div class="d-flex justify-content-end mt-3">
+                                            <a href="{{ route('admin.download-payment-receipt', $invoice) }}"
+                                                class="btn btn-primary">Download Payment Receipt</a>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>

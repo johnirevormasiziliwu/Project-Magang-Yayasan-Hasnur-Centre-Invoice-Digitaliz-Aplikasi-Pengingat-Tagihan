@@ -19,7 +19,6 @@ return new class extends Migration
             $table->integer('stock');
             $table->integer('price');
             $table->integer('nominal');
-            $table->string('file');
             $table->timestamps();
             
         });

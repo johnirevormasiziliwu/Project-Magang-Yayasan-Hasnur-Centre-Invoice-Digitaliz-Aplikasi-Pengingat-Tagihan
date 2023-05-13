@@ -20,13 +20,13 @@ class InvoiceController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request )
+    public function index(Request $request)
     {
         $filter = $request->input('filter');
 
         $invoices = Invoice::query();
-      
-      
+
+
 
         if ($filter == 'unpaid') {
             $invoices->where('is_paid', false)
@@ -47,7 +47,7 @@ class InvoiceController extends Controller
             $invoices->get();
         }
 
-        $filteredInvoices = $invoices->latest()->filter(request(['search']))->paginate(5)->withQueryString();
+        $filteredInvoices = $invoices->latest('invoices.created_at')->filter(request(['search']))->paginate(5)->withQueryString();
 
         $filters = [
             'all' => 'All',
@@ -66,7 +66,6 @@ class InvoiceController extends Controller
             "selectedFilter" => $filter, // nilai filter yang dipilih
             "invoiceItems" => $invoiceItems // data invoice items untuk ditampilkan pada view
         ]);
-        
     }
 
 
@@ -92,22 +91,15 @@ class InvoiceController extends Controller
             'title' => 'required|max:225',
             'invoice_date' => 'required',
             'due_date' => 'required',
-            'customer_id' => [
-                'required',
-                Rule::unique('invoices')->where(function ($query) use ($request) {
-                    return $query->where('customer_id', $request->customer_id);
-                })
-            ],
-
+            'customer_id' => 'required',
         ]);
 
         DB::beginTransaction();
 
         try {
             $user = Auth::user();
-
             $validate['user_id'] = $user->id;
-            
+
             $invoice = Invoice::create($validate);
 
             foreach ($request->invoiceItems as $item) {
@@ -117,7 +109,6 @@ class InvoiceController extends Controller
                     'unit' => 'required|max:50',
                     'price' => 'required|numeric|min:1',
                     'nominal' => 'required|numeric|min:1',
-                    'file' => 'required'
                 ]);
 
                 if ($validator->fails()) {
@@ -130,9 +121,21 @@ class InvoiceController extends Controller
                     'unit' => $item['unit'],
                     'price' => $item['price'],
                     'nominal' => $item['nominal'],
-                    'file' => $item['file'],
                 ]);
+
+                if (isset($item['images'])) {
+                    foreach ($item['images'] as $image) {
+                        $invoiceItem->addMedia($image)->toMediaCollection('images');
+                    }
+                }
+
                 $invoice->invoiceItems()->save($invoiceItem);
+            }
+
+            if ($request->hasFile('images')) {
+                foreach ($request->file('images') as $image) {
+                    $invoice->addMedia($image)->toMediaCollection('images');
+                }
             }
 
             DB::commit();
@@ -144,6 +147,7 @@ class InvoiceController extends Controller
             return redirect()->back()->withErrors(['Failed to add invoice data'])->withInput();
         }
     }
+
 
 
 
@@ -258,13 +262,41 @@ class InvoiceController extends Controller
         $invoice = Invoice::findOrFail($id);
         $data = ['invoice' => $invoice];
 
-        $view = view('admin.invoice.show', $data)->render(); 
+        $view = view('admin.invoice.show', $data)->render();
 
-        $posStart = strpos($view, "<title>Invoice #6</title>"); 
+        $posStart = strpos($view, "<title>Invoice #6</title>");
 
-        $posEnd = strpos($view, "</body>"); 
+        $posEnd = strpos($view, "</body>");
 
-        $view = substr($view, $posStart, $posEnd - $posStart); 
+        $view = substr($view, $posStart, $posEnd - $posStart);
+
+
+        $pdf = PDF::loadHTML($view);
+
+        // Set the font configuration options
+        $pdf->setOptions([
+            'font_path' => base_path('resources/fonts/'), // Replace with the actual path to your font files
+            'font_family' => 'sans-serif',
+            'font_size' => 10,
+            'tempDir' => public_path('temp/') // Replace with the path to your temporary directory
+        ]);
+
+        $toDay = Carbon::now()->format('d-m-Y');
+        return $pdf->download('invoice' . $invoice->id . '-' . $toDay . '.pdf');
+    }
+
+    public function generatePdfInvoice(string $id)
+    {
+        $invoice = Invoice::findOrFail($id);
+        $data = ['invoice' => $invoice];
+
+        $view = view('admin.invoice.show', $data)->render();
+
+        $posStart = strpos($view, "<title>Invoice #6</title>");
+
+        $posEnd = strpos($view, "</body>");
+
+        $view = substr($view, $posStart, $posEnd - $posStart);
 
 
         $pdf = PDF::loadHTML($view);

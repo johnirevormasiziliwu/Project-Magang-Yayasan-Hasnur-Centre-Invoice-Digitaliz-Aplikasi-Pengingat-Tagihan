@@ -157,9 +157,6 @@
                 </head>
 
                 <body>
-                    <div class="logo">
-                        <img src="https://example.com/logo.png" alt="Logo">
-                    </div>
                     @php($total = 0)
                     <table class="order-details">
                         <thead>

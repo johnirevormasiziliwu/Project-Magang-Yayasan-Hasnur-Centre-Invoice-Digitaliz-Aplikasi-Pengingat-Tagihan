@@ -48,7 +48,7 @@
         <div class="container">
             <div class="row">
                 <div class="text-end ">
-                    <a href="{{ route('admin.download-invoice', $invoice) }}" class="btn fs-5"
+                    <a href="{{ route('admin.generate-pdf-invoice', $invoice) }}" target="_blank" class="btn fs-5"
                         style="border-color:#6e11f4; border-width:2px; color: #6e11f4;">
                         <i class="bi bi-printer"></i>
                     </a>
@@ -157,9 +157,7 @@
                 </head>
 
                 <body>
-                    <div class="logo">
-                        <img src="https://example.com/logo.png" alt="Logo">
-                    </div>
+                   
                     @php($total = 0)
                     <table class="order-details">
                         <thead>
