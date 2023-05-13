@@ -41,9 +41,9 @@
 
         <!-- Stars Form-->
 
-        <div class="card mt-5">
-            <div class="card-body">
-                <form action="{{ $url }}" method="post">
+        <form action="{{ $url }}" method="post">
+            <div class="card mt-5">
+                <div class="card-body">
                     @csrf
                     @if (@$invoice)
                         @method('put');
@@ -133,7 +133,7 @@
                         <div class="col">
                             <label for="name_pic" class="form-label fs-4 fw-bold">Name PIC</label>
                             <input type="text" name="name_pic" id="name_pic"
-                                value="{{ @$invoice->customer->name_pic }}" class="form-control">
+                                value="{{ old('name_pic', @$invoice->customer->name_pic) }}" class="form-control">
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -141,39 +141,264 @@
                             <div class="mb-3">
                                 <label for="email" class="form-label fs-4 fw-bold">Alamat E-mail</label>
                                 <input type="email" name="email" id="email"
-                                    value="{{ @$invoice->customer->email }}" class="form-control">
+                                    value="{{ old('email', @$invoice->customer->email) }}" class="form-control">
                             </div>
                         </div>
                         <div class="col">
                             <label for="no_handphone" class="form-label fs-4 fw-bold">No. Handphone</label>
                             <input type="text" name="no_handphone" id="no_handphone"
-                                value="{{ @$invoice->customer->no_handphone }}" class="form-control">
+                                value="{{ old('no_handphone', @$invoice->customer->no_handphone) }}"
+                                class="form-control">
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="address" class="form-label"><span class="fs-4 fw-bold">Alamat</span><i>(Nama
                                 Jalan,Gedung,RT/RW,Kecamatan,Kabupate,Kode Pos dll)</i></label>
-                        <textarea name="address" id="address" cols="30" rows="8" class="form-control">{{ @$invoice->customer->address }}</textarea>
-                    </div>
-                    <div class="text-end">
-                        <a href="{{ route('admin.invoice.index') }}" class="btn me-3"
-                            style="border-color: #6e11f4; color: 
-                            ">
-                            Batal
-                        </a>
-                        <button type="submit" class="btn" style="background: #6e11f4; color:#fff">Selesai</button>
-                    </div>
+                        <textarea name="address" id="address" cols="30" rows="8"
+                            class="form-control @error('address') is-invalid @enderror">{{ old('address', @$invoice->customer->address) }}</textarea>
 
-                </form>
+                        @error('address')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mt-5">
+                <div class="card-body">
+                    <div class="h3">Masukan tagihan</div>
+                    <div id="invoice-items">
+                        <div class="invoice-item">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="description" class="form-label fs-4 fw-bold">Keterangan</label>
+                                    <input type="text" name="invoiceItems[0][description]" id="description"
+                                        class="form-control description @error('description') is-invalid @enderror "
+                                        placeholder="Masukan keterangan tagihan">
+                                    @error('description')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-4">
+
+                                    <label for="stock" class="form-label fs-4 fw-bold">Kuantitas</label>
+                                    <input type="number" name="invoiceItems[0][stock]" id="stock"
+                                        value="{{ old('stock', @$invoice->stock) }}"
+                                        class="form-control stock @error('stock') is-invalid @enderror"
+                                        placeholder="inputkan jumlah">
+                                    @error('stock')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+
+                                </div>
+                                <div class="col-md-2 mt-5">
+
+                                    <!-- Select -->
+
+                                    <select class="form-select unit fs-5 fw-bold @error('unit') is-invalid @enderror"
+                                        name="invoiceItems[0][unit]">
+                                        <option value="" style="background: #6e11f4">Unit</option>
+                                        <option value="pcs" @if (old('unit', @$invoice->unit) == 'pcs') selected @endif>
+                                            PCS</option>
+                                        <option value="jam" @if (old('unit', @$invoice->unit) == 'jam') selected @endif>
+                                            Jam</option>
+                                        <option value="meter" @if (old('unit', @$invoice->unit) == 'meter') selected @endif>
+                                            Meter</option>
+                                        <option value="ls" @if (old('unit', @$invoice->unit) == 'ls') selected @endif>
+                                            LS</option>
+                                    </select>
+                                    <!-- End Select -->
+                                    @error('unit')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label for="file" class="form-label fs-4 fw-bold">File Tambahan</label>
+                                        <input type="file" name="invoiceItems[0][file]" id="file"
+                                            class="form-control file @error('file') is-invalid @enderror">
+                                        @error('file')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col">
+
+                                    <label for="price" class="form-label fs-4 fw-bold">Harga Satuan</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text fw-bold">Rp</span>
+                                        <input type="number"name="invoiceItems[0][price]" id="price"
+                                            class="form-control price @error('price') is-invalid @enderror"
+                                            value="{{ old('price', @$invoice->price) }}"
+                                            placeholder="inputkan harga satuan">
+                                        @error('price')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="nominal" class="form-label fs-4 fw-bold">Harga Total</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text fw-bold">Rp</span>
+                                        <input type="number" name="invoiceItems[0][nominal]" id="nominal"
+                                            class="form-control nominal @error('nominal') is-invalid @enderror"
+                                            value="{{ old('nominal', @$invoice->nominal) }}" readonly>
+                                        @error('nominal')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <button type="button" id="add-invoice-item" class="btn fs-5 fw-bold mt-3 text-end"
+                                    style="background: #6e11f4; color:#fff">
+                                    <i class="bi bi-plus-circle-fill fs-5 fw-bold me-1"></i> Tambah Invoice Tagihan</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ route('admin.invoice.index') }}" class="btn" style="border-color:#6e11f4
+                    ">Batal</a>
+                    <button class="btn ms-3" style="background: #6e11f4; border-color: #fff; color:#fff;">Selesai</button>
+                </div>
+            </div>
+    </div>
+    </form>
+    </div>
+
+    <script>
+        // script untuk tambah item
+
+        const addInvoiceItemButton = document.querySelector('#add-invoice-item');
+        const invoiceItemsDiv = document.querySelector('#invoice-items');
+
+        addInvoiceItemButton.addEventListener('click', function() {
+            const lastInvoiceItemDiv = invoiceItemsDiv.lastElementChild;
+            const lastInvoiceItemIndex = lastInvoiceItemDiv.querySelector('.description').getAttribute('name')
+                .match(/\d+/)[0];
+            const newInvoiceItemIndex = parseInt(lastInvoiceItemIndex) + 1;
+
+            const newInvoiceItemDiv = document.createElement('div');
+            newInvoiceItemDiv.className = 'row mt-7 hr ';
+            newInvoiceItemDiv.innerHTML = ` <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <label for="description" class="form-label fs-4 fw-bold">Keterangan</label>
+            <input type="text" class="form-control description"
+                name="invoiceItems[${newInvoiceItemIndex}][description]" placeholder="Masukan tagihan invoice">
+        </div>
+        <div class="col-md-4">
+            <label for="stock" class="form-label fs-4 fw-bold">Kuantitas</label>
+                <input type="number" class="form-control stock" id="stock-${newInvoiceItemIndex}" name="invoiceItems[${newInvoiceItemIndex}][stock]" placeholder="Inputkan Jumlah ">
+                @error('stock')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+        </div>
+        <div class="col-md-2 mt-5">
+            <select class="form-select unit fs-5 fw-bold @error('unit') is-invalid @enderror"
+                name="invoiceItems[${newInvoiceItemIndex}][unit]">
+                <option value="" style="background: #6e11f4">Unit</option>
+                <option value="pcs" @if (old('unit', @$invoice->unit) == 'pcs') selected @endif>
+                    PCS</option>
+                <option value="jam" @if (old('unit', @$invoice->unit) == 'jam') selected @endif>
+                    Jam</option>
+                <option value="meter" @if (old('unit', @$invoice->unit) == 'meter') selected @endif>
+                    Meter</option>
+                <option value="ls" @if (old('unit', @$invoice->unit) == 'ls') selected @endif>
+                    LS</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mt-3">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label for="file" class="form-label fs-4 fw-bold">File Tambahan</label>
+                                        <input type="file" name="invoiceItems[${newInvoiceItemIndex}][file]" id="file"
+                                            class="form-control file @error('file') is-invalid @enderror">
+                                        @error('file')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+    
+                                <div class="col">
+    
+                                    <label for="price" class="form-label fs-4 fw-bold">Harga Satuan</label>
+                <div class="input-group">
+                    <span class="input-group-text fw-bold">Rp</span>
+                    <input type="number" name="invoiceItems[${newInvoiceItemIndex}][price]" class="form-control price" id="price-${newInvoiceItemIndex}" value="{{ old('price', @$invoice->price) }}" placeholder="inputkan harga satuan">
+                </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+            <div class="col">
+                <div class="col">
+                    <label for="nominal-${newInvoiceItemIndex}" class="form-label fs-4 fw-bold">Harga Total</label>
+                    <div class="input-group">
+                        <span class="input-group-text fw-bold">Rp</span>
+                        <input type="number" name="invoiceItems[${newInvoiceItemIndex}][nominal]" id="nominal-${newInvoiceItemIndex}" class="form-control nominal"
+                            value="{{ old('nominal', @$invoice->nominal) }}" readonly>
+                    </div>
+                </div>
             </div>
         </div>
 
+`;
+            invoiceItemsDiv.appendChild(newInvoiceItemDiv);
+
+            const stockInput = newInvoiceItemDiv.querySelector(`#stock-${newInvoiceItemIndex}`);
+            const priceInput = newInvoiceItemDiv.querySelector(`#price-${newInvoiceItemIndex}`);
+            const nominalInput = newInvoiceItemDiv.querySelector(`#nominal-${newInvoiceItemIndex}`);
+
+            stockInput.addEventListener('input', function() {
+                const stock = stockInput.value;
+                const price = priceInput.value;
+                const nominal = stock * price;
+                nominalInput.value = nominal;
+            });
+
+            priceInput.addEventListener('input', function() {
+                const stock = stockInput.value;
+                const price = priceInput.value;
+                const nominal = stock * price;
+                nominalInput.value = nominal;
+            });
 
 
-    </div>
-    </div>
-    <script>
-        
+
+        });
+
+        // end script untuk tambah item
+
+
+
 
 
 
@@ -208,7 +433,29 @@
             })
         }
         // end mengambil data user secara otomatis ketika di select
+
+
+
+
+
+        // script mengihitung price dan stock secara otomatis
+        const priceInput = document.getElementById('price');
+        const stockInput = document.getElementById('stock');
+        const totalPriceInput = document.getElementById('nominal');
+
+        function calculateTotalPrice() {
+            const price = parseInt(priceInput.value) || 0;
+            const stock = parseInt(stockInput.value) || 0;
+            const totalPrice = price * stock;
+            totalPriceInput.value = totalPrice;
+        }
+
+        priceInput.addEventListener('input', calculateTotalPrice);
+        stockInput.addEventListener('input', calculateTotalPrice);
+        // end script mengihitung price dan stock secara otomatis
     </script>
+
+
 
     @include('scripts.addInvoiceItem')
 

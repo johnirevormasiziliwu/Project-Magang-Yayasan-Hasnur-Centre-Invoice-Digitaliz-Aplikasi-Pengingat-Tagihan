@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use App\Models\Invoice;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
-use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 
 class CustomerController extends Controller
 {
@@ -37,31 +39,44 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = $request->validate([
+        $validatedData = $request->validate([
             'name_agency' => 'required',
             'name_unit'  => 'required',
             'name_pic'  => 'required',
-            'no_handphone' => ['required', 'regex:/^08[0-9]{8,10}$/', 'unique:customers,no_handphone'],
-            'email' => ['required', 'string', 'email:dns', 'unique:customers,email'],
-            'password' => ['required', 'min:8', 'max:255', 'confirmed', 'unique:customers,password'],
+            'no_handphone' => ['required', 'regex:/^08[0-9]{8,10}$/', 'unique:customers'],
+            'email' => ['required', 'string', 'email:dns', 'unique:users'],
+            'password' => ['required', 'min:8', 'max:255', 'confirmed'],
             'address' => 'required',
         ]);
+        try {
+            DB::beginTransaction();
 
-        // Mendapatkan user yang sedang login
-        //$user = Auth::user();
 
-        $user = User::create([
-            'name' => $request->name_agency,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+            $user = User::create([
+                'name' =>  $validatedData['name_pic'],
+                'email' => $validatedData['email'],
+                'password' => Hash::make($validatedData['password']),
+            ]);
 
-        // Menambahkan user_id ke dalam data yang akan disimpan
-        $validate['user_id'] = $user->id;
-        Customer::create($validate);
+            $user->assignRole('user');
 
-        toast('Successfully Data User Di Tambahkan', 'success');
-        return redirect()->route('admin.customer.index');
+
+            $customer = new Customer($validatedData);
+            $customer->user_id = $user->id; // menghubungkan antara Customer dan User
+            $customer->save();
+
+            DB::commit();
+
+            toast('Successfully Data User Di Tambahkan', 'success');
+            return redirect()->route('admin.customer.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            throw ValidationException::withMessages([
+                'failed' => 'Failed to add customer and user data.',
+            ]);
+        }
+
     }
 
     /**
@@ -120,11 +135,24 @@ class CustomerController extends Controller
 
 
 
-    public function deleteCustomer(Request $request)
+    public function destroy(Request $request)
     {
-        $customer = $request->input('customer');
-        Customer::whereIn($customer->id, 'id')->delete();
-        alert()->success('successfully', 'Data Customer Invoice Berhasil Di Hapus');
-        return redirect()->back();
+        $customerIds = $request->input('customer');
+        $selectCustomers = Customer::whereIn('id', $customerIds)->get();
+        $action = $request->input('action');
+
+        if ($action == 'delete') {
+            if (!empty($customerIds)) {
+                foreach ($customerIds as $id) {
+                    $customer = Customer::find($id);
+                    if ($customer) {
+                        $customer->delete();
+                    }
+                }
+
+                alert()->success('successfully', 'Data invoice dihapus');
+                return redirect()->back();
+            }
+        }
     }
 }

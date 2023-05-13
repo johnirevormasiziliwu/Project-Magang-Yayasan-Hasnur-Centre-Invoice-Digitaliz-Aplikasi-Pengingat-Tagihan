@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('invoice_items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('invoice_id')->constrained('invoices')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->text('description');
+            $table->string('description');
             $table->enum('unit', ['pcs','jam','meter','ls']);
             $table->integer('stock');
             $table->integer('price');

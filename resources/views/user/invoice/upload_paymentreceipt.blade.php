@@ -30,11 +30,11 @@
                 </div>
 
                 <div class="col-sm-auto">
-                   <a class="btn btn-sm text-white fw-bold" href="{{ route('user.invoice.index') }}"
-                            style="background: #EFEFEF">
-                            <i class="bi bi-arrow-left text-black fs-5 fw-bold"></i>
-                        </a>
-                    
+                    <a class="btn btn-sm text-white fw-bold" href="{{ route('user.invoice.index') }}"
+                        style="background: #EFEFEF">
+                        <i class="bi bi-arrow-left text-black fs-5 fw-bold"></i>
+                    </a>
+
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@
             <div class="card-body">
                 <div class="mb-3">
                     <label for="" class="form-label fw-bold fs-4">ID Invoice</label>
-                    <input type="text" class="form-control" value="{{ $invoice->invoice_id }}">
+                    <input type="text" class="form-control" value="{{ $invoice->invoice_number }}">
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label fw-bold fs-4">Judul Invoice</label>
@@ -80,21 +80,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="mb-3">
-                            <label for="" class="form-label fw-bold fs-4">Tanggal Pembayaran</label>
-                            <input type="text" class="form-control" value="{{ $invoice->created_at }}">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="mb-3">
-                            <label for="" class="form-label fw-bold fs-4">No Handphone</label>
-                            <input type="text" class="form-control"
-                                value="{{ \App\Helper\Util::rupiah($invoice->nominal) }}">
-                        </div>
+
+                @php($totalInvoiceNominal = 0)
+                @foreach ($invoice->invoiceItems as $invoiceItem)
+                    @php($totalInvoiceNominal += $invoiceItem->nominal)
+                @endforeach
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="" class="form-label fw-bold fs-4">Nominal</label>
+                        <input type="text" class="form-control"
+                            value="{{ \App\Helper\Util::rupiah($totalInvoiceNominal) }}">
                     </div>
                 </div>
+
                 @if ($invoice->is_paid == null && $invoice->payment_receipt == null)
                     <form action="{{ route('user.upload-payment-receipt', $invoice) }}" method="POST"
                         enctype="multipart/form-data">

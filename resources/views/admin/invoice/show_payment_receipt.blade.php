@@ -44,7 +44,7 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <label for="" class="form-label fw-bold fs-4">ID Invoice</label>
-                        <input type="text" disabled class="form-control" value="{{ @$invoice->invoice_id }}">
+                        <input type="text" disabled class="form-control" value="{{ @$invoice->invoice_number }}">
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label fw-bold fs-4">Judul Invoice</label>
@@ -86,14 +86,19 @@
                         <div class="col">
                             <div class="mb-3">
                                 <label for="" class="form-label fw-bold fs-4">Tanggal Pembayaran</label>
-                                <input type="text" class="form-control" disabled value="{{ @$invoice->payment_time }}">
+                                <input type="text" class="form-control" disabled
+                                    value="{{ @$invoice->payment_time }}">
                             </div>
                         </div>
+                        @php($totalInvoiceNominal = 0)
+                        @foreach ($invoice->invoiceItems as $invoiceItem)
+                            @php($totalInvoiceNominal += $invoiceItem->nominal)
+                        @endforeach
                         <div class="col">
                             <div class="mb-3">
                                 <label for="" class="form-label fw-bold fs-4">Nominal</label>
                                 <input type="text" disabled class="form-control"
-                                    value="{{ \App\Helper\Util::rupiah($invoice->nominal) }}">
+                                    value="{{ \App\Helper\Util::rupiah($totalInvoiceNominal) }}">
                             </div>
                         </div>
                     </div>
@@ -124,7 +129,7 @@
                                     Konfirmasi Pembayaran
                                 </button>
                             @else
-                                <button type="submit" class="btn confirm-btn d-inline-block confirm-btn"
+                                <button type="submit" class="btn confirm-btn d-inline-block "
                                     style="background: #6e11f4; color:#fff">
                                     Konfirmasi Pembayaran
                                 </button>
@@ -152,7 +157,9 @@
                                             <img src="{{ url('storage/', @$invoice->payment_receipt) }}"
                                                 class="img-fluid" alt="Bukti Pembayaran" style="widht:300px;">
                                             <div class="align-items-center d-flex justify-content-between">
-                                                <a href="{{ route('admin.download-payment-receipt', $invoice) }}" class="btn btn-primary">Download Payment Receipt</a> </div>
+                                                <a href="{{ route('admin.download-payment-receipt', $invoice) }}"
+                                                    class="btn btn-primary">Download Payment Receipt</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

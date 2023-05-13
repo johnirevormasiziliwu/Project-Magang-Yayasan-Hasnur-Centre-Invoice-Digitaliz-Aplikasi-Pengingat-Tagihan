@@ -48,15 +48,16 @@
 
             <div class="card-body">
                 <!-- Stars  button hapus  -->
-                <form action="{{ route('admin.customer.deleteedit') }}" method="post">
+                <form action="{{ route('admin.customer.delete') }}" method="post">
                     @csrf
+                    @method('delete')
                     <div class="row mb-3">
                         <div class="text-end ">
 
                             <input type="hidden" name="action" value="">
                             <button type="submit" class="btn btn-sm bg-white delete-btn  border border-dark fs-5"
                                 onclick="setAction('delete')" id="btn-delete" disabled><i class="bi bi-trash3"
-                                    name="action" value="delete"></i></button>
+                                    name="action" value="delete"></i> Delete</button>
                         </div>
                     </div>
 
@@ -66,8 +67,7 @@
                         <table class="table table-borderless table-thead-bordered table-align-middle">
                             <thead class="thead-light ">
                                 <tr>
-                                    <th scope="col" class="fw-bold"><input type="checkbox" name="#"
-                                            id="#"></th>
+                                    <th><input type="checkbox" class="check_all"></th>
                                     <th scope="col" class="fw-bold">Nama Instansi</th>
                                     <th scope="col" class="fw-bold">Nama Unit</th>
                                     <th scope="col" class="fw-bold">Nama PIC</th>
@@ -81,7 +81,8 @@
 
                                 @forelse ($customers as $customer)
                                     <tr>
-                                        <td><input type="checkbox" name="customer[]" value="{{ $customer->id }}"></td>
+                                        <td><input type="checkbox" name="customer[]" value="{{ $customer->id }}"
+                                                class="custome_name"></td>
                                         <td>{{ $customer->name_agency }}</td>
                                         <td>{{ $customer->name_unit }}</td>
                                         <td>{{ $customer->name_pic }}</td>

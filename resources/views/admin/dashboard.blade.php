@@ -45,16 +45,13 @@
         <div class="card">
             <div class="card-body d-flex justify-content-around">
                 @php($nomor = 1)
-                @php($totalUnpaid = 0)
-                @php($totalPaid = 0)
                 <div class="paid">
                     <p class="fs-5 fw-bold text-success">
                         <i class="bi bi-check-circle-fill me-2 text-success fw-bold fs-5"></i>
                         Paid Bill
-                        @php($totalPaid += $invoices->where('is_paid', true)->sum('nominal'))
                     </p>
                     <h1 class="fw-bold">
-                        {{ \App\Helper\Util::rupiah($invoices->where('is_paid', true)->sum('nominal')) }}
+                        {{ \App\Helper\Util::rupiah($totalPaid) }}
                     </h1>
                 </div>
                 <hr
@@ -63,10 +60,9 @@
                     <p class="text-danger fw-bold text-danger fs-5">
                         <i class="bi bi-x-circle-fill me-2"></i>
                         Unpaid Bill
-                        @php($totalUnpaid += $invoices->where('is_paid', false)->sum('nominal'))
                     </p>
                     <h1 class="fw-bold">
-                        {{ \App\Helper\Util::rupiah($invoices->where('is_paid', false)->sum('nominal')) }}
+                        {{ \App\Helper\Util::rupiah($totalUnpaid) }}
                     </h1>
                 </div>
                 <hr
@@ -78,11 +74,12 @@
                     </p>
                     <h1 class="fw-bold">
                         {{ $invoicesCount }} invoice
+
+
                     </h1>
                 </div>
             </div>
         </div>
-
 
 
         <!-- End Card -->
@@ -170,7 +167,7 @@
                     <div class="card-body">
                         <h3 class="card-title fw-bold">Due This Week</h3>
                         @if (count($invoicesDueThisWeek) > 0)
-                            @foreach ($invoicesDueThisWeek as $invoiceduethisweek)
+                            @foreach ($invoicesDueThisWeek as $invoice)
                                 <div class="row mt-5 ">
                                     <div class="col">
                                         <div class="d-flex">
@@ -189,15 +186,15 @@
                                             </div>
                                             <div class="flex-grow-1 ms-3">
                                                 <span
-                                                    class="d-block h5 text-inherit mb-0">{{ $invoiceduethisweek->customer->name_unit }}</span>
+                                                    class="d-block h5 text-inherit mb-0">{{ $invoice->customer->name_unit }}</span>
                                                 <span
-                                                    class="d-block font-size-sm text-body mt-2">{{ date('d M Y', strtotime($invoiceduethisweek->due_date)) }}</span>
+                                                    class="d-block font-size-sm text-body mt-2">{{ date('d M Y', strtotime($invoice->due_date)) }}</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-auto">
                                         <span class="fw-bold fs-5"
-                                            style="color:#9E9E9E;">{{ \App\Helper\Util::rupiah($invoiceduethisweek->nominal) }}</span>
+                                            style="color:#9E9E9E;">{{ \App\Helper\Util::rupiah($invoiceItemTotals[$invoice->id]) }}</span>
                                     </div>
                                 </div>
                             @endforeach
@@ -241,7 +238,7 @@
                                 <tr>
                                     <td>
                                         <a href="{{ route('admin.invoice.show', $invoice) }}">
-                                            {{ $invoice->invoice_id }}
+                                            {{ $invoice->invoice_number }}
                                         </a>
                                     </td>
                                     <td>{{ $invoice->customer->name_unit }}</td>
@@ -269,7 +266,7 @@
                                                 style="color: #CD7B2E; font-size: 10px; font-weight: 700; font-style: normal; line-height: 150%; background:  #FFF7EB; display: flex; flex-direction: row; justify-content:center;padding:4px;gap:10px ">Processing</span>
                                         </td>
                                     @endif
-                                    <td>{{ \App\Helper\Util::rupiah($invoice->nominal) }}</td>
+                                    <td>{{ \App\Helper\Util::rupiah($invoiceItemTotals[$invoice->id]) }}</td>
                                 </tr>
                             @empty
                                 <tr class="text-center">

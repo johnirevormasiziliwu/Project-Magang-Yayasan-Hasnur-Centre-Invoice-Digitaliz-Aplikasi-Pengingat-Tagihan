@@ -8,6 +8,7 @@ use App\Models\Customer;
 use App\Models\Invoice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\invoiceEmail;
 
 class EmailController extends Controller
 {
@@ -42,6 +43,21 @@ class EmailController extends Controller
             toast('successfully data invoice di update', 'success');
             return redirect()->route('admin.email.index');
        
+    }
+
+    public function kirimEmail(){
+ 
+        Mail::to("testing@digitaliz.com")->send(new invoiceEmail());
+ 
+        return "Email telah dikirim";
+ 
+    }
+
+    public function goEmail(){
+        Mail::to("indramusca@gmail.com")->send(new invoiceEmail());
+ 
+        return "Email telah dikirim";
+ 
     }
 
 }
