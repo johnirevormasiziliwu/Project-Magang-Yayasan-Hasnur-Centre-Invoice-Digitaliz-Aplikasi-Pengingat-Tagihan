@@ -180,18 +180,24 @@
                                         @endforeach
                                         <td>{{ \App\Helper\Util::rupiah($totalInvoiceNominal) }}</td>
                                         <td style="display: flex; flex-direction: row;">
-                                            <a class="text-dark ms-4 fs-5" href="{{ route('admin.invoice.edit', $invoice->id) }}" style="margin-right: 20px;">
+                                            <a class="text-dark ms-4 fs-5"
+                                                href="{{ route('admin.invoice.edit', $invoice->id) }}"
+                                                style="margin-right: 20px;">
                                                 <i class="bi bi-pencil"></i>
                                             </a>
-                                            <a href="{{ route('admin.invoiceitems.show', ['invoice' => $invoice->id, 'invoiceItem' => $invoice->invoiceItems->first()->id]) }}">
+                                            <a
+                                                href="{{ route('admin.invoiceitems.show', ['invoice' => $invoice->id, 'invoiceItem' => $invoice->invoiceItems->first()->id]) }}">
                                                 <i class="bi bi-eye"></i>
                                             </a>
                                         </td>
-                                        
+
                                     </tr>
                                 @empty
-                                    <tr class="text-center">
-                                        <td class="text-center fs-4 fw-bold">No Data</td>
+                                    <tr>
+                                        <td colspan="8" class="text-center text-danger">
+                                            <i class="bi bi-exclamation-triangle-fill d-block mx-auto my-3"
+                                                style="font-size: 3rem;"></i> Tidak ada hasil pencarian
+                                        </td>
                                     </tr>
                                 @endforelse
 

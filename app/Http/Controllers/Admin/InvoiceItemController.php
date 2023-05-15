@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use App\Models\Invoice;
 use App\Models\InvoiceItem;
 use Illuminate\Http\Request;
@@ -53,10 +54,9 @@ class InvoiceItemController extends Controller
             'unit' => 'required',
             'price' => 'required|numeric|min:1',
             'nominal' => 'required|numeric|min:1',
-            'file' => 'required',
-
+            'file' => 'nullable', 
         ]);
-
+        
         $invoiceitem->update($validate);
         toast('Data Invoice Item Berhasil Update ', 'success');
         return redirect()->route('admin.invoiceitems.show', ['invoice' => $invoice->id, 'invoiceItem' => $invoiceitem->id]);

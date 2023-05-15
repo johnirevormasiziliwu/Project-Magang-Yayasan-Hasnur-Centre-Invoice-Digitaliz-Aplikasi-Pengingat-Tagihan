@@ -60,15 +60,20 @@
                         <div class="col">
                             <div class="mb-3">
                                 <label for="file" class="form-label fs-4 fw-bold">File Tambahan</label>
+                                @php
+                                    $fileValue = $invoiceitem->file ? asset($invoiceitem->file) : '';
+                                @endphp
                                 <input type="file" name="file" id="file"
-                                    class="form-control @error('file') is-invalid @enderror">
+                                    class="form-control @error('file') is-invalid @enderror" accept="image/*">
                                 @error('file')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
+                                <input type="hidden" name="file_value" value="{{ $invoiceitem->file }}">
                             </div>
                         </div>
+                        
                         <div class="col">
                             <div class="mb-3">
                                 <label for="unit" class="form-label fs-4 fw-bold">Pilih Unit</label>

@@ -46,7 +46,7 @@
                     <div>
                         <h5 class="mb-3">ID Invoice : {{ $invoice->invoice_number }}</h5>
                         <h5 class="mb-3 ">Judul Invoice : {{ $invoice->title }}</h5>
-
+                        <h5 class="mb-3">Nama Unit : {{ $invoice->customer->name_unit }}</h5>
                     </div>
 
                 </div>

@@ -90,11 +90,14 @@
                                             <span class="rounded"
                                                 style=" color:  #CD412E; font-size: 10px; font-weight: 700; font-style: normal; line-height: 150%; background: #FFEDEB; display: flex; flex-direction: row; justify-content:center; padding:4px;gap:10px ">Unpaid</span>
                                         </td>
-
-                                        <td>{{ \App\Helper\Util::rupiah($invoice->nominal) }}</td>
+                                        @php($totalInvoiceNominal = 0)
+                                        @foreach ($invoice->invoiceItems as $invoiceItem)
+                                            @php($totalInvoiceNominal += $invoiceItem->nominal)
+                                        @endforeach
+                                        <td>{{ \App\Helper\Util::rupiah($totalInvoiceNominal) }}</td>
                                         <td style="display: flex; flex-direction: row;">
 
-                                            <a href="{{ route('admin.showemail', $invoice) }}"
+                                            <a href="{{ route('admin.email.show', $invoice) }}"
                                                 class="btn btn-sm btn-warning">
                                                 <i class="bi bi-send"></i>
                                             </a>

@@ -14,17 +14,18 @@ class DashboardController extends Controller
     {
         $now = Carbon::now();
         $oneWeekAhead = $now->copy()->addWeek();
+        $oneWeekBeforeDueDate = $oneWeekAhead->copy()->subWeek();
 
-        // Menampilkan data transaski yang tagihan minggu ini
-        $invoicesDueThisWeek = Invoice::whereBetween('due_date', [$now, $oneWeekAhead])
+        // Menampilkan data transaksi yang jatuh tempo satu minggu sebelum tanggal sekarang
+        $invoicesDueThisWeek = Invoice::whereBetween('due_date', [$oneWeekBeforeDueDate, $oneWeekAhead])
             ->where('is_paid', false)
             ->whereNull('payment_receipt')
             ->orderBy('due_date')
             ->take(3)
             ->get();
 
-        // Menampilkan jumlah transaksi yang di tagih minggu ini
-        $invoicesCount = Invoice::whereBetween('due_date', [$now, $oneWeekAhead])
+        // Menampilkan jumlah transaksi yang jatuh tempo satu minggu sebelum tanggal sekarang
+        $invoicesCount = Invoice::whereBetween('due_date', [$oneWeekBeforeDueDate, $oneWeekAhead])
             ->where('is_paid', false)
             ->whereNull('payment_receipt')
             ->count();

@@ -43,7 +43,7 @@
             <div class="card-body">
                 <div class="mb-3">
                     <label class="form-label fs-4 fw-bold">ID Invoice</label>
-                    <input type="text" class="form-control" value="{{ $invoice->invoice_id }}">
+                    <input type="text" class="form-control" value="{{ $invoice->invoice_number }}">
                 </div>
                 <div class="mb-3">
                     <label class="form-label fs-4 fw-bold">Judul Invoice</label>
@@ -107,78 +107,58 @@
                             Jalan,Gedung,RT/RW,Kecamatan,Kabupate,Kode Pos dll)</i></label>
                     <textarea name="address" id="address" cols="30" rows="8" class="form-control">{{ $invoice->customer->address }}</textarea>
                 </div>
-                <div class="row mt-3">
-                    <div class="col">
-                        <label for="images" class="form-label fs-4 fw-bold">File Tambahan</label>
-
-                        <div id="basicExampleDropzone" class="js-dropzone row dz-dropzone dz-dropzone-card bg-white">
-                            <div class="dz-message ">
-                                <span class="svg-icon svg-icon-lg mb-3"></span>
-                                <i class="bi bi-cloud-arrow-up" style="font-size:3rem"></i>
-                                <h5>Drag and drop your file here</h5>
-
-                                <p class="mb-2">or</p>
-
-                                <span class="btn btn-white btn-sm">Browse files</span>
-                            </div>
+                <div class="card mt-5">
+                    <div class="card-body">
+                       <div class="h3 mb-5">Review Invoice</div>
+                        <div class="table-responsive">
+                            <table class="table table-borderless table-thead-bordered">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col" class="fw-bold">No</th>
+                                        <th scope="col" class="fw-bold">Keterangan</th>
+                                        <th scope="col" class="fw-bold">Kuantitas</th>
+                                        <th scope="col" class="fw-bold">Satuan</th>
+                                        <th scope="col" class="fw-bold">Nominal</th>
+                                        @if ($invoice->is_paid == false && $invoice->payment_receipt == false)
+                                        <th scope="col" class="fw-bold">Action</th>
+                                        @endif 
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php($nomor = 1)
+                                    @php($total = 0)
+                                    @foreach ($invoiceItems as $invoiceitem)
+                                        <tr>
+                                            <td>{{ $nomor++ }}</td>
+                                            <td>{{ $invoiceitem->description }}</td>
+                                            <td>{{ $invoiceitem->stock }}</td>
+                                            <td>{{ \App\Helper\Util::rupiah($invoiceitem->price) }}</td>
+                                            <td>{{ \App\Helper\Util::rupiah($invoiceitem->nominal) }}</td>
+                                        </tr>
+                                        @php($total += $invoiceitem->nominal)
+                                    @endforeach
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="3"></td>
+                                        <th style="font-size: 1rem; font-weight: 900">Total:</th>
+                                        <td style="font-size: 1rem; font-weight: 900">{{ \App\Helper\Util::rupiah($total) }}
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
                         </div>
-
+        
                     </div>
-                    <div class="col">
-                        <div class="mb-3">
-                            <label for="price" class="form-label fs-4 fw-bold">Harga Satuan</label>
-                            <div class="input-group">
-                                <span class="input-group-text fw-bold">Rp</span>
-                                <input type="number" name="price" id="price"
-                                    class="form-control @error('price') is-invalid @enderror"
-                                    value="{{ old('price', @$invoice->price) }}" placeholder="inputkan harga satuan">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <label for="stock" class="form-label fs-4 fw-bold">Jumlah</label>
-                                <input type="number" name="stock" id="stock"
-                                    value="{{ old('stock', @$invoice->stock) }}"
-                                    class="form-control @error('stock') is-invalid @enderror"
-                                    placeholder="inputkan jumlah">
-                            </div>
-                            <div class="col-4 mt-5">
-                                <!-- Select -->
-
-                                <select class="form-select fs-5 fw-bold @error('unit') is-invalid @enderror"
-                                    name="unit">
-                                    <option value="">Pilih Unit</option>
-                                    <option value="pcs" @if (old('unit', @$invoice->unit) == 'pcs') selected @endif>
-                                        PCS</option>
-                                    <option value="jam" @if (old('unit', @$invoice->unit) == 'jam') selected @endif>
-                                        Jam</option>
-                                    <option value="meter" @if (old('unit', @$invoice->unit) == 'meter') selected @endif>
-                                        Meter</option>
-                                    <option value="ls" @if (old('unit', @$invoice->unit) == 'ls') selected @endif>
-                                        LS</option>
-                                </select>
-                                <!-- End Select -->
-                            </div>
-                        </div>
-                        <div class="col mt-5">
-                            <label for="nominal" class="form-label fs-4 fw-bold">Harga Total</label>
-                            <div class="input-group">
-                                <span class="input-group-text fw-bold">Rp</span>
-                                <input type="number" name="nominal" id="nominal" class="form-control"
-                                    value="{{ old('nominal', @$invoice->nominal) }}" readonly>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 mt-5">
                     <label for="" class="form-label fs-4 fw-bold">Pesan</label>
                     <textarea name="" id="" cols="30" rows="20" class="form-control">
 Dear {{ $invoice->customer->name_unit }},
 
 Saya berharap email ini menemukan Anda dalam keadaan sehat dan baik-baik saja. Saya ingin mengingatkan Anda bahwa faktur kami nomor {{ $invoice->invoice_id }} berjudul {{ $invoice->title }} dengan tanggal jatuh tempo pada tanggal {{ date('d F Y', strtotime($invoice->due_date)) }} masih belum dibayarkan.
 
-Jumlah yang harus dibayarkan adalah {{ \App\Helper\Util::rupiah($invoice->nominal) }} seperti yang tertera pada faktur. Sesuai dengan persyaratan kontrak kami, pembayaran harus dibuat tepat waktu. Kami telah memberikan layanan kepada Anda dengan sepenuh hati dan kami berharap Anda juga dapat memenuhi kewajiban Anda dalam hal pembayaran. Kami sangat menghargai hubungan bisnis yang baik dengan Anda dan kami berharap dapat terus bekerja sama dengan Anda dalam jangka panjang.
+Jumlah yang harus dibayarkan adalah {{ \App\Helper\Util::rupiah($total) }} seperti yang tertera pada faktur. Sesuai dengan persyaratan kontrak kami, pembayaran harus dibuat tepat waktu. Kami telah memberikan layanan kepada Anda dengan sepenuh hati dan kami berharap Anda juga dapat memenuhi kewajiban Anda dalam hal pembayaran. Kami sangat menghargai hubungan bisnis yang baik dengan Anda dan kami berharap dapat terus bekerja sama dengan Anda dalam jangka panjang.
 
 Saya meminta Anda untuk segera membayar faktur ini dalam waktu 10 hari. Jika ada masalah dengan faktur atau informasi tambahan yang dibutuhkan, silakan hubungi kami segera.
 
@@ -196,7 +176,7 @@ Yayasan Hasnur Center
                 <div class="row">
                     <label for="" class="form-label fs-4 fw-bold">Kirim</label>
                     <div class="col">
-                        <a class="btn btn-white " href="{{ route('admin.sendemail', $invoice) }}">
+                        <a class="btn btn-white " href="{{ route('admin.email.show', $invoice) }}">
                             <img src="{{ asset('img/icon/gmail.png') }}" alt="Gambar Tombol Email"
                                 style="width: 30px">
                             <b>{{ $invoice->customer->email }}</b>

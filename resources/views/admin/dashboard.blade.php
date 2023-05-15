@@ -50,7 +50,7 @@
                         <i class="bi bi-check-circle-fill me-2 text-success fw-bold fs-5"></i>
                         Paid Bill
                     </p>
-                    <h1 class="fw-bold">
+                    <h1 class="fw-bold me-2">
                         {{ \App\Helper\Util::rupiah($totalPaid) }}
                     </h1>
                 </div>

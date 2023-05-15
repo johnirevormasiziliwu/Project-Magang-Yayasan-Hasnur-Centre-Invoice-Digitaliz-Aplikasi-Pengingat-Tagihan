@@ -67,6 +67,7 @@ Route::post('/logout', [AuthLogoutController::class, 'logout'])->name('logout');
         //Route admin delete customer 
         Route::post('/customer/delete', [AdminCustomerController::class, 'delete'])->name('customer.delete');
 
+
         //Route admin Email
         Route::get('/email', [AdminEmailController::class, 'index'])->name('email.index');
 
@@ -78,23 +79,24 @@ Route::post('/logout', [AuthLogoutController::class, 'logout'])->name('logout');
         Route::get('/send-email/{invoice}', [AdminEmailController::class, 'sendEmail'])->name('sendemail');
         Route::get('/go-email', [AdminEmailController::class, 'goEmail'])->name('goEmail');
 
+
         //Show_payment_receipt
         Route::get('/showpaymentreceipt/{invoice}', [AdminInvoiceController::class, 'show_payment_receipt'])->name('show_payment_receipt');
 
         //Route Confirm and Delete
-        Route::post('/confirm/delete', [AdminInvoiceController::class, 'deleteConfirm'])->name('invoice.deleteConfirm');
+        Route::post('/confirm-paymentreceipt', [AdminInvoiceController::class, 'deleteConfirm'])->name('invoice.deleteConfirm');
 
         //Confirm_payment_receipt
         Route::post('/confirm_payment/{invoice}', [AdminInvoiceController::class, 'confirm_payment'])->name('confirm_payment');
 
         // Download payment-receipt
-        Route::get('/download/{invoice}', [AdminInvoiceController::class, 'downloadPaymentReceipt'])->name('download-payment-receipt');
+        Route::get('/download/{invoice}/payment-receipt', [AdminInvoiceController::class, 'downloadPaymentReceipt'])->name('download-payment-receipt');
 
         // Download Invoice
-        Route::get('/download/{invoice}/generate', [AdminInvoiceController::class, 'downloadInvoice'])->name('download-invoice');
+        Route::get('/download/{invoice}/invoice', [AdminInvoiceController::class, 'downloadInvoice'])->name('download-invoice');
 
-        // search invoice
-        Route::get('/search', [AdminInvoiceController::class, 'search'])->name('search.invoice');
+        // Print invoice 
+        Route::get('generate-pdf/{invoice}/invoice', [AdminInvoiceController::class, 'generatePdfInvoice'])->name('generate-pdf-invoice');
     });
 
 
