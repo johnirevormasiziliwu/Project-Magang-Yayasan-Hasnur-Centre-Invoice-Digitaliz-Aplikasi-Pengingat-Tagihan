@@ -43,40 +43,38 @@
         <!-- End Page Header -->
         <!-- Card -->
         <div class="card">
-            <div class="card-body d-flex justify-content-around">
-                @php($nomor = 1)
-                <div class="paid">
-                    <p class="fs-5 fw-bold text-success">
-                        <i class="bi bi-check-circle-fill me-2 text-success fw-bold fs-5"></i>
-                        Paid Bill
-                    </p>
-                    <h1 class="fw-bold me-2">
-                        {{ \App\Helper\Util::rupiah($totalPaid) }}
-                    </h1>
-                </div>
-                <hr
-                    style="border-right: 2px solid #E0E0E0; height: 50px; position: absolute; top: 0; left:30%; transform: translateX(50%);">
-                <div class="unpaid text-center">
-                    <p class="text-danger fw-bold text-danger fs-5">
-                        <i class="bi bi-x-circle-fill me-2"></i>
-                        Unpaid Bill
-                    </p>
-                    <h1 class="fw-bold">
-                        {{ \App\Helper\Util::rupiah($totalUnpaid) }}
-                    </h1>
-                </div>
-                <hr
-                    style="border-right: 2px solid #E0E0E0; height: 50px; position: absolute; top: 0; right:30%; transform: translateX(50%);">
-                <div class="paid text-right">
-                    <p class="text-warning fw-bold fs-5">
-                        <i class="bi bi-exclamation-circle-fill me-2 text-warning "></i>
-                        Reminder Bill
-                    </p>
-                    <h1 class="fw-bold">
-                        {{ $invoicesCount }} invoice
-
-
-                    </h1>
+            <div class="card-body ">
+                <div class="status d-flex justify-content-around align-items-center">
+                    @php($nomor = 1)
+                    <div class="paid text-center">
+                        <p class="fs-5 fw-bold text-success">
+                            <i class="bi bi-check-circle-fill me-2 text-success fw-bold fs-5"></i>
+                            Paid Bill
+                        </p>
+                        <h1 class="fw-bold me-2">
+                            {{ \App\Helper\Util::rupiah($totalPaid) }}
+                        </h1>
+                    </div>
+                    <div style="height:55px;width:2.5px; background-color: #E0E0E0;border-radius:3px;"></div>
+                    <div class="unpaid text-center">
+                        <p class="text-danger fw-bold text-danger fs-5">
+                            <i class="bi bi-x-circle-fill me-2"></i>
+                            Unpaid Bill
+                        </p>
+                        <h1 class="fw-bold">
+                            {{ \App\Helper\Util::rupiah($totalUnpaid) }}
+                        </h1>
+                    </div>
+                    <div style="height:55px;width:2.5px; background-color: #E0E0E0;border-radius:3px;"></div>
+                    <div class="paid text-right">
+                        <p class="text-warning fw-bold fs-5">
+                            <i class="bi bi-exclamation-circle-fill me-2 text-warning "></i>
+                            Reminder Bill
+                        </p>
+                        <h1 class="fw-bold">
+                            {{ $invoicesCount }} invoice
+                        </h1>
+                    </div>
                 </div>
             </div>
         </div>
@@ -88,24 +86,26 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-4">
-                            <span class="h3 mb-0">Total Transaksi</span>
+                            <span class="h3 mb-0 ">Total Transaksi</span>
                         </div>
+
                         <!-- Bar Chart -->
                         <div class="chartjs-custom">
                             <canvas id="ecommerce-sales" class="js-chart" style="height: 20rem; width: 25rem;"
                                 data-hs-chartjs-options='{
-                              "type": "bar",
-                              "data": {
-                                "labels": ["Okt", "Nov", "Des", "Jan", "Feb", "Maret"],
-                                "datasets": [{
-                                  "data": [100, 200, 300, 400, 500,600],
-                                  "backgroundColor": "#6E11F4",
-                                  "hoverBackgroundColor": "#6E11F4",
-                                  "borderColor": "#6E11F4",
-                                  "maxBarThickness": "100",
-                                  "borderRadius": 10
-                                }]
-                              },
+                                    "type": "bar",
+                                    "data": {
+                                        "labels": <?= json_encode($labels) ?>,
+                                        "datasets": [{
+                                            "data": <?= json_encode(array_values($totalPaidByMonth)) ?>,
+                                            "backgroundColor": "#6E11F4",
+                                            "hoverBackgroundColor": "#6E11F4",
+                                            "borderColor": "#6E11F4",
+                                            "maxBarThickness": "100",
+                                            "borderRadius": 10
+                                        }]
+                                    },
+                                    
                               "options": {
                                 "scales": {
                                   "y": {
@@ -121,7 +121,7 @@
                                       "fontColor": "#97a4af",
                                       "fontFamily": "Open Sans, sans-serif",
                                       "padding": 10,
-                                      "postfix": "$"
+                                      "postfix": "Rp"
                                     }
                                   },
                                   "x": {
@@ -143,7 +143,7 @@
                                 "cornerRadius": 2,
                                 "plugins": {
                                   "tooltip": {
-                                    "prefix": "$",
+                                    "prefix": "Rp.",
                                     "hasIndicator": true,
                                     "mode": "index",
                                     "intersect": false
@@ -269,9 +269,12 @@
                                     <td>{{ \App\Helper\Util::rupiah($invoiceItemTotals[$invoice->id]) }}</td>
                                 </tr>
                             @empty
-                                <tr class="text-center">
-                                    <td class="text-center fs-4 fw-bold">No Data</td>
-                                </tr>
+                            <tr>
+                                <td colspan="8" class="text-center text-danger">
+                                    <i class="bi bi-exclamation-triangle-fill d-block mx-auto my-3"
+                                        style="font-size: 3rem;"></i> No Data Invoices
+                                </td>
+                            </tr>
                             @endforelse
                         </tbody>
                     </table>

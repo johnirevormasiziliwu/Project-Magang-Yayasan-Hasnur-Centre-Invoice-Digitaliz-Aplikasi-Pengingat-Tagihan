@@ -54,9 +54,19 @@ class InvoiceItemController extends Controller
             'unit' => 'required',
             'price' => 'required|numeric|min:1',
             'nominal' => 'required|numeric|min:1',
-            'file' => 'nullable', 
         ]);
-        
+
+        if ($request->hasFile('images')) {
+
+            //Hapus images lama
+            $invoiceitem->clearMediaCollection('images');
+
+            //upload image baru
+
+            $invoiceitem->addMedia($request->images)
+                ->toMediaCollection('images');
+        }
+
         $invoiceitem->update($validate);
         toast('Data Invoice Item Berhasil Update ', 'success');
         return redirect()->route('admin.invoiceitems.show', ['invoice' => $invoice->id, 'invoiceItem' => $invoiceitem->id]);
@@ -69,6 +79,11 @@ class InvoiceItemController extends Controller
     public function destroy(Invoice $invoice, InvoiceItem $invoiceitem)
     {
         $invoiceitem = InvoiceItem::where('id', $invoiceitem->id)->where('invoice_id', $invoice->id)->first();
+
+        if ($invoiceitem->hasMedia('images')) {
+            $invoiceitem->clearMediaCollection('images');
+        }
+
         $invoiceitem->delete();
         alert()->success('successfully', 'Data invoice dihapus');
         return redirect()->back();

@@ -100,7 +100,12 @@
                                     </tr>
 
                                 @empty
-                                    <td class="text-center me-5">No Data</td>
+                                <tr>
+                                    <td colspan="8" class="text-center text-danger">
+                                        <i class="bi bi-exclamation-triangle-fill d-block mx-auto my-3"
+                                            style="font-size: 3rem;"></i> No Data User
+                                    </td>
+                                </tr>
                                 @endforelse
                             </tbody>
                         </table>

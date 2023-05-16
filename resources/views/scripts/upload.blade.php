@@ -7,7 +7,7 @@
             var form = $(this).closest('form');
             Swal.fire({
                 title: 'Apakah Anda yakin ingin mengirimkan data pembayaran ini?',
-                text: "Pastikan Anda telah memeriksa kembali data yang diinputkan sebelum melakukan konfirmasi!",
+                text: "Pastikan Anda telah memeriksa kembali data yang diinputkan sebelum melakukan pembayaran ini!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',

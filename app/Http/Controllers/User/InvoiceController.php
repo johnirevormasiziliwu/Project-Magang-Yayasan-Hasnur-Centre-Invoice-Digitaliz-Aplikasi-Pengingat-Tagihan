@@ -106,7 +106,7 @@ class InvoiceController extends Controller
             'payment_receipt' => $path,
             'payment_time' => now()
         ]);
-        alert()->success('successfully', 'Data invoice dihapus');
+        alert()->success('successfully', 'Selamat Pembayaran Berhasil Terkirim');
         return redirect()->route('user.invoice.index');
     }
     

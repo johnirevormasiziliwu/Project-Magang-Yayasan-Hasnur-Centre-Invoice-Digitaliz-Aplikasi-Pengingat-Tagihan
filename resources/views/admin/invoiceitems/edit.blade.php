@@ -30,8 +30,7 @@
                 </div>
 
                 <div class="col-sm-auto">
-                    <a class="btn btn-sm text-white fw-bold" href="{{ url()->previous() }}"
-                        style="background: #EFEFEF">
+                    <a class="btn btn-sm text-white fw-bold" href="{{ url()->previous() }}" style="background: #EFEFEF">
                         <i class="bi bi-arrow-left text-black fs-5 fw-bold"></i>
                     </a>
                 </div>
@@ -41,7 +40,7 @@
         <div class="card mt-5">
             <form
                 action="{{ route('admin.invoiceitems.update', ['invoice' => $invoice->id, 'invoiceitem' => $invoiceitem->id]) }}"
-                method="post">
+                method="post" enctype="multipart/form-data">
                 @csrf
                 @method('put')
                 <div class="card-body">
@@ -59,21 +58,12 @@
                     <div class="row">
                         <div class="col">
                             <div class="mb-3">
-                                <label for="file" class="form-label fs-4 fw-bold">File Tambahan</label>
-                                @php
-                                    $fileValue = $invoiceitem->file ? asset($invoiceitem->file) : '';
-                                @endphp
-                                <input type="file" name="file" id="file"
-                                    class="form-control @error('file') is-invalid @enderror" accept="image/*">
-                                @error('file')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                                <input type="hidden" name="file_value" value="{{ $invoiceitem->file }}">
+                                <label for="images" class="form-label fs-4 fw-bold">File Tambahan</label>
+                                <input type="file" class="form-control" name="images">
                             </div>
+
                         </div>
-                        
+
                         <div class="col">
                             <div class="mb-3">
                                 <label for="unit" class="form-label fs-4 fw-bold">Pilih Unit</label>

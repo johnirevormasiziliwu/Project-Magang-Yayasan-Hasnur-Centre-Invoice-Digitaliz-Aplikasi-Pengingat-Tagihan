@@ -185,10 +185,8 @@
                                                 style="margin-right: 20px;">
                                                 <i class="bi bi-pencil"></i>
                                             </a>
-                                            <a
-                                                href="{{ route('admin.invoiceitems.show', ['invoice' => $invoice->id, 'invoiceItem' => $invoice->invoiceItems->first()->id]) }}">
-                                                <i class="bi bi-eye"></i>
-                                            </a>
+                                            <a class="rounded bg-info" href="{{ route('admin.invoiceitems.show', ['invoice' => $invoice->id, 'invoiceItem' => $invoice->invoiceItems->first()->id]) }}"
+                                            style="  color: #fff; font-size: 10px; font-weight: 700; font-style: normal; line-height: 150%;  display: flex; flex-direction: row; justify-content:center;padding:4px;gap:10px ">Detail Tagihan</a>
                                         </td>
 
                                     </tr>
@@ -196,7 +194,7 @@
                                     <tr>
                                         <td colspan="8" class="text-center text-danger">
                                             <i class="bi bi-exclamation-triangle-fill d-block mx-auto my-3"
-                                                style="font-size: 3rem;"></i> Tidak ada hasil pencarian
+                                                style="font-size: 3rem;"></i> No Data Invoices
                                         </td>
                                     </tr>
                                 @endforelse

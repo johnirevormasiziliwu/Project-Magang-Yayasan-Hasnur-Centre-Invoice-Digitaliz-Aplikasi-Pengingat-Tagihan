@@ -221,22 +221,30 @@ class InvoiceController extends Controller
     public function deleteConfirm(Request $request)
     {
         $invoiceIds = $request->input('invoice');
-        $selectedProduks = Invoice::whereIn('id', $invoiceIds)->get();
-
+        $selectedInvoices = Invoice::whereIn('id', $invoiceIds)->get();
+    
         $action = $request->input('action');
-
+    
         if ($action == 'delete') {
-            Invoice::whereIn('id', $invoiceIds)->delete();
+            foreach ($selectedInvoices as $invoice) {
+                $invoiceItems = $invoice->invoiceItems;
+                foreach ($invoiceItems as $invoiceItem) {
+                    if ($invoiceItem->hasMedia('images')) {
+                        $invoiceItem->clearMediaCollection('images');
+                    }
+                    $invoiceItem->delete();
+                }
+                $invoice->delete();
+            }
         } else if ($action == 'confirm') {
-
-            $invoiceItems = InvoiceItem::where('invoice_id')->get();
             $invoices = Invoice::whereIn('id', $invoiceIds)->get();
             return view('admin.invoice.show_payment_receipt', compact('invoices'));
         }
-
-        alert()->success('successfully', 'Data invoice dihapus');
+    
+        alert()->success('Data invoice berhasil dihapus.');
         return redirect()->back();
     }
+    
 
     // function untuk confirmasi pembayaran
     public function confirm_payment(Invoice $invoice)

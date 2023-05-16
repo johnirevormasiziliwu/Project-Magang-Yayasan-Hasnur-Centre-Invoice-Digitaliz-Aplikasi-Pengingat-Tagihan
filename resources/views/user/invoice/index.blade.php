@@ -147,9 +147,12 @@
 
                                 </tr>
                             @empty
-                                <tr class="text-center">
-                                    <td class="text-center fs-4 fw-bold">No Data</td>
-                                </tr>
+                            <tr>
+                                <td colspan="8" class="text-center text-danger">
+                                    <i class="bi bi-exclamation-triangle-fill d-block mx-auto my-3"
+                                        style="font-size: 3rem;"></i> No Data Invoices
+                                </td>
+                            </tr>
                             @endforelse
 
                         </tbody>
