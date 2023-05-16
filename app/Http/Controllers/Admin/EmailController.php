@@ -8,6 +8,9 @@ use App\Models\Invoice;
 use App\Models\InvoiceItem;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\invoiceEmail;
+
 class EmailController extends Controller
 {
     /**
@@ -39,7 +42,7 @@ class EmailController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function viewEmail(string $id)
     {
         $invoice = Invoice::findOrFail($id);
         $customers = Customer::all();
@@ -54,6 +57,35 @@ class EmailController extends Controller
     {
         //
     }
+
+
+    public function kirimEmail(){
+ 
+        Mail::to("testing@digitaliz.com")->send(new invoiceEmail());
+ 
+        return "Email telah dikirim";
+ 
+    }
+
+    public function goEmail($invoice){
+
+        $invoice = Invoice::where('id',$invoice)->first();
+        $tagihan = InvoiceItem::where('invoice_id', $invoice->id)->sum('nominal');
+
+        $mailData = array(
+                   'nama'           => $invoice->user->name,
+                   'judul'          => $invoice->title,
+                   'invoice_number' => $invoice->invoice_number,
+                   'due_date'       => $invoice->due_date,
+                   'tagihan'        => 'Rp.'.$tagihan,
+                  );
+
+        Mail::to("user@digitaliz.id")->send(new invoiceEmail($mailData));
+ 
+        return "Email telah dikirim";
+ 
+    }
+
 
     /**
      * Update the specified resource in storage.
@@ -70,4 +102,5 @@ class EmailController extends Controller
     {
         //
     }
+
 }

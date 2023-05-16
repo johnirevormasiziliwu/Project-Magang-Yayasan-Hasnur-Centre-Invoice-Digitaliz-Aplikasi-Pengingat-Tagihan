@@ -29,6 +29,8 @@ Route::get('/', function () {
 //Route Logout
 Route::post('/logout', [AuthLogoutController::class, 'logout'])->name('logout');
 
+//email
+Route::get('/go-email/{invoice}', [AdminEmailController::class, 'goEmail'])->name('goEmail');
 
 //Route Middleware Admin
 
@@ -67,8 +69,19 @@ Route::post('/logout', [AuthLogoutController::class, 'logout'])->name('logout');
         //Route admin delete customer 
         Route::post('/customer/delete', [AdminCustomerController::class, 'delete'])->name('customer.delete');
 
-        // Route admin Email 
-        Route::resource('/email', AdminEmailController::class);
+
+        //Route admin Email
+        Route::get('/email', [AdminEmailController::class, 'index'])->name('email.index');
+        
+        
+
+        //Route admin Show Detail Email
+        Route::get('/email/{invoice}', [AdminEmailController::class, 'viewEmail'])->name('viewEmail');
+        
+
+        //Route admin Send Email
+        Route::get('/send-email/{invoice}', [AdminEmailController::class, 'sendEmail'])->name('sendemail');
+
 
         //Show_payment_receipt
         Route::get('/showpaymentreceipt/{invoice}', [AdminInvoiceController::class, 'show_payment_receipt'])->name('show_payment_receipt');

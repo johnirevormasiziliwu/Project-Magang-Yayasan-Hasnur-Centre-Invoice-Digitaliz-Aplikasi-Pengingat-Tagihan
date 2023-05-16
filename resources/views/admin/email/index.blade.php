@@ -97,7 +97,7 @@
                                         <td>{{ \App\Helper\Util::rupiah($totalInvoiceNominal) }}</td>
                                         <td style="display: flex; flex-direction: row;">
 
-                                            <a href="{{ route('admin.email.show', $invoice) }}"
+                                            <a href="{{route('goEmail', [$invoice->id])}}"
                                                 class="btn btn-sm btn-warning">
                                                 <i class="bi bi-send"></i>
                                             </a>

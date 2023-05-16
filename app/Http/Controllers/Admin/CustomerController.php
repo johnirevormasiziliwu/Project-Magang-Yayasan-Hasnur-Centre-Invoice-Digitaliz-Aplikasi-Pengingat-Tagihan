@@ -51,6 +51,7 @@ class CustomerController extends Controller
         try {
             DB::beginTransaction();
 
+
             $user = User::create([
                 'name' =>  $validatedData['name_pic'],
                 'email' => $validatedData['email'],
@@ -75,6 +76,7 @@ class CustomerController extends Controller
                 'failed' => 'Failed to add customer and user data.',
             ]);
         }
+
     }
 
     /**
@@ -112,7 +114,17 @@ class CustomerController extends Controller
         ]);
 
         $customer = Customer::findOrFail($id);
+
+        $user = User::where('id', $customer->user_id)->first();
+        $userUpdate = [
+            'name' => $request->name_agency,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ];
+
+        $user->update($userUpdate);
         $customer->update($validate);
+
         toast('Successfully Data User Di Ubah', 'success');
         return redirect()->route('admin.customer.index');
     }
