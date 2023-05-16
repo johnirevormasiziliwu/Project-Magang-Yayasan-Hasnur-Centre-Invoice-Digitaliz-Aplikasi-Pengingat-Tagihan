@@ -12,13 +12,13 @@ use Illuminate\Queue\SerializesModels;
 class invoiceEmail extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $mailData;
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($mailData)
     {
-        //
+        $this->mailData = $mailData;
     }
 
     /**
@@ -37,7 +37,7 @@ class invoiceEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'admin.email.invoicemail',
         );
     }
 
@@ -53,12 +53,15 @@ class invoiceEmail extends Mailable
 
     public function build()
     {
-       return $this->from('pengirim@malasngoding.com')
-                   ->view('admin.email.invoiceemail')
+       return $this->from('adminm@digitaliz.id')
+                   ->view('admin.email.invoicemail')
                    ->with(
                     [
-                        'nama' => 'Diki Alfarabi Hadi',
-                        'website' => 'www.malasngoding.com',
+                        'judul' => $this->mailData['judul'],
+                        'nama' => $this->mailData['nama'],
+                        'number' => $this->mailData['invoice_number'],
+                        'due_date' => $this->mailData['due_date'],
+                        'tagihan' => $this->mailData['tagihan'],
                     ]);
     }
 }
