@@ -283,6 +283,7 @@ class InvoiceController extends Controller
 
         $toDay = Carbon::now()->format('d-m-Y');
         return $pdf->download('invoice' . $invoice->id . '-' . $toDay . '.pdf');
+
     }
 
     public function generatePdfInvoice(string $id)

@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="col-sm-auto">
-                    <a class="btn btn-sm text-white fw-bold" href="{{ route('admin.email.index') }}"
+                    <a class="btn btn-sm text-white fw-bold" href="#"
                         style="background: #EFEFEF">
                         <i class="bi bi-arrow-left text-black fs-5 fw-bold"></i>
                     </a>
@@ -176,7 +176,7 @@ Yayasan Hasnur Center
                 <div class="row">
                     <label for="" class="form-label fs-4 fw-bold">Kirim</label>
                     <div class="col">
-                        <a class="btn btn-white " href="{{ route('admin.email.show', $invoice) }}">
+                        <a class="btn btn-white " href="{{route('admin.goEmail', [$invoice->id])}}">
                             <img src="{{ asset('img/icon/gmail.png') }}" alt="Gambar Tombol Email"
                                 style="width: 30px">
                             <b>{{ $invoice->customer->email }}</b>

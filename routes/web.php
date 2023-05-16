@@ -29,8 +29,7 @@ Route::get('/', function () {
 //Route Logout
 Route::post('/logout', [AuthLogoutController::class, 'logout'])->name('logout');
 
-//email
-Route::get('/go-email/{invoice}', [AdminEmailController::class, 'goEmail'])->name('goEmail');
+
 
 //Route Middleware Admin
 
@@ -81,6 +80,7 @@ Route::get('/go-email/{invoice}', [AdminEmailController::class, 'goEmail'])->nam
 
         //Route admin Send Email
         Route::get('/send-email/{invoice}', [AdminEmailController::class, 'sendEmail'])->name('sendemail');
+        Route::get('/go-email/{invoice}', [AdminEmailController::class, 'goEmail'])->name('goEmail');
 
 
         //Show_payment_receipt
