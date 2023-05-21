@@ -28,6 +28,7 @@
 
     <script src="{{ asset('dist') }}/assets/vendor/chart.js/dist/Chart.min.js"></script>
     <script src="{{ asset('dist') }}/assets/vendor/chart.js/dist/Chart.min.js"></script>
+ 
 
 
 

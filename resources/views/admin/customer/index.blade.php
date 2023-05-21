@@ -48,9 +48,8 @@
 
             <div class="card-body">
                 <!-- Stars  button hapus  -->
-                <form action="{{ route('admin.customer.delete') }}" method="post">
+                <form action="{{ route('admin.multi-delete') }}" method="post">
                     @csrf
-                    @method('delete')
                     <div class="row mb-3">
                         <div class="text-end ">
 
@@ -67,7 +66,7 @@
                         <table class="table table-borderless table-thead-bordered table-align-middle">
                             <thead class="thead-light ">
                                 <tr>
-                                    <th><input type="checkbox" class="check_all"></th>
+                                    <th><input type="checkbox" class="check_all" id="checkAll"></th>
                                     <th scope="col" class="fw-bold">Nama Instansi</th>
                                     <th scope="col" class="fw-bold">Nama Unit</th>
                                     <th scope="col" class="fw-bold">Nama PIC</th>
@@ -120,6 +119,9 @@
 
     @include('scripts.delete')
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        </script>
+
     <script>
         function setAction(action) {
             document.getElementsByName('action')[0].value = action; // set nilai input hidden
@@ -127,6 +129,7 @@
 
         const checkboxes = document.querySelectorAll('input[name="customer[]"]');
         const btnDelete = document.getElementById('btn-delete');
+        const checkAll = document.getElementById('checkAll');
 
 
         checkboxes.forEach(checkbox => {
@@ -138,11 +141,22 @@
                 } else {
                     btnDelete.disabled = false;
                 }
+
             });
         });
+       
+       $("#checkAll").click(function () {
 
-        function setAction(action) {
-            document.getElementsByName('action')[0].value = action;
-        }
+             if ($(this).prop("checked"))  {
+                btnDelete.disabled = false;
+            } else {
+                btnDelete.disabled = true;
+            }
+            $('input:checkbox').not(this).prop('checked', this.checked);
+        });
+
     </script>
+   
+    
+    
 </x-app-layout>

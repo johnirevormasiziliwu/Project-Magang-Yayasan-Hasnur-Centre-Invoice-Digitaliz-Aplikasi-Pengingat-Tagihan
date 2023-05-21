@@ -67,6 +67,7 @@ Route::post('/logout', [AuthLogoutController::class, 'logout'])->name('logout');
 
         //Route admin delete customer 
         Route::post('/customer/delete', [AdminCustomerController::class, 'delete'])->name('customer.delete');
+        Route::post('/customer/multi-delete', [AdminCustomerController::class, 'multiDelete'])->name('multi-delete');
 
 
         //Route admin Email
