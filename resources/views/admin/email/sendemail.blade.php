@@ -1,4 +1,5 @@
 <x-app-layout>
+
     <div class="content container-fluid ">
         <!-- Page Header -->
         <div class="page mb-5">
@@ -183,11 +184,11 @@ Yayasan Hasnur Center
                         </a>
                     </div>
                     <div class="col">
-                        <button class="btn btn-white ">
+                        <a href="https://wa.me/{{$nmrwa}}?text=Halo%20apa%20in%20kabar" class="btn btn-white" target="_blank">
                             <img src="{{ asset('img/icon/whatsapp.png') }}" alt="Gambar Tombol No Handphone"
                                 style="width: 25px">
                             {{ $invoice->customer->no_handphone }}
-                        </button>
+                        </a>
                     </div>
                 </div>
 
@@ -210,7 +211,11 @@ Yayasan Hasnur Center
 
             </div>
         </div>
+    
 
+    
 
 
 </x-app-layout>
+
+
