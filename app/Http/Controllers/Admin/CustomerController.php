@@ -20,8 +20,9 @@ class CustomerController extends Controller
      */
     public function index()
     {
-       $customers = Customer::paginate(5)->withQueryString();
-       return view('admin.customer.index', compact('customers'));
+        return view('admin.customer.index', [
+            "customers" => Customer::where('status', '!=', '2')->latest()->filter(request(['search']))->paginate(5)->withQueryString()
+        ]);
     }
 
     /**
@@ -153,5 +154,16 @@ class CustomerController extends Controller
                 return redirect()->back();
             }
         }
+    }
+
+    public function multiDelete(Request $request){
+
+        $id = $request->customer;
+        foreach ($id as $user) 
+        {
+            $customer = Customer::where('id', $user)->first();
+            $customer->update(['status'=>'2']);
+        }
+        return redirect()->back();
     }
 }

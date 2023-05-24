@@ -48,9 +48,8 @@
 
             <div class="card-body">
                 <!-- Stars  button hapus  -->
-                <form action="{{ route('admin.customer.delete') }}" method="post">
+                <form action="{{ route('admin.multi-delete') }}" method="post">
                     @csrf
-                    @method('delete')
                     <div class="row mb-3">
                         <div class="text-end ">
 
@@ -67,13 +66,13 @@
                         <table class="table table-borderless table-thead-bordered table-align-middle">
                             <thead class="thead-light ">
                                 <tr>
-                                    <th><input type="checkbox" id="select-all"></th>
-                                    <th scope="col" class="fw-bold text-black">Nama Instansi</th>
-                                    <th scope="col" class="fw-bold text-black">Nama Unit</th>
-                                    <th scope="col" class="fw-bold text-black">Nama PIC</th>
-                                    <th scope="col" class="fw-bold text-black">No Handphone</th>
-                                    <th scope="col" class="fw-bold text-black">Email</th>
-                                    <th scope="col" class="fw-bold text-black">Profile</th>
+                                    <th><input type="checkbox" class="check_all" id="checkAll"></th>
+                                    <th scope="col" class="fw-bold">Nama Instansi</th>
+                                    <th scope="col" class="fw-bold">Nama Unit</th>
+                                    <th scope="col" class="fw-bold">Nama PIC</th>
+                                    <th scope="col" class="fw-bold">No Handphone</th>
+                                    <th scope="col" class="fw-bold">Email</th>
+                                    <th scope="col" class="fw-bold">Profile</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -126,5 +125,44 @@
     @include('scripts.delete')
     @include('scripts.btndeletecustomer')
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        </script>
+
+    <script>
+        function setAction(action) {
+            document.getElementsByName('action')[0].value = action; // set nilai input hidden
+        }
+
+        const checkboxes = document.querySelectorAll('input[name="customer[]"]');
+        const btnDelete = document.getElementById('btn-delete');
+        const checkAll = document.getElementById('checkAll');
+
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('click', () => {
+                const checkedCheckboxes = document.querySelectorAll('input[name="customer[]"]:checked');
+
+                if (checkedCheckboxes.length === 0) {
+                    btnDelete.disabled = true;
+                } else {
+                    btnDelete.disabled = false;
+                }
+
+            });
+        });
+       
+       $("#checkAll").click(function () {
+
+             if ($(this).prop("checked"))  {
+                btnDelete.disabled = false;
+            } else {
+                btnDelete.disabled = true;
+            }
+            $('input:checkbox').not(this).prop('checked', this.checked);
+        });
+
+    </script>
+   
+    
     
 </x-app-layout>

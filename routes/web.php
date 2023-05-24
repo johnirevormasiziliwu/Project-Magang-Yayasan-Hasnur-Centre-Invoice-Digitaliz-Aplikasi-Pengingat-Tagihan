@@ -33,8 +33,7 @@ Route::get('/', function () {
 //Route Logout
 Route::post('/logout', [AuthLogoutController::class, 'logout'])->name('logout');
 
-//email
-Route::get('/go-email/{invoice}', [AdminEmailController::class, 'goEmail'])->name('goEmail');
+
 
 //Route Middleware Admin
 
@@ -61,8 +60,19 @@ Route::prefix('admin')->middleware(['role:admin'])->name('admin.')->group(functi
     // Route admin update invoice items
     Route::put('/invoices/{invoice}/invoiceitems/{invoiceitem}/update', [AdminInvoiceItemController::class, 'update'])->name('invoiceitems.update');
 
-    // Route admin delete invoice items
-    Route::delete('/invoices/{invoice}/invoiceitems/{invoiceitem}/destroy', [AdminInvoiceItemController::class, 'destroy'])->name('invoiceitems.destroy');
+        // Route admin delete invoice items
+        Route::delete('/invoices/{invoice}/invoiceitems/{invoiceitem}/destroy', [AdminInvoiceItemController::class, 'destroy'])->name('invoiceitems.destroy');
+
+        
+        // Route getCustomer
+        Route::post('/get-customer', [AdminInvoiceController::class, 'getCustomer'])->name('getCustomer');
+
+        //Route admin user
+        Route::resource('/customer', AdminCustomerController::class);
+
+        //Route admin delete customer 
+        Route::post('/customer/delete', [AdminCustomerController::class, 'delete'])->name('customer.delete');
+        Route::post('/customer/multi-delete', [AdminCustomerController::class, 'multiDelete'])->name('multi-delete');
 
 
     // Route getCustomer
@@ -71,13 +81,10 @@ Route::prefix('admin')->middleware(['role:admin'])->name('admin.')->group(functi
     //Route admin user
     Route::resource('/customer', AdminCustomerController::class);
 
-    //Route admin delete customer 
-    Route::post('/customer/delete', [AdminCustomerController::class, 'delete'])->name('customer.delete');
-
+        //Route admin Send Email
 
     //Route admin Email
     Route::get('/email', [AdminEmailController::class, 'index'])->name('email.index');
-
 
 
     //Route admin Show Detail Email

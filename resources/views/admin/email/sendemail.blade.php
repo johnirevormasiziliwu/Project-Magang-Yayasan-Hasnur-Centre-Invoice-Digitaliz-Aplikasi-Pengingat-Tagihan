@@ -1,4 +1,5 @@
 <x-app-layout>
+
     <div class="content container-fluid ">
         <!-- Page Header -->
         <div class="page mb-3">
@@ -29,7 +30,16 @@
                     </div>
                 </div>
 
+<<<<<<< HEAD
 
+=======
+                <div class="col-sm-auto">
+                    <a class="btn btn-sm text-white fw-bold" href="#"
+                        style="background: #EFEFEF">
+                        <i class="bi bi-arrow-left text-black fs-5 fw-bold"></i>
+                    </a>
+                </div>
+>>>>>>> 7ae5994b1e7531bdd26f3d0268317acbabde7910
             </div>
         </div>
         <!-- End Page Header -->
@@ -171,16 +181,28 @@ Yayasan Hasnur Center
 
                 <div class="row">
                     <label for="" class="form-label fs-4 fw-bold">Kirim</label>
+<<<<<<< HEAD
                     <div class="col-md-6">
                         <a   class="btn btn-white " href="{{ route('admin.markInvoiceAsPaid', $invoice) }}">
                             <img src="{{ asset('images/icon/gmail.png') }}" alt="Gambar Tombol Email"
+=======
+                    <div class="col">
+                        <a class="btn btn-white " href="{{route('admin.goEmail', [$invoice->id])}}">
+                            <img src="{{ asset('img/icon/gmail.png') }}" alt="Gambar Tombol Email"
+>>>>>>> 7ae5994b1e7531bdd26f3d0268317acbabde7910
                                 style="width: 30px">
                             <b>{{ $invoice->customer->email }}</b>
                         </a>
                     </div>
+<<<<<<< HEAD
                     <div class="col-md-6">
                         <a href="https://wa.me/{{$nmrwa}}?text=Halo%20apa%20in%20kabar"  target="_blank" class="btn btn-white ">
                             <img src="{{ asset('images/icon/whatsapp.png') }}" alt="Gambar Tombol No Handphone"
+=======
+                    <div class="col">
+                        <a href="https://wa.me/{{$nmrwa}}?text=Halo%20apa%20in%20kabar" class="btn btn-white" target="_blank">
+                            <img src="{{ asset('img/icon/whatsapp.png') }}" alt="Gambar Tombol No Handphone"
+>>>>>>> 7ae5994b1e7531bdd26f3d0268317acbabde7910
                                 style="width: 25px">
                             {{ $invoice->customer->no_handphone }}
                         </a>
@@ -206,7 +228,11 @@ Yayasan Hasnur Center
 
             </div>
         </div>
+    
 
+    
 
 
 </x-app-layout>
+
+
