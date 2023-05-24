@@ -30,16 +30,6 @@
                     </div>
                 </div>
 
-<<<<<<< HEAD
-
-=======
-                <div class="col-sm-auto">
-                    <a class="btn btn-sm text-white fw-bold" href="#"
-                        style="background: #EFEFEF">
-                        <i class="bi bi-arrow-left text-black fs-5 fw-bold"></i>
-                    </a>
-                </div>
->>>>>>> 7ae5994b1e7531bdd26f3d0268317acbabde7910
             </div>
         </div>
         <!-- End Page Header -->

@@ -129,7 +129,7 @@ class EmailController extends Controller
         // Mark the invoice as paid
 
         // Dispatch the notification
-        Notification::send($invoice->user, new InvoicePaidNotification($invoice, $total));
+        Notification::send($invoice->customer->user, new InvoicePaidNotification($invoice, $total));
         toast('Email Berhasil Dikirim', 'success');
         return redirect()->route('admin.email.index');
     }

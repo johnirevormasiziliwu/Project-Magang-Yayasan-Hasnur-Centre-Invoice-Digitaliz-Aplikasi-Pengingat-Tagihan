@@ -21,7 +21,7 @@ class CustomerController extends Controller
     public function index()
     {
         return view('admin.customer.index', [
-            "customers" => Customer::where('status', '!=', '2')->latest()->filter(request(['search']))->paginate(5)->withQueryString()
+            "customers" => Customer::where('status', '!=', '2')->paginate(5)
         ]);
     }
 
