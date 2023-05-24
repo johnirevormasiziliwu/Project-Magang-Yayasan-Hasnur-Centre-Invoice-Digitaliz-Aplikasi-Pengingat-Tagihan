@@ -26,7 +26,7 @@ class InvoiceController extends Controller
         // Ambil semua faktur yang dimiliki oleh customer dengan user_id tertentu
         $invoices = Invoice::where('customer_id', $customer->id);
     
-        // Tambahkan logika filter seperti yang Anda lakukan sebelumnya
+         // Logika untuk filter
         if ($filter == 'unpaid') {
             $invoices->where('is_paid', false)
                 ->whereNull('payment_receipt');
@@ -35,36 +35,26 @@ class InvoiceController extends Controller
         } elseif ($filter == 'processing') {
             $invoices->where('is_paid', false)
                 ->whereNotNull('payment_receipt');
-        } elseif ($filter == 'oldest_due') {
-            $invoices->orderBy('due_date', 'asc');
         } elseif ($filter == 'newest_due') {
+            $invoices->where('is_paid', false)
+                ->whereNull('payment_receipt')
+                ->orderBy('due_date', 'asc');
+        } elseif ($filter == 'oldest_due') {
             $invoices->orderBy('due_date', 'desc');
         }
-    
-        // Logika untuk menampilkan semua faktur
-        if (!$filter || $filter == 'all') {
-            $invoices->get();
-        }
-    
-        $filteredInvoices = $invoices->latest()->filter(request(['search']))->paginate(5)->withQueryString();
-    
+
+        $invoices = $invoices->paginate(10);
+
         $filters = [
-            'all' => 'All', // nilai dan label untuk 'all'
-            'unpaid' => 'Unpaid', // nilai dan label untuk 'unpaid'
-            'paid' => 'Paid', // nilai dan label untuk 'paid'
-            'processing' => 'Processing', // nilai dan label untuk 'processing'
-            'oldest_due' => 'Oldest Due', // nilai dan label untuk 'oldest_due'
-            'newest_due' => 'Newest Due' // nilai dan label untuk 'newest_due'
+            'all' => 'All',
+            'unpaid' => 'Unpaid',
+            'paid' => 'Paid',
+            'processing' => 'Processing',
+            'oldest_due' => 'Oldest Due',
+            'newest_due' => 'Newest Due'
         ];
-    
-        $invoiceItems = InvoiceItem::where('invoice_id')->get();
-    
-        return view('user.invoice.index', [
-            "invoices" => $filteredInvoices,
-            "filters" => $filters,
-            "selectedFilter" => $filter, // nilai filter yang dipilih
-            'invoiceItems' => $invoiceItems,
-        ]);
+
+        return view('user.invoice.index', compact('invoices', 'filters'));
     }
     
     

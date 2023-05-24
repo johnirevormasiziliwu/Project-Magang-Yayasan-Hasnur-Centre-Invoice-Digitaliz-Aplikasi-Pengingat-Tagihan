@@ -24,7 +24,7 @@
 
                         <div class="flex-grow-1 ms-3">
 
-                            <h1 class="text-hover-primary fw-bold">User</h1>
+                            <h1 class="text-hover-primary fw-bold text-black">User</h1>
 
                             <span class="d-block fs-3">Akses menu dan informasi penting lainya disini</span>
                         </div>
@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="col-sm-auto">
-                    <a class="btn btn-sm text-white fw-bold" href="{{ route('admin.customer.create') }}"
+                    <a class="btn btn-sm text-white fw-bold text-black" href="{{ route('admin.customer.create') }}"
                         style="background: #6e11f4">
                         <i class="bi bi-plus fs-4"></i> Buat User
                     </a>
@@ -67,13 +67,13 @@
                         <table class="table table-borderless table-thead-bordered table-align-middle">
                             <thead class="thead-light ">
                                 <tr>
-                                    <th><input type="checkbox" class="check_all"></th>
-                                    <th scope="col" class="fw-bold">Nama Instansi</th>
-                                    <th scope="col" class="fw-bold">Nama Unit</th>
-                                    <th scope="col" class="fw-bold">Nama PIC</th>
-                                    <th scope="col" class="fw-bold">No Handphone</th>
-                                    <th scope="col" class="fw-bold">Email</th>
-                                    <th scope="col" class="fw-bold">Profile</th>
+                                    <th><input type="checkbox" id="select-all"></th>
+                                    <th scope="col" class="fw-bold text-black">Nama Instansi</th>
+                                    <th scope="col" class="fw-bold text-black">Nama Unit</th>
+                                    <th scope="col" class="fw-bold text-black">Nama PIC</th>
+                                    <th scope="col" class="fw-bold text-black">No Handphone</th>
+                                    <th scope="col" class="fw-bold text-black">Email</th>
+                                    <th scope="col" class="fw-bold text-black">Profile</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -82,7 +82,7 @@
                                 @forelse ($customers as $customer)
                                     <tr>
                                         <td><input type="checkbox" name="customer[]" value="{{ $customer->id }}"
-                                                class="custome_name"></td>
+                                                class="checkbox-item"></td>
                                         <td>{{ $customer->name_agency }}</td>
                                         <td>{{ $customer->name_unit }}</td>
                                         <td>{{ $customer->name_pic }}</td>
@@ -124,30 +124,7 @@
     </div>
 
     @include('scripts.delete')
+    @include('scripts.btndeletecustomer')
 
-    <script>
-        function setAction(action) {
-            document.getElementsByName('action')[0].value = action; // set nilai input hidden
-        }
-
-        const checkboxes = document.querySelectorAll('input[name="customer[]"]');
-        const btnDelete = document.getElementById('btn-delete');
-
-
-        checkboxes.forEach(checkbox => {
-            checkbox.addEventListener('click', () => {
-                const checkedCheckboxes = document.querySelectorAll('input[name="customer[]"]:checked');
-
-                if (checkedCheckboxes.length === 0) {
-                    btnDelete.disabled = true;
-                } else {
-                    btnDelete.disabled = false;
-                }
-            });
-        });
-
-        function setAction(action) {
-            document.getElementsByName('action')[0].value = action;
-        }
-    </script>
+    
 </x-app-layout>

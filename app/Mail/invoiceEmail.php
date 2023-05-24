@@ -48,7 +48,7 @@ class invoiceEmail extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        return [public_path('temp/'.$this->mailData['path'].'.pdf')];
     }
 
     public function build()

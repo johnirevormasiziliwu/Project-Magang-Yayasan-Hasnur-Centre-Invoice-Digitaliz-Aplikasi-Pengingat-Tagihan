@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Title -->
-    <title>Inovice</title>
+    <title>Inovice Digitaliz</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="./favicon.ico">
@@ -40,6 +40,7 @@
 
         body {
             opacity: 0;
+            
         }
     </style>
 
@@ -216,7 +217,7 @@
     @stack('styles')
 </head>
 
-<body class="has-navbar-vertical-aside navbar-vertical-aside-show-xl footer-offset">
+<body class="has-navbar-vertical-aside navbar-vertical-aside-show-xl footer-offset bg-light">
 
     <script src="{{ asset('dist') }}/assets/js/hs.theme-appearance.js"></script>
 
@@ -315,7 +316,7 @@
             <div class="navbar-vertical-footer-offset">
                 <!-- Logo -->
 
-                <a class="navbar-brand justify-content-start mt-3" href="#" aria-label="Front">
+                <span class="navbar-brand justify-content-start mt-3" href="#" aria-label="Front">
                     <img class="navbar-brand-logo " src="{{ asset('dist') }}/assets/img/login/logo_digitaliz.png"
                         alt="Logo" data-hs-theme-appearance="default">
                     <img class="navbar-brand-logo" src="{{ asset('dist') }}/assets/img/login/logo_digitaliz.png"
@@ -326,7 +327,7 @@
 
                     <img class="navbar-brand-logo-mini" src="{{ asset('dist') }}/assets/img/login/logo_digitaliz.png"
                         alt="Logo" data-hs-theme-appearance="dark">
-                </a>
+                </span>
 
 
                 <!-- End Logo -->
@@ -366,8 +367,8 @@
                             </div>
                             <div class="nav-item  mt-2">
                                 <a href="{{ route('admin.invoice.index') }}"
-                                    class="nav-link {{ Request()->routeIs('admin.invoice.*', 'admin.invoiceitems.show', 'admin.invoiceitems.edit') ? 'active ' : '' }}"
-                                    @if (Request()->routeIs('admin.invoice.*', 'admin.invoiceitems.show', 'admin.invoiceitems.edit') ? 'active ' : '') style="background-color: #6E11F4; color:#ffff" @endif>
+                                    class="nav-link {{ Request()->routeIs('admin.invoice.*', 'admin.invoiceitems.show', 'admin.invoiceitems.edit', 'admin.invoice.search') ? 'active ' : '' }}"
+                                    @if (Request()->routeIs('admin.invoice.*', 'admin.invoiceitems.show', 'admin.invoiceitems.edit', 'admin.search') ? 'active ' : '') style="background-color: #6E11F4; color:#ffff" @endif>
                                     <i class="nav-icon ">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 ">
@@ -382,8 +383,8 @@
                             <span class=" dropdown-header ">Setting</span>
                             <div class="nav-item  mt-2">
                                 <a href="{{ route('admin.email.index') }}"
-                                    class="nav-link {{ Request()->routeIs('admin.email.*') ? 'active ' : '' }}"
-                                    @if (Request()->routeIs('admin.email.*') ? 'active ' : '') style="background-color: #6E11F4; color:#ffff" @endif>
+                                    class="nav-link {{ Request()->routeIs('admin.email.*', 'admin.viewEmail') ? 'active ' : '' }}"
+                                    @if (Request()->routeIs('admin.email.*', 'admin.viewEmail', 'admin.email.search') ? 'active ' : '') style="background-color: #6E11F4; color:#ffff" @endif>
                                     <i class="nav-icon">
 
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -419,8 +420,8 @@
                     @role('user')
                         <div class="nav-item  mt-2">
                             <a href="{{ route('user.invoice.index') }}"
-                                class="nav-link {{ Request()->routeIs('user.invoice.*', 'user.payment-receipt') ? 'active' : '' }}"
-                                @if (Request()->routeIs('user.invoice.*', 'user.payment-receipt') ? 'active' : '') style="background-color: #6E11F4; color:#ffff" @endif>
+                                class="nav-link {{ Request()->routeIs('user.invoice.*', 'user.payment-receipt', 'user.search') ? 'active' : '' }}"
+                                @if (Request()->routeIs('user.invoice.*', 'user.payment-receipt', 'user.search') ? 'active' : '') style="background-color: #6E11F4; color:#ffff" @endif>
                                 <i class="nav-icon ">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 ">
@@ -440,7 +441,7 @@
             </div>
     </aside>
 
-    <main id="content" role="main" class="main bg-light" style="max-width: 100%">
+    <main id="content" role="main" class="main" style="max-width: 100%">
         {{ $slot }}
     </main>
 

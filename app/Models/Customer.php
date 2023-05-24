@@ -24,7 +24,7 @@ class Customer extends Model
 
     public function invoices()
     {
-        return $this->hasOne(Invoice::class);
+        return $this->hasMany(Invoice::class);
     }
 
     public function user()
@@ -32,16 +32,7 @@ class Customer extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function scopeFilter($query, array $filters)
-    {
-        if (isset($filters['search']) ? $filters['search'] : false) {
-            return $query->where('name_agency', 'like', '%' . $filters['search'] . '%')
-                ->orWhere('name_unit', 'like', '%' . $filters['search'] . '%')
-                ->orWhere('name_pic', 'like', '%' . $filters['search'] . '%')
-                ->orWhere('name_unit', 'like', '%' . $filters['search'] . '%')
-                ->orWhere('name_pic', 'like', '%' . $filters['search'] . '%');
-        }
-    }
+   
 
    
     

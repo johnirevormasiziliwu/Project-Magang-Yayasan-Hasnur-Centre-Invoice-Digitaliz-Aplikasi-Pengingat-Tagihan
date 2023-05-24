@@ -33,7 +33,9 @@
                     </div>
 
                     <div class="flex items-center justify-end mt-4 ">
-                       <a href="{{ __('login') }}" class="w items-center ms-4 px-4 py-3 bg-[#6E11F4] border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest  focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">Batal</a>
+                        <a href="{{ __('login') }}" class="text-center mr-3 w-full items-center py-2 bg-[#6E11F4] border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest  focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150'">
+                          Cancel
+                        </a>
                         <x-primary-button>
                             {{ __('Email Password Reset Link') }}
                         </x-primary-button>

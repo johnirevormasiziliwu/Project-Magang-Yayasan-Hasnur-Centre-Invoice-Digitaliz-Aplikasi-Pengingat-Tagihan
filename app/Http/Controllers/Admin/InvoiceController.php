@@ -7,6 +7,7 @@ use App\Models\Customer;
 use App\Models\Invoice;
 use App\Models\InvoiceItem;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Dompdf\Dompdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -22,12 +23,11 @@ class InvoiceController extends Controller
      */
     public function index(Request $request)
     {
-        $filter = $request->input('filter');
-
         $invoices = Invoice::query();
 
+        $filter = $request->input('filter');
 
-
+        // Logika untuk filter
         if ($filter == 'unpaid') {
             $invoices->where('is_paid', false)
                 ->whereNull('payment_receipt');
@@ -37,17 +37,14 @@ class InvoiceController extends Controller
             $invoices->where('is_paid', false)
                 ->whereNotNull('payment_receipt');
         } elseif ($filter == 'newest_due') {
-            $invoices->orderBy('due_date', 'asc');
+            $invoices->where('is_paid', false)
+                ->whereNull('payment_receipt')
+                ->orderBy('due_date', 'asc');
         } elseif ($filter == 'oldest_due') {
             $invoices->orderBy('due_date', 'desc');
         }
 
-        // Logika untuk menampilkan semua faktur
-        if (!$filter || $filter == 'all') {
-            $invoices->get();
-        }
-
-        $filteredInvoices = $invoices->latest('invoices.created_at')->filter(request(['search']))->paginate(5)->withQueryString();
+        $invoices = $invoices->paginate(10);
 
         $filters = [
             'all' => 'All',
@@ -58,15 +55,9 @@ class InvoiceController extends Controller
             'newest_due' => 'Newest Due'
         ];
 
-        $invoiceItems = InvoiceItem::where('invoice_id')->get();
-
-        return view('admin.invoice.index', [
-            "invoices" => $filteredInvoices,
-            "filters" => $filters,
-            "selectedFilter" => $filter, // nilai filter yang dipilih
-            "invoiceItems" => $invoiceItems // data invoice items untuk ditampilkan pada view
-        ]);
+        return view('admin.invoice.index', compact('invoices', 'filters'));
     }
+
 
 
 
@@ -188,8 +179,6 @@ class InvoiceController extends Controller
             'invoice_date' => 'required',
             'due_date' => 'required',
             'customer_id' => 'required',
-        ], [
-            'customer_id.required' => 'The user field is required.',
         ]);
         $invoice = Invoice::findOrFail($id);
         $invoice->update($validate);
@@ -222,9 +211,9 @@ class InvoiceController extends Controller
     {
         $invoiceIds = $request->input('invoice');
         $selectedInvoices = Invoice::whereIn('id', $invoiceIds)->get();
-    
+
         $action = $request->input('action');
-    
+
         if ($action == 'delete') {
             foreach ($selectedInvoices as $invoice) {
                 $invoiceItems = $invoice->invoiceItems;
@@ -240,11 +229,11 @@ class InvoiceController extends Controller
             $invoices = Invoice::whereIn('id', $invoiceIds)->get();
             return view('admin.invoice.show_payment_receipt', compact('invoices'));
         }
-    
+
         alert()->success('Data invoice berhasil dihapus.');
         return redirect()->back();
     }
-    
+
 
     // function untuk confirmasi pembayaran
     public function confirm_payment(Invoice $invoice)
@@ -265,33 +254,33 @@ class InvoiceController extends Controller
     }
 
     //function untuk download invoice
-    public function downloadInvoice(string $id)
-    {
-        $invoice = Invoice::findOrFail($id);
-        $data = ['invoice' => $invoice];
+    // public function downloadInvoice(string $id)
+    // {
+    //     $invoice = Invoice::findOrFail($id);
+    //     $data = ['invoice' => $invoice];
 
-        $view = view('admin.invoice.show', $data)->render();
+    //     $view = view('admin.invoice.show', $data)->render();
 
-        $posStart = strpos($view, "<title>Invoice #6</title>");
+    //     $posStart = strpos($view, "<title>Invoice #6</title>");
 
-        $posEnd = strpos($view, "</body>");
+    //     $posEnd = strpos($view, "</body>");
 
-        $view = substr($view, $posStart, $posEnd - $posStart);
+    //     $view = substr($view, $posStart, $posEnd - $posStart);
 
 
-        $pdf = PDF::loadHTML($view);
+    //     $pdf = PDF::loadHTML($view);
 
-        // Set the font configuration options
-        $pdf->setOptions([
-            'font_path' => base_path('resources/fonts/'), // Replace with the actual path to your font files
-            'font_family' => 'sans-serif',
-            'font_size' => 10,
-            'tempDir' => public_path('temp/') // Replace with the path to your temporary directory
-        ]);
+    //     // Set the font configuration options
+    //     $pdf->setOptions([
+    //         'font_path' => base_path('resources/fonts/'), // Replace with the actual path to your font files
+    //         'font_family' => "Bookman Old Style",
+    //         'font_size' => 10,
+    //         'tempDir' => public_path('temp/') // Replace with the path to your temporary directory
+    //     ]);
 
-        $toDay = Carbon::now()->format('d-m-Y');
-        return $pdf->download('invoice' . $invoice->id . '-' . $toDay . '.pdf');
-    }
+    //     $toDay = Carbon::now()->format('d-m-Y');
+    //     return $pdf->download('invoice' . $invoice->customer->name_unit . '-' . $toDay . '.pdf');
+    // }
 
     public function generatePdfInvoice(string $id)
     {
@@ -318,6 +307,23 @@ class InvoiceController extends Controller
         ]);
 
         $toDay = Carbon::now()->format('d-m-Y');
-        return $pdf->download('invoice' . $invoice->id . '-' . $toDay . '.pdf');
+        return $pdf->download('invoice' . $invoice->customer->name_unit . '-' . $toDay . '.pdf');
+    }
+
+    public function printAllInvoices()
+    {
+        $invoices = Invoice::all();
+
+        $html = view('admin.invoice.index', compact('invoices'))->render();
+
+        $dompdf = new Dompdf();
+
+        $dompdf->loadHtml($html);
+
+        $dompdf->setPaper('A4', 'portrait');
+
+        $dompdf->render();
+
+        return $dompdf->stream('invoice.pdf');
     }
 }

@@ -43,17 +43,7 @@ class Invoice extends Model implements HasMedia
         return $this->hasMany(InvoiceItem::class);
     }
 
-    public function scopeFilter($query, array $filters)
-    {
-        if (isset($filters['search']) ? $filters['search'] : false) {
-            return $query->join('customers', 'invoices.customer_id', '=', 'customers.id')
-                ->where(function ($query) use ($filters) {
-                    $query->where('invoices.invoice_number', 'like', '%' . $filters['search'] . '%')
-                        ->orWhere('invoices.title', 'like', '%' . $filters['search'] . '%')
-                        ->orWhere('customers.name_unit', 'like', '%' . $filters['search'] . '%');
-                });
-        }
-    }
+   
 
     public function registerMediaConversions(?Media $media = null): void
     {

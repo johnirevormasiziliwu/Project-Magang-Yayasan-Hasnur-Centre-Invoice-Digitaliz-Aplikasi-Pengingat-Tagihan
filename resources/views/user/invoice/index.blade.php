@@ -22,7 +22,7 @@
 
                         <div class="flex-grow-1 ms-3">
 
-                            <h1 class="text-hover-primary fw-bold">Invoice</h1>
+                            <h1 class="text-hover-primary fw-bold text-black">Invoice</h1>
 
                             <span class="d-block fs-3">Data-data invoice ada disini</span>
                         </div>
@@ -33,52 +33,42 @@
         <!-- End Page Header -->
 
 
-        <!--  stars tombol pencarian dan filter -->
-        <div class="filter-search">
-            <div class="row">
-                <div class="col-md-4">
-                    <label for="#" class="form-label fs-5 fw-bold">Cari</label>
-                    <form class="form-inline">
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="search" value="{{ request('search') }}"
-                                placeholder="Cari Invoice ID, Judul, Unit...">
-                            <div class="input-group-append">
-                                <button class="btn  rounded-top-bottom " type="submit"
-                                    style="background: #6e11f4; color:#fff;">
-                                    <i class="bi bi-search fs-5 fw-bold"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+       <!-- Star pencarian dan filter status invoices -->
+       <div class="row">
+        <div class="col-md-4">
+            <label for="keyword" class="form-label fs-4 fw-bold text-black">Cari</label>
+            <form action="{{ route('user.search') }}" method="get">
+                <div class="input-group">
+                    <input type="text" name="keyword" class="form-control"
+                        placeholder="Cari Invoice ID, Judul, Unit....">
+                    <div class="input-group-append">
+                        <button class="btn  rounded-top-bottom " type="submit"
+                            style="background: #6e11f4; color:#fff;">
+                            <i class="bi bi-search fs-5 fw-bold text-black"></i>
+                        </button>
+                    </div>
                 </div>
-                <div class="col-md-4">
-
-                    <form action="{{ route('user.invoice.index') }}" method="get">
-                        <label for="#" class="form-label fs-5 fw-bold">Filter</label>
-                        <select name="filter" id="filter" class="form-select fw-bold">
-                            <option value="all" {{ $selectedFilter == 'all' ? 'selected' : '' }}>
-                                All</option>
-                            <option value="unpaid" {{ $selectedFilter == 'unpaid' ? 'selected' : '' }}>Unpaid
-                            </option>
-                            <option value="paid" {{ $selectedFilter == 'paid' ? 'selected' : '' }}>Paid</option>
-                            <option value="processing" {{ $selectedFilter == 'processing' ? 'selected' : '' }}>
-                                Processing</option>
-                            <option value="newest_due" {{ $selectedFilter == 'newest_due' ? 'selected' : '' }}>
-                                Newset
-                                Due</option>
-                            <option value="oldest_due" {{ $selectedFilter == 'oldest_due' ? 'selected' : '' }}>
-                                Oldest
-                                Due</option>
-                        </select>
-                    </form>
-
-
-
-                </div>
-            </div>
+            </form>
         </div>
-        <!-- endtombol pencarian  dan filter -->
-
+        <div class="col-md-4">
+            <label for="#" class="form-label fs-5 fw-bold text-black">Filter</label>
+            <form action="{{ route('user.invoice.index') }}" method="GET">
+                <select class="form-select form-select-lg mb-3 fs-5 fw-bold text-black" id="filter" name="filter"
+                    style="background-color:#F5F5F5; color:#404040;">
+                    <option value="all" {{ request('filter') == 'all' ? 'selected' : '' }}>All</option>
+                    <option value="paid" {{ request('filter') == 'paid' ? 'selected' : '' }}>Paid</option>
+                    <option value="unpaid" {{ request('filter') == 'unpaid' ? 'selected' : '' }}>Unpaid</option>
+                    <option value="processing" {{ request('filter') == 'processing' ? 'selected' : '' }}>Processing
+                    </option>
+                    <option value="newest_due" {{ request('filter') == 'newest_due' ? 'selected' : '' }}>Newest Due
+                    </option>
+                    <option value="oldest_due" {{ request('filter') == 'oldest_due' ? 'selected' : '' }}>Oldest Due
+                    </option>
+                </select>
+            </form>
+        </div>
+    </div>
+    <!-- End pencarian dan filter status invoices -->
 
         <div class="card mt-10">
             <div class="card-body ">
@@ -88,14 +78,14 @@
                     <table class="table table-borderless table-thead-bordered ">
                         <thead style="background: #F7F1FF">
                             <tr class="rounded-pill">
-                                <th scope="col" class="fw-bold">Invoice ID</th>
-                                <th scope="col" class="fw-bold">Judul</th>
-                                <th scope="col" class="fw-bold">Unit</th>
-                                <th scope="col" class="fw-bold">Due Date <i
-                                        class="bi bi-chevron-expand ms-2  fs-5 fw-bold"></i></th>
-                                <th scope="col" class="fw-bold">Status</th>
-                                <th scope="col" class="fw-bold">Nominal</th>
-                                <th scope="col" class="fw-bold">Invoice</th>
+                                <th scope="col" class="fw-bold text-black">Invoice ID</th>
+                                <th scope="col" class="fw-bold text-black">Judul</th>
+                                <th scope="col" class="fw-bold text-black">Unit</th>
+                                <th scope="col" class="fw-bold text-black">Due Date <i
+                                        class="bi bi-chevron-expand ms-2  fs-5 fw-bold text-black"></i></th>
+                                <th scope="col" class="fw-bold text-black">Status</th>
+                                <th scope="col" class="fw-bold text-black">Nominal</th>
+                                <th scope="col" class="fw-bold text-black">Invoice</th>
                             </tr>
                         </thead>
 

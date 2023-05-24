@@ -103,7 +103,7 @@
                         <label for="address"><span class="form-label fs-4 fw-bold">Alamat</span> <i>(Nama
                                 Jalan,Gedung,RT/RW,Kecamatan,Kabupaten,Kode Pos dll)</i></label>
                         <textarea name="address" id="address" cols="30" rows="8"
-                            class="form-control @error('address') is-invalid @enderror">{{ old('address',  @$customer->address ) }}</textarea>
+                            class="form-control @error('address') is-invalid @enderror" placeholder="Type here...">{{ old('address',  @$customer->address ) }}</textarea>
                         @error('address')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -114,7 +114,7 @@
                         <label for="address" class="form-label fs-4 fw-bold">Alamat E-mail</label>
                         <input type="email" name="email" id="email"
                             value="{{ old('email', @$customer->email) }}"
-                            class="form-control @error('email') is-invalid @enderror">
+                            class="form-control @error('email') is-invalid @enderror" placeholder="Type here...">
                         @error('email')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -128,7 +128,7 @@
                             <div class="input-group">
                                 <input type="password" name="password" id="password"
                                     value="{{ @$customer->password }}"
-                                    class="form-control @error('password') is-invalid @enderror">
+                                    class="form-control @error('password') is-invalid @enderror" placeholder="Type here...">
                                 <button type="button" class="btn btn-outline-secondary"
                                     onclick="togglePassword('password')">
                                     <i id="password-icon" class="bi bi-eye-fill"></i>
@@ -145,7 +145,7 @@
                             <div class="input-group">
                                 <input id="password_confirmation" type="password" name="password_confirmation"
                                     value="{{ @$customer->password }}"
-                                    class="form-control @error('password') is-invalid @enderror">
+                                    class="form-control @error('password') is-invalid @enderror" placeholder="Type here...">
                                 <button type="button" class="btn btn-outline-secondary"
                                     onclick="togglePassword('password_confirmation')">
                                     <i id="password_confirmation-icon" class="bi bi-eye-fill"></i>

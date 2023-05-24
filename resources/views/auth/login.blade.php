@@ -62,8 +62,8 @@
                         @endif
 
                     </div>
-                    <div class="mt-4 text-center">
-                        <x-primary-button class="text-center py-3">
+                    <div class=" mt-4 text-center">
+                        <x-primary-button class="text-center">
                             {{ __('Login') }}
                         </x-primary-button>
                     </div>

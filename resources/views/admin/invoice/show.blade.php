@@ -48,7 +48,7 @@
         <div class="container">
             <div class="row">
                 <div class="text-end ">
-                    <a href="{{ route('admin.generate-pdf-invoice', $invoice) }}" target="_blank" class="btn fs-5"
+                    <a href="{{ route('admin.print-invoice', $invoice) }}"  class="btn fs-5"
                         style="border-color:#6e11f4; border-width:2px; color: #6e11f4;">
                         <i class="bi bi-printer"></i>
                     </a>
@@ -66,209 +66,229 @@
                 <title>Invoice #6</title>
 
                 <style>
-                    h1,
-                    h2,
-                    h3,
-                    h4,
-                    h5,
-                    h6,
-                    p,
-                    span,
-                    label {
-                        font-family: sans-serif;
+                    .unpaid {
+                        text-align: right;
+                        font-weight: bold;
+                        font-size: 30px;
+                        margin-bottom: 20px;
+                        text-decoration: underline;
+                        color: red;
+                        text-decoration-color: black;
+                    }
+
+                    .paid {
+                        text-align: right;
+                        font-weight: bold;
+                        font-size: 30px;
+                        margin-bottom: 20px;
+                        text-decoration: underline;
+                        color: green;
+                        text-decoration-color: black;
+                    }
+
+                    .processing {
+                        text-align: right;
+                        font-weight: bold;
+                        font-size: 30px;
+                        margin-bottom: 20px;
+                        text-decoration: underline;
+                        color: orange;
+                        text-decoration-color: black;
+                    }
+
+                    .invoice {
+                        text-align: center;
+                        font-weight: bold;
+                        font-size: 18px;
+                        margin-bottom: 20px;
+                        letter-spacing: 5px;
+                        text-decoration: underline;
                     }
 
                     table {
                         width: 100%;
                         border-collapse: collapse;
-                        margin-bottom: 0px !important;
                     }
 
-                    table thead th {
-                        height: 28px;
-                        text-align: left;
-                        font-size: 16px;
-                        font-family: sans-serif;
-                    }
-
-                    table,
                     th,
                     td {
-                        border: 1px solid #ddd;
-                        padding: 8px;
-                        font-size: 14px;
+                        padding: 5px;
+                        border: 1px solid black;
                     }
 
-                    .heading {
+                    .header {
+                        text-align: center;
+                        font-weight: bold;
                         font-size: 24px;
-                        margin-top: 12px;
-                        margin-bottom: 12px;
-                        font-family: sans-serif;
+                        padding: 10px;
                     }
 
-                    .small-heading {
+                    .address {
+                        width: 350px;
+                    }
+
+                    .title {
+                        font-weight: bold;
                         font-size: 18px;
-                        font-family: sans-serif;
+                        padding: 10px 0;
                     }
 
-                    .total-heading {
-                        font-size: 18px;
-                        font-weight: 700;
-                        font-family: sans-serif;
-                    }
-
-                    .order-details tbody tr td:nth-child(1) {
-                        width: 20%;
-                    }
-
-                    .order-details tbody tr td:nth-child(3) {
-                        width: 20%;
-                    }
-
-                    .text-start {
-                        text-align: left;
-                    }
-
-                    .text-end {
-                        text-align: right;
-                    }
-
-                    .text-center {
+                    .dokumen_pendukung {
                         text-align: center;
                     }
 
-                    .company-data span {
-                        margin-bottom: 4px;
-                        display: inline-block;
-                        font-family: sans-serif;
-                        font-size: 14px;
-                        font-weight: 400;
+                    .keterangan th {
+                        font-weight: 900;
+                        text-align: center;
                     }
 
-                    .no-border {
-                        border: 1px solid #fff !important;
+                    .subtotal {
+
+                        height: 80px;
+
                     }
 
-                    .bg-blue {
-                        background-color: #414ab1;
-                        color: #fff;
+                    .total {
+                        text-align: center;
+                        font-weight: bold;
+                    }
+
+                    .terbilang {
+                        font-family: "Bookman Old Style", serif;
+                        ;
+
+                    }
+
+
+                    .note {
+                        font-size: 12px;
                     }
                 </style>
                 </head>
 
+                <?php
+                function terbilang($angka)
+                {
+                    $angka = abs($angka);
+                    $huruf = ['', 'Satu', 'Dua', 'Tiga', 'Empat', 'Lima', 'Enam', 'Tujuh', 'Delapan', 'Sembilan', 'Sepuluh', 'Sebelas'];
+                    $terbilang = '';
+                    if ($angka < 12) {
+                        $terbilang = ' ' . $huruf[$angka];
+                    } elseif ($angka < 20) {
+                        $terbilang = terbilang($angka - 10) . ' Belas';
+                    } elseif ($angka < 100) {
+                        $terbilang = terbilang($angka / 10) . ' Puluh' . terbilang($angka % 10);
+                    } elseif ($angka < 200) {
+                        $terbilang = ' Seratus' . terbilang($angka - 100);
+                    } elseif ($angka < 1000) {
+                        $terbilang = terbilang($angka / 100) . ' Ratus' . terbilang($angka % 100);
+                    } elseif ($angka < 2000) {
+                        $terbilang = ' Seribu' . terbilang($angka - 1000);
+                    } elseif ($angka < 1000000) {
+                        $terbilang = terbilang($angka / 1000) . ' Ribu' . terbilang($angka % 1000);
+                    } elseif ($angka < 1000000000) {
+                        $terbilang = terbilang($angka / 1000000) . ' Juta' . terbilang($angka % 1000000);
+                    } elseif ($angka < 1000000000000) {
+                        $terbilang = terbilang($angka / 1000000000) . ' Miliar' . terbilang(fmod($angka, 1000000000));
+                    } elseif ($angka < 1000000000000000) {
+                        $terbilang = terbilang($angka / 1000000000000) . ' Triliun' . terbilang(fmod($angka, 1000000000000));
+                    }
+                    return $terbilang;
+                }
+                
+                $invoiceItems = $invoice->invoiceItems;
+                $total = 0;
+                foreach ($invoiceItems as $invoiceitem) {
+                    $total += $invoiceitem->nominal;
+                }
+                
+                $terbilang = terbilang($total);
+                ?>
+
                 <body>
-                   
+
                     @php($total = 0)
-                    <table class="order-details">
-                        <thead>
-                            <tr>
-                                <th width="50%" colspan="2">
-                                    <h1 class="text-center">INVOICE</h1>
-                                </th>
-                                <th width="50%" colspan="2" class="text-end company-data">
-                                    Invoice Id: <span class="fw-bold">{{ $invoice->invoice_number }}</span> <br>
-                                    <span>Date: {{ date('d M Y', strtotime($invoice->payment_time)) }}</span> <br>
-                                    <span>Address: {{ $invoice->customer->address }}</span> <br>
-                                </th>
-                            </tr>
-                            <tr class="bg-blue">
-                                <th width="50%" colspan="2">Invoice Details</th>
-                                <th width="50%" colspan="2">User Details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Invoice Id:</td>
-                                <td>{{ $invoice->invoice_number }}</td>
-
-                                <td>Nama Unit:</td>
-                                <td>{{ $invoice->customer->name_unit }}</td>
-                            </tr>
-                            <tr>
-                                <td>Judul Invoice</td>
-                                <td>{{ $invoice->title }}</td>
-
-                                <td>Nama PIC</td>
-                                <td>{{ $invoice->customer->name_pic }}</td>
-                            </tr>
-                            <tr>
-                                <td>Due Date:</td>
-                                <td>{{ $invoice->due_date }}</td>
-
-                                <td>Email</td>
-                                <td>{{ $invoice->customer->email }}</td>
-                            </tr>
-                            <tr>
-                                <td>Payment Date:</td>
-                                @if ($invoice->payment_time)
-                                  <td>{{ date('d M Y', strtotime($invoice->payment_time)) }}</td>  
-                                @else
-                                   <td><span class="justify-content-center">-</span></td> 
-                                @endif
-
-                                <td>No Handphone</td>
-                                <td>{{ $invoice->customer->no_handphone }}</td>
-                            </tr>
-                            <tr>
-                                <td>Status</td>
-                                @if ($invoice->is_paid == true)
-                                    <td class="bg-success text-white">Paid</td>
-                                @elseif ($invoice->is_paid == false && $invoice->payment_receipt == null)
-                                    <td class="bg-danger text-white text-center fw-bold">Unpaid</td>
-                                @else
-                                    <td class="bg-warnign text-black text-center fw-bold">Processing</td>
-                                @endif
-
-                                <td>Alamat</td>
-                                <td>{{ $invoice->customer->address }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    @if ($invoice->is_paid == false && $invoice->payment_receipt == null)
+                        <div class="unpaid">UNPAID</div>
+                    @elseif($invoice->is_paid == true)
+                        <div class="paid">PAID</div>
+                    @else
+                        <div class="processing">PROCESSING</div>
+                    @endif
+                    <div class="invoice">INVOICE</div>
 
                     <table>
-                        <thead>
-                            <tr>
-                                <th class="no-border text-start heading" colspan="5">
-                                    Detail Tagihan
-                                </th>
-                            </tr>
-                            <tr class="bg-blue text-center">
-                                <th class="text-center">Nomor</th>
-                                <th class="text-center">Uraian</th>
-                                <th class="text-center">Kuantitas</th>
-                                <th class="text-center">Harga(Rp)</th>
-                                <th class="text-center">Jumlah(Rp)</th>
 
-                            </tr>
-                        </thead>
-                        @php($nomor = 1)
-                        <tbody>
-                            @foreach ($invoice->invoiceItems as $item)
-                                <tr>
-                                    <td width="1%" class="text-center">{{ $nomor++ }}</td>
-                                    <td width="20%">{{ $item->description }}</td>
-                                    <td width="10%" class="text-center">{{ $item->stock }}</td>
-                                    <td width="10%">{{ \App\Helper\Util::rupiah($item->price) }}</td>
-                                    <td width="15%" class="fw-bold">{{ \App\Helper\Util::rupiah($item->nominal) }}
-                                    </td>
-                                </tr>
-                                @php($total += $item->nominal)
-                            @endforeach
-
+                        <tr>
+                            <td rowspan="3">
+                                <p class="mt-3">Kepada :</p>
+                                <h3 class="name_unit">{{ $invoice->customer->name_unit }}</h3>
+                                <p class="address">{{ $invoice->customer->address }}</p>
+                                <p class="mt-5 mb-5">UP: Bagian Keuangan</p>
+                            </td>
+                            <td colspan="5">
+                                No Invoice: {{ $invoice->invoice_number }} <br>
+                                Tanggal Invoice: {{ $invoice->invoice_date }} <br>
+                                Tanggal Jatuh Tempo: {{ $invoice->due_date }} <br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" class="dokumen_pendukung">Dokumen Pendukung</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Dokumen : <br> {{ $invoice->title }}</td>
+                            <td colspan="3">Tanggal :</td>
+                        </tr>
+                        <tr class="keterangan">
+                            <th>Uraian</th>
+                            <th>Kuantitas</th>
+                            <th>Harga (Rp)</th>
+                            <th>Jumlah (Rp)</th>
+                        </tr>
+                        @php($total = 0)
+                        @foreach ($invoice->invoiceItems as $invoiceitem)
                             <tr>
-                                <td colspan="4" class="total-heading">Total Harga
-                                    :</td>
-                                <td colspan="1" class="total-heading">
-                                    {{ \App\Helper\Util::rupiah($total) }}</td>
+                                <td>{{ $invoiceitem->description }}</td>
+                                <td class="text-center">{{ $invoiceitem->stock }}</td>
+                                <td class="text-center">{{ \App\Helper\Util::rupiah($invoiceitem->price) }}</td>
+                                <td class="text-center">{{ \App\Helper\Util::rupiah($invoiceitem->nominal) }}</td>
                             </tr>
-                        </tbody>
+                            @php($total += $invoiceitem->nominal)
+                        @endforeach
+                        <tr>
+                            <td class="subtotal" colspan="3">TOTAL</td>
+                            <td class="total" colspan="3">{{ \App\Helper\Util::rupiah($total) }}</td>
+                        </tr>
+
+
+                        <tr>
+                            <td colspan="6" class="terbilang">
+                                <strong>TERBILANG</strong><br>
+                                <p style="text-align: center; padding-top: 20px;"><?php echo $terbilang; ?> Rupiah</p>
+                            </td>
+                        </tr>
                     </table>
 
+
+                    Note:<br>
+                    1. Pembayaran ini mohon ditransfer ke rekening:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Bank Mandiri Kayutangi<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;No. Rek. 031 00 404 78888<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;a/n. Yayasan Hasnur Centre<br>
+                    2. Mohon mencantumkan nama perusahaan anda dan no.invoice saat mentransfer
+                    pembayaran.<br>
+                    3. Bukti pembayaran (bukti transfer) harap di email ke siti.aisyah@hasnurgroup.com<br>
                     <br>
-                    <p class="text-center">
-                        Terimakasih Kami Ucapkan, Senyuman 😊 Anda Adalah Hadiah Bagi Setiap Kinerja Kami 😍
-                    </p>
+                    YAYASAN HASNUR CENTRE
+                    <br><br>
+                    Yani Hadiyani<br>
+                    Finance Manager
+
+
+
+
                 </body>
+
 
             </div>
         </div>

@@ -22,9 +22,9 @@
 
                         <div class="flex-grow-1 ms-3">
 
-                            <h1 class="text-hover-primary fw-bold">Invoice</h1>
+                            <h1 class="text-hover-primary fw-bold  text-black">E-mail</h1>
 
-                            <span class="d-block fs-3">Data-data invoice ada disini</span>
+                            <span class="d-block ">Akses Menu dan Informasi Penting Lainya Disini</span>
                         </div>
                     </div>
                 </div>
@@ -34,28 +34,38 @@
         </div>
         <!-- End Page Header -->
 
-        <!--  stars tombol pencarian dan filter -->
-        <div class="row mt-5">
-            <div class="col-5">
-                <div class="container">
-                    <label for="#" class="form-label fs-5 fw-bold">Cari</label>
-                    <form class="form-inline">
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="search" value="{{ request('search') }}"
-                                placeholder="Cari Invoice ID, Judul, Unit...">
-                            <div class="input-group-append">
-                                <button class="btn  rounded-top-bottom " type="submit"
-                                    style="background: #6e11f4; color:#fff;">
-                                    <i class="bi bi-search fs-5 fw-bold"></i>
-                                </button>
-                            </div>
+        <!-- Star pencarian dan filter status invoices -->
+        <div class="row">
+            <div class="col-md-4">
+                <label for="keyword" class="form-label  fw-bold  text-black">Cari</label>
+                <form action="{{ route('admin.email.search') }}" method="get">
+                    <div class="input-group">
+                        <input type="text" name="keyword" class="form-control"
+                            placeholder="Cari Invoice ID, Judul, Unit....">
+                        <div class="input-group-append">
+                            <button class="btn  rounded-top-bottom " type="submit"
+                                style="background: #6e11f4; color:#fff;">
+                                <i class="bi bi-search fs-5 fw-bold  text-black"></i>
+                            </button>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
-
+            <div class="col-md-4">
+                <label for="#" class="form-label fs-5 fw-bold  text-black">Filter</label>
+                <form action="{{ route('admin.email.index') }}" method="GET">
+                    <select class="form-select form-select-lg mb-3 fs-5 fw-bold  text-black" id="filter"
+                        name="filter" style="background-color:#F5F5F5; color:#404040;">
+                        <option value="all" {{ request('filter') == 'all' ? 'selected' : '' }}>All</option>
+                        <option value="newest_due" {{ request('filter') == 'newest_due' ? 'selected' : '' }}>Newest Due
+                        </option>
+                        <option value="oldest_due" {{ request('filter') == 'oldest_due' ? 'selected' : '' }}>Oldest Due
+                        </option>
+                    </select>
+                </form>
+            </div>
         </div>
-        <!-- endtombol pencarian  dan filter -->
+        <!-- End pencarian dan filter status invoices -->
 
         <div class="card mt-10">
             <div class="card-body   ">
@@ -65,48 +75,48 @@
                     <table class="table table-borderless table-thead-bordered ">
                         <thead style="background: #F7F1FF">
                             <tr class="rounded-pill">
-                                <th scope="col" class="fw-bold">Invoice ID</th>
-                                <th scope="col" class="fw-bold">Judul</th>
-                                <th scope="col" class="fw-bold">Unit</th>
-                                <th scope="col" class="fw-bold">Due Date</th>
-                                <th scope="col" class="fw-bold">Status</th>
-                                <th scope="col" class="fw-bold">Nominal</th>
-                                <th scope="col" class="fw-bold">Invoice</th>
+                                <th scope="col" class="fw-bold  text-black">Invoice ID</th>
+                                <th scope="col" class="fw-bold  text-black">Judul</th>
+                                <th scope="col" class="fw-bold  text-black">Unit</th>
+                                <th scope="col" class="fw-bold text-black">
+                                    Due Date
+                                    <i class="bi bi-chevron-expand ms-2  fs-5 fw-bold"></i>
+                                </th>
+                                <th scope="col" class="fw-bold  text-black">Status</th>
+                                <th scope="col" class="fw-bold  text-black">Nominal</th>
+                                <th scope="col" class="fw-bold  text-black">Invoice</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             @php($nomor = 1)
                             @forelse ($invoices as $invoice)
-                                @if ($invoice->is_paid == false && $invoice->payment_receipt == false)
-                                    <tr>
-                                        <td>
-                                            {{ $invoice->invoice_number }}
-                                        </td>
-                                        <td>{{ $invoice->title }}</td>
-                                        <td>{{ $invoice->customer->name_unit }}</td>
-                                        <td>{{ date('d-M-Y', strtotime($invoice->due_date)) }}</td>
-                                        <td>
-                                            <span class="rounded"
-                                                style=" color:  #CD412E; font-size: 10px; font-weight: 700; font-style: normal; line-height: 150%; background: #FFEDEB; display: flex; flex-direction: row; justify-content:center; padding:4px;gap:10px ">Unpaid</span>
-                                        </td>
-                                        @php($totalInvoiceNominal = 0)
-                                        @foreach ($invoice->invoiceItems as $invoiceItem)
-                                            @php($totalInvoiceNominal += $invoiceItem->nominal)
-                                        @endforeach
-                                        <td>{{ \App\Helper\Util::rupiah($totalInvoiceNominal) }}</td>
-                                        <td style="display: flex; flex-direction: row;">
 
-                                            <a href="{{route('goEmail', [$invoice->id])}}"
-                                                class="btn btn-sm btn-warning">
-                                                <i class="bi bi-send"></i>
-                                            </a>
+                                <tr>
+                                    <td>
+                                        {{ $invoice->invoice_number }}
+                                    </td>
+                                    <td>{{ $invoice->title }}</td>
+                                    <td>{{ $invoice->customer->name_unit }}</td>
+                                    <td>{{ date('d-M-Y', strtotime($invoice->due_date)) }}</td>
+                                    <td>
+                                        <span class="rounded"
+                                            style="color: #CD412E; font-size: 10px; font-weight: 700; font-style: normal; line-height: 150%; background: #FFEDEB; display: flex; flex-direction: row; justify-content: center; padding: 4px; gap: 10px">Unpaid</span>
+                                    </td>
+                                    @php($totalInvoiceNominal = 0)
+                                    @foreach ($invoice->invoiceItems as $invoiceItem)
+                                        @php($totalInvoiceNominal += $invoiceItem->nominal)
+                                    @endforeach
+                                    <td>{{ \App\Helper\Util::rupiah($totalInvoiceNominal) }}</td>
+                                    <td style="display: flex; flex-direction: row;">
+                                        {{-- <a href="{{ route('goEmail', [$invoice->id]) }}" class="btn btn-sm btn-warning">
+                                            <i class="bi bi-send"></i>
+                                        </a> --}}
+                                        <a href="{{ route('admin.viewEmail', $invoice) }}" class="btn">
+                                            <i class="bi bi-send"></i></a>
+                                    </td>
+                                </tr>
 
-
-
-                                        </td>
-                                    </tr>
-                                @endif
                             @empty
                                 <tr>
                                     <td colspan="8" class="text-center text-danger">
@@ -115,13 +125,21 @@
                                     </td>
                                 </tr>
                             @endforelse
-
                         </tbody>
+
                     </table>
                 </div>
                 <!-- End Table -->
 
             </div>
         </div>
+
+        <script>
+            // start javascript sumbit filter
+            document.getElementById('filter').addEventListener('change', function() {
+                this.form.submit();
+            });
+            // end javascript sumbit filter
+        </script>
 
 </x-app-layout>

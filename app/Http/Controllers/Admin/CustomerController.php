@@ -20,9 +20,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        return view('admin.customer.index', [
-            "customers" => Customer::latest()->filter(request(['search']))->paginate(5)->withQueryString()
-        ]);
+       $customers = Customer::paginate(5)->withQueryString();
+       return view('admin.customer.index', compact('customers'));
     }
 
     /**

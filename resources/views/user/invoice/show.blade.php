@@ -255,7 +255,7 @@
                             @endforeach
 
                             <tr>
-                                <td colspan="4" class="total-heading">Total Harga
+                                <td colspan="3" class="total-heading">Total Harga
                                     :</td>
                                 <td colspan="1" class="total-heading">
                                     {{ \App\Helper\Util::rupiah($total) }}</td>

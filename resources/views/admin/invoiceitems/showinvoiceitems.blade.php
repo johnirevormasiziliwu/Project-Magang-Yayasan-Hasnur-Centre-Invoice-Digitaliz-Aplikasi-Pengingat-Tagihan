@@ -40,15 +40,12 @@
         <!-- End Page Header -->
         @php($total = 0)
         <div class="card mt-5">
-            <div class="card-body">
-                <div class="d-flex gap-3">
-                    <h3 class="mb-3">Detail Invoice Tagihan : </h3>
-                    <div>
-                        <h5 class="mb-3">ID Invoice : {{ $invoice->invoice_number }}</h5>
-                        <h5 class="mb-3 ">Judul Invoice : {{ $invoice->title }}</h5>
-                        <h5 class="mb-3">Nama Unit : {{ $invoice->customer->name_unit }}</h5>
-                    </div>
 
+            <div class="card-body">
+                <div class="mb-5">
+                    <h5>Invoice ID : {{ $invoice->invoice_number }}</h5>
+                    <h5>Judul Invoice : {{ $invoice->title }}</h5>
+                    <h5>Name Unit : {{ $invoice->customer->name_unit }}</h5>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-borderless table-thead-bordered">
@@ -60,8 +57,8 @@
                                 <th scope="col" class="fw-bold">Satuan</th>
                                 <th scope="col" class="fw-bold">Nominal</th>
                                 @if ($invoice->is_paid == false && $invoice->payment_receipt == false)
-                                <th scope="col" class="fw-bold">Action</th>
-                                @endif 
+                                    <th scope="col" class="fw-bold">Action</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>

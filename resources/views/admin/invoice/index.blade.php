@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="content container-fluid bg-light">
+    <div class="content container-fluid ">
         <!-- Page Header -->
         <div class="page mb-3">
             <div class="row align-items-center">
@@ -41,53 +41,42 @@
         </div>
         <!-- End Page Header -->
 
-
-        <!--  stars tombol pencarian dan filter -->
-        <div class="filter-search">
-            <div class="row">
-                <div class="col-md-4">
-                    <label for="#" class="form-label fs-5 fw-bold">Cari</label>
-                    <form class="form-inline">
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="search" value="{{ request('search') }}"
-                                placeholder="Cari Invoice ID, Judul, Unit...">
-                            <div class="input-group-append">
-                                <button class="btn  rounded-top-bottom " type="submit"
-                                    style="background: #6e11f4; color:#fff;">
-                                    <i class="bi bi-search fs-5 fw-bold"></i>
-                                </button>
-                            </div>
+        <!-- Star pencarian dan filter status invoices -->
+        <div class="row">
+            <div class="col-md-4">
+                <label for="keyword" class="form-label fs-4 fw-bold">Cari</label>
+                <form action="{{ route('admin.invoice.search') }}" method="get">
+                    <div class="input-group">
+                        <input type="text" name="keyword" class="form-control"
+                            placeholder="Cari Invoice ID, Judul, Unit....">
+                        <div class="input-group-append">
+                            <button class="btn  rounded-top-bottom " type="submit"
+                                style="background: #6e11f4; color:#fff;">
+                                <i class="bi bi-search fs-5 fw-bold"></i>
+                            </button>
                         </div>
-                    </form>
-                </div>
-                <div class="col-md-4">
-
-                    <form action="{{ route('admin.invoice.index') }}" method="get">
-                        <label for="#" class="form-label fs-5 fw-bold">Filter</label>
-                        <select name="filter" id="filter" class="form-select fw-bold">
-                            <option value="all" {{ $selectedFilter == 'all' ? 'selected' : '' }}>
-                                All</option>
-                            <option value="unpaid" {{ $selectedFilter == 'unpaid' ? 'selected' : '' }}>Unpaid
-                            </option>
-                            <option value="paid" {{ $selectedFilter == 'paid' ? 'selected' : '' }}>Paid</option>
-                            <option value="processing" {{ $selectedFilter == 'processing' ? 'selected' : '' }}>
-                                Processing</option>
-                            <option value="newest_due" {{ $selectedFilter == 'newest_due' ? 'selected' : '' }}>
-                                Newset
-                                Due</option>
-                            <option value="oldest_due" {{ $selectedFilter == 'oldest_due' ? 'selected' : '' }}>
-                                Oldest
-                                Due</option>
-                        </select>
-                    </form>
-
-
-
-                </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-4">
+                <label for="#" class="form-label fs-5 fw-bold">Filter</label>
+                <form action="{{ route('admin.invoice.index') }}" method="GET">
+                    <select class="form-select form-select-lg mb-3 fs-5 fw-bold" id="filter" name="filter"
+                        style="background-color:#F5F5F5; color:#404040;">
+                        <option value="all" {{ request('filter') == 'all' ? 'selected' : '' }}>All</option>
+                        <option value="paid" {{ request('filter') == 'paid' ? 'selected' : '' }}>Paid</option>
+                        <option value="unpaid" {{ request('filter') == 'unpaid' ? 'selected' : '' }}>Unpaid</option>
+                        <option value="processing" {{ request('filter') == 'processing' ? 'selected' : '' }}>Processing
+                        </option>
+                        <option value="newest_due" {{ request('filter') == 'newest_due' ? 'selected' : '' }}>Newest Due
+                        </option>
+                        <option value="oldest_due" {{ request('filter') == 'oldest_due' ? 'selected' : '' }}>Oldest Due
+                        </option>
+                    </select>
+                </form>
             </div>
         </div>
-        <!-- endtombol pencarian  dan filter -->
-
+        <!-- End pencarian dan filter status invoices -->
 
         <!-- button konfirmasi, hapus dan print -->
         <form action="{{ route('admin.invoice.deleteConfirm') }}" method="post">
@@ -103,9 +92,9 @@
                             onclick="setAction('confirm')" id="btn-confirm" disabled><i class="bi bi-file-earmark-text"
                                 name="action" value="confirm"></i> Konfirmasi
                             Pembayaran</button>
-                        <button class="btn bg-white border border-dark fs-5 me-3 ">
+                        <a href="{{ route('admin.print-invoice-all') }}" class="btn bg-white border border-dark fs-5 me-3 ">
                             <i class="bi bi-printer"></i>
-                        </button>
+                        </a>
                         <button type="submit" class="btn bg-white delete-btn  border border-dark fs-5"
                             onclick="setAction('delete')" id="btn-delete" disabled><i class="bi bi-trash3"
                                 name="action" value="delete"></i></button>
@@ -115,48 +104,40 @@
             </div>
             <!-- end konfirmasi, hapus dan print -->
 
+
             <div class="card mt-5">
-                <div class="card-body ">
-                    <!-- Table -->
+                <div class="card-body">
                     <div class="table-responsive">
-
-                        <table class="table table-borderless table-thead-bordered ">
-                            <thead style="background: #F7F1FF">
-                                <tr class="rounded-pill">
-
+                        <!-- Table -->
+                        <table class="table table-borderless table-thead-bordered">
+                            <thead class="thead-light">
+                                <tr>
                                     <th scope="col" class="fw-bold"><input type="checkbox" name="#"
-                                            id="#"></th>
-
-                                    <th scope="col" class="fw-bold">Invoice ID</th>
-                                    <th scope="col" class="fw-bold">Judul</th>
-                                    <th scope="col" class="fw-bold">Unit</th>
-                                    <th scope="col" class="fw-bold">Due Date <i
-                                            class="bi bi-chevron-expand ms-2  fs-5 fw-bold"></i></th>
-                                    <th scope="col" class="fw-bold">Status</th>
-                                    <th scope="col" class="fw-bold">Nominal</th>
-                                    <th scope="col" class="fw-bold">Invoice</th>
+                                            id="select-all"></th>
+                                    <th scope="col" class="fw-bold fs-5 text-black">Invoice ID</th>
+                                    <th scope="col" class="fw-bold fs-5 text-black">Judul</th>
+                                    <th scope="col" class="fw-bold fs-5 text-black">Name Unit</th>
+                                    <th scope="col" class="fw-bold fs-5 text-black">
+                                        Due Date
+                                         <i class="bi bi-chevron-expand ms-2  fs-5 fw-bold"></i>
+                                    </th>
+                                    <th scope="col" class="fw-bold fs-5 text-black">Status</th>
+                                    <th scope="col" class="fw-bold fs-5 text-black">Nominal</th>
+                                    <th scope="col" class="fw-bold fs-5 text-black">Action</th>
                                 </tr>
                             </thead>
-
                             <tbody>
-                                @php($nomor = 1)
                                 @forelse ($invoices as $invoice)
                                     <tr>
-
-                                        <th><input type="checkbox" name="invoice[]" value="{{ $invoice->id }}">
+                                        <th><input type="checkbox" name="invoice[]" value="{{ $invoice->id }}" class="checkbox-item">
                                         </th>
-
                                         <td>
-
-                                            <a href="{{ route('admin.invoice.show', $invoice) }}">
-                                                <u>{{ $invoice->invoice_number }}</u>
-                                            </a>
-
-
+                                            <a
+                                                href="{{ route('admin.invoice.show', $invoice) }}">{{ $invoice->invoice_number }}</a>
                                         </td>
                                         <td>{{ $invoice->title }}</td>
                                         <td>{{ $invoice->customer->name_unit }}</td>
-                                        <td>{{ date('d-M-Y', strtotime($invoice->due_date)) }}</td>
+                                        <td>{{ $invoice->due_date }}</td>
 
                                         @if ($invoice->is_paid == true)
                                             <td>
@@ -179,16 +160,17 @@
                                             @php($totalInvoiceNominal += $invoiceItem->nominal)
                                         @endforeach
                                         <td>{{ \App\Helper\Util::rupiah($totalInvoiceNominal) }}</td>
-                                        <td style="display: flex; flex-direction: row;">
+                                        <td class="d-flex">
                                             <a class="text-dark ms-4 fs-5"
-                                                href="{{ route('admin.invoice.edit', $invoice->id) }}"
+                                                href="{{ route('admin.invoice.edit', $invoice) }}"
                                                 style="margin-right: 20px;">
                                                 <i class="bi bi-pencil"></i>
                                             </a>
-                                            <a class="rounded bg-info" href="{{ route('admin.invoiceitems.show', ['invoice' => $invoice->id, 'invoiceItem' => $invoice->invoiceItems->first()->id]) }}"
-                                            style="  color: #fff; font-size: 10px; font-weight: 700; font-style: normal; line-height: 150%;  display: flex; flex-direction: row; justify-content:center;padding:4px;gap:10px ">Detail Tagihan</a>
+                                            <a class="rounded bg-info"
+                                                href="{{ route('admin.invoiceitems.show', ['invoice' => $invoice->id, 'invoiceItem' => $invoice->invoiceItems->first()->id]) }}"
+                                                style="  color: #fff; font-size: 10px; font-weight: 700; font-style: normal; line-height: 150%;  display: flex; flex-direction: row; justify-content:center;padding:4px;gap:10px ">Detail
+                                                Tagihan</a>
                                         </td>
-
                                     </tr>
                                 @empty
                                     <tr>
@@ -198,69 +180,20 @@
                                         </td>
                                     </tr>
                                 @endforelse
-
                             </tbody>
                         </table>
+                        <!-- End Table -->
                     </div>
-                    <!-- End Table -->
                 </div>
-        </form>
-
-        <!-- Stars Menu Pagination-->
-        <div class="d-flex justify-content-center mt-5">
-            {{ $invoices->links() }}
-        </div>
-        <!-- End Menu Pagination-->
+                <div class="d-flex justify-content-center mt-5">
+                    {{ $invoices->links() }}
+                </div>
+            </div>
 
 
 
-    </div>
     </div>
     @include('scripts.delete')
+    @include('scripts.btnconfirmdelete')
 
-
-
-    <script>
-        function setAction(action) {
-            document.getElementsByName('action')[0].value = action; // set nilai input hidden
-        }
-
-
-
-
-        const checkboxes = document.querySelectorAll('input[name="invoice[]"]');
-        const btnDelete = document.getElementById('btn-delete');
-        const btnConfirm = document.getElementById('btn-confirm');
-
-        checkboxes.forEach(checkbox => {
-            checkbox.addEventListener('click', () => {
-                const checkedCheckboxes = document.querySelectorAll('input[name="invoice[]"]:checked');
-
-                if (checkedCheckboxes.length === 0) {
-                    btnDelete.disabled = true;
-                } else {
-                    btnDelete.disabled = false;
-                }
-
-                if (checkedCheckboxes.length === 0 || checkedCheckboxes.length > 1) {
-                    btnConfirm.disabled = true;
-                } else {
-                    btnConfirm.disabled = false;
-                }
-            });
-        });
-
-        function setAction(action) {
-            document.getElementsByName('action')[0].value = action;
-        }
-
-
-        //java script untuk filter is_paid
-
-
-        // Otomatis submit form saat pemilihan opsi select
-        document.getElementById('filter').addEventListener('change', function() {
-            this.form.submit();
-        });
-    </script>
 </x-app-layout>
