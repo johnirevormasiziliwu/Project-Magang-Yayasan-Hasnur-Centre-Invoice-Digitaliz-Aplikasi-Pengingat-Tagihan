@@ -8,9 +8,18 @@
     <title>Tagihan Invoice {{ $invoice->customer->name_unit }}</title>
 </head>
 
+
 <style>
-    .body {
-        font-family: "Bookman Old Style", serif;
+    @page {
+        margin: 0cm 0cm;
+    }
+
+    body {
+        margin-top:    3.5cm;
+        margin-bottom: 1cm;
+        margin-left:   1cm;
+        margin-right:  1cm;
+        z-index:-1;
     }
 
     .unpaid {
@@ -163,7 +172,8 @@ $terbilang = terbilang($total);
 ?>
 
 
-<body>
+<body >
+   
 
     @php($total = 0)
     @if ($invoice->is_paid == false && $invoice->payment_receipt == null)
@@ -173,8 +183,7 @@ $terbilang = terbilang($total);
     @else
         <div class="processing">PROCESSING</div>
     @endif
-
-
+    
     <div class="invoice">INVOICE</div>
 
     <table>
@@ -246,8 +255,6 @@ $terbilang = terbilang($total);
     <br><br>
     Yani Hadiyani<br>
     Finance Manager
-
-
 
 
 </body>

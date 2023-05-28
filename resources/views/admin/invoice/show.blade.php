@@ -66,7 +66,10 @@
                 <title>Invoice #6</title>
 
                 <style>
+
+                    
                     .unpaid {
+                        
                         text-align: right;
                         font-weight: bold;
                         font-size: 30px;
@@ -103,12 +106,16 @@
                         margin-bottom: 20px;
                         letter-spacing: 5px;
                         text-decoration: underline;
+
                     }
 
                     table {
                         width: 100%;
                         border-collapse: collapse;
+                        background: url({{ public_path('/dist/assets/pdf/invoice.jpg') }});
                     }
+
+                    
 
                     th,
                     td {
@@ -207,6 +214,7 @@
 
                 <body>
 
+                    
                     @php($total = 0)
                     @if ($invoice->is_paid == false && $invoice->payment_receipt == null)
                         <div class="unpaid">UNPAID</div>
