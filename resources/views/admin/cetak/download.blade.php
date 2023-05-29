@@ -16,7 +16,7 @@
 
     body {
         margin-top:    3.5cm;
-        margin-bottom: 1cm;
+        margin-bottom: 3.5cm;
         margin-left:   1cm;
         margin-right:  1cm;
         z-index:-1;

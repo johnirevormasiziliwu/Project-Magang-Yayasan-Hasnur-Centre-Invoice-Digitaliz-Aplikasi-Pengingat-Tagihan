@@ -13,7 +13,10 @@ class CetakController extends Controller
     public function downloadInvoice(string $id)
     {
         $invoice = Invoice::findOrFail($id);
+
         $dompdf = Pdf::loadView('admin.cetak.download', compact('invoice'));
+        
+
         $dompdf->render(); 
  
         // Instantiate canvas instance 
@@ -27,9 +30,22 @@ class CetakController extends Controller
         $imageURL = 'dist/assets/pdf/invoice.jpg'; 
         $imgWidth = 600; 
         $imgHeight = 849; 
+
+
+        $canvas->page_script('
+            
+            $pdf->set_opacity(1, "Multiply");
+            $pdf->image("dist/assets/pdf/invoice.jpg", 0, 0, 600, 849);
+
+            $pdf->set_opacity(.5,"Multiply");
+        
+        ');
+    
          
         // Set image opacity 
-        $canvas->set_opacity(.5, 'Multiply'); 
+        //$canvas->set_opacity(.5, "Multiply");
+
+        //$canvas->page_script('$pdf->set_opacity(.5, "Multiply");');
          
         // Specify horizontal and vertical position 
         //$x = (($w-$imgWidth)/2); 
@@ -50,7 +66,7 @@ class CetakController extends Controller
          * @param int $h height (in pixels) 
          * @param string $resolution The resolution of the image 
          */ 
-        $canvas->image($imageURL, 0, 0, $imgWidth, $imgHeight,$resolution = "normal"); 
+        //$canvas->image($imageURL, 0, 0, $imgWidth, $imgHeight,$resolution = "normal"); 
         $toDay = Carbon::now()->format('d-m-Y');
         return $dompdf->download('Tagihan invoice ' . $invoice->customer->name_unit . ' ' . $toDay . '.pdf');
 
