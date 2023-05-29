@@ -29,7 +29,7 @@ class CetakController extends Controller
         $imgHeight = 849; 
          
         // Set image opacity 
-        $canvas->set_opacity(.5, 'Multiply'); 
+        $canvas->set_opacity(1, 'Multiply'); 
          
         // Specify horizontal and vertical position 
         //$x = (($w-$imgWidth)/2); 
@@ -68,6 +68,13 @@ class CetakController extends Controller
     public function printAll()
     {
         $invoices = Invoice::all();
+        $pdf = Pdf::loadView('admin.cetak.print', compact('invoices'));
+        return $pdf->download('Laporan Invoice Digitaliz.pdf');
+    }
+
+    public function PrinSemua()
+    {
+        $invoice = Invoice::all();
         $pdf = Pdf::loadView('admin.cetak.print', compact('invoices'));
         return $pdf->download('Laporan Invoice Digitaliz.pdf');
     }

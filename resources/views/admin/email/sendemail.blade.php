@@ -152,7 +152,7 @@
                     <textarea name="" id="" cols="30" rows="20" class="form-control">
 Dear {{ $invoice->customer->name_unit }},
 
-Saya berharap email ini menemukan Anda dalam keadaan sehat dan baik-baik saja. Saya ingin mengingatkan Anda bahwa faktur kami nomor {{ $invoice->invoice_id }} berjudul {{ $invoice->title }} dengan tanggal jatuh tempo pada tanggal {{ date('d F Y', strtotime($invoice->due_date)) }} masih belum dibayarkan.
+Saya berharap pesan ini menemukan Anda dalam keadaan sehat dan baik-baik saja. Saya ingin mengingatkan Anda bahwa faktur kami nomor {{ $invoice->invoice_id }} berjudul {{ $invoice->title }} dengan tanggal jatuh tempo pada tanggal {{ date('d F Y', strtotime($invoice->due_date)) }} masih belum dibayarkan.
 
 Jumlah yang harus dibayarkan adalah {{ \App\Helper\Util::rupiah($total) }} seperti yang tertera pada faktur. Sesuai dengan persyaratan kontrak kami, pembayaran harus dibuat tepat waktu. Kami telah memberikan layanan kepada Anda dengan sepenuh hati dan kami berharap Anda juga dapat memenuhi kewajiban Anda dalam hal pembayaran. Kami sangat menghargai hubungan bisnis yang baik dengan Anda dan kami berharap dapat terus bekerja sama dengan Anda dalam jangka panjang.
 
@@ -208,10 +208,27 @@ Yayasan Hasnur Center
         </div>
     </x-app-layout>
 
-<script type="text/javascript">
-  function whatsapp() {
-    window.open ('https://wa.me/{{$nmrwa}}?text=Halo%20apa%20in%20kabar', '_blank');
-  }
-</script>
+    <script type="text/javascript">
+        function whatsapp() {
+          var customerName = "{{ $invoice->customer->name_unit }}";
+          var invoiceId = "{{ $invoice->invoice_number }}";
+          var invoiceTitle = "{{ $invoice->title }}";
+          var dueDate = "{{ date('d F Y', strtotime($invoice->due_date)) }}";
+          var totalAmount = "{{ \App\Helper\Util::rupiah($total) }}";
+      
+          var message = "Dear " + customerName + ",\n\n" +
+            "Saya berharap pesan ini menemukan Anda dalam keadaan sehat dan baik-baik saja. Saya ingin mengingatkan Anda bahwa faktur kami nomor " + invoiceId + " berjudul " + invoiceTitle + " dengan tanggal jatuh tempo pada tanggal " + dueDate + " masih belum dibayarkan.\n\n" +
+            "Jumlah yang harus dibayarkan adalah " + totalAmount + " seperti yang tertera pada faktur. Sesuai dengan persyaratan kontrak kami, pembayaran harus dibuat tepat waktu. Kami telah memberikan layanan kepada Anda dengan sepenuh hati dan kami berharap Anda juga dapat memenuhi kewajiban Anda dalam hal pembayaran. Kami sangat menghargai hubungan bisnis yang baik dengan Anda dan kami berharap dapat terus bekerja sama dengan Anda dalam jangka panjang.\n\n" +
+            "Saya meminta Anda untuk segera membayar faktur ini dalam waktu 10 hari. Jika ada masalah dengan faktur atau informasi tambahan yang dibutuhkan, silakan hubungi kami segera.\n\n" +
+            "Terima kasih atas perhatian Anda pada masalah ini. Saya berharap dapat menerima pembayaran dari Anda segera.\n\n" +
+            "Hormat saya,\n\n" +
+            "Yayasan Hasnur Center";
+      
+          var encodedMessage = encodeURIComponent(message);
+          var url = "https://wa.me/{{$nmrwa}}?text=" + encodedMessage;
+          window.open(url, "_blank");
+        }
+      </script>
+      
 
 
