@@ -24,8 +24,9 @@
                     <div>
                         <x-input-label for="password" :value="__('Email')" />
 
-                        <x-text-input id="email" class="block mt-5 w-full" type="email" placeholder="Masukan Email Anda" name="email"
-                            :value="old('email')" required autofocus autocomplete="username" />
+                        <x-text-input id="email" class="block mt-5 w-full" type="email"
+                            placeholder="Masukan Email Anda" name="email" :value="old('email')" required autofocus
+                            autocomplete="username" />
                         <x-input-error :messages="$errors->get('email')" class="mt-2" />
                     </div>
 
@@ -53,6 +54,16 @@
                         <x-input-error :messages="$errors->get('password')" class="mt-2" />
                     </div>
 
+                    <!-- Remember Me -->
+                    <div class="block mt-4">
+                        <label for="remember_me" class="inline-flex items-center">
+                            <input id="remember_me" type="checkbox"
+                                class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500"
+                                name="remember">
+                            <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                        </label>
+                    </div>
+
                     <div class="flex items-center justify-end mt-5">
                         @if (Route::has('password.request'))
                             <a class="underline text-sm text-[#6E11F4] no-underline font-normal  hover:primary"
@@ -71,7 +82,7 @@
                 </form>
 
 
-               
+
             </div>
         </div>
     </div>

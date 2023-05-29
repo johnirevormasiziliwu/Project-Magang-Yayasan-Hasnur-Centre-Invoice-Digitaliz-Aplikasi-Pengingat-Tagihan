@@ -21,7 +21,7 @@ class CustomerController extends Controller
     public function index()
     {
         return view('admin.customer.index', [
-            "customers" => Customer::where('status', '!=', '2')->paginate(5)
+            "customers" => Customer::where('status', '!=', '2')->paginate(10)
         ]);
     }
 
@@ -164,6 +164,7 @@ class CustomerController extends Controller
             $customer = Customer::where('id', $user)->first();
             $customer->update(['status'=>'2']);
         }
+        alert()->success('successfully', 'Data invoice dihapus');
         return redirect()->back();
     }
 }

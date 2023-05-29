@@ -48,7 +48,7 @@
         <div class="container">
             <div class="row">
                 <div class="text-end ">
-                    <a href="{{ route('admin.print-invoice', $invoice) }}"  class="btn fs-5"
+                    <a href="{{ route('admin.print-invoice', $invoice) }}" class="btn fs-5"
                         style="border-color:#6e11f4; border-width:2px; color: #6e11f4;">
                         <i class="bi bi-printer"></i>
                     </a>
@@ -287,15 +287,14 @@
                     pembayaran.<br>
                     3. Bukti pembayaran (bukti transfer) harap di email ke siti.aisyah@hasnurgroup.com<br>
                     <br>
-                    YAYASAN HASNUR CENTRE
+                    <span style="float: right;">YAYASAN HASNUR CENTRE</span>
                     <br><br>
-                    Yani Hadiyani<br>
-                    Finance Manager
+                    <span style="float:right;">Yani Hadiyani</span> <br>
+                    <span style="float:right;">Finance Manager</span>
 
 
 
-
-                </body>
+                </body >
 
 
             </div>

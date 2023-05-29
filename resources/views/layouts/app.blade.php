@@ -9,6 +9,9 @@
     <!-- Title -->
     <title>Inovice Digitaliz</title>
 
+    <link rel="icon" type="image/png" href="{{ asset('dist') }}/assets/img/login/logo_digitaliz.png">
+
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="./favicon.ico">
 
