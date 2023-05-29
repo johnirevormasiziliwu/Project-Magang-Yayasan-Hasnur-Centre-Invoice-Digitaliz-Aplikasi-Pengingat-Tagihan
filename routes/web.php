@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\InvoiceItemController as AdminInvoiceItemControll
 use App\Http\Controllers\Admin\SearchInvoiceController as AdminSearchInvoiceController;
 use App\Http\Controllers\Admin\SearchEmailController as AdminSearchEmailController;
 use App\Http\Controllers\Admin\CetakController as AdminCetakController;
+use App\Http\Controllers\User\CetakController as UserCetakController;
 use App\Http\Controllers\User\SearchController as UserSearchController;
 use App\Http\Controllers\User\InvoiceController as UserInvoiceController;
 use App\Http\Controllers\ProfileController;
@@ -139,11 +140,14 @@ Route::prefix('user')->middleware(['role:user'])->name('user.')->group(function 
     // Route upload payment receipt invoice
     Route::post('invoice/upload/paymentreceipt/{invoice}', [UserInvoiceController::class, 'uploadPaymentReceipt'])->name('upload-payment-receipt');
 
-    // Download Invoice
-    Route::get('/download/{invoice}/generate', [AdminInvoiceController::class, 'downloadInvoice'])->name('download-invoice');
-
     // search invoice
     Route::get('/search', [UserSearchController::class, 'search'])->name('search');
+
+    // Download Invoice
+    Route::get('/download/{invoice}/invoice', [UserCetakController::class, 'downloadInvoice'])->name('download-invoice');
+
+    // Print invoice 
+    Route::get('/print/{invoice}/invoice', [UserCetakController::class, 'printInvoice'])->name('print-invoice');
 });
 
 

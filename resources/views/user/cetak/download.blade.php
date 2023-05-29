@@ -11,11 +11,7 @@
 <style>
     .body {
         font-family: "Bookman Old Style", serif;
-        
-
     }
-
-    
 
     .unpaid {
         text-align: right;
@@ -246,10 +242,10 @@ $terbilang = terbilang($total);
     pembayaran.<br>
     3. Bukti pembayaran (bukti transfer) harap di email ke siti.aisyah@hasnurgroup.com<br>
     <br>
-    <span style="float: right;">YAYASAN HASNUR CENTRE</span> 
+    <span style="float: left;">YAYASAN HASNUR CENTRE</span> 
     <br><br>
-   <span style="float:right;">Yani Hadiyani</span> <br>
-    <span style="float:right;">Finance Manager</span> 
+   <span style="float:left;">Yani Hadiyani</span> <br><br>
+    <span style="float:left;">Finance Manager</span> 
 
 
 

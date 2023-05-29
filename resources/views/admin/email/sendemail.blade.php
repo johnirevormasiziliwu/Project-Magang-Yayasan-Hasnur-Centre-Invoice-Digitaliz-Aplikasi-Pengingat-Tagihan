@@ -114,9 +114,9 @@
                                         <th scope="col" class="fw-bold">Kuantitas</th>
                                         <th scope="col" class="fw-bold">Satuan</th>
                                         <th scope="col" class="fw-bold">Nominal</th>
-                                        @if ($invoice->is_paid == false && $invoice->payment_receipt == false)
+                                        {{-- @if ($invoice->is_paid == false && $invoice->payment_receipt == false)
                                         <th scope="col" class="fw-bold">Action</th>
-                                        @endif 
+                                        @endif  --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -171,14 +171,14 @@ Yayasan Hasnur Center
 
                 <div class="row">
                     <label for="" class="form-label fs-4 fw-bold">Kirim</label>
-                    <div class="col-md-6">
+                    <div class="col">
                         <a   class="btn btn-white " href="{{ route('admin.markInvoiceAsPaid', $invoice) }}">
                             <img src="{{ asset('images/icon/gmail.png') }}" alt="Gambar Tombol Email"
                                 style="width: 30px">
                             <b>{{ $invoice->customer->email }}</b>
                         </a>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col">
                         <a href="https://wa.me/{{$nmrwa}}?text=Halo%20apa%20in%20kabar"  target="_blank" class="btn btn-white ">
                             <img src="{{ asset('images/icon/whatsapp.png') }}" alt="Gambar Tombol No Handphone"
                                 style="width: 25px">
@@ -206,11 +206,6 @@ Yayasan Hasnur Center
 
             </div>
         </div>
-    
-
-    
-
-
-</x-app-layout>
+    </x-app-layout>
 
 
