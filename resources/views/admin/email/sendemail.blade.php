@@ -178,8 +178,8 @@ Yayasan Hasnur Center
                             <b>{{ $invoice->customer->email }}</b>
                         </a>
                     </div>
-                    <div class="col">
-                        <a href="https://wa.me/{{$nmrwa}}?text=Halo%20apa%20in%20kabar"  target="_blank" class="btn btn-white ">
+                    <div class="col-md-6">
+                        <a onclick="whatsapp()"  target="_blank" class="btn btn-white ">
                             <img src="{{ asset('images/icon/whatsapp.png') }}" alt="Gambar Tombol No Handphone"
                                 style="width: 25px">
                             {{ $invoice->customer->no_handphone }}
@@ -207,5 +207,11 @@ Yayasan Hasnur Center
             </div>
         </div>
     </x-app-layout>
+
+<script type="text/javascript">
+  function whatsapp() {
+    window.open ('https://wa.me/{{$nmrwa}}?text=Halo%20apa%20in%20kabar', '_blank');
+  }
+</script>
 
 
