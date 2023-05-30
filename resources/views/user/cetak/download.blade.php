@@ -8,10 +8,21 @@
     <title>Tagihan Invoice {{ $invoice->customer->name_unit }}</title>
 </head>
 
+
 <style>
-    .body {
-        font-family: "Bookman Old Style", serif;
+    @page {
+        margin: 0cm 0cm;
     }
+
+    body {
+        margin-top:    3.5cm;
+        margin-bottom: 3.5cm;
+        margin-left:   1cm;
+        margin-right:  1cm;
+        z-index:-1;
+    }
+
+    
 
     .unpaid {
         text-align: right;
@@ -120,6 +131,9 @@
     .note {
         font-size: 12px;
     } 
+    .left-align {
+        text-align: right;
+    }
 </style>
 
 
@@ -163,7 +177,8 @@ $terbilang = terbilang($total);
 ?>
 
 
-<body>
+<body >
+   
 
     @php($total = 0)
     @if ($invoice->is_paid == false && $invoice->payment_receipt == null)
@@ -173,8 +188,7 @@ $terbilang = terbilang($total);
     @else
         <div class="processing">PROCESSING</div>
     @endif
-
-
+    
     <div class="invoice">INVOICE</div>
 
     <table>
@@ -232,7 +246,7 @@ $terbilang = terbilang($total);
         </tr>
     </table>
 
-
+    <br><br><br><br><br><br><br><br><br>
     Note:<br>
     1. Pembayaran ini mohon ditransfer ke rekening:<br>
     &nbsp;&nbsp;&nbsp;&nbsp;Bank Mandiri Kayutangi<br>
@@ -241,14 +255,13 @@ $terbilang = terbilang($total);
     2. Mohon mencantumkan nama perusahaan anda dan no.invoice saat mentransfer
     pembayaran.<br>
     3. Bukti pembayaran (bukti transfer) harap di email ke siti.aisyah@hasnurgroup.com<br>
-    <br>
-    <span style="float: left;">YAYASAN HASNUR CENTRE</span> 
-    <br><br>
-   <span style="float:left;">Yani Hadiyani</span> <br><br>
-    <span style="float:left;">Finance Manager</span> 
-
-
-
+    <div class="left-align">
+        <br>
+        <p style="font-weight: 900;">YAYASAN HASNUR CENTRE</p>
+        <br><br>
+        <span style="text-decoration: underline; margin-left: 50px;">Yani Hadiyani</span> <br>
+        <span>Finance Manager</span>
+    </div>
 
 </body>
 

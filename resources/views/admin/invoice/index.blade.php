@@ -92,9 +92,9 @@
                             onclick="setAction('confirm')" id="btn-confirm" disabled><i class="bi bi-file-earmark-text"
                                 name="action" value="confirm"></i> Konfirmasi
                             Pembayaran</button>
-                        {{-- <a href="{{ route('admin.print-invoice-all') }}" class="btn bg-white border border-dark fs-5 me-3 ">
-                            <i class="bi bi-printer"></i>
-                        </a> --}}
+                        <a href="{{ route('admin.print-invoice-all') }}" class="btn bg-white border border-dark fs-5 me-3 ">
+                            <i class="bi bi-download"></i>
+                        </a>
                         <button type="submit" class="btn bg-white delete-btn  border border-dark fs-5"
                             onclick="setAction('delete')" id="btn-delete" disabled><i class="bi bi-trash3"
                                 name="action" value="delete"></i></button>
@@ -119,7 +119,6 @@
                                     <th scope="col" class="fw-bold fs-5 text-black">Name Unit</th>
                                     <th scope="col" class="fw-bold fs-5 text-black">
                                         Due Date
-                                         <i class="bi bi-chevron-expand ms-2  fs-5 fw-bold"></i>
                                     </th>
                                     <th scope="col" class="fw-bold fs-5 text-black">Status</th>
                                     <th scope="col" class="fw-bold fs-5 text-black">Nominal</th>

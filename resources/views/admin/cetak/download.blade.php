@@ -131,6 +131,9 @@
     .note {
         font-size: 12px;
     } 
+    .left-align {
+        text-align: right;
+    }
 </style>
 
 
@@ -243,7 +246,7 @@ $terbilang = terbilang($total);
         </tr>
     </table>
 
-
+    <br><br><br><br><br><br><br><br><br>
     Note:<br>
     1. Pembayaran ini mohon ditransfer ke rekening:<br>
     &nbsp;&nbsp;&nbsp;&nbsp;Bank Mandiri Kayutangi<br>
@@ -252,12 +255,13 @@ $terbilang = terbilang($total);
     2. Mohon mencantumkan nama perusahaan anda dan no.invoice saat mentransfer
     pembayaran.<br>
     3. Bukti pembayaran (bukti transfer) harap di email ke siti.aisyah@hasnurgroup.com<br>
-    <br>
-    <span style="float: right;">YAYASAN HASNUR CENTRE</span> 
-    <br><br>
-   <span style="float:right;">Yani Hadiyani</span> <br>
-    <span style="float:right;">Finance Manager</span> 
-
+    <div class="left-align">
+        <br>
+        <p style="font-weight: 900;">YAYASAN HASNUR CENTRE</p>
+        <br><br>
+        <span style="text-decoration: underline; margin-left: 50px;">Yani Hadiyani</span> <br>
+        <span>Finance Manager</span>
+    </div>
 
 </body>
 
