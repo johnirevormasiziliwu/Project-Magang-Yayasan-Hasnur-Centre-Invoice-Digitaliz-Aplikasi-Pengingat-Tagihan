@@ -26,15 +26,15 @@
                             <!-- Select -->
 
                             <select class="form-select fs-5 fw-bold"
-                                name="invoiceItems[${invoiceItemCount}][unit]" required>
-                                <option value="" style="background: #6e11f4">Unit</option>
-                                <option value="pcs" @if (old('unit', @$invoice->unit) == 'pcs') selected @endif>
+                                name="invoiceItems[${invoiceItemCount}][unit]" style="background: #6e11f4; color: white;" required>
+                                <option class="bg-white text-black" value="" style="background: #6e11f4">Unit</option>
+                                <option class="bg-white text-black" value="pcs" @if (old('unit', @$invoice->unit) == 'pcs') selected @endif>
                                     PCS</option>
-                                <option value="jam" @if (old('unit', @$invoice->unit) == 'jam') selected @endif>
+                                <option class="bg-white text-black" value="jam" @if (old('unit', @$invoice->unit) == 'jam') selected @endif>
                                     Jam</option>
-                                <option value="meter" @if (old('unit', @$invoice->unit) == 'meter') selected @endif>
+                                <option class="bg-white text-black" value="meter" @if (old('unit', @$invoice->unit) == 'meter') selected @endif>
                                     Meter</option>
-                                <option value="ls" @if (old('unit', @$invoice->unit) == 'ls') selected @endif>
+                                <option class="bg-white text-black" value="ls" @if (old('unit', @$invoice->unit) == 'ls') selected @endif>
                                     LS</option>
                             </select>
                             <!-- End Select -->

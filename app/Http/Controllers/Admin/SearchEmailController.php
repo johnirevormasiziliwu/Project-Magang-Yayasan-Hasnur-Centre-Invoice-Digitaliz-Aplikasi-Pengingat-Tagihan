@@ -13,6 +13,7 @@ class SearchEmailController extends Controller
         $keyword = $request->input('keyword');
 
         $invoices = Invoice::where('is_paid', false)
+            ->whereNull('payment_receipt')
             ->where(function ($query) use ($keyword) {
                 $query->where('invoice_number', 'like', '%' . $keyword . '%')
                     ->orWhere('title', 'like', '%' . $keyword . '%')

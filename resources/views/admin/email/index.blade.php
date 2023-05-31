@@ -36,26 +36,25 @@
 
         <!-- Star pencarian dan filter status invoices -->
         <div class="row">
-            <div class="col-md-4">
-                <label for="keyword" class="form-label  fw-bold  text-black">Cari</label>
+            <div class="col-md-6 col-lg-4 mb-3">
+                <label for="keyword" class="form-label fw-bold text-black">Cari</label>
                 <form action="{{ route('admin.email.search') }}" method="get">
                     <div class="input-group">
                         <input type="text" name="keyword" class="form-control"
                             placeholder="Cari Invoice ID, Judul, Unit....">
                         <div class="input-group-append">
-                            <button class="btn  rounded-top-bottom " type="submit"
-                                style="background: #6e11f4; color:#fff;">
-                                <i class="bi bi-search fs-5 fw-bold  text-black"></i>
+                            <button class="btn rounded-top-bottom" type="submit" style="background: #6e11f4; color:#fff;">
+                                <i class="bi bi-search fs-5 fw-bold text-black"></i>
                             </button>
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="col-md-4">
-                <label for="#" class="form-label fs-5 fw-bold  text-black">Filter</label>
+            <div class="col-md-6 col-lg-4 mb-3">
+                <label for="#" class="form-label fs-5 fw-bold text-black">Filter</label>
                 <form action="{{ route('admin.email.index') }}" method="GET">
-                    <select class="form-select form-select-lg mb-3 fs-5 fw-bold  text-black" id="filter"
-                        name="filter" style="background-color:#F5F5F5; color:#404040;">
+                    <select class="form-select form-select-lg fs-5 fw-bold text-black" id="filter" name="filter"
+                        style="background-color:#F5F5F5; color:#404040;">
                         <option value="all" {{ request('filter') == 'all' ? 'selected' : '' }}>All</option>
                         <option value="newest_due" {{ request('filter') == 'newest_due' ? 'selected' : '' }}>Newest Due
                         </option>
@@ -65,6 +64,7 @@
                 </form>
             </div>
         </div>
+        
         <!-- End pencarian dan filter status invoices -->
 
         <div class="card mt-10">
@@ -80,7 +80,6 @@
                                 <th scope="col" class="fw-bold  text-black">Unit</th>
                                 <th scope="col" class="fw-bold text-black">
                                     Due Date
-                                    <i class="bi bi-chevron-expand ms-2  fs-5 fw-bold"></i>
                                 </th>
                                 <th scope="col" class="fw-bold  text-black">Status</th>
                                 <th scope="col" class="fw-bold  text-black">Nominal</th>

@@ -1,4 +1,36 @@
 <x-app-layout>
+    @push('styles')
+    <style>
+        .status {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+    
+        .divider {
+            height: 55px;
+            width: 2.6px;
+            background-color: #E0E0E0;
+            border-radius: 3px;
+        }
+    
+        @media only screen and (max-width: 600px) {
+            .status {
+                flex-wrap: wrap;
+            }
+    
+            .paid,
+            .unpaid {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+    
+            .divider {
+                display: none;
+            }
+        }
+    </style>
+    @endpush
     <!-- Content -->
     <div class="content container-fluid">
         <!-- Page Header -->
@@ -43,7 +75,7 @@
         <!-- End Page Header -->
         <!-- Card -->
         <div class="card">
-            <div class="card-body ">
+            <div class="card-body">
                 <div class="status d-flex justify-content-around align-items-center">
                     @php($nomor = 1)
                     <div class="paid text-center">
@@ -55,9 +87,9 @@
                             {{ \App\Helper\Util::rupiah($totalPaid) }}
                         </h1>
                     </div>
-                    <div style="height:55px;width:2.5px; background-color: #E0E0E0;border-radius:3px;"></div>
+                    <div class="divider"></div>
                     <div class="unpaid text-center">
-                        <p class="text-danger fw-bold text-danger fs-5">
+                        <p class="text-danger fw-bold fs-5">
                             <i class="bi bi-x-circle-fill me-2"></i>
                             Unpaid Bill
                         </p>
@@ -65,8 +97,8 @@
                             {{ \App\Helper\Util::rupiah($totalUnpaid) }}
                         </h1>
                     </div>
-                    <div style="height:55px;width:2.5px; background-color: #E0E0E0;border-radius:3px;"></div>
-                    <div class="paid text-right">
+                    <div class="divider"></div>
+                    <div class="paid text-center">
                         <p class="text-warning fw-bold fs-5">
                             <i class="bi bi-exclamation-circle-fill me-2 text-warning "></i>
                             Reminder Bill
@@ -79,19 +111,18 @@
             </div>
         </div>
 
-
         <!-- End Card -->
         <div class="row mt-4">
             <div class="col-md-7">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-4">
-                            <span class="h3 mb-0 ">Total Transaksi</span>
+                            <span class="h3 mb-0">Total Transaksi</span>
                         </div>
-
+        
                         <!-- Bar Chart -->
                         <div class="chartjs-custom">
-                            <canvas id="ecommerce-sales" class="js-chart" style="height: 20rem; width: 25rem;"
+                            <canvas id="ecommerce-sales" class="js-chart" style="height: 20rem; width: 100%;"
                                 data-hs-chartjs-options='{
                                     "type": "bar",
                                     "data": {
@@ -105,109 +136,104 @@
                                             "borderRadius": 10
                                         }]
                                     },
-                                    
-                              "options": {
-                                "scales": {
-                                  "y": {
-                                    "grid": {
-                                      "color": "#e7eaf3",
-                                      "drawBorder": false,
-                                      "zeroLineColor": "#e7eaf3"
-                                    },
-                                    "ticks": {
-                                      "beginAtZero": true,
-                                      "stepSize": 100,
-                                      "fontSize": 12,
-                                      "fontColor": "#97a4af",
-                                      "fontFamily": "Open Sans, sans-serif",
-                                      "padding": 10,
-                                      "postfix": "Rp"
+                                    "options": {
+                                        "responsive": true,
+                                        "maintainAspectRatio": false,
+                                        "scales": {
+                                            "y": {
+                                                "grid": {
+                                                    "color": "#e7eaf3",
+                                                    "drawBorder": false,
+                                                    "zeroLineColor": "#e7eaf3"
+                                                },
+                                                "ticks": {
+                                                    "beginAtZero": true,
+                                                    "stepSize": 100,
+                                                    "fontSize": 12,
+                                                    "fontColor": "#97a4af",
+                                                    "fontFamily": "Open Sans, sans-serif",
+                                                    "padding": 10,
+                                                    "postfix": "Rp"
+                                                }
+                                            },
+                                            "x": {
+                                                "grid": {
+                                                    "display": false,
+                                                    "drawBorder": false
+                                                },
+                                                "ticks": {
+                                                    "font": {
+                                                        "size": 12,
+                                                        "family": "Open Sans, sans-serif"
+                                                    },
+                                                    "color": "#97a4af",
+                                                    "padding": 5
+                                                },
+                                                "categoryPercentage": 0.5
+                                            }
+                                        },
+                                        "cornerRadius": 2,
+                                        "plugins": {
+                                            "tooltip": {
+                                                "prefix": "Rp.",
+                                                "hasIndicator": true,
+                                                "mode": "index",
+                                                "intersect": false
+                                            }
+                                        },
+                                        "hover": {
+                                            "mode": "nearest",
+                                            "intersect": true
+                                        }
                                     }
-                                  },
-                                  "x": {
-                                    "grid": {
-                                      "display": false,
-                                      "drawBorder": false
-                                    },
-                                    "ticks": {
-                                      "font": {
-                                        "size": 12,
-                                        "family": "Open Sans, sans-serif"
-                                      },
-                                      "color": "#97a4af",
-                                      "padding": 5
-                                    },
-                                    "categoryPercentage": 0.5
-                                  }
-                                },
-                                "cornerRadius": 2,
-                                "plugins": {
-                                  "tooltip": {
-                                    "prefix": "Rp.",
-                                    "hasIndicator": true,
-                                    "mode": "index",
-                                    "intersect": false
-                                  }
-                                },
-                                "hover": {
-                                  "mode": "nearest",
-                                  "intersect": true
-                                }
-                              }
-                            }'></canvas>
+                                }'></canvas>
                         </div>
-
-
                         <!-- End Bar Chart -->
                     </div>
                 </div>
             </div>
-            <div class="col-md-5">
+            <div class="col-12 col-md-5 mt-4 mt-md-0">
                 <div class="card">
                     <div class="card-body">
                         <h3 class="card-title fw-bold">Due This Week</h3>
                         @if (count($invoicesDueThisWeek) > 0)
                             @foreach ($invoicesDueThisWeek as $invoice)
-                                <div class="row mt-5 ">
-                                    <div class="col">
-                                        <div class="d-flex">
-                                            <div class="flex-shrink-0">
-                                                <div class="avatar  avatar-circle"
-                                                    style="background: #6e11f4; color:#fff">
-                                                    <span class="avatar-initials">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                            style="width: 1.5rem; height: 1.5rem; margin: 0.25rem;">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                d="M21 12a2.25 2.25 0 00-2.25-2.25H15a3 3 0 11-6 0H5.25A2.25 2.25 0 003 12m18 0v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6m18 0V9M3 12V9m18 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 9m18 0V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v3" />
-                                                        </svg>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="flex-grow-1 ms-3">
-                                                <span
-                                                    class="d-block h5 text-inherit mb-0">{{ $invoice->customer->name_unit }}</span>
-                                                <span
-                                                    class="d-block font-size-sm text-body mt-2">{{ date('d M Y', strtotime($invoice->due_date)) }}</span>
+                                <div class="row mt-3">
+                                    <div class="col-3 col-md-2">
+                                        <div class="d-flex align-items-center justify-content-center">
+                                            <div class="avatar avatar-circle" style="background: #6e11f4; color:#fff">
+                                                <span class="avatar-initials">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                        stroke-width="1.5" stroke="currentColor"
+                                                        style="width: 1.5rem; height: 1.5rem; margin: 0.25rem;">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="M21 12a2.25 2.25 0 00-2.25-2.25H15a3 3 0 11-6 0H5.25A2.25 2.25 0 003 12m18 0v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6m18 0V9M3 12V9m18 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 9m18 0V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v3" />
+                                                    </svg>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-auto">
-                                        <span class="fw-bold fs-5"
-                                            style="color:#9E9E9E;">{{ \App\Helper\Util::rupiah($invoiceItemTotals[$invoice->id]) }}</span>
+                                    <div class="col-9 col-md-8">
+                                        <div class="d-flex flex-column justify-content-center h-100">
+                                            <span class="h5 text-inherit mb-0">{{ $invoice->customer->name_unit }}</span>
+                                            <span class="font-size-sm text-muted">{{ date('d M Y', strtotime($invoice->due_date)) }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-2">
+                                        <span class="fw-bold fs-5" style="color:#9E9E9E;">{{ \App\Helper\Util::rupiah($invoiceItemTotals[$invoice->id]) }}</span>
                                     </div>
                                 </div>
                             @endforeach
                         @else
                             <!-- kode HTML untuk menampilkan pesan "No data" di dalam card -->
-                            <div class="text-center mt-10 ">
+                            <div class="text-center mt-10">
                                 <p class="text-muted">Tidak Ada Tagihan Minggu Ini</p>
                             </div>
                         @endif
-
-                        <div class="d-grid gap-2 mt-10">
+            
+                        <div class="d-grid gap-2 mt-4">
                             @if (count($invoicesDueThisWeek) > 0)
-                                <a href="{{ route('admin.invoice.index') }}" class="btn fw-bold fs-5" type="button"
+                                <a href="{{ route('admin.invoice.index') }}" class="btn fw-bold fs-5 w-100" type="button"
                                     style="background: #F3ECFF; color:#6e11f4">
                                     Lihat Selengkapnya <i class="bi bi-arrow-right fw-bold fs-5"></i>
                                 </a>
@@ -216,7 +242,9 @@
                     </div>
                 </div>
             </div>
+            
         </div>
+        
         <div class="card mt-5">
             <div class="card-body">
                 <!-- Table -->
@@ -269,12 +297,12 @@
                                     <td>{{ \App\Helper\Util::rupiah($invoiceItemTotals[$invoice->id]) }}</td>
                                 </tr>
                             @empty
-                            <tr>
-                                <td colspan="8" class="text-center text-danger">
-                                    <i class="bi bi-exclamation-triangle-fill d-block mx-auto my-3"
-                                        style="font-size: 3rem;"></i> No Data Invoices
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td colspan="8" class="text-center text-danger">
+                                        <i class="bi bi-exclamation-triangle-fill d-block mx-auto my-3"
+                                            style="font-size: 3rem;"></i> No Data Invoices
+                                    </td>
+                                </tr>
                             @endforelse
                         </tbody>
                     </table>
@@ -285,10 +313,9 @@
                     {{ $invoices->links() }}
                 </div>
                 <!-- End Menu Pagination-->
-
             </div>
         </div>
-
+        
     </div>
 
     <script>

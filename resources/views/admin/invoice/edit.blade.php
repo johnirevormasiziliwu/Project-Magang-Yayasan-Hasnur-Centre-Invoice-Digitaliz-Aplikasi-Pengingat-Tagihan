@@ -74,7 +74,7 @@
                         @enderror
                     </div>
                     <div class="row">
-                        <div class="col">
+                        <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="invoice_date" class="form-label fs-4 fw-bold">Tanggal Invoice</label>
                                 <input type="date" name="invoice_date" id="invoice_date"
@@ -87,7 +87,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="due_date" class="form-label fs-4 fw-bold">Tanggal Jatuh Tempo</label>
                                 <input type="date" name="due_date" id="due_date"
@@ -102,7 +102,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col">
+                        <div class="col-md-6">
                             <label for="customer_id" class="form-label fs-4 fw-bold">Tujuan</label>
 
                             <!-- Select -->
@@ -128,21 +128,21 @@
                                 </div>
                             @enderror
                         </div>
-                        <div class="col">
+                        <div class="col-md-6">
                             <label for="name_pic" class="form-label fs-4 fw-bold">Name PIC</label>
                             <input type="text" name="name_pic" id="name_pic"
                                 value="{{ old('name_pic', @$invoice->customer->name_pic) }}" class="form-control">
                         </div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col">
+                        <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="email" class="form-label fs-4 fw-bold">Alamat E-mail</label>
                                 <input type="email" name="email" id="email"
                                     value="{{ old('email', @$invoice->customer->email) }}" class="form-control">
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-md-6">
                             <label for="no_handphone" class="form-label fs-4 fw-bold">No. Handphone</label>
                             <input type="text" name="no_handphone" id="no_handphone"
                                 value="{{ old('no_handphone', @$invoice->customer->no_handphone) }}"
@@ -150,8 +150,10 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="address" class="form-label"><span class="fs-4 fw-bold">Alamat</span><i>(Nama
-                                Jalan,Gedung,RT/RW,Kecamatan,Kabupate,Kode Pos dll)</i></label>
+                        <label for="address" class="col-form-label d-md-inline-block text-truncate" style="max-width: 100%;">
+                            <span class="form-label fs-4 fs-md-3 fs-lg-4 fw-bold d-inline-block">Alamat</span>
+                            <i class="d-inline-block"> (Nama Jalan, Gedung, RT/RW, Kecamatan, Kabupaten, Kode Pos dll)</i>
+                        </label>
                         <textarea name="address" id="address" cols="30" rows="8"
                             class="form-control @error('address') is-invalid @enderror">{{ old('address', @$invoice->customer->address) }}</textarea>
 

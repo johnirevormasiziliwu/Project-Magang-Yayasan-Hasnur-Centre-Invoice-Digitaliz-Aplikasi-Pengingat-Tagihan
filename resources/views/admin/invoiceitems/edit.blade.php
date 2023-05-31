@@ -56,7 +56,7 @@
                         @enderror
                     </div>
                     <div class="row">
-                        <div class="col">
+                        <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="images" class="form-label fs-4 fw-bold">File Tambahan</label>
                                 <input type="file" class="form-control" name="images">
@@ -64,7 +64,7 @@
 
                         </div>
 
-                        <div class="col">
+                        <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="unit" class="form-label fs-4 fw-bold">Pilih Unit</label>
                                 <select class="form-select unit fs-5 fw-bold @error('unit') is-invalid @enderror"
@@ -89,7 +89,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col">
+                        <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="stock" class="form-label fs-4 fw-bold">Kuantitas</label>
                                 <input type="number" name="stock" id="stock"
@@ -102,7 +102,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-md-6">
                             <label for="price" class="form-label fs-4 fw-bold">Harga Satuan</label>
                             <input type="number" name="price" id="price"
                                 value="{{ old('price', $invoiceitem->price) }}" class="form-control">
@@ -112,7 +112,7 @@
                                 </div>
                             @enderror
                         </div>
-                        <div class="col">
+                        <div class="col-md-6">
                             <label for="nominal" class="form-label fs-4 fw-bold">Total Nominal</label>
                             <input type="number" name="nominal" id="nominal"
                                 value="{{ old('nominal', $invoiceitem->nominal) }}"
