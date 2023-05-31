@@ -49,7 +49,7 @@
                         @method('put')
                     @endif
                     <div class="row">
-                        <div class="col">
+                        <div class="col-md">
                             <label for="name_agency" class="form-label fs-4 fw-bold">Nama Instansi</label>
                             <input type="text" name="name_agency" id="name_agency"
                                 value="{{ old('name_agency', @$customer->name_agency) }}"
@@ -61,7 +61,7 @@
                                 </div>
                             @enderror
                         </div>
-                        <div class="col">
+                        <div class="col-md">
                             <label for="name_unit" class="form-label fs-4 fw-bold">Nama Unit</label>
                             <input type="text" name="name_unit" id="name_unit"
                                 value="{{ old('name_unit', @$customer->name_unit) }}"
@@ -75,7 +75,7 @@
                         </div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col">
+                        <div class="col-md">
                             <label for="no_handphone" class="form-label fs-4 fw-bold">No. Handphone</label>
                             <input type="text" name="no_handphone" id="no_handphone"
                                 value="{{ old('no_handphone', @$customer->no_handphone) }}"
@@ -87,7 +87,7 @@
                                 </div>
                             @enderror
                         </div>
-                        <div class="col">
+                        <div class="col-md">
                             <label for="name_pic" class="form-label fs-4 fw-bold">Nama PIC</label>
                             <input type="text" name="name_pic" id="name_pic"
                                 value="{{ old('name_pic', @$customer->name_pic) }}"
@@ -123,7 +123,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col">
+                        <div class="col-md">
                             <label for="password" class="form-label fs-4 fw-bold ">Password</label>
                             <div class="input-group">
                                 <input type="password" name="password" id="password"
@@ -139,7 +139,7 @@
 
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-md">
                             <label for="password_confirmation" class="form-label fs-4 fw-bold">Konfirmasi
                                 Password</label>
                             <div class="input-group">
