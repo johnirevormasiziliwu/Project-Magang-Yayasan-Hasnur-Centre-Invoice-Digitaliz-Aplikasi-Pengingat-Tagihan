@@ -1,0 +1,3076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required Meta Tags Always Come First -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Title -->
+  <title>Calendar (Fullcalendar) - Documentation | Front - Multipurpose Responsive Template</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../favicon.ico">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS Implementing Plugins -->
+  <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../assets/vendor/fullcalendar/main.min.css">
+  <link rel="stylesheet" href="../assets/vendor/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="../assets/vendor/tom-select/dist/css/tom-select.bootstrap5.css">
+
+  <!-- CSS Front Template -->
+
+  <link rel="preload" href="../assets/css/theme.min.css" data-hs-appearance="default" as="style">
+  <link rel="preload" href="../assets/css/docs.min.css" data-hs-appearance="default" as="style">
+  <link rel="preload" href="../assets/css/theme-dark.min.css" data-hs-appearance="dark" as="style">
+  <link rel="preload" href="../assets/css/docs-dark.min.css" data-hs-appearance="dark" as="style">
+
+  <style data-hs-appearance-onload-styles>
+    *
+    {
+      transition: unset !important;
+    }
+
+    body
+    {
+      opacity: 0;
+    }
+  </style>
+
+  <script>
+            window.hs_config = {"autopath":"@@autopath","deleteLine":"hs-builder:delete","deleteLine:build":"hs-builder:build-delete","deleteLine:dist":"hs-builder:dist-delete","previewMode":false,"startPath":"/index.html","vars":{"themeFont":"https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap","version":"?v=1.0"},"layoutBuilder":{"extend":{"switcherSupport":true},"header":{"layoutMode":"default","containerMode":"container-fluid"},"sidebarLayout":"default"},"themeAppearance":{"layoutSkin":"default","sidebarSkin":"default","styles":{"colors":{"primary":"#377dff","transparent":"transparent","white":"#fff","dark":"132144","gray":{"100":"#f9fafc","900":"#1e2022"}},"font":"Inter"}},"languageDirection":{"lang":"en"},"skipFilesFromBundle":{"dist":["assets/js/hs.theme-appearance.js","assets/js/hs.theme-appearance-charts.js","assets/js/demo.js"],"build":["assets/css/theme.css","assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js","assets/js/demo.js","assets/css/theme-dark.css","assets/css/docs.css","assets/vendor/icon-set/style.css","assets/js/hs.theme-appearance.js","assets/js/hs.theme-appearance-charts.js","node_modules/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js","assets/js/demo.js"]},"minifyCSSFiles":["assets/css/theme.css","assets/css/theme-dark.css"],"copyDependencies":{"dist":{"*assets/js/theme-custom.js":""},"build":{"*assets/js/theme-custom.js":"","node_modules/bootstrap-icons/font/*fonts/**":"assets/css"}},"buildFolder":"","replacePathsToCDN":{},"directoryNames":{"src":"./src","dist":"./dist","build":"./build"},"fileNames":{"dist":{"js":"theme.min.js","css":"theme.min.css"},"build":{"css":"theme.min.css","js":"theme.min.js","vendorCSS":"vendor.min.css","vendorJS":"vendor.min.js"}},"fileTypes":"jpg|png|svg|mp4|webm|ogv|json"}
+            window.hs_config.gulpRGBA = (p1) => {
+  const options = p1.split(',')
+  const hex = options[0].toString()
+  const transparent = options[1].toString()
+
+  var c;
+  if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+    c= hex.substring(1).split('');
+    if(c.length== 3){
+      c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+    }
+    c= '0x'+c.join('');
+    return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',' + transparent + ')';
+  }
+  throw new Error('Bad Hex');
+}
+            window.hs_config.gulpDarken = (p1) => {
+  const options = p1.split(',')
+
+  let col = options[0].toString()
+  let amt = -parseInt(options[1])
+  var usePound = false
+
+  if (col[0] == "#") {
+    col = col.slice(1)
+    usePound = true
+  }
+  var num = parseInt(col, 16)
+  var r = (num >> 16) + amt
+  if (r > 255) {
+    r = 255
+  } else if (r < 0) {
+    r = 0
+  }
+  var b = ((num >> 8) & 0x00FF) + amt
+  if (b > 255) {
+    b = 255
+  } else if (b < 0) {
+    b = 0
+  }
+  var g = (num & 0x0000FF) + amt
+  if (g > 255) {
+    g = 255
+  } else if (g < 0) {
+    g = 0
+  }
+  return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16)
+}
+            window.hs_config.gulpLighten = (p1) => {
+  const options = p1.split(',')
+
+  let col = options[0].toString()
+  let amt = parseInt(options[1])
+  var usePound = false
+
+  if (col[0] == "#") {
+    col = col.slice(1)
+    usePound = true
+  }
+  var num = parseInt(col, 16)
+  var r = (num >> 16) + amt
+  if (r > 255) {
+    r = 255
+  } else if (r < 0) {
+    r = 0
+  }
+  var b = ((num >> 8) & 0x00FF) + amt
+  if (b > 255) {
+    b = 255
+  } else if (b < 0) {
+    b = 0
+  }
+  var g = (num & 0x0000FF) + amt
+  if (g > 255) {
+    g = 255
+  } else if (g < 0) {
+    g = 0
+  }
+  return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16)
+}
+            </script>
+</head>
+
+<body class="navbar-sidebar-aside-lg">
+
+  <script src="../assets/js/hs.theme-appearance.js"></script>
+
+  <!-- ========== HEADER ========== -->
+  <header id="header" class="navbar navbar-expand navbar-end navbar-light navbar-sticky-lg-top bg-white">
+    <div class="container-fluid">
+      <nav class="navbar-nav-wrap">
+        <div class="row flex-grow-1">
+          <!-- Default Logo -->
+          <div class="docs-navbar-sidebar-container d-flex align-items-center mb-2 mb-lg-0">
+            <a class="navbar-brand" href="../documentation/index.html" aria-label="Front">
+              <img class="navbar-brand-logo" src="../assets/svg/logos/logo.svg" alt="Logo" data-hs-theme-appearance="default">
+              <img class="navbar-brand-logo" src="../assets/svg/logos-light/logo.svg" alt="Logo" data-hs-theme-appearance="dark">
+            </a>
+            <a href="../documentation/changelog.html">
+              <span class="badge bg-soft-primary text-primary">v2.1</span>
+            </a>
+          </div>
+          <!-- End Default Logo -->
+
+          <div class="col-md px-lg-0">
+            <div class="d-flex justify-content-between align-items-center px-lg-5 px-xl-10">
+              <div class="d-none d-md-block">
+                <!-- Search Form -->
+                <form id="docsSearch" class="position-relative" data-hs-list-options='{
+                       "searchMenu": true,
+                       "keyboard": true,
+                       "item": "searchTemplate",
+                       "valueNames": ["component", "category", {"name": "link", "attr": "href"}],
+                       "empty": "#searchNoResults"
+                     }'>
+                  <!-- Input Group -->
+                  <div class="input-group input-group-merge navbar-input-group">
+                    <div class="input-group-prepend input-group-text">
+                      <i class="bi-search"></i>
+                    </div>
+
+                    <input type="search" class="search form-control form-control-sm" placeholder="Search in docs" aria-label="Search in docs">
+
+                    <a class="input-group-append input-group-text" href="javascript:;">
+                      <i id="clearSearchResultsIcon" class="bi-x" style="display: none;"></i>
+                    </a>
+                  </div>
+                  <!-- End Input Group -->
+
+                  <!-- List -->
+                  <div class="list dropdown-menu navbar-dropdown-menu-borderless w-100 overflow-auto" style="max-height: 16rem;"></div>
+                  <!-- End List -->
+
+                  <!-- Empty -->
+                  <div id="searchNoResults" style="display: none;">
+                    <div class="text-center p-4">
+                      <img class="mb-3" src="../assets/svg/illustrations/oc-error.svg" alt="Image Description" data-hs-theme-appearance="default" style="width: 7rem;">
+                      <img class="mb-3" src="../assets/svg/illustrations-light/oc-error.svg" alt="Image Description" data-hs-theme-appearance="dark" style="width: 7rem;">
+                      <p class="mb-0">No Results</p>
+                    </div>
+                  </div>
+                  <!-- End Empty -->
+                </form>
+                <!-- End Search Form -->
+
+                <!-- List Item Template -->
+                <div class="d-none">
+                  <div id="searchTemplate" class="dropdown-item">
+                    <a class="d-block link" href="#">
+                      <span class="category d-block fw-normal text-muted mb-1"></span>
+                      <span class="component text-dark"></span>
+                    </a>
+                  </div>
+                </div>
+                <!-- End List Item Template -->
+              </div>
+
+              <!-- Navbar -->
+              <ul class="navbar-nav p-0">
+                <li class="nav-item">
+                  <a class="btn btn-ghost-secondary btn-sm" href="https://htmlstream.com/contact-us" target="_blank">
+                    Get Support <i class="bi-box-arrow-up-right ms-1"></i>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="btn btn-primary btn-sm" href="../index.html">
+                    <i class="bi-eye me-1"></i> Preview Demo
+                  </a>
+                </li>
+              </ul>
+              <!-- End Navbar -->
+            </div>
+          </div>
+          <!-- End Col -->
+        </div>
+        <!-- End Row -->
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========== END HEADER ========== -->
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main id="content" role="main">
+    <!-- Navbar -->
+    <nav class="js-nav-scroller navbar navbar-expand-lg navbar-sidebar navbar-vertical navbar-light bg-white border-end" data-hs-nav-scroller-options='{
+            "type": "vertical",
+            "target": ".navbar-nav .active",
+            "offset": 80
+           }'>
+      <!-- Navbar Toggle -->
+      <div class="d-grid flex-grow-1 px-2">
+        <button type="button" class="navbar-toggler btn btn-white" data-bs-toggle="collapse" data-bs-target="#navbarVerticalNavMenu" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navbarVerticalNavMenu">
+          <span class="d-flex justify-content-between align-items-center">
+            <span class="h3 mb-0">Nav menu</span>
+
+            <span class="navbar-toggler-default">
+              <i class="bi-list"></i>
+            </span>
+
+            <span class="navbar-toggler-toggled">
+              <i class="bi-x"></i>
+            </span>
+          </span>
+        </button>
+      </div>
+      <!-- End Navbar Toggle -->
+
+      <!-- Navbar Collapse -->
+      <div id="navbarVerticalNavMenu" class="collapse navbar-collapse">
+        <div class="navbar-brand-wrapper border-end" style="height: auto;">
+          <!-- Default Logo -->
+          <div class="d-flex align-items-center mb-3">
+            <a class="navbar-brand" href="../documentation/index.html" aria-label="Front">
+              <img class="navbar-brand-logo" src="../assets/svg/logos/logo.svg" alt="Logo" data-hs-theme-appearance="default">
+              <img class="navbar-brand-logo" src="../assets/svg/logos-light/logo.svg" alt="Logo" data-hs-theme-appearance="dark">
+            </a>
+            <a class="navbar-brand-badge" href="../documentation/changelog.html">
+              <span class="badge bg-soft-primary text-primary ms-2">v2.1</span>
+            </a>
+          </div>
+          <!-- End Default Logo -->
+        </div>
+
+        <div class="docs-navbar-sidebar-aside-body navbar-sidebar-aside-body">
+          <ul id="navbarSettings" class="navbar-nav nav nav-vertical nav-tabs nav-tabs-borderless nav-sm">
+            <li class="nav-item">
+              <span class="nav-subtitle">Documentation</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/index.html">Introduction</a>
+            </li>
+
+            <li class="nav-item my-2 my-lg-5"></li>
+
+            <li class="nav-item">
+              <span class="nav-subtitle">Getting started</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/getting-started.html">Getting Started</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/gulp.html">Gulp</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/darkmode.html">Dark Mode <span class="badge bg-soft-dark text-dark lh-base ms-1">New</span></a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/customization.html">Customization</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/credits.html">Credits</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/changelog.html">Changelog</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <span class="nav-subtitle">Design &amp; Graphics</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/bs-icons.html">Bootstrap Icons</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/illustrations.html">Illustrations</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <span class="nav-subtitle">Components</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/accordion.html">Accordion</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/alerts.html">Alerts</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/avatars.html">Avatars</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/badge.html">Badge</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/breadcrumb.html">Breadcrumb</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/buttons.html">Buttons</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/button-group.html">Button Group</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/cards.html">Cards</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/collapse.html">Collapse</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/column-divider.html">Column Divider</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/devices.html">Devices</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/divider.html">Divider</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/dropdowns.html">Dropdowns</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/icons.html">Icons</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/list-group.html">List Group</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/lists.html">Lists</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/legend-indicator.html">Legend Indicator</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/modal.html">Modal</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/offcanvas.html">Offcanvas</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/page-header.html">Page Header</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/pagination.html">Pagination</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/popovers.html">Popovers</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/progress.html">Progress</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/profile.html">Profile</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/shapes.html">Shapes</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sliding-img.html">Sliding Image</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/spinners.html">Spinners</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/steps.html">Steps</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/tab.html">Tab</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/toasts.html">Toasts</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/tooltips.html">Tooltips</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/typography.html">Typography</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Navbars</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/navbar.html">Navbar</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/navs.html">Navs</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/mega-menu.html">Mega Menu</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/navbar-vertical-aside.html">Navbar Vertical Aside</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/scrollspy.html">Scrollspy</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Tables</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/tables.html">Tables</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/datatables.html">Datatables</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/table-sticky-header.html">Sticky Header</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Basic forms</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/basic-forms.html">Basic Forms</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/checks-and-switches.html">Checks &amp; Switches</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/input-group.html">Input Group</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle">Advanced Forms</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/select.html">Advanced Select</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/datepicker.html">Datepicker (Flatpickr)</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/daterangepicker.html">Date Range Picker</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link active" href="../documentation/calendar.html">Calendar (Fullcalendar)</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/file-attachments.html">File Attachments</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/dropzone.html">Drag’ n’ Drop File Uploads</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/quill.html">WYSIWYG Editor</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/quantity-counter.html">Quantity Counter</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/copy-to-clipboard.html">Copy to Clipboard</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/input-mask.html">Input Mask</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/step-forms.html">Step Forms (Wizards)</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/add-field.html">Add Field</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/toggle-password.html">Toggle Password</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/count-characters.html">Count Characters</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/form-search.html">Form Search</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/toggle-switch.html">Toggle Switch</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/google-recaptcha.html">Google reCAPTCHA</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle">Charts</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/chartjs.html">Chart.js</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/counter.html">Counter</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/circles.html">Circles.js (Pie Chart)</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle">Others</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/fslightbox.html">Fullscreen Lightbox</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/maps-leaflet.html">Leaflet</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/maps-jsvectormap.html">JSVectorMap</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sortablejs.html">SortableJS</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sticky-block.html">Sticky Block</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/go-to.html">Go To</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Utilities</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/backgrounds.html">Backgrounds</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/borders.html">Borders</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/colors.html">Colors</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/links.html">Links</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/position.html">Position</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/shadows.html">Shadows</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sizing.html">Sizing</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/spacing.html">Spacing</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/z-index.html">Z-index</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/opacity.html">Opacity</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- End Navbar Collapse -->
+    </nav>
+    <!-- End Navbar -->
+
+    <!-- Content -->
+    <div class="navbar-sidebar-aside-content content-space-1 content-space-md-2 px-lg-5 px-xl-10">
+      <!-- Page Header -->
+      <div class="docs-page-header">
+        <div class="row align-items-center">
+          <div class="col-sm">
+            <h1 class="docs-page-header-title">Calendar (Fullcalendar)</h1>
+            <p class="docs-page-header-text">The most popular full-sized JavaScript Calendar.</p>
+            <a class="link" href="https://fullcalendar.io/" target="_blank">Fullcalendar documentation <i class="bi-box-arrow-up-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- End Page Header -->
+
+      <!-- Heading -->
+      <h2 id="how-to-use" class="hs-docs-heading">
+        How to use <a class="anchorjs-link" href="#how-to-use" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <p>Copy-paste the stylesheet <code>&lt;link&gt;</code> into your <code>&lt;head&gt;</code> to load the CSS.</p>
+
+      <pre class="rounded mb-4">
+				<code class="language-html" data-lang="html">
+        	&lt;link rel="stylesheet" href="./assets/vendor/fullcalendar/main.min.css"&gt;
+      	</code>
+			</pre>
+
+      <p>Copy-paste the following <code>&lt;script&gt;</code> near the end of your pages under <em> <u>JS Implementing Plugins</u> </em> to enable it.</p>
+
+      <pre class="rounded mb-4">
+				<code class="language-html" data-lang="html">
+        	&lt;script src="./assets/vendor/fullcalendar/main.min.js"&gt;&lt;/script&gt;
+      	</code>
+			</pre>
+
+      <p>Copy-paste the following <code>&lt;script&gt;</code> near the end of your pages under <em> <u>JS Implementing Plugins</u> </em> to enable it.</p>
+
+      <pre class="rounded mb-4">
+				<code class="language-html" data-lang="html">
+      	</code>
+			</pre>
+
+      <p>Copy-paste the init function under <em> <u>JS Plugins Init.</u> </em>, before the closing <code>&lt;/body&gt;</code> tag, to enable it.</p>
+
+      <pre class="rounded">
+				<code class="language-html" data-lang="html">
+        	&lt;script&gt;
+	          (function() {
+	            // INITIALIZATION OF FULLCALENDAR
+	            // =======================================================
+			 				HSCore.components.HSFullCalendar.init(selector, options);
+	          });
+	        &lt;/script&gt;
+      	</code>
+			</pre>
+
+      <!-- Heading -->
+      <h2 id="basic-example" class="hs-docs-heading">
+        Basic example <a class="anchorjs-link" href="#basic-example" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab1" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab1" data-bs-toggle="pill" href="#nav-result1" role="tab" aria-controls="nav-result1" aria-selected="true">Preview </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab1" data-bs-toggle="pill" href="#nav-html1" role="tab" aria-controls="nav-html1" aria-selected="false">HTML </a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent1">
+          <div class="tab-pane fade p-4 show active" id="nav-result1" role="tabpanel" aria-labelledby="nav-resultTab1">
+            <!-- Fullcalendar-->
+            <div class="js-fullcalendar fullcalendar-custom" data-hs-fullscreen-options='{
+								   "initialDate": "2020-09-10"
+							     }'></div>
+            <!-- End Fullcalendar -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html1" role="tabpanel" aria-labelledby="nav-htmlTab1">
+            <pre>
+							<code class="language-markup" data-lang="html">
+								&lt;!-- Fullcalendar--&gt;
+								&lt;div class=&quot;js-fullcalendar fullcalendar-custom&quot;
+									 data-hs-fullscreen-options='{
+									   &quot;initialDate&quot;: &quot;2020-09-10&quot;
+								     }'&gt;
+								&lt;/div&gt;
+								&lt;!-- End Fullcalendar --&gt;
+							</code>
+						</pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="drag-n-drop-events" class="hs-docs-heading">
+        Drag-n-drop events <a class="anchorjs-link" href="#drag-n-drop-events" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab2" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab2" data-bs-toggle="pill" href="#nav-result2" role="tab" aria-controls="nav-result2" aria-selected="true">Preview </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab2" data-bs-toggle="pill" href="#nav-html2" role="tab" aria-controls="nav-html2" aria-selected="false">HTML </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-jsTab2" data-bs-toggle="pill" href="#nav-js2" role="tab" aria-controls="nav-js2" aria-selected="false">JS </a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent2">
+          <div class="tab-pane fade p-4 show active" id="nav-result2" role="tabpanel" aria-labelledby="nav-resultTab2">
+            <h4>Drag these onto the calendar:</h4>
+
+            <!-- External Events -->
+            <ul id="external-events" class="fullcalendar-custom list-unstyled list-unstyled-py-2 w-sm-50 mb-5">
+              <li>
+                <!-- Event -->
+                <div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event fc-daygrid-inline-block-event" data-event='{
+										   "title": "Open a new task on Jira",
+										   "image": "../assets/svg/brands/jira-icon.svg",
+										   "className": ""
+									     }'>
+                  <div class="fc-event-title">
+                    <div class="d-flex align-items-center">
+                      <img class="avatar avatar-xss me-2" src="../assets/svg/brands/jira-icon.svg" alt="Image Description">
+                      <span>Open a new task on Jira</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- End Event -->
+              </li>
+              <li>
+                <!-- Event -->
+                <div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event fc-daygrid-inline-block-event fc-event-success" data-event='{
+											 "title": "Send weekly invoice to John",
+											 "image": "../assets/svg/brands/excel-icon.svg",
+											 "className": "fc-event-success"
+									     }'>
+                  <div class="fc-event-title">
+                    <div class="d-flex align-items-center">
+                      <img class="avatar avatar-xss me-2" src="../assets/svg/brands/excel-icon.svg" alt="Image Description">
+                      <span>Send weekly invoice to John</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- End Event -->
+              </li>
+              <li>
+                <!-- Event -->
+                <div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event fc-daygrid-inline-block-event" data-event='{
+										   "title": "Shoot a message to Christina on Slack",
+										   "image": "../assets/svg/brands/slack-icon.svg",
+										   "className": ""
+									     }'>
+                  <div class="fc-event-title">
+                    <div class="d-flex align-items-center">
+                      <img class="avatar avatar-xss me-2" src="../assets/svg/brands/slack-icon.svg" alt="Image Description">
+                      <span>Shoot a message to Christina on Slack</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- End Event -->
+              </li>
+            </ul>
+            <!-- End External Events -->
+
+            <!-- Fullcalendar -->
+            <div id="js-fullcalendar-draggable" class="fullcalendar-custom"></div>
+            <!-- End Fullcalendar -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html2" role="tabpanel" aria-labelledby="nav-htmlTab2">
+            <pre>
+							<code class="language-markup" data-lang="html">
+								&lt;h4&gt;Drag these onto the calendar:&lt;/h4&gt;
+
+								&lt;!-- External Events --&gt;
+								&lt;ul id=&quot;external-events&quot; class=&quot;fullcalendar-custom list-unstyled list-unstyled-py-2 w-sm-50 mb-5&quot;&gt;
+									&lt;li&gt;
+										&lt;!-- Event --&gt;
+										&lt;div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event fc-daygrid-inline-block-event'
+												 data-event='{
+													 &quot;title&quot;: &quot;Open a new task on Jira&quot;,
+													 &quot;image&quot;: &quot;../assets/svg/brands/jira-icon.svg&quot;,
+													 &quot;className&quot;: &quot;&quot;
+												 }'&gt;
+											&lt;div class='fc-event-title'&gt;
+												&lt;div class='d-flex align-items-center'&gt;
+													&lt;img class=&quot;avatar avatar-xss me-2&quot; src=&quot;../assets/svg/brands/jira-icon.svg&quot; alt=&quot;Image Description&quot;&gt;
+													&lt;span&gt;Open a new task on Jira&lt;/span&gt;
+												&lt;/div&gt;
+											&lt;/div&gt;
+										&lt;/div&gt;
+										&lt;!-- End Event --&gt;
+									&lt;/li&gt;
+
+									&lt;li&gt;
+										&lt;!-- Event --&gt;
+										&lt;div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event fc-daygrid-inline-block-event fc-event-success'
+												 data-event='{
+													 &quot;title&quot;: &quot;Send weekly invoice to John&quot;,
+													 &quot;image&quot;: &quot;../assets/svg/brands/excel-icon.svg&quot;,
+													 &quot;className&quot;: &quot;fc-event-success&quot;
+												 }'&gt;
+											&lt;div class='fc-event-title'&gt;
+												&lt;div class='d-flex align-items-center'&gt;
+													&lt;img class=&quot;avatar avatar-xss me-2&quot; src=&quot;../assets/svg/brands/excel-icon.svg&quot; alt=&quot;Image Description&quot;&gt;
+													&lt;span&gt;Send weekly invoice to John&lt;/span&gt;
+												&lt;/div&gt;
+											&lt;/div&gt;
+										&lt;/div&gt;
+										&lt;!-- End Event --&gt;
+									&lt;/li&gt;
+
+									&lt;li&gt;
+										&lt;!-- Event --&gt;
+										&lt;div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event fc-daygrid-inline-block-event'
+												 data-event='{
+													 &quot;title&quot;: &quot;Shoot a message to Christina on Slack&quot;,
+													 &quot;image&quot;: &quot;../assets/svg/brands/slack-icon.svg&quot;,
+													 &quot;className&quot;: &quot;&quot;
+												 }'
+										&gt;
+											&lt;div class='fc-event-title'&gt;
+												&lt;div class='d-flex align-items-center'&gt;
+													&lt;img class=&quot;avatar avatar-xss me-2&quot; src=&quot;../assets/svg/brands/slack-icon.svg&quot; alt=&quot;Image Description&quot;&gt;
+													&lt;span&gt;Shoot a message to Christina on Slack&lt;/span&gt;
+												&lt;/div&gt;
+											&lt;/div&gt;
+										&lt;/div&gt;
+										&lt;!-- End Event --&gt;
+									&lt;/li&gt;
+								&lt;/ul&gt;
+								&lt;!-- End External Events --&gt;
+
+								&lt;!-- Fullcalendar --&gt;
+								&lt;div id=&quot;js-fullcalendar-draggable&quot; class=&quot;fullcalendar-custom&quot;&gt;&lt;/div&gt;
+								&lt;!-- End Fullcalendar --&gt;
+							</code>
+						</pre>
+          </div>
+
+          <div class="tab-pane fade" id="nav-js2" role="tabpanel" aria-labelledby="nav-jsTab2">
+            <pre>
+							<code class="language-markup" data-lang="javascript">
+								&lt;script&gt;
+									// ADD DRAGGABLE CLASS FOR CALENDAR
+									// =======================================================
+									const Draggable = FullCalendar.Draggable
+
+									new Draggable(document.querySelector('#external-events'), {
+										itemSelector: '.fc-event'
+									})
+
+									(function () {
+										const eventContent = function(data) {
+											return `
+												&lt;div class=&quot;d-flex align-items-center px-2&quot;&gt;
+													${data && data.extendedProps.image ? `&lt;img class=&quot;avatar avatar-xss&quot; src=&quot;${data.extendedProps.image}&quot; alt=&quot;Image Description&quot;&gt;` : ''}
+													&lt;span class=&quot;fc-event-title fc-sticky&quot;&gt;${data.title}&lt;/span&gt;
+												&lt;/div&gt;
+											`;
+										};
+
+										HSCore.components.HSFullCalendar.init('#js-fullcalendar-draggable', {
+											events: [
+												{
+													&quot;title&quot;: &quot;English Lesson&quot;,
+													&quot;start&quot;: &quot;2020-09-03T01:00:00&quot;,
+													&quot;end&quot;: &quot;2020-09-03T02:30:00&quot;
+												},
+												{
+													&quot;title&quot;: &quot;Spanish Lesson&quot;,
+													&quot;start&quot;: &quot;2020-09-03T04:00:00&quot;,
+													&quot;end&quot;: &quot;2020-09-03T05:30:00&quot;
+												},
+												{
+													&quot;title&quot;: &quot;Javascript Lesson&quot;,
+													&quot;start&quot;: &quot;2020-09-14T01:00:00&quot;,
+													&quot;end&quot;: &quot;2020-09-16T02:30:00&quot;
+												},
+												{
+													&quot;title&quot;: &quot;PHP Lesson&quot;,
+													&quot;start&quot;: &quot;2020-09-06T04:00:00&quot;,
+													&quot;end&quot;: &quot;2020-09-09T05:30:00&quot;
+												}
+											],
+											initialDate: &quot;2020-09-10&quot;,
+											headerToolbar: {
+												left: &quot;prev,next today&quot;,
+												center: &quot;title&quot;,
+												right: &quot;&quot;,
+											},
+											editable: true,
+											eventContent({event}) {
+												return {
+													html: eventContent(event),
+												}
+											},
+											drop({draggedEl}) {
+												draggedEl.remove();
+											}
+										})
+									})()
+							 	&lt;/script&gt;
+							</code>
+						</pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="clicking-and-selecting" class="hs-docs-heading">
+        Date Clicking &amp; Selecting <a class="anchorjs-link" href="#clicking-and-selecting" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab3" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab3" data-bs-toggle="pill" href="#nav-result3" role="tab" aria-controls="nav-result3" aria-selected="true">Preview </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab3" data-bs-toggle="pill" href="#nav-html3" role="tab" aria-controls="nav-html3" aria-selected="false">HTML </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-jsTab3" data-bs-toggle="pill" href="#nav-js3" role="tab" aria-controls="nav-js3" aria-selected="false">JS </a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Alert -->
+        <div class="alert alert-soft-dark card-alert" role="alert"> This example uses <a class="alert-link" href="datepicker.html">Datepicker</a> libraries. </div>
+        <!-- End Alert -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent3">
+          <div class="tab-pane fade p-4 show active" id="nav-result3" role="tabpanel" aria-labelledby="nav-resultTab3">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addEventModal">
+              <i class="bi bi-plus"></i> Add event </button>
+            <!-- End Button trigger modal -->
+
+            <div id="js-fullcalendar-editable" class="fullcalendar-custom"></div>
+            <!-- End Fullcalendar -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html3" role="tabpanel" aria-labelledby="nav-htmlTab3">
+            <pre>
+							<code class="language-markup" data-lang="html">
+								&lt;!-- Button trigger modal --&gt;
+								&lt;button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addEventModal"&gt;
+								  &lt;i class="bi bi-plus"&gt;&lt;/i&gt; Add event &lt;/button&gt;
+								&lt;!-- End Button trigger modal --&gt;
+
+								&lt;div id="js-fullcalendar-editable" class="fullcalendar-custom"&gt;&lt;/div&gt;
+								&lt;!-- End Fullcalendar --&gt;
+
+								&lt;!-- Modal --&gt;
+							  &lt;div class="modal fade" id="addEventModal" tabindex="-1" role="dialog" aria-hidden="true"&gt;
+							    &lt;div class="modal-dialog modal-dialog-centered" role="document"&gt;
+							      &lt;div class="modal-content"&gt;
+							        &lt;!-- Header --&gt;
+							        &lt;div class="modal-close"&gt;
+							          &lt;button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"&gt;&lt;/button&gt;
+							        &lt;/div&gt;
+							        &lt;!-- End Header --&gt;
+
+							        &lt;!-- Body --&gt;
+							        &lt;div class="modal-body"&gt;
+							          &lt;div class="mb-4"&gt;
+							            &lt;input type="text" id="eventTitle" class="form-control form-control-lg form-control-flush" placeholder="Add title and time" aria-label="Add title and time"&gt;
+							          &lt;/div&gt;
+
+							          &lt;!-- Media --&gt;
+							          &lt;div class="d-flex mb-4"&gt;
+							            &lt;i class="bi-calendar-week nav-icon mt-2 me-2"&gt;&lt;/i&gt;
+
+							            &lt;div class="flex-grow-1"&gt;
+							              &lt;label for="eventDateRangeLabel" class="visually-hidden"&gt;Date &lt;/label&gt;
+
+							              &lt;!-- Flatpickr --&gt;
+							              &lt;input type="text" id="eventDateRangeLabel" class="js-flatpickr form-control flatpickr-custom mb-2" placeholder="Select dates" data-hs-flatpickr-options='{
+							                       "dateFormat": "m/d/Y",
+							                       "mode": "range",
+							                       "minDate": "12/01/2020"
+							                     }'&gt;
+							              &lt;!-- End Flatpickr --&gt;
+
+							              &lt;label for="eventRepeatLabel" class="text-body me-2 mb-0"&gt;Repeat: &lt;/label&gt;
+
+							              &lt;!-- Select --&gt;
+							              &lt;div class="tom-select-custom"&gt;
+							                &lt;select id="eventRepeatLabel" class="js-select form-select"
+							                      data-hs-tom-select-options='{
+							                        "hideSearch": true,
+							                        "placeholder": "Add guestse"
+							                      }'&gt;
+							                  &lt;option value="everyday" selected&gt;Everyday&lt;/option&gt;
+							                  &lt;option value="weekdays"&gt;Weekdays&lt;/option&gt;
+							                  &lt;option value="never"&gt;Never&lt;/option&gt;
+							                &lt;/select&gt;
+							              &lt;/div&gt;
+							              &lt;!-- End Select --&gt;
+							            &lt;/div&gt;
+							          &lt;/div&gt;
+							          &lt;!-- End Media --&gt;
+
+							          &lt;!-- Media --&gt;
+							          &lt;div class="d-flex mb-4"&gt;
+							            &lt;i class="bi-people nav-icon mt-2 me-2"&gt;&lt;/i&gt;
+
+							            &lt;div class="flex-grow-1"&gt;
+							              &lt;label for="eventGuestsLabel" class="visually-hidden"&gt;Add guests &lt;/label&gt;
+
+							              &lt;!-- Select --&gt;
+							              &lt;div class="tom-select-custom"&gt;
+							                &lt;select id="eventGuestsLabel" class="form-select" multiple data-hs-tom-select-options='{
+							                      "placeholder": "Add guestse"
+							                    }'&gt;&lt;/select&gt;
+							              &lt;/div&gt;
+							              &lt;!-- End Select --&gt;
+							            &lt;/div&gt;
+							          &lt;/div&gt;
+							          &lt;!-- End Media --&gt;
+
+							          &lt;!-- Media --&gt;
+							          &lt;div class="d-flex mb-4"&gt;
+							            &lt;i class="bi-geo-alt nav-icon mt-2 me-2"&gt;&lt;/i&gt;
+							            &lt;div class="flex-grow-1"&gt;
+							              &lt;label for="eventLocationLabel" class="visually-hidden"&gt;Add location &lt;/label&gt;
+							              &lt;input type="text" class="form-control form-control-light form-control-borderless" id="eventLocationLabel" placeholder="Add location" aria-label="Add location"&gt;
+							            &lt;/div&gt;
+							          &lt;/div&gt;
+							          &lt;!-- End Media --&gt;
+
+							          &lt;!-- Media --&gt;
+							          &lt;div class="d-flex mb-4"&gt;
+							            &lt;i class="bi-text-left nav-icon mt-2 me-2"&gt;&lt;/i&gt;
+							            &lt;div class="flex-grow-1"&gt;
+							              &lt;label for="eventDescriptionLabel" class="visually-hidden"&gt;Add description &lt;/label&gt;
+							              &lt;textarea id="eventDescriptionLabel" class="form-control form-control-light form-control-borderless" placeholder="Add description"&gt;&lt;/textarea&gt;
+							            &lt;/div&gt;
+							          &lt;/div&gt;
+							          &lt;!-- End Media --&gt;
+
+							          &lt;div class="row"&gt;
+							            &lt;div class="col"&gt;
+							              &lt;!-- Media --&gt;
+							              &lt;a class="d-flex align-items-center" href="../user-profile.html"&gt;
+							                &lt;div class="avatar avatar-xs avatar-circle me-3"&gt;
+							                  &lt;img class="avatar-img" src="../assets/img/160x160/img10.jpg" alt="Image Description"&gt;
+							                &lt;/div&gt;
+							                &lt;div class="flex-grow-1"&gt;
+							                  &lt;span class="d-block fs6 text-body"&gt;Assignee:&lt;/span&gt;
+							                  &lt;span class="h5 text-inherit"&gt;Amanda Harvey&lt;/span&gt;
+							                &lt;/div&gt;
+							              &lt;/a&gt;
+							              &lt;!-- End Media --&gt;
+							            &lt;/div&gt;
+
+							            &lt;div class="col-auto"&gt;
+							              &lt;label for="eventColorLabel" class="visually-hidden"&gt;Event color &lt;/label&gt;
+
+							              &lt;!-- Select --&gt;
+							              &lt;div class="tom-select-custom"&gt;
+							                &lt;select id="eventColorLabel" class="js-select form-select" data-hs-tom-select-options='{
+							                      "hideSearch": true,
+							                      "width": "10rem"
+							                    }'&gt;
+							                  &lt;option value="rgba(55,125,255,.1)" selected data-option-template='&lt;div&gt;&lt;span class="legend-indicator bg-primary"&gt;&lt;/span&gt;Primary&lt;/div&gt;'&gt;Primary &lt;/option&gt;
+							                  &lt;option value="rgba(0,201,167,.1)" data-option-template='&lt;div&gt;&lt;span class="legend-indicator bg-success"&gt;&lt;/span&gt;Green&lt;/div&gt;'&gt;Green &lt;/option&gt;
+							                  &lt;option value="rgba(237,76,120,.1)" data-option-template='&lt;div&gt;&lt;span class="legend-indicator bg-danger"&gt;&lt;/span&gt;Red&lt;/div&gt;'&gt;Red &lt;/option&gt;
+							                  &lt;option value="rgba(245,202,153,.1)" data-option-template='&lt;div&gt;&lt;span class="legend-indicator bg-warning"&gt;&lt;/span&gt;Yellow&lt;/div&gt;'&gt;Yellow &lt;/option&gt;
+							                  &lt;option value="rgba(0,201,219,1)" data-option-template='&lt;div&gt;&lt;span class="legend-indicator bg-info"&gt;&lt;/span&gt;Cyan&lt;/div&gt;'&gt;Cyan &lt;/option&gt;
+							                  &lt;option value="rgba(19,33,68,1)" data-option-template='&lt;div&gt;&lt;span class="legend-indicator bg-dark"&gt;&lt;/span&gt;Navy&lt;/div&gt;'&gt;Navy &lt;/option&gt;
+							                &lt;/select&gt;
+							              &lt;/div&gt;
+							            &lt;/div&gt;
+							          &lt;/div&gt;
+							        &lt;/div&gt;
+							        &lt;!-- End Body --&gt;
+
+							        &lt;!-- Footer --&gt;
+							        &lt;div class="modal-footer"&gt;
+							          &lt;button type="button" id="discardFormt" class="btn btn-white" data-dismiss="modal"&gt;Discard &lt;/button&gt;
+							          &lt;button type="button" id="processEvent" class="btn btn-primary"&gt;Create event &lt;/button&gt;
+							        &lt;/div&gt;
+							        &lt;!-- End Footer --&gt;
+							      &lt;/div&gt;
+							    &lt;/div&gt;
+							  &lt;/div&gt;
+							  &lt;!-- End Modal --&gt;
+							</code>
+						</pre>
+          </div>
+
+          <div class="tab-pane fade" id="nav-js3" role="tabpanel" aria-labelledby="nav-jsTab3">
+            <pre>
+							<code class="language-markup" data-lang="javascript">
+								&lt;script src=&quot;../assets/vendor/daterangepicker/moment.min.js&quot;&gt;&lt;/script&gt;
+								&lt;script src=&quot;../assets/vendor/flatpickr/dist/flatpickr.min.js&quot;&gt;&lt;/script&gt;
+
+								&lt;script&gt;
+								(function () {
+									let $popover;
+									let $fullcalendarEditable;
+									let $guestsField;
+									const popoverContent = function(data) {
+										return `
+							  				&lt;ul class=&quot;list-unstyled&quot;&gt;
+												&lt;li class=&quot;d-flex&quot;&gt;Start: ${moment(data.event.start).format('YYYY-MM-DD hh:mm')}&lt;/li&gt;
+												&lt;li class=&quot;d-flex&quot;&gt;End: ${moment(data.event.end).format('YYYY-MM-DD hh:mm')}&lt;/li&gt;
+												&lt;li class=&quot;d-flex&quot;&gt;Repeat: ${data.event.extendedProps.repeatField}&lt;/li&gt;
+												&lt;li class=&quot;d-flex&quot;&gt;Location: ${data.event.extendedProps.eventLocationLabel}&lt;/li&gt;
+												&lt;li class=&quot;d-flex&quot;&gt;Description: ${data.event.extendedProps.eventDescriptionLabel}&lt;/li&gt;
+												&lt;li&gt;Guests: ${getAvatars(data.event.extendedProps.guestsField)}&lt;/li&gt;
+											&lt;/ul&gt;
+											&lt;a id=&quot;modal-invoker-${data.event.id}&quot; href=&quot;javascript:;&quot; class=&quot;btn btn-soft-primary btn-sm&quot;&gt;Edit&lt;/a&gt;
+							`
+									};
+
+									const $titleField = document.querySelector('#eventTitle');
+									const $repeatField = document.querySelector('#eventRepeatLabel');
+									const $eventDescriptionLabel = document.querySelector('#eventDescriptionLabel');
+									const $eventLocationLabel = document.querySelector('#eventLocationLabel');
+									const $eventColorLabel = document.querySelector('#eventColorLabel');
+									const $eventGuestsLabel = document.querySelector('#eventGuestsLabel');
+									let editableEvent = {};
+
+									const $processEvent = document.querySelector('#processEvent');
+									const $addEventModal = document.querySelector('#addEventModal');
+
+									const addEventModal = new bootstrap.Modal($addEventModal);
+
+									// INITIALIZATION OF FLATPICKR
+									// =======================================================
+									HSCore.components.HSFlatpickr.init('#eventDateRangeLabel');
+									const eventDateRange = HSCore.components.HSFlatpickr.getItem('eventDateRangeLabel')
+
+									HSCore.components.HSTomSelect.init('.js-select')
+
+									HSCore.components.HSTomSelect.init('#eventGuestsLabel', {
+										valueField: 'id',
+										create: false,
+										options: [
+											{
+												id: 1,
+												&quot;value&quot;: &quot;Amanda Harvey&quot;,
+												&quot;src&quot;: &quot;../assets/img/160x160/img10.jpg&quot;
+											},{
+												id: 2,
+												&quot;value&quot;: &quot;David Harrison&quot;,
+												&quot;src&quot;: &quot;../assets/img/160x160/img3.jpg&quot;
+											}, {
+												id: 3,
+												&quot;value&quot;: &quot;Finch Hoot&quot;,
+												&quot;src&quot;: &quot;../assets/img/160x160/img5.jpg&quot;
+											}, {
+												id: 4,
+												&quot;value&quot;: &quot;Ella Lauda&quot;,
+												&quot;src&quot;: &quot;../assets/img/160x160/img9.jpg&quot;
+											}
+										],
+										render: {
+											option: function(data, escape) {
+												return `&lt;div class=&quot;d-flex align-items-center&quot;&gt;
+
+									&lt;div class=&quot;flex-shrink-0&quot;&gt;
+									  &lt;div class=&quot;avatar avatar-sm avatar-circle&quot;&gt;
+										&lt;img class=&quot;avatar-img&quot; src=&quot;${data.src}&quot; alt=&quot;Image Description&quot;&gt;
+									  &lt;/div&gt;
+									&lt;/div&gt;
+									&lt;div class=&quot;flex-grow-1 ms-3&quot;&gt;
+									  &lt;h5 class=&quot;text-inherit mb-0&quot;&gt;${data.value}&lt;/h5&gt;
+									&lt;/div&gt;
+							   	  &lt;/div&gt;`
+											},
+											item: function(data, escape) {
+												return '&lt;div title=&quot;' + data.src + '&quot;&gt;' + data.value + '&lt;/div&gt;';
+											}
+										}
+									})
+
+									$guestsField = HSCore.components.HSTomSelect.getItem('eventGuestsLabel');
+
+									// INITIALIZATION OF FULL CALENDAR
+									// =======================================================
+									HSCore.components.HSFullCalendar.init('#js-fullcalendar-editable', {
+										events: [
+											{
+												id: 1,
+												title: &quot;English Lesson&quot;,
+												start: &quot;2020-12-03T01:00:00&quot;,
+												end: &quot;2020-12-03T02:30:00&quot;,
+												color: &quot;rgba(237,76,120,.1)&quot;,
+												eventDescriptionLabel: &quot;&quot;,
+												eventLocationLabel: &quot;&quot;,
+												repeatField: &quot;everyday&quot;,
+												guestsField: []
+											},
+											{
+												id: 2,
+												title: &quot;Spanish Lesson&quot;,
+												start: &quot;2020-12-03T04:00:00&quot;,
+												end: &quot;2020-12-03T05:30:00&quot;,
+												color: &quot;rgba(55,125,255,.1)&quot;,
+												eventDescriptionLabel: &quot;&quot;,
+												eventLocationLabel: &quot;&quot;,
+												repeatField: &quot;everyday&quot;,
+												guestsField: []
+											},
+											{
+												id: 3,
+												title: &quot;Javascript Lesson&quot;,
+												start: &quot;2020-12-14T01:00:00&quot;,
+												end: &quot;2020-12-16T02:30:00&quot;,
+												color: &quot;rgba(237,76,120,.1)&quot;,
+												eventDescriptionLabel: &quot;&quot;,
+												eventLocationLabel: &quot;&quot;,
+												repeatField: &quot;everyday&quot;,
+												guestsField: []
+											},
+											{
+												id: 4,
+												title: &quot;PHP Lesson&quot;,
+												start: &quot;2020-12-06T04:00:00&quot;,
+												end: &quot;2020-12-09T05:30:00&quot;,
+												color: &quot;rgba(55,125,255,.1)&quot;,
+												eventDescriptionLabel: &quot;&quot;,
+												eventLocationLabel: &quot;&quot;,
+												repeatField: &quot;everyday&quot;,
+												guestsField: []
+											}
+										],
+										initialDate: &quot;2020-12-10&quot;,
+										headerToolbar: {
+											left: &quot;prev,next today&quot;,
+											center: &quot;title&quot;,
+											right: &quot;&quot;
+										},
+										selectable: true,
+										editable: true,
+										select: function (date) {
+											prepareData('', date.startStr, date.endStr);
+										},
+										eventClick: function (event) {
+											const _popoverContent = popoverContent(event);
+
+											if ($popover && $popover._element) {
+												$popover.dispose();
+											}
+
+											// Open Popover
+											$popover = new bootstrap.Popover(event.el, {
+												html: true,
+												content: _popoverContent,
+												template: `
+													&lt;div class=&quot;popover fullcalendar-event-popover&quot; role=&quot;tooltip&quot;&gt;
+														&lt;div class=&quot;arrow&quot;&gt;&lt;/div&gt;
+														&lt;h3 class=&quot;popover-header&quot;&gt;&lt;/h3&gt;
+														&lt;div class=&quot;popover-body&quot;&gt;&lt;/div&gt;
+													&lt;/div&gt;
+												`,
+											});
+											$popover.show();
+
+											// Open Modal For Editing
+											event.el.addEventListener('shown.bs.popover', function () {
+												const $invoker = document.querySelector(`#modal-invoker-${event.event.id}`);
+
+												$invoker.addEventListener('click', function () {
+													if ($popover && $popover._element) {
+														$popover.dispose();
+													}
+
+													prepareData(
+															event.event.title,
+															event.event.start,
+															event.event.end,
+															event.event
+													);
+												})
+											})
+										},
+									});
+
+									setTimeout(function() {
+										$fullcalendarEditable = HSCore.components.HSFullCalendar.getItem('js-fullcalendar-editable');
+									});
+
+									// Events
+									document.addEventListener('click', function (e) {
+										if (
+												(e.target && e.target.id === 'closePopover' && $popover && $popover._element)
+												|| (e.target && !e.target.closest('.fc-event') && !e.target.closest('.popover') && $popover && $popover._element)
+										) {
+											$popover.dispose();
+										}
+									});
+
+									document.addEventListener('scroll', function () {
+										if ($popover && $popover._element) {
+											$popover.dispose();
+										}
+									});
+
+									$processEvent.addEventListener('click', function () {
+										const date = eventDateRange.selectedDates;
+
+										if (!Object.keys(editableEvent).length) {
+											$fullcalendarEditable.addEvent({
+												id: new Date().getTime(),
+												title: $titleField.value || '(No title)',
+												repeatField: $repeatField.value,
+												guestsField: $guestsField.getValue().map((id) =&gt; {
+													return Object.values($guestsField.options).filter(member =&gt; parseInt(member.id) === parseInt(id))[0]
+												}),
+												eventDescriptionLabel: $eventDescriptionLabel.value,
+												eventLocationLabel: $eventLocationLabel.value,
+												start: moment(date[0]).format('YYYY-MM-DD'),
+												end: date.length &gt; 1 ? moment(date[1]).format('YYYY-MM-DD') : moment(date[0]).format('YYYY-MM-DD'),
+												color: $eventColorLabel.value,
+											});
+										} else {
+											editableEvent.setProp('title', $titleField.value);
+											editableEvent.setExtendedProp('repeatField', $repeatField.getValue());
+											editableEvent.setExtendedProp('guestsField', $guestsField.getValue().map((id) =&gt; {
+												return Object.values($guestsField.options).filter(member =&gt; parseInt(member.id) === parseInt(id))[0]
+											}));
+											editableEvent.setExtendedProp('eventDescriptionLabel', $eventDescriptionLabel.value);
+											editableEvent.setExtendedProp('eventLocationLabel', $eventLocationLabel.value);
+											editableEvent.setProp('color', $eventColorLabel.getValue());
+											editableEvent.setStart(moment(date[0]).format('YYYY-MM-DD'));
+											editableEvent.setEnd(date.length &gt; 1 ? moment(date[1]).format('YYYY-MM-DD') : moment(date[0]).format('YYYY-MM-DD'));
+										}
+
+										addEventModal.hide();
+									})
+
+									$addEventModal.addEventListener('show.bs.modal', function () {
+										clearForm();
+									});
+
+									// Helpers
+									function triggerEvent(el, evt) {
+										const newEvt = document.createEvent('HTMLEvents');
+
+										newEvt.initEvent(evt, false, true);
+
+										el.dispatchEvent(newEvt);
+									}
+
+									function prepareData(title, start, end, event = {}) {
+										addEventModal.show();
+
+										$processEvent.textContent = 'Save';
+
+										$titleField.value = title;
+
+										eventDateRange.setDate([moment(start).format('MM/DD/YYYY'), moment(end).format('MM/DD/YYYY')])
+									}
+
+									function getAvatar(data) {
+										return `&lt;img class=&quot;avatar-img&quot; src=&quot;${data.src.toLowerCase()}&quot;  alt=&quot;${data.value}&quot; /&gt;`;
+									}
+
+									function getAvatars(members) {
+										const $list = document.createElement('div');
+										$list.classList.add(
+												'avatar-group',
+												'avatar-group-sm',
+												'mb-1'
+										);
+
+										for (let i = 0; i &lt; members.length; i += 1) {
+											const $item = document.createElement('span');
+											$item.classList.add(
+													'avatar',
+													'avatar-circle'
+											);
+											$item.innerHTML = `
+												${getAvatar(members[i])}
+											`;
+
+											$list.appendChild($item);
+										}
+
+										return members.length &gt; 0 ? $list.outerHTML : false
+									}
+
+									function clearForm() {
+										$titleField.value = '';
+										$eventDescriptionLabel.value = '';
+										$eventLocationLabel.value = '';
+										$repeatField.value = 'everyday';
+										$eventColorLabel.value = 'rgba(55,125,255,.1)';
+										editableEvent = {};
+
+										$guestsField.clear();
+										triggerEvent($repeatField, 'change');
+										triggerEvent($eventColorLabel, 'change');
+
+										$processEvent.textContent = 'Create Event';
+									}
+								})();
+							 	&lt;/script&gt;
+							</code>
+						</pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="with-search" class="hs-docs-heading">
+        With search <a class="anchorjs-link" href="#with-search" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab4" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab4" data-bs-toggle="pill" href="#nav-result4" role="tab" aria-controls="nav-result4" aria-selected="true">Preview </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab4" data-bs-toggle="pill" href="#nav-html4" role="tab" aria-controls="nav-html4" aria-selected="false">HTML </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-jsTab4" data-bs-toggle="pill" href="#nav-js4" role="tab" aria-controls="nav-js4" aria-selected="false">JS </a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent4">
+          <div class="tab-pane fade p-4 show active" id="nav-result4" role="tabpanel" aria-labelledby="nav-resultTab4">
+            <!-- Input Group -->
+            <div class="input-group input-group-merge input-group-flush mb-4">
+              <div class="input-group-prepend input-group-text">
+                <i class="bi-search"></i>
+              </div>
+              <input id="filter-by-title" type="search" class="form-control" placeholder="Search by title" aria-label="Search by title">
+            </div>
+            <!-- End Input Group -->
+
+            <div id="js-fullcalendar-with-search" class="fullcalendar-custom"></div>
+          </div>
+
+          <div class="tab-pane fade" id="nav-html4" role="tabpanel" aria-labelledby="nav-htmlTab4">
+            <pre>
+							<code class="language-markup" data-lang="html">
+          			&lt;!-- Input Group --&gt;
+								&lt;div class=&quot;input-group input-group-merge input-group-flush mb-4&quot;&gt;
+									&lt;div class=&quot;input-group-prepend input-group-text&quot;&gt;
+										&lt;i class=&quot;bi-search&quot;&gt;&lt;/i&gt;
+									&lt;/div&gt;
+									&lt;input id=&quot;filter-by-title&quot; type=&quot;search&quot; class=&quot;form-control&quot; placeholder=&quot;Search by title&quot; aria-label=&quot;Search by title&quot;&gt;
+								&lt;/div&gt;
+          			&lt;!-- End Input Group --&gt;
+
+								&lt;div id=&quot;js-fullcalendar-with-search&quot; class=&quot;fullcalendar-custom&quot;&gt;&lt;/div&gt;
+							</code>
+						</pre>
+          </div>
+
+          <div class="tab-pane fade" id="nav-js4" role="tabpanel" aria-labelledby="nav-jsTab4">
+            <pre>
+							<code class="language-markup" data-lang="javascript">
+								&lt;script&gt;
+									(function () {
+										HSCore.components.HSFullCalendar.init('#js-fullcalendar-with-search', {
+											events: [
+												{
+													&quot;title&quot;: &quot;English Lesson&quot;,
+													&quot;start&quot;: &quot;2020-09-03T01:00:00&quot;,
+													&quot;end&quot;: &quot;2020-09-03T02:30:00&quot;
+												},
+												{
+													&quot;title&quot;: &quot;Spanish Lesson&quot;,
+													&quot;start&quot;: &quot;2020-09-03T04:00:00&quot;,
+													&quot;end&quot;: &quot;2020-09-03T05:30:00&quot;
+												},
+												{
+													&quot;title&quot;: &quot;Javascript Lesson&quot;,
+													&quot;start&quot;: &quot;2020-09-14T01:00:00&quot;,
+													&quot;end&quot;: &quot;2020-09-16T02:30:00&quot;
+												},
+												{
+													&quot;title&quot;: &quot;PHP Lesson&quot;,
+													&quot;start&quot;: &quot;2020-09-06T04:00:00&quot;,
+													&quot;end&quot;: &quot;2020-09-09T05:30:00&quot;
+												}
+											],
+											initialDate: &quot;2020-09-10&quot;,
+											headerToolbar: {
+												left: &quot;prev,next today&quot;,
+												center: &quot;title&quot;,
+												right: &quot;&quot;
+											},
+											editable: true,
+										})
+
+										const filterSearchExample = new HSFullcalendarFilter(HSCore.components.HSFullCalendar.getItem('js-fullcalendar-with-search'))
+
+										filterSearchExample.addFilter('byTitle', function (event) {
+											return event.title.toLowerCase().indexOf($('#filter-by-title').val().toLowerCase()) !== -1
+										})
+
+										$('#filter-by-title').on('input', function () {
+											filterSearchExample.filter()
+										})
+
+										filterSearchExample.filter()
+									})();
+								&lt;/script&gt;
+							</code>
+						</pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="with-filters" class="hs-docs-heading">
+        With filters <a class="anchorjs-link" href="#with-filters" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab5" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab5" data-bs-toggle="pill" href="#nav-result5" role="tab" aria-controls="nav-result5" aria-selected="true">Preview </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab5" data-bs-toggle="pill" href="#nav-html5" role="tab" aria-controls="nav-html5" aria-selected="false">HTML </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-jsTab5" data-bs-toggle="pill" href="#nav-js5" role="tab" aria-controls="nav-js5" aria-selected="false">JS </a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent5">
+          <div class="tab-pane fade p-4 show active" id="nav-result5" role="tabpanel" aria-labelledby="nav-resultTab5">
+            <div class="mb-4">
+              <!-- Form Check -->
+              <div class="form-check form-check-inline">
+                <input type="checkbox" id="customInlineCheck1" class="form-check-input" value="1" checked>
+                <label class="form-check-label" for="customInlineCheck1">category 1 </label>
+              </div>
+              <!-- End Form Check -->
+
+              <!-- Form Check -->
+              <div class="form-check form-check-inline">
+                <input type="checkbox" id="customInlineCheck2" class="form-check-input indeterminate-checkbox" value="2" checked>
+                <label class="form-check-label" for="customInlineCheck2">category 2 </label>
+              </div>
+              <!-- End Form Check -->
+
+              <!-- Form Check -->
+              <div class="form-check form-check-inline">
+                <input type="checkbox" id="customInlineCheck3" class="form-check-input" value="3" checked>
+                <label class="form-check-label" for="customInlineCheck3">category 3 </label>
+              </div>
+              <!-- End Form Check -->
+            </div>
+
+            <div id="js-fullcalendar-with-filters" class="fullcalendar-custom"></div>
+          </div>
+
+          <div class="tab-pane fade" id="nav-html5" role="tabpanel" aria-labelledby="nav-htmlTab5">
+            <pre>
+							<code class="language-markup" data-lang="html">
+								&lt;!-- Form Check --&gt;
+	              &lt;div class="form-check form-check-inline"&gt;
+	                &lt;input type="checkbox" id="customInlineCheck1" class="form-check-input" value="1" checked&gt;
+	                &lt;label class="form-check-label" for="customInlineCheck1"&gt;category 1 &lt;/label&gt;
+	              &lt;/div&gt;
+	              &lt;!-- End Form Check --&gt;
+
+	              &lt;!-- Form Check --&gt;
+	              &lt;div class="form-check form-check-inline"&gt;
+	                &lt;input type="checkbox" id="customInlineCheck2" class="form-check-input indeterminate-checkbox" value="2" checked&gt;
+	                &lt;label class="form-check-label" for="customInlineCheck2"&gt;category 2 &lt;/label&gt;
+	              &lt;/div&gt;
+	              &lt;!-- End Form Check --&gt;
+
+	              &lt;!-- Form Check --&gt;
+	              &lt;div class="form-check form-check-inline"&gt;
+	                &lt;input type="checkbox" id="customInlineCheck3" class="form-check-input" value="3" checked&gt;
+	                &lt;label class="form-check-label" for="customInlineCheck3"&gt;category 3 &lt;/label&gt;
+	              &lt;/div&gt;
+	              &lt;!-- End Form Check --&gt;
+
+		            &lt;div id="js-fullcalendar-with-filters" class="fullcalendar-custom"&gt;&lt;/div&gt;
+							</code>
+						</pre>
+          </div>
+
+          <div class="tab-pane fade" id="nav-js5" role="tabpanel" aria-labelledby="nav-jsTab5">
+            <pre>
+							<code class="language-markup" data-lang="javascript">
+								&lt;script&gt;
+									(function () {
+										HSCore.components.HSFullCalendar.init('#js-fullcalendar-with-filters', {
+											events: [
+												{
+													&quot;title&quot;: &quot;English Lesson&quot;,
+													&quot;start&quot;: &quot;2020-09-03T01:00:00&quot;,
+													&quot;end&quot;: &quot;2020-09-03T02:30:00&quot;,
+													category_id: 1
+												},
+												{
+													&quot;title&quot;: &quot;Spanish Lesson&quot;,
+													&quot;start&quot;: &quot;2020-09-03T04:00:00&quot;,
+													&quot;end&quot;: &quot;2020-09-03T05:30:00&quot;,
+													category_id: 3
+												},
+												{
+													&quot;title&quot;: &quot;Javascript Lesson&quot;,
+													&quot;start&quot;: &quot;2020-09-14T01:00:00&quot;,
+													&quot;end&quot;: &quot;2020-09-16T02:30:00&quot;,
+													category_id: 2
+												},
+												{
+													&quot;title&quot;: &quot;PHP Lesson&quot;,
+													&quot;start&quot;: &quot;2020-09-06T04:00:00&quot;,
+													&quot;end&quot;: &quot;2020-09-09T05:30:00&quot;,
+													category_id: 1
+												}
+											],
+											initialDate: &quot;2020-09-10&quot;,
+											headerToolbar: {
+												left: &quot;prev,next today&quot;,
+												center: &quot;title&quot;,
+												right: &quot;&quot;
+											},
+											editable: true,
+										})
+
+										const filterCheckboxExample = new HSFullcalendarFilter(HSCore.components.HSFullCalendar.getItem('js-fullcalendar-with-filters'))
+
+										filterCheckboxExample.addFilter('byCategory', function (event) {
+											const selectedCategories = $('[data-filter] input:checked')
+											if (!selectedCategories.length) return false
+											let show = false
+
+											selectedCategories.each(key =&gt; {
+												if (event.extendedProps.category_id == $($(selectedCategories)[key]).val()) {
+													show = true
+													return false
+												}
+											})
+
+											return show
+										})
+
+										$('[data-filter]').on('change', function () {
+											filterCheckboxExample.filter()
+										})
+
+										filterCheckboxExample.filter()
+									})();
+								&lt;/script&gt;
+							</code>
+						</pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="header-with-select" class="hs-docs-heading">
+        Header with Tom Select <a class="anchorjs-link" href="#header-with-tom-select" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab6" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab6" data-bs-toggle="pill" href="#nav-result6" role="tab" aria-controls="nav-result6" aria-selected="true">Preview </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab6" data-bs-toggle="pill" href="#nav-html6" role="tab" aria-controls="nav-html6" aria-selected="false">HTML </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-jsTab6" data-bs-toggle="pill" href="#nav-js6" role="tab" aria-controls="nav-js6" aria-selected="false">JS </a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Alert -->
+        <div class="alert alert-soft-dark card-alert" role="alert"> This example uses <a class="alert-link" href="../documentation/select.html">tom select</a> library. </div>
+        <!-- End Alert -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent6">
+          <div class="tab-pane fade p-4 show active" id="nav-result6" role="tabpanel" aria-labelledby="nav-resultTab6">
+            <div id="js-fullcalendar-tom-select" class="fullcalendar-custom"></div>
+          </div>
+
+          <div class="tab-pane fade" id="nav-html6" role="tabpanel" aria-labelledby="nav-htmlTab6">
+            <pre>
+							<code class="language-markup" data-lang="html">
+								&lt;div id=&quot;js-fullcalendar-tom-select&quot; class=&quot;fullcalendar-custom&quot;&gt;&lt;/div&gt;
+							</code>
+						</pre>
+          </div>
+
+          <div class="tab-pane fade" id="nav-js6" role="tabpanel" aria-labelledby="nav-jsTab6">
+            <pre>
+							<code class="language-markup" data-lang="javascript">
+								&lt;script&gt;
+									(function () {
+										HSCore.components.HSFullCalendar.init('#js-fullcalendar-tom-select', {
+											initialDate: &quot;2020-09-10&quot;,
+											headerToolbar: {
+												left: &quot;prev,next today&quot;,
+												center: &quot;title&quot;,
+												right: &quot;&quot;
+											},
+											editable: true,
+											events: [
+												{
+													&quot;title&quot;: &quot;English Lesson&quot;,
+													&quot;start&quot;: &quot;2020-09-03T01:00:00&quot;,
+													&quot;end&quot;: &quot;2020-09-03T02:30:00&quot;
+												},
+												{
+													&quot;title&quot;: &quot;Spanish Lesson&quot;,
+													&quot;start&quot;: &quot;2020-09-03T04:00:00&quot;,
+													&quot;end&quot;: &quot;2020-09-03T05:30:00&quot;
+												},
+												{
+													&quot;title&quot;: &quot;Javascript Lesson&quot;,
+													&quot;start&quot;: &quot;2020-09-14T01:00:00&quot;,
+													&quot;end&quot;: &quot;2020-09-16T02:30:00&quot;
+												},
+												{
+													&quot;title&quot;: &quot;PHP Lesson&quot;,
+													&quot;start&quot;: &quot;2020-09-06T04:00:00&quot;,
+													&quot;end&quot;: &quot;2020-09-09T05:30:00&quot;
+												}
+											]
+										})
+
+
+										// APPEND SELECT CONSTROL IN TOOLBAR TO CHANGE CALENDAR VIEW
+										// =======================================================
+										const $select = document.createElement('div')
+										$select.innerHTML = &quot;&lt;select id=\&quot;changeView\&quot;&gt;&quot; +
+												&quot;&lt;option value='dayGridMonth'&gt;Month&lt;/option&gt;&quot; +
+												&quot;&lt;option value='dayGridWeek'&gt;Week&lt;/option&gt;&quot; +
+												&quot;&lt;option value='dayGridDay'&gt;Day&lt;/option&gt;&quot; +
+												&quot;&lt;/select&gt;&quot;
+
+										document.querySelector('#js-fullcalendar-tom-select .fc-toolbar-chunk:last-child').appendChild($select)
+
+										const fullcalendarWithSelect = HSCore.components.HSFullCalendar.getItem('js-fullcalendar-tom-select')
+
+										// INITIALIZATION OF SELECT
+										// =======================================================
+										HSCore.components.HSTomSelect.init('#changeView', {
+											hideSearch: true
+										})
+
+										const selectInstance = HSCore.components.HSTomSelect.getItem('changeView')
+
+										selectInstance.on('change', (val) =&gt; {
+											fullcalendarWithSelect.changeView(val)
+										})
+									})()
+							 	&lt;/script&gt;
+							</code>
+						</pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="time-grid" class="hs-docs-heading">
+        Time Grid <a class="anchorjs-link" href="#time-grid" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab7" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab7" data-bs-toggle="pill" href="#nav-result7" role="tab" aria-controls="nav-result7" aria-selected="true">Preview </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab7" data-bs-toggle="pill" href="#nav-html7" role="tab" aria-controls="nav-html7" aria-selected="false">HTML </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-jsTab7" data-bs-toggle="pill" href="#nav-js7" role="tab" aria-controls="nav-js7" aria-selected="false">JS </a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent7">
+          <div class="tab-pane fade p-4 show active" id="nav-result7" role="tabpanel" aria-labelledby="nav-resultTab7">
+            <!-- Fullcalendar -->
+            <div id="js-fullcalendar-custom-render" class="fullcalendar-custom"></div>
+            <!-- End Fullcalendar -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html7" role="tabpanel" aria-labelledby="nav-htmlTab7">
+            <pre>
+							<code class="language-markup" data-lang="html">
+								&lt;div id=&quot;js-fullcalendar-custom-render&quot; class=&quot;fullcalendar-custom&quot;&gt;&lt;/div&gt;
+							</code>
+						</pre>
+          </div>
+
+          <div class="tab-pane fade" id="nav-js7" role="tabpanel" aria-labelledby="nav-jsTab7">
+            <pre>
+							<code class="language-markup" data-lang="javascript">
+								&lt;script&gt;
+								(function () {
+									const $eventTimeGridModal = document.querySelector('#eventTimeGridModal');
+									const eventContent = function(data) {
+										return `
+											&lt;div class=&quot;d-flex fc-custom-event align-items-center p-2&quot;&gt;
+												&lt;span class=&quot;icon icon-primary me-3&quot;&gt;
+													&lt;i class=&quot;${data.event._def.extendedProps.icon}&quot;&gt;&lt;/i&gt;
+												&lt;/span&gt;
+
+												&lt;div class=&quot;flex-grow-1&quot;&gt;
+													&lt;h4 class=&quot;mb-1&quot;&gt;${data.event.title}&lt;/h4&gt;
+													&lt;span class=&quot;text-body fw-semibold&quot;&gt;${data.timeText}&lt;/span&gt;
+												&lt;/div&gt;
+
+												&lt;div class=&quot;avatar-group avatar-group-sm ms-auto&quot;&gt;
+													&lt;span class=&quot;avatar avatar-circle&quot;&gt;
+														&lt;img class=&quot;avatar-img&quot; src=&quot;../assets/img/160x160/img10.jpg&quot; alt=&quot;Image Description&quot;&gt;
+													&lt;/span&gt;
+													&lt;span class=&quot;avatar avatar-dark avatar-circle&quot;&gt;
+														&lt;span class=&quot;avatar-initials&quot;&gt;A&lt;/span&gt;
+													&lt;/span&gt;
+													&lt;span class=&quot;avatar avatar-circle&quot;&gt;
+														&lt;img class=&quot;avatar-img&quot; src=&quot;../assets/img/160x160/img3.jpg&quot; alt=&quot;Image Description&quot;&gt;
+													&lt;/span&gt;
+													&lt;span class=&quot;avatar avatar-primary avatar-circle&quot;&gt;
+														&lt;span class=&quot;avatar-initials&quot;&gt;2+&lt;/span&gt;
+													&lt;/span&gt;
+												&lt;/div&gt;
+											&lt;/div&gt;
+										`;
+									};
+
+									HSCore.components.HSFullCalendar.init('#js-fullcalendar-custom-render', {
+										events: [
+											{
+												&quot;title&quot;: &quot;SOLID in JavaScript Lesson&quot;,
+												&quot;start&quot;: &quot;2020-09-03T07:00:00&quot;,
+												&quot;end&quot;: &quot;2020-09-03T08:30:00&quot;,
+												icon: &quot;bi-tv&quot;
+											},
+											{
+												&quot;title&quot;: &quot;Vue Patterns&quot;,
+												&quot;start&quot;: &quot;2020-09-03T11:00:00&quot;,
+												&quot;end&quot;: &quot;2020-09-03T12:30:00&quot;,
+												icon: &quot;bi-tv&quot;
+											},
+										],
+										initialDate: &quot;2020-09-03&quot;,
+										initialView: &quot;timeGrid&quot;,
+										editable: true,
+										eventClick: function () {
+											$eventTimeGridModal.show();
+										},
+										eventContent: function (evt) {
+											return {
+												html: eventContent(evt),
+											}
+										},
+									});
+								})();
+							 	&lt;/script&gt;
+							</code>
+						</pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="custom-header" class="hs-docs-heading">
+        Custom Header <a class="anchorjs-link" href="#custom-header" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab9" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab9" data-bs-toggle="pill" href="#nav-result9" role="tab" aria-controls="nav-result9" aria-selected="true">Preview </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab9" data-bs-toggle="pill" href="#nav-html9" role="tab" aria-controls="nav-html9" aria-selected="false">HTML </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-jsTab9" data-bs-toggle="pill" href="#nav-js9" role="tab" aria-controls="nav-js9" aria-selected="false">JS </a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Alert -->
+        <div class="alert alert-soft-dark card-alert" role="alert"> This example uses <a class="alert-link" href="select.html">tom select</a> library. </div>
+        <!-- End Alert -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent9">
+          <div class="tab-pane fade p-4 show active" id="nav-result9" role="tabpanel" aria-labelledby="nav-resultTab9">
+            <div class="row align-items-sm-center mb-4">
+              <div class="col mb-2 mb-sm-0 me-2">
+                <div class="d-sm-flex align-items-sm-center">
+                  <button type="button" class="btn btn-white me-3" data-bs-toggle="tooltip" data-placement="top" title="" data-fc-today>Today </button>
+                  <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary btn-no-focus rounded-circle me-1" data-fc-prev-month data-bs-toggle="tooltip" data-placement="top" title="Previous month">
+                    <i class="bi bi-chevron-left"></i>
+                  </button>
+
+                  <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary btn-no-focus rounded-circle ms-1" data-fc-next-month data-bs-toggle="tooltip" data-placement="top" title="Next month">
+                    <i class="bi bi-chevron-right"></i>
+                  </button>
+
+                  <div class="ms-3">
+                    <h4 class="h3 mb-0" data-fc-title></h4>
+                  </div>
+                </div>
+              </div>
+              <!-- End Col -->
+
+              <div class="col-auto">
+                <!-- Select -->
+                <div class="tom-select-custom">
+                  <select id="customHeaderSelect" class="form-select" size="1" style="opacity: 0;" data-fc-grid-view data-hs-tom-select-options='{
+													  "hideSearch": true,
+													  "width": "10rem"
+													}'>
+                    <option value="dayGridMonth">Month</option>
+                    <option value="dayGridWeek">Week</option>
+                    <option value="dayGridDay">Day</option>
+                  </select>
+                </div>
+                <!-- End Select -->
+              </div>
+              <!-- End Col -->
+            </div>
+            <!-- End Row -->
+
+            <!-- FullCalendar -->
+            <div id="js-fullcalendar-custom-header" class="fullcalendar-custom"></div>
+            <!-- End FullCalendar -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html9" role="tabpanel" aria-labelledby="nav-htmlTab9">
+            <pre>
+							<code class="language-markup" data-lang="html">
+								&lt;div class="row align-items-sm-center mb-4"&gt;
+		              &lt;div class="col mb-2 mb-sm-0 me-2"&gt;
+		                &lt;div class="d-sm-flex align-items-sm-center"&gt;
+		                  &lt;button type="button" class="btn btn-white me-3" data-bs-toggle="tooltip" data-placement="top" title="" data-fc-today&gt;Today &lt;/button&gt;
+		                  &lt;button type="button" class="btn btn-icon btn-sm btn-ghost-secondary btn-no-focus rounded-circle me-1" data-fc-prev-month data-bs-toggle="tooltip" data-placement="top" title="Previous month"&gt;
+		                    &lt;i class="bi bi-chevron-left"&gt;&lt;/i&gt;
+		                  &lt;/button&gt;
+
+		                  &lt;button type="button" class="btn btn-icon btn-sm btn-ghost-secondary btn-no-focus rounded-circle ms-1" data-fc-next-month data-bs-toggle="tooltip" data-placement="top" title="Next month"&gt;
+		                    &lt;i class="bi bi-chevron-right"&gt;&lt;/i&gt;
+		                  &lt;/button&gt;
+
+		                  &lt;div class="ms-3"&gt;
+		                    &lt;h4 class="h3 mb-0" data-fc-title&gt;&lt;/h4&gt;
+		                  &lt;/div&gt;
+		                &lt;/div&gt;
+		              &lt;/div&gt;
+		              &lt;!-- End Col --&gt;
+
+		              &lt;div class="col-auto"&gt;
+		                &lt;!-- Select --&gt;
+		                &lt;div class="tom-select-custom"&gt;
+		                  &lt;select id="customHeaderSelect" class="form-select" size="1" style="opacity: 0;"
+		                  			data-fc-grid-view data-hs-tom-select-options='{
+		                            "hideSearch": true,
+		                            "width": "10rem"
+		                          }'&gt;
+		                    &lt;option value="dayGridMonth"&gt;Month&lt;/option&gt;
+		                    &lt;option value="dayGridWeek"&gt;Week&lt;/option&gt;
+		                    &lt;option value="dayGridDay"&gt;Day&lt;/option&gt;
+		                  &lt;/select&gt;
+		                &lt;/div&gt;
+		                &lt;!-- End Select --&gt;
+		              &lt;/div&gt;
+		              &lt;!-- End Col --&gt;
+		            &lt;/div&gt;
+		            &lt;!-- End Row --&gt;
+
+								&lt;!-- FullCalendar --&gt;
+								&lt;div id=&quot;js-fullcalendar-custom-header&quot; class=&quot;fullcalendar-custom&quot;&gt;&lt;/div&gt;
+								&lt;!-- End FullCalendar --&gt;
+							</code>
+						</pre>
+          </div>
+
+          <div class="tab-pane fade" id="nav-js9" role="tabpanel" aria-labelledby="nav-jsTab9">
+            <pre>
+							<code class="language-markup" data-lang="javascript">
+								&lt;script&gt;
+									(function () {
+										const prevMonthBtn = document.querySelector('[data-fc-prev-month]')
+										const nextMonthBtn = document.querySelector('[data-fc-next-month]')
+										const todayBtn = document.querySelector('[data-fc-today]')
+										const dateTitle = document.querySelector('[data-fc-title]')
+										let gridViewSelect = document.querySelector('[data-fc-grid-view]')
+
+										HSCore.components.HSFullCalendar.init('#js-fullcalendar-custom-header', {
+											initialDate: &quot;2020-09-10&quot;,
+											headerToolbar: false,
+											editable: true,
+											datesSet(dateSet) {
+												dateTitle.textContent = dateSet.view.title
+											},
+											events: [
+												{
+													&quot;title&quot;: &quot;English Lesson&quot;,
+													&quot;start&quot;: &quot;2020-09-03T01:00:00&quot;,
+													&quot;end&quot;: &quot;2020-09-03T02:30:00&quot;
+												},
+												{
+													&quot;title&quot;: &quot;Spanish Lesson&quot;,
+													&quot;start&quot;: &quot;2020-09-03T04:00:00&quot;,
+													&quot;end&quot;: &quot;2020-09-03T05:30:00&quot;
+												},
+												{
+													&quot;title&quot;: &quot;Javascript Lesson&quot;,
+													&quot;start&quot;: &quot;2020-09-14T01:00:00&quot;,
+													&quot;end&quot;: &quot;2020-09-16T02:30:00&quot;
+												},
+												{
+													&quot;title&quot;: &quot;PHP Lesson&quot;,
+													&quot;start&quot;: &quot;2020-09-06T04:00:00&quot;,
+													&quot;end&quot;: &quot;2020-09-09T05:30:00&quot;
+												}
+											]
+										})
+										const fullcalendarCustomHeader = HSCore.components.HSFullCalendar.getItem('js-fullcalendar-custom-header')
+
+										HSCore.components.HSTomSelect.init(gridViewSelect)
+										gridViewSelect = HSCore.components.HSTomSelect.getItem('customHeaderSelect')
+
+										prevMonthBtn.addEventListener('click', function () {
+											fullcalendarCustomHeader.prev()
+											const tooltip = document.querySelector('.tooltip')
+											if (tooltip) {
+												tooltip.remove()
+											}
+										})
+
+										nextMonthBtn.addEventListener('click', function () {
+											fullcalendarCustomHeader.next()
+											const tooltip = document.querySelector('.tooltip')
+											if (tooltip) {
+												tooltip.remove()
+											}
+										})
+
+										todayBtn.addEventListener('click', function () {
+											fullcalendarCustomHeader.today()
+										})
+
+										gridViewSelect.on('change', (val) =&gt; {
+											fullcalendarCustomHeader.changeView(val)
+										})
+
+										todayBtn.setAttribute('title', new Date().toDateString())
+									})()
+							 	&lt;/script&gt;
+							</code>
+						</pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+    </div>
+    <!-- End Row -->
+    <!-- End Fluid Content -->
+  </main>
+  <!-- ========== END MAIN CONTENT ========== -->
+
+  <!-- ========== SECONDARY CONTENTS ========== -->
+  <!-- Go To -->
+  <a class="js-go-to go-to position-fixed" href="javascript:;" style="visibility: hidden;" data-hs-go-to-options='{
+       "offsetTop": 700,
+       "position": {
+         "init": {
+           "right": "2rem"
+         },
+         "show": {
+           "bottom": "2rem"
+         },
+         "hide": {
+           "bottom": "-2rem"
+         }
+       }
+     }'>
+    <i class="bi-chevron-up"></i>
+  </a>
+  <!-- End Go To -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="addEventModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <!-- Header -->
+        <div class="modal-close">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <!-- End Header -->
+
+        <!-- Body -->
+        <div class="modal-body">
+          <div class="mb-4">
+            <input type="text" id="eventTitle" class="form-control form-control-lg form-control-flush" placeholder="Add title and time" aria-label="Add title and time">
+          </div>
+
+          <!-- Media -->
+          <div class="d-flex mb-4">
+            <i class="bi-calendar-week nav-icon mt-2 me-2"></i>
+
+            <div class="flex-grow-1">
+              <label for="eventDateRangeLabel" class="visually-hidden">Date </label>
+
+              <!-- Flatpickr -->
+              <input type="text" id="eventDateRangeLabel" class="js-flatpickr form-control flatpickr-custom mb-2" placeholder="Select dates" data-hs-flatpickr-options='{
+											 "dateFormat": "m/d/Y",
+											 "mode": "range",
+											 "minDate": "12/01/2020"
+										 }'>
+              <!-- End Flatpickr -->
+
+              <label for="eventRepeatLabel" class="text-body me-2 mb-0">Repeat: </label>
+
+              <!-- Select -->
+              <div class="tom-select-custom">
+                <select id="eventRepeatLabel" class="js-select form-select" data-hs-tom-select-options='{
+											  "hideSearch": true,
+											  "placeholder": "Add guestse"
+											}'>
+                  <option value="everyday" selected>Everyday</option>
+                  <option value="weekdays">Weekdays</option>
+                  <option value="never">Never</option>
+                </select>
+              </div>
+              <!-- End Select -->
+            </div>
+          </div>
+          <!-- End Media -->
+
+          <!-- Media -->
+          <div class="d-flex mb-4">
+            <i class="bi-people nav-icon mt-2 me-2"></i>
+
+            <div class="flex-grow-1">
+              <label for="eventGuestsLabel" class="visually-hidden">Add guests </label>
+
+              <!-- Select -->
+              <div class="tom-select-custom">
+                <select id="eventGuestsLabel" class="form-select" multiple data-hs-tom-select-options='{
+										  "placeholder": "Add guestse"
+										}'></select>
+              </div>
+              <!-- End Select -->
+            </div>
+          </div>
+          <!-- End Media -->
+
+          <!-- Media -->
+          <div class="d-flex mb-4">
+            <i class="bi-geo-alt nav-icon mt-2 me-2"></i>
+            <div class="flex-grow-1">
+              <label for="eventLocationLabel" class="visually-hidden">Add location </label>
+              <input type="text" class="form-control form-control-light form-control-borderless" id="eventLocationLabel" placeholder="Add location" aria-label="Add location">
+            </div>
+          </div>
+          <!-- End Media -->
+
+          <!-- Media -->
+          <div class="d-flex mb-4">
+            <i class="bi-text-left nav-icon mt-2 me-2"></i>
+            <div class="flex-grow-1">
+              <label for="eventDescriptionLabel" class="visually-hidden">Add description </label>
+              <textarea id="eventDescriptionLabel" class="form-control form-control-light form-control-borderless" placeholder="Add description"></textarea>
+            </div>
+          </div>
+          <!-- End Media -->
+
+          <div class="row">
+            <div class="col">
+              <!-- Media -->
+              <a class="d-flex align-items-center" href="../user-profile.html">
+                <div class="avatar avatar-xs avatar-circle me-3">
+                  <img class="avatar-img" src="../assets/img/160x160/img10.jpg" alt="Image Description">
+                </div>
+                <div class="flex-grow-1">
+                  <span class="d-block fs6 text-body">Assignee:</span>
+                  <span class="h5 text-inherit">Amanda Harvey</span>
+                </div>
+              </a>
+              <!-- End Media -->
+            </div>
+
+            <div class="col-auto">
+              <label for="eventColorLabel" class="visually-hidden">Event color </label>
+
+              <!-- Select -->
+              <div class="tom-select-custom">
+                <select id="eventColorLabel" class="js-select form-select" data-hs-tom-select-options='{
+										  "hideSearch": true,
+										  "width": "10rem"
+										}'>
+                  <option value="rgba(55,125,255,.1)" selected data-option-template='<div><span class="legend-indicator bg-primary"></span>Primary</div>'>Primary </option>
+                  <option value="rgba(0,201,167,.1)" data-option-template='<div><span class="legend-indicator bg-success"></span>Green</div>'>Green </option>
+                  <option value="rgba(237,76,120,.1)" data-option-template='<div><span class="legend-indicator bg-danger"></span>Red</div>'>Red </option>
+                  <option value="rgba(245,202,153,.1)" data-option-template='<div><span class="legend-indicator bg-warning"></span>Yellow</div>'>Yellow </option>
+                  <option value="rgba(0,201,219,1)" data-option-template='<div><span class="legend-indicator bg-info"></span>Cyan</div>'>Cyan </option>
+                  <option value="rgba(19,33,68,1)" data-option-template='<div><span class="legend-indicator bg-dark"></span>Navy</div>'>Navy </option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Body -->
+
+        <!-- Footer -->
+        <div class="modal-footer">
+          <button type="button" id="discardFormt" class="btn btn-white" data-dismiss="modal">Discard </button>
+          <button type="button" id="processEvent" class="btn btn-primary">Create event </button>
+        </div>
+        <!-- End Footer -->
+      </div>
+    </div>
+  </div>
+  <!-- End Modal -->
+
+  <!-- Event Time Grid Modal -->
+  <div class="modal fade" id="eventTimeGridModal" tabindex="-1" role="dialog" aria-labelledby="addEventModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <!-- Header -->
+        <div class="modal-header">
+          <h5 class="modal-title" id="eventTimeGridModalLabel">Event Modal</h5>
+          <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary" data-dismiss="modal" aria-label="Close">
+            <i class="bi-x-lg" aria-hidden="true"></i>
+          </button>
+        </div>
+        <!-- End Header -->
+
+        <!-- Body -->
+        <div class="modal-body"></div>
+        <!-- End Body -->
+
+        <!-- Footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-white" data-dismiss="modal">Cancel </button>
+          <button type="button" class="btn btn-primary">Save </button>
+        </div>
+        <!-- End Footer -->
+      </div>
+    </div>
+  </div>
+  <!-- End Event Time Grid Modal -->
+  <!-- ========== END SECONDARY CONTENTS ========== -->
+
+  <!-- JS Global Compulsory  -->
+  <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="../assets/vendor/jquery-migrate/dist/jquery-migrate.min.js"></script>
+  <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JS Implementing Plugins -->
+  <script src="../assets/vendor/hs-header/dist/hs-header.min.js"></script>
+  <script src="../assets/vendor/hs-nav-scroller/dist/hs-nav-scroller.min.js"></script>
+  <script src="../assets/vendor/list.js/dist/list.min.js"></script>
+  <script src="../assets/vendor/hs-go-to/dist/hs-go-to.min.js"></script>
+  <script src="../assets/vendor/prism/prism.js"></script>
+  <script src="../assets/vendor/tom-select/dist/js/tom-select.complete.min.js"></script>
+  <script src="../assets/vendor/fullcalendar/main.min.js"></script>
+  <script src="../assets/vendor/hs-fullcalendar-filter/dist/hs-fullcalendar-filter.min.js"></script>
+  <script src="../assets/vendor/daterangepicker/moment.min.js"></script>
+  <script src="../assets/vendor/flatpickr/dist/flatpickr.min.js"></script>
+
+  <!-- JS Front -->
+  <script src="../assets/js/theme.min.js"></script>
+
+  <!-- JS Plugins Init. -->
+  <script>
+    (function() {
+      // INITIALIZATION OF HEADER
+      // =======================================================
+      new HSHeader('#header').init()
+      // INITIALIZATION OF NAV SCROLLER
+      // =======================================================
+      new HsNavScroller('.js-nav-scroller', {
+        delay: 400,
+        offset: 140
+      })
+      // INITIALIZATION OF LISTJS COMPONENT
+      // =======================================================
+      HSCore.components.HSList.init('#docsSearch');
+      const docsSearch = HSCore.components.HSList.getItem('docsSearch');
+
+
+      // GET JSON FILE RESULTS
+      // =======================================================
+      fetch('../assets/json/docs-search.json').then(response => response.json()).then(data => {
+        docsSearch.add(data)
+      });
+
+
+      // INITIALIZATION OF GO TO
+      // =======================================================
+      new HSGoTo('.js-go-to')
+
+
+      // INITIALIZATION OF FULLCALENDAR
+      // =======================================================
+      HSCore.components.HSFullCalendar.init('.js-fullcalendar')
+
+
+      // ADD DRAGGABLE CLASS FOR CALENDAR
+      // =======================================================
+      const Draggable = FullCalendar.Draggable;
+      new Draggable(document.querySelector('#external-events'), {
+        itemSelector: '.fc-event'
+      });
+      (function() {
+        const eventContent = function(data) {
+          return `
+
+																							<div class="d-flex align-items-center px-2">
+							${data && data.extendedProps.image ? `
+																								<img class="avatar avatar-xss" src="${data.extendedProps.image}" alt="Image Description">` : ''}
+
+																									<span class="fc-event-title fc-sticky">${data.title}</span>
+																								</div>
+					`;
+        };
+        HSCore.components.HSFullCalendar.init('#js-fullcalendar-draggable', {
+          events: [{
+            "title": "English Lesson",
+            "start": "2020-09-03T01:00:00",
+            "end": "2020-09-03T02:30:00"
+          }, {
+            "title": "Spanish Lesson",
+            "start": "2020-09-03T04:00:00",
+            "end": "2020-09-03T05:30:00"
+          }, {
+            "title": "Javascript Lesson",
+            "start": "2020-09-14T01:00:00",
+            "end": "2020-09-16T02:30:00"
+          }, {
+            "title": "PHP Lesson",
+            "start": "2020-09-06T04:00:00",
+            "end": "2020-09-09T05:30:00"
+          }],
+          initialDate: "2020-09-10",
+          headerToolbar: {
+            left: "prev,next today",
+            center: "title",
+            right: "",
+          },
+          editable: true,
+          eventContent({
+            event
+          }) {
+            return {
+              html: eventContent(event),
+            }
+          },
+          drop({
+            draggedEl
+          }) {
+            draggedEl.remove();
+          },
+        });
+      })();
+      (function() {
+        let $popover;
+        let $fullcalendarEditable;
+        let $guestsField;
+        const popoverContent = function(data) {
+          return `
+
+						<ul class="list-unstyled">
+							<li class="d-flex">Start: ${moment(data.event.start).format('YYYY-MM-DD hh:mm')}</li>
+							<li class="d-flex">End: ${moment(data.event.end).format('YYYY-MM-DD hh:mm')}</li>
+							<li class="d-flex">Repeat: ${data.event.extendedProps.repeatField}</li>
+							<li class="d-flex">Location: ${data.event.extendedProps.eventLocationLabel}</li>
+							<li class="d-flex">Description: ${data.event.extendedProps.eventDescriptionLabel}</li>
+							<li>Guests: ${getAvatars(data.event.extendedProps.guestsField)}</li>
+						</ul>
+						<a id="modal-invoker-${data.event.id}" href="javascript:;" class="btn btn-soft-primary btn-sm">Edit</a>
+          `
+        };
+        const $titleField = document.querySelector('#eventTitle');
+        const $repeatField = document.querySelector('#eventRepeatLabel');
+        const $eventDescriptionLabel = document.querySelector('#eventDescriptionLabel');
+        const $eventLocationLabel = document.querySelector('#eventLocationLabel');
+        const $eventColorLabel = document.querySelector('#eventColorLabel');
+        const $eventGuestsLabel = document.querySelector('#eventGuestsLabel');
+        let editableEvent = {};
+        const $processEvent = document.querySelector('#processEvent');
+        const $addEventModal = document.querySelector('#addEventModal');
+        const addEventModal = new bootstrap.Modal($addEventModal);
+
+
+        // INITIALIZATION OF FLATPICKR
+        // =======================================================
+        HSCore.components.HSFlatpickr.init('#eventDateRangeLabel');
+        const eventDateRange = HSCore.components.HSFlatpickr.getItem('eventDateRangeLabel')
+        HSCore.components.HSTomSelect.init('.js-select')
+        HSCore.components.HSTomSelect.init('#eventGuestsLabel', {
+          valueField: 'id',
+          create: false,
+          options: [{
+            id: 1,
+            "value": "Amanda Harvey",
+            "src": "../assets/img/160x160/img10.jpg"
+          }, {
+            id: 2,
+            "value": "David Harrison",
+            "src": "../assets/img/160x160/img3.jpg"
+          }, {
+            id: 3,
+            "value": "Finch Hoot",
+            "src": "../assets/img/160x160/img5.jpg"
+          }, {
+            id: 4,
+            "value": "Ella Lauda",
+            "src": "../assets/img/160x160/img9.jpg"
+          }],
+          render: {
+            option: function(data, escape) {
+              return `
+								<div class="d-flex align-items-center">
+									<div class="flex-shrink-0">
+										<div class="avatar avatar-sm avatar-circle">
+											<img class="avatar-img" src="${data.src}" alt="Image Description">
+											</div>
+										</div>
+										<div class="flex-grow-1 ms-3">
+											<h5 class="text-inherit mb-0">${data.value}</h5>
+										</div>
+									</div>`
+            },
+            item: function(data, escape) {
+              return ' < div title = "' + data.src + '" > ' + data.value + ' < /div>';
+            }
+          }
+        })
+        $guestsField = HSCore.components.HSTomSelect.getItem('eventGuestsLabel');
+
+
+        // INITIALIZATION OF FULL CALENDAR
+        // =======================================================
+        HSCore.components.HSFullCalendar.init('#js-fullcalendar-editable', {
+          events: [{
+            id: 1,
+            title: "English Lesson",
+            start: "2020-12-03T01:00:00",
+            end: "2020-12-03T02:30:00",
+            color: "rgba(237,76,120,.1)",
+            eventDescriptionLabel: "",
+            eventLocationLabel: "",
+            repeatField: "everyday",
+            guestsField: []
+          }, {
+            id: 2,
+            title: "Spanish Lesson",
+            start: "2020-12-03T04:00:00",
+            end: "2020-12-03T05:30:00",
+            color: "rgba(55,125,255,.1)",
+            eventDescriptionLabel: "",
+            eventLocationLabel: "",
+            repeatField: "everyday",
+            guestsField: []
+          }, {
+            id: 3,
+            title: "Javascript Lesson",
+            start: "2020-12-14T01:00:00",
+            end: "2020-12-16T02:30:00",
+            color: "rgba(237,76,120,.1)",
+            eventDescriptionLabel: "",
+            eventLocationLabel: "",
+            repeatField: "everyday",
+            guestsField: []
+          }, {
+            id: 4,
+            title: "PHP Lesson",
+            start: "2020-12-06T04:00:00",
+            end: "2020-12-09T05:30:00",
+            color: "rgba(55,125,255,.1)",
+            eventDescriptionLabel: "",
+            eventLocationLabel: "",
+            repeatField: "everyday",
+            guestsField: []
+          }],
+          initialDate: "2020-12-10",
+          headerToolbar: {
+            left: "prev,next today",
+            center: "title",
+            right: ""
+          },
+          selectable: true,
+          editable: true,
+          select: function(date) {
+            prepareData('', date.startStr, date.endStr);
+          },
+          eventClick: function(event) {
+            const _popoverContent = popoverContent(event);
+            if ($popover && $popover._element) {
+              $popover.dispose();
+            }
+            // Open Popover
+            $popover = new bootstrap.Popover(event.el, {
+              html: true,
+              content: _popoverContent,
+              template: `
+
+								<div class="popover fullcalendar-event-popover" role="tooltip">
+									<div class="arrow"></div>
+									<h3 class="popover-header"></h3>
+									<div class="popover-body"></div>
+								</div>
+							`,
+            });
+            $popover.show();
+            // Open Modal For Editing
+            event.el.addEventListener('shown.bs.popover', function() {
+              const $invoker = document.querySelector(`#modal-invoker-${event.event.id}`);
+              $invoker.addEventListener('click', function() {
+                if ($popover && $popover._element) {
+                  $popover.dispose();
+                }
+                prepareData(event.event.title, event.event.start, event.event.end, event.event);
+              })
+            })
+          },
+        });
+        setTimeout(function() {
+          $fullcalendarEditable = HSCore.components.HSFullCalendar.getItem('js-fullcalendar-editable');
+        });
+
+        // Events
+        document.addEventListener('click', function(e) {
+          if (
+            (e.target && e.target.id === 'closePopover' && $popover && $popover._element) || (e.target && !e.target.closest('.fc-event') && !e.target.closest('.popover') && $popover && $popover._element)) {
+            $popover.dispose();
+          }
+        });
+        document.addEventListener('scroll', function() {
+          if ($popover && $popover._element) {
+            $popover.dispose();
+          }
+        });
+        $processEvent.addEventListener('click', function() {
+          const date = eventDateRange.selectedDates;
+          if (!Object.keys(editableEvent).length) {
+            $fullcalendarEditable.addEvent({
+              id: new Date().getTime(),
+              title: $titleField.value || '(No title)',
+              repeatField: $repeatField.value,
+              guestsField: $guestsField.getValue().map((id) => {
+                return Object.values($guestsField.options).filter(member => parseInt(member.id) === parseInt(id))[0]
+              }),
+              eventDescriptionLabel: $eventDescriptionLabel.value,
+              eventLocationLabel: $eventLocationLabel.value,
+              start: moment(date[0]).format('YYYY-MM-DD'),
+              end: date.length > 1 ? moment(date[1]).format('YYYY-MM-DD') : moment(date[0]).format('YYYY-MM-DD'),
+              color: $eventColorLabel.value,
+            });
+          } else {
+            editableEvent.setProp('title', $titleField.value);
+            editableEvent.setExtendedProp('repeatField', $repeatField.getValue());
+            editableEvent.setExtendedProp('guestsField', $guestsField.getValue().map((id) => {
+              return Object.values($guestsField.options).filter(member => parseInt(member.id) === parseInt(id))[0]
+            }));
+            editableEvent.setExtendedProp('eventDescriptionLabel', $eventDescriptionLabel.value);
+            editableEvent.setExtendedProp('eventLocationLabel', $eventLocationLabel.value);
+            editableEvent.setProp('color', $eventColorLabel.getValue());
+            editableEvent.setStart(moment(date[0]).format('YYYY-MM-DD'));
+            editableEvent.setEnd(date.length > 1 ? moment(date[1]).format('YYYY-MM-DD') : moment(date[0]).format('YYYY-MM-DD'));
+          }
+          addEventModal.hide();
+        })
+        $addEventModal.addEventListener('show.bs.modal', function() {
+          clearForm();
+        });
+
+        // Helpers
+        function triggerEvent(el, evt) {
+          const newEvt = document.createEvent('HTMLEvents');
+          newEvt.initEvent(evt, false, true);
+          el.dispatchEvent(newEvt);
+        }
+
+        function prepareData(title, start, end, event = {}) {
+          addEventModal.show();
+          $processEvent.textContent = 'Save';
+          $titleField.value = title;
+          eventDateRange.setDate([moment(start).format('MM/DD/YYYY'), moment(end).format('MM/DD/YYYY')])
+        }
+
+        function getAvatar(data) {
+          return `
+						<img class="avatar-img" src="${data.src.toLowerCase()}"  alt="${data.value}" />`;
+        }
+
+        function getAvatars(members) {
+          const $list = document.createElement('div');
+          $list.classList.add('avatar-group', 'avatar-group-sm', 'mb-1');
+          for (let i = 0; i < members.length; i += 1) {
+            const $item = document.createElement('span');
+            $item.classList.add('avatar', 'avatar-circle');
+            $item.innerHTML = `
+							${getAvatar(members[i])}
+						`;
+            $list.appendChild($item);
+          }
+          return members.length > 0 ? $list.outerHTML : false
+        }
+
+        function clearForm() {
+          $titleField.value = '';
+          $eventDescriptionLabel.value = '';
+          $eventLocationLabel.value = '';
+          $repeatField.value = 'everyday';
+          $eventColorLabel.value = 'rgba(55,125,255,.1)';
+          editableEvent = {};
+          $guestsField.clear();
+          triggerEvent($repeatField, 'change');
+          triggerEvent($eventColorLabel, 'change');
+          $processEvent.textContent = 'Create Event';
+        }
+      })();
+
+
+      // INITIALIZATION OF FULLCALENDAR WITH SEARCH
+      // =======================================================
+      (function() {
+        HSCore.components.HSFullCalendar.init('#js-fullcalendar-with-search', {
+          events: [{
+            "title": "English Lesson",
+            "start": "2020-09-03T01:00:00",
+            "end": "2020-09-03T02:30:00"
+          }, {
+            "title": "Spanish Lesson",
+            "start": "2020-09-03T04:00:00",
+            "end": "2020-09-03T05:30:00"
+          }, {
+            "title": "Javascript Lesson",
+            "start": "2020-09-14T01:00:00",
+            "end": "2020-09-16T02:30:00"
+          }, {
+            "title": "PHP Lesson",
+            "start": "2020-09-06T04:00:00",
+            "end": "2020-09-09T05:30:00"
+          }],
+          initialDate: "2020-09-10",
+          headerToolbar: {
+            left: "prev,next today",
+            center: "title",
+            right: ""
+          },
+          editable: true,
+        })
+        const filterSearchExample = new HSFullcalendarFilter(HSCore.components.HSFullCalendar.getItem('js-fullcalendar-with-search'))
+        filterSearchExample.addFilter('byTitle', function(event) {
+          return event.title.toLowerCase().indexOf($('#filter-by-title').val().toLowerCase()) !== -1
+        })
+        $('#filter-by-title').on('input', function() {
+          filterSearchExample.filter()
+        })
+        filterSearchExample.filter()
+      })();
+
+
+      // INITIALIZATION OF FULLCALENDAR WITH FILTERS
+      // =======================================================
+      (function() {
+        HSCore.components.HSFullCalendar.init('#js-fullcalendar-with-filters', {
+          events: [{
+            "title": "English Lesson",
+            "start": "2020-09-03T01:00:00",
+            "end": "2020-09-03T02:30:00",
+            category_id: 1
+          }, {
+            "title": "Spanish Lesson",
+            "start": "2020-09-03T04:00:00",
+            "end": "2020-09-03T05:30:00",
+            category_id: 3
+          }, {
+            "title": "Javascript Lesson",
+            "start": "2020-09-14T01:00:00",
+            "end": "2020-09-16T02:30:00",
+            category_id: 2
+          }, {
+            "title": "PHP Lesson",
+            "start": "2020-09-06T04:00:00",
+            "end": "2020-09-09T05:30:00",
+            category_id: 1
+          }],
+          initialDate: "2020-09-10",
+          headerToolbar: {
+            left: "prev,next today",
+            center: "title",
+            right: ""
+          },
+          editable: true,
+        })
+        const filterCheckboxExample = new HSFullcalendarFilter(HSCore.components.HSFullCalendar.getItem('js-fullcalendar-with-filters'))
+        filterCheckboxExample.addFilter('byCategory', function(event) {
+          const selectedCategories = $('[data-filter] input:checked')
+          if (!selectedCategories.length) return false
+          let show = false
+          selectedCategories.each(key => {
+            if (event.extendedProps.category_id == $($(selectedCategories)[key]).val()) {
+              show = true
+              return false
+            }
+          })
+          return show
+        })
+        $('[data-filter]').on('change', function() {
+          filterCheckboxExample.filter()
+        })
+        filterCheckboxExample.filter()
+      })();
+
+
+      // INITIALIZATION OF FULLCALENDAR TIME GRID
+      // =======================================================
+      (function() {
+        const $eventTimeGridModal = document.querySelector('#eventTimeGridModal');
+        const eventContent = function(data) {
+          return `
+
+						<div class="d-flex fc-custom-event align-items-center p-2">
+							<span class="icon icon-primary me-3">
+								<i class="${data.event._def.extendedProps.icon}"></i>
+							</span>
+							<div class="flex-grow-1">
+								<h4 class="mb-1">${data.event.title}</h4>
+								<span class="text-body fw-semibold">${data.timeText}</span>
+							</div>
+							<div class="avatar-group avatar-group-sm ms-auto">
+								<span class="avatar avatar-circle">
+									<img class="avatar-img" src="../assets/img/160x160/img10.jpg" alt="Image Description">
+									</span>
+									<span class="avatar avatar-dark avatar-circle">
+										<span class="avatar-initials">A</span>
+									</span>
+									<span class="avatar avatar-circle">
+										<img class="avatar-img" src="../assets/img/160x160/img3.jpg" alt="Image Description">
+										</span>
+										<span class="avatar avatar-primary avatar-circle">
+											<span class="avatar-initials">2+</span>
+										</span>
+									</div>
+								</div>
+					`;
+        };
+        HSCore.components.HSFullCalendar.init('#js-fullcalendar-custom-render', {
+          events: [{
+            "title": "SOLID in JavaScript Lesson",
+            "start": "2020-09-03T07:00:00",
+            "end": "2020-09-03T08:30:00",
+            icon: "bi-tv"
+          }, {
+            "title": "Vue Patterns",
+            "start": "2020-09-03T11:00:00",
+            "end": "2020-09-03T12:30:00",
+            icon: "bi-tv"
+          }, ],
+          initialDate: "2020-09-03",
+          initialView: "timeGrid",
+          editable: true,
+          eventClick: function() {
+            $eventTimeGridModal.show();
+          },
+          eventContent: function(evt) {
+            return {
+              html: eventContent(evt),
+            }
+          },
+        });
+      })();
+
+
+      // INITIALIZATION OF FULLCALENDAR SELECT
+      // =======================================================
+      (function() {
+        HSCore.components.HSFullCalendar.init('#js-fullcalendar-tom-select', {
+          initialDate: "2020-09-10",
+          headerToolbar: {
+            left: "prev,next today",
+            center: "title",
+            right: ""
+          },
+          editable: true,
+          events: [{
+            "title": "English Lesson",
+            "start": "2020-09-03T01:00:00",
+            "end": "2020-09-03T02:30:00"
+          }, {
+            "title": "Spanish Lesson",
+            "start": "2020-09-03T04:00:00",
+            "end": "2020-09-03T05:30:00"
+          }, {
+            "title": "Javascript Lesson",
+            "start": "2020-09-14T01:00:00",
+            "end": "2020-09-16T02:30:00"
+          }, {
+            "title": "PHP Lesson",
+            "start": "2020-09-06T04:00:00",
+            "end": "2020-09-09T05:30:00"
+          }]
+        })
+
+
+        // APPEND SELECT CONSTROL IN TOOLBAR TO CHANGE CALENDAR VIEW
+        // =======================================================
+        const $select = document.createElement('div')
+        $select.innerHTML = `<select id ="changeView"><option value='dayGridMonth'>Month</option>
+        <option value='dayGridWeek'>Week</option>
+        <option value='dayGridDay'>Day</option></select>`
+        document.querySelector('#js-fullcalendar-tom-select .fc-toolbar-chunk:last-child').appendChild($select)
+        const fullcalendarWithSelect = HSCore.components.HSFullCalendar.getItem('js-fullcalendar-tom-select')
+
+
+        // INITIALIZATION OF SELECT
+        // =======================================================
+        HSCore.components.HSTomSelect.init('#changeView', {
+          hideSearch: true
+        })
+        const selectInstance = HSCore.components.HSTomSelect.getItem('changeView')
+        selectInstance.on('change', (val) => {
+          fullcalendarWithSelect.changeView(val)
+        })
+      })()
+
+
+      // INITIALIZATION OF FULLCALENDAR CUSTOM HEADER
+      // =======================================================
+      const prevMonthBtn = document.querySelector('[data-fc-prev-month]')
+      const nextMonthBtn = document.querySelector('[data-fc-next-month]')
+      const todayBtn = document.querySelector('[data-fc-today]')
+      const dateTitle = document.querySelector('[data-fc-title]')
+      let gridViewSelect = document.querySelector('[data-fc-grid-view]')
+      HSCore.components.HSFullCalendar.init('#js-fullcalendar-custom-header', {
+        initialDate: "2020-09-10",
+        headerToolbar: false,
+        editable: true,
+        datesSet(dateSet) {
+          dateTitle.textContent = dateSet.view.title
+        },
+        events: [{
+          "title": "English Lesson",
+          "start": "2020-09-03T01:00:00",
+          "end": "2020-09-03T02:30:00"
+        }, {
+          "title": "Spanish Lesson",
+          "start": "2020-09-03T04:00:00",
+          "end": "2020-09-03T05:30:00"
+        }, {
+          "title": "Javascript Lesson",
+          "start": "2020-09-14T01:00:00",
+          "end": "2020-09-16T02:30:00"
+        }, {
+          "title": "PHP Lesson",
+          "start": "2020-09-06T04:00:00",
+          "end": "2020-09-09T05:30:00"
+        }]
+      })
+      const fullcalendarCustomHeader = HSCore.components.HSFullCalendar.getItem('js-fullcalendar-custom-header')
+      HSCore.components.HSTomSelect.init(gridViewSelect)
+      gridViewSelect = HSCore.components.HSTomSelect.getItem('customHeaderSelect')
+      prevMonthBtn.addEventListener('click', function() {
+        fullcalendarCustomHeader.prev()
+        const tooltip = document.querySelector('.tooltip')
+        if (tooltip) {
+          tooltip.remove()
+        }
+      })
+      nextMonthBtn.addEventListener('click', function() {
+        fullcalendarCustomHeader.next()
+        const tooltip = document.querySelector('.tooltip')
+        if (tooltip) {
+          tooltip.remove()
+        }
+      })
+      todayBtn.addEventListener('click', function() {
+        fullcalendarCustomHeader.today()
+      })
+      gridViewSelect.on('change', (val) => {
+        fullcalendarCustomHeader.changeView(val)
+      })
+      todayBtn.setAttribute('title', new Date().toDateString())
+    })()
+  </script>
+</body>
+</html>

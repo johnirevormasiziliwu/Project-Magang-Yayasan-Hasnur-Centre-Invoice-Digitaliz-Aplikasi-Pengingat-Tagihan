@@ -1,0 +1,3828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required Meta Tags Always Come First -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Title -->
+  <title>Chart.js - Documentation | Front - Multipurpose Responsive Template</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../favicon.ico">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS Implementing Plugins -->
+  <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/font/bootstrap-icons.css">
+
+  <!-- CSS Front Template -->
+
+  <link rel="preload" href="../assets/css/theme.min.css" data-hs-appearance="default" as="style">
+  <link rel="preload" href="../assets/css/docs.min.css" data-hs-appearance="default" as="style">
+  <link rel="preload" href="../assets/css/theme-dark.min.css" data-hs-appearance="dark" as="style">
+  <link rel="preload" href="../assets/css/docs-dark.min.css" data-hs-appearance="dark" as="style">
+
+  <style data-hs-appearance-onload-styles>
+    *
+    {
+      transition: unset !important;
+    }
+
+    body
+    {
+      opacity: 0;
+    }
+  </style>
+
+  <script>
+            window.hs_config = {"autopath":"@@autopath","deleteLine":"hs-builder:delete","deleteLine:build":"hs-builder:build-delete","deleteLine:dist":"hs-builder:dist-delete","previewMode":false,"startPath":"/index.html","vars":{"themeFont":"https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap","version":"?v=1.0"},"layoutBuilder":{"extend":{"switcherSupport":true},"header":{"layoutMode":"default","containerMode":"container-fluid"},"sidebarLayout":"default"},"themeAppearance":{"layoutSkin":"default","sidebarSkin":"default","styles":{"colors":{"primary":"#377dff","transparent":"transparent","white":"#fff","dark":"132144","gray":{"100":"#f9fafc","900":"#1e2022"}},"font":"Inter"}},"languageDirection":{"lang":"en"},"skipFilesFromBundle":{"dist":["assets/js/hs.theme-appearance.js","assets/js/hs.theme-appearance-charts.js","assets/js/demo.js"],"build":["assets/css/theme.css","assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js","assets/js/demo.js","assets/css/theme-dark.css","assets/css/docs.css","assets/vendor/icon-set/style.css","assets/js/hs.theme-appearance.js","assets/js/hs.theme-appearance-charts.js","node_modules/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js","assets/js/demo.js"]},"minifyCSSFiles":["assets/css/theme.css","assets/css/theme-dark.css"],"copyDependencies":{"dist":{"*assets/js/theme-custom.js":""},"build":{"*assets/js/theme-custom.js":"","node_modules/bootstrap-icons/font/*fonts/**":"assets/css"}},"buildFolder":"","replacePathsToCDN":{},"directoryNames":{"src":"./src","dist":"./dist","build":"./build"},"fileNames":{"dist":{"js":"theme.min.js","css":"theme.min.css"},"build":{"css":"theme.min.css","js":"theme.min.js","vendorCSS":"vendor.min.css","vendorJS":"vendor.min.js"}},"fileTypes":"jpg|png|svg|mp4|webm|ogv|json"}
+            window.hs_config.gulpRGBA = (p1) => {
+  const options = p1.split(',')
+  const hex = options[0].toString()
+  const transparent = options[1].toString()
+
+  var c;
+  if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+    c= hex.substring(1).split('');
+    if(c.length== 3){
+      c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+    }
+    c= '0x'+c.join('');
+    return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',' + transparent + ')';
+  }
+  throw new Error('Bad Hex');
+}
+            window.hs_config.gulpDarken = (p1) => {
+  const options = p1.split(',')
+
+  let col = options[0].toString()
+  let amt = -parseInt(options[1])
+  var usePound = false
+
+  if (col[0] == "#") {
+    col = col.slice(1)
+    usePound = true
+  }
+  var num = parseInt(col, 16)
+  var r = (num >> 16) + amt
+  if (r > 255) {
+    r = 255
+  } else if (r < 0) {
+    r = 0
+  }
+  var b = ((num >> 8) & 0x00FF) + amt
+  if (b > 255) {
+    b = 255
+  } else if (b < 0) {
+    b = 0
+  }
+  var g = (num & 0x0000FF) + amt
+  if (g > 255) {
+    g = 255
+  } else if (g < 0) {
+    g = 0
+  }
+  return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16)
+}
+            window.hs_config.gulpLighten = (p1) => {
+  const options = p1.split(',')
+
+  let col = options[0].toString()
+  let amt = parseInt(options[1])
+  var usePound = false
+
+  if (col[0] == "#") {
+    col = col.slice(1)
+    usePound = true
+  }
+  var num = parseInt(col, 16)
+  var r = (num >> 16) + amt
+  if (r > 255) {
+    r = 255
+  } else if (r < 0) {
+    r = 0
+  }
+  var b = ((num >> 8) & 0x00FF) + amt
+  if (b > 255) {
+    b = 255
+  } else if (b < 0) {
+    b = 0
+  }
+  var g = (num & 0x0000FF) + amt
+  if (g > 255) {
+    g = 255
+  } else if (g < 0) {
+    g = 0
+  }
+  return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16)
+}
+            </script>
+</head>
+
+<body class="navbar-sidebar-aside-lg">
+
+  <script src="../assets/js/hs.theme-appearance.js"></script>
+
+  <!-- ========== HEADER ========== -->
+  <header id="header" class="navbar navbar-expand navbar-end navbar-light navbar-sticky-lg-top bg-white">
+    <div class="container-fluid">
+      <nav class="navbar-nav-wrap">
+        <div class="row flex-grow-1">
+          <!-- Default Logo -->
+          <div class="docs-navbar-sidebar-container d-flex align-items-center mb-2 mb-lg-0">
+            <a class="navbar-brand" href="../documentation/index.html" aria-label="Front">
+              <img class="navbar-brand-logo" src="../assets/svg/logos/logo.svg" alt="Logo" data-hs-theme-appearance="default">
+              <img class="navbar-brand-logo" src="../assets/svg/logos-light/logo.svg" alt="Logo" data-hs-theme-appearance="dark">
+            </a>
+            <a href="../documentation/changelog.html">
+              <span class="badge bg-soft-primary text-primary">v2.1</span>
+            </a>
+          </div>
+          <!-- End Default Logo -->
+
+          <div class="col-md px-lg-0">
+            <div class="d-flex justify-content-between align-items-center px-lg-5 px-xl-10">
+              <div class="d-none d-md-block">
+                <!-- Search Form -->
+                <form id="docsSearch" class="position-relative" data-hs-list-options='{
+                       "searchMenu": true,
+                       "keyboard": true,
+                       "item": "searchTemplate",
+                       "valueNames": ["component", "category", {"name": "link", "attr": "href"}],
+                       "empty": "#searchNoResults"
+                     }'>
+                  <!-- Input Group -->
+                  <div class="input-group input-group-merge navbar-input-group">
+                    <div class="input-group-prepend input-group-text">
+                      <i class="bi-search"></i>
+                    </div>
+
+                    <input type="search" class="search form-control form-control-sm" placeholder="Search in docs" aria-label="Search in docs">
+
+                    <a class="input-group-append input-group-text" href="javascript:;">
+                      <i id="clearSearchResultsIcon" class="bi-x" style="display: none;"></i>
+                    </a>
+                  </div>
+                  <!-- End Input Group -->
+
+                  <!-- List -->
+                  <div class="list dropdown-menu navbar-dropdown-menu-borderless w-100 overflow-auto" style="max-height: 16rem;"></div>
+                  <!-- End List -->
+
+                  <!-- Empty -->
+                  <div id="searchNoResults" style="display: none;">
+                    <div class="text-center p-4">
+                      <img class="mb-3" src="../assets/svg/illustrations/oc-error.svg" alt="Image Description" data-hs-theme-appearance="default" style="width: 7rem;">
+                      <img class="mb-3" src="../assets/svg/illustrations-light/oc-error.svg" alt="Image Description" data-hs-theme-appearance="dark" style="width: 7rem;">
+                      <p class="mb-0">No Results</p>
+                    </div>
+                  </div>
+                  <!-- End Empty -->
+                </form>
+                <!-- End Search Form -->
+
+                <!-- List Item Template -->
+                <div class="d-none">
+                  <div id="searchTemplate" class="dropdown-item">
+                    <a class="d-block link" href="#">
+                      <span class="category d-block fw-normal text-muted mb-1"></span>
+                      <span class="component text-dark"></span>
+                    </a>
+                  </div>
+                </div>
+                <!-- End List Item Template -->
+              </div>
+
+              <!-- Navbar -->
+              <ul class="navbar-nav p-0">
+                <li class="nav-item">
+                  <a class="btn btn-ghost-secondary btn-sm" href="https://htmlstream.com/contact-us" target="_blank">
+                    Get Support <i class="bi-box-arrow-up-right ms-1"></i>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="btn btn-primary btn-sm" href="../index.html">
+                    <i class="bi-eye me-1"></i> Preview Demo
+                  </a>
+                </li>
+              </ul>
+              <!-- End Navbar -->
+            </div>
+          </div>
+          <!-- End Col -->
+        </div>
+        <!-- End Row -->
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========== END HEADER ========== -->
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main id="content" role="main">
+    <!-- Navbar -->
+    <nav class="js-nav-scroller navbar navbar-expand-lg navbar-sidebar navbar-vertical navbar-light bg-white border-end" data-hs-nav-scroller-options='{
+            "type": "vertical",
+            "target": ".navbar-nav .active",
+            "offset": 80
+           }'>
+      <!-- Navbar Toggle -->
+      <div class="d-grid flex-grow-1 px-2">
+        <button type="button" class="navbar-toggler btn btn-white" data-bs-toggle="collapse" data-bs-target="#navbarVerticalNavMenu" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navbarVerticalNavMenu">
+          <span class="d-flex justify-content-between align-items-center">
+            <span class="h3 mb-0">Nav menu</span>
+
+            <span class="navbar-toggler-default">
+              <i class="bi-list"></i>
+            </span>
+
+            <span class="navbar-toggler-toggled">
+              <i class="bi-x"></i>
+            </span>
+          </span>
+        </button>
+      </div>
+      <!-- End Navbar Toggle -->
+
+      <!-- Navbar Collapse -->
+      <div id="navbarVerticalNavMenu" class="collapse navbar-collapse">
+        <div class="navbar-brand-wrapper border-end" style="height: auto;">
+          <!-- Default Logo -->
+          <div class="d-flex align-items-center mb-3">
+            <a class="navbar-brand" href="../documentation/index.html" aria-label="Front">
+              <img class="navbar-brand-logo" src="../assets/svg/logos/logo.svg" alt="Logo" data-hs-theme-appearance="default">
+              <img class="navbar-brand-logo" src="../assets/svg/logos-light/logo.svg" alt="Logo" data-hs-theme-appearance="dark">
+            </a>
+            <a class="navbar-brand-badge" href="../documentation/changelog.html">
+              <span class="badge bg-soft-primary text-primary ms-2">v2.1</span>
+            </a>
+          </div>
+          <!-- End Default Logo -->
+        </div>
+
+        <div class="docs-navbar-sidebar-aside-body navbar-sidebar-aside-body">
+          <ul id="navbarSettings" class="navbar-nav nav nav-vertical nav-tabs nav-tabs-borderless nav-sm">
+            <li class="nav-item">
+              <span class="nav-subtitle">Documentation</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/index.html">Introduction</a>
+            </li>
+
+            <li class="nav-item my-2 my-lg-5"></li>
+
+            <li class="nav-item">
+              <span class="nav-subtitle">Getting started</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/getting-started.html">Getting Started</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/gulp.html">Gulp</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/darkmode.html">Dark Mode <span class="badge bg-soft-dark text-dark lh-base ms-1">New</span></a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/customization.html">Customization</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/credits.html">Credits</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/changelog.html">Changelog</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <span class="nav-subtitle">Design &amp; Graphics</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/bs-icons.html">Bootstrap Icons</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/illustrations.html">Illustrations</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <span class="nav-subtitle">Components</span>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/accordion.html">Accordion</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/alerts.html">Alerts</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/avatars.html">Avatars</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/badge.html">Badge</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/breadcrumb.html">Breadcrumb</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/buttons.html">Buttons</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/button-group.html">Button Group</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/cards.html">Cards</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/collapse.html">Collapse</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/column-divider.html">Column Divider</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/devices.html">Devices</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/divider.html">Divider</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/dropdowns.html">Dropdowns</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/icons.html">Icons</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/list-group.html">List Group</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/lists.html">Lists</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/legend-indicator.html">Legend Indicator</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/modal.html">Modal</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/offcanvas.html">Offcanvas</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/page-header.html">Page Header</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/pagination.html">Pagination</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/popovers.html">Popovers</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/progress.html">Progress</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/profile.html">Profile</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/shapes.html">Shapes</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sliding-img.html">Sliding Image</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/spinners.html">Spinners</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/steps.html">Steps</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/tab.html">Tab</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/toasts.html">Toasts</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/tooltips.html">Tooltips</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/typography.html">Typography</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Navbars</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/navbar.html">Navbar</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/navs.html">Navs</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/mega-menu.html">Mega Menu</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/navbar-vertical-aside.html">Navbar Vertical Aside</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/scrollspy.html">Scrollspy</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Tables</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/tables.html">Tables</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/datatables.html">Datatables</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/table-sticky-header.html">Sticky Header</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Basic forms</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/basic-forms.html">Basic Forms</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/checks-and-switches.html">Checks &amp; Switches</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/input-group.html">Input Group</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle">Advanced Forms</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/select.html">Advanced Select</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/datepicker.html">Datepicker (Flatpickr)</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/daterangepicker.html">Date Range Picker</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/calendar.html">Calendar (Fullcalendar)</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/file-attachments.html">File Attachments</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/dropzone.html">Drag’ n’ Drop File Uploads</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/quill.html">WYSIWYG Editor</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/quantity-counter.html">Quantity Counter</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/copy-to-clipboard.html">Copy to Clipboard</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/input-mask.html">Input Mask</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/step-forms.html">Step Forms (Wizards)</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/add-field.html">Add Field</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/toggle-password.html">Toggle Password</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/count-characters.html">Count Characters</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/form-search.html">Form Search</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/toggle-switch.html">Toggle Switch</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/google-recaptcha.html">Google reCAPTCHA</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle">Charts</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link active" href="../documentation/chartjs.html">Chart.js</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/counter.html">Counter</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/circles.html">Circles.js (Pie Chart)</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle">Others</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/fslightbox.html">Fullscreen Lightbox</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/maps-leaflet.html">Leaflet</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/maps-jsvectormap.html">JSVectorMap</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sortablejs.html">SortableJS</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sticky-block.html">Sticky Block</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/go-to.html">Go To</a>
+            </li>
+
+            <li class="nav-item my-4"></li>
+
+            <li class="nav-item">
+              <small class="nav-subtitle d-block">Utilities</small>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/backgrounds.html">Backgrounds</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/borders.html">Borders</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/colors.html">Colors</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/links.html">Links</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/position.html">Position</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/shadows.html">Shadows</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/sizing.html">Sizing</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/spacing.html">Spacing</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/z-index.html">Z-index</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="../documentation/opacity.html">Opacity</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- End Navbar Collapse -->
+    </nav>
+    <!-- End Navbar -->
+
+    <!-- Content -->
+    <div class="navbar-sidebar-aside-content content-space-1 content-space-md-2 px-lg-5 px-xl-10">
+      <!-- Page Header -->
+      <div class="docs-page-header">
+        <div class="row align-items-center">
+          <div class="col-sm">
+            <h1 class="docs-page-header-title">Chart.js</h1>
+            <p class="docs-page-header-text">Simple yet flexible JavaScript charting for designers &amp; developers.</p>
+            <a class="link" href="https://www.chartjs.org/" target="_blank">Chart.js documentation <i class="bi-box-arrow-up-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- End Page Header -->
+
+      <!-- Heading -->
+      <h2 id="how-to-use" class="hs-docs-heading">
+        How to use <a class="anchorjs-link" href="#how-to-use" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <p>Copy-paste the following <code>&lt;script&gt;</code> near the end of your pages under <em><u>JS Implementing Plugins</u></em> to enable it.</p>
+
+      <pre class="rounded mb-4">
+        <code class="language-html" data-lang="html">
+          &lt;script src="./assets/vendor/chart.js/dist/Chart.min.js"&gt;&lt;/script&gt;
+        </code>
+      </pre>
+
+      <p>Copy-paste the following <code>&lt;script&gt;</code> near the end of your pages under <em><u>JS Implementing Plugins</u></em> to enable it.</p>
+
+      <pre class="rounded mb-4">
+        <code class="language-html" data-lang="html">
+        </code>
+      </pre>
+
+      <p>Copy-paste the init function under <em><u>JS Plugins Init.</u></em>, before the closing <code>&lt;/body&gt;</code> tag, to enable it.</p>
+
+      <pre class="rounded">
+        <code class="language-html" data-lang="html">
+          &lt;script&gt;
+            (function() {
+              // INITIALIZATION OF CHARTJS
+              // =======================================================
+              document.querySelectorAll('.js-chart').forEach(item => {
+                HSCore.components.HSChartJS.init(item)
+              })
+            });
+          &lt;/script&gt;
+        </code>
+      </pre>
+
+      <!-- Heading -->
+      <h2 id="line-chart" class="hs-docs-heading">
+        Line chart <a class="anchorjs-link" href="#line-chart" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab1" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab1" data-bs-toggle="pill" href="#nav-result1" role="tab" aria-controls="nav-result1" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab1" data-bs-toggle="pill" href="#nav-html1" role="tab" aria-controls="nav-html1" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent1">
+          <div class="tab-pane fade p-4 show active" id="nav-result1" role="tabpanel" aria-labelledby="nav-resultTab1">
+            <div class="row align-items-sm-center mb-4">
+              <div class="col-sm mb-3 mb-sm-0">
+                <div class="d-flex align-items-center">
+                  <span class="h1 mb-0">$7,431.14 USD</span>
+                </div>
+              </div>
+
+              <div class="col-sm-auto">
+                <!-- Legend Indicators -->
+                <div class="row font-size-sm">
+                  <div class="col-auto">
+                    <span class="legend-indicator bg-primary"></span> Income
+                  </div>
+                  <div class="col-auto">
+                    <span class="legend-indicator bg-info"></span> Expenses
+                  </div>
+                </div>
+                <!-- End Legend Indicators -->
+              </div>
+            </div>
+
+            <!-- Line Chart -->
+            <div class="chartjs-custom" style="height: 18rem;">
+              <canvas id="project" class="js-chart" data-hs-chartjs-options='{
+                              "type": "line",
+                              "data": {
+                                 "labels": ["Feb","Jan","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+                                 "datasets": [{
+                                  "data": [18,51,60,38,88,50,40,52,88,80,60,70],
+                                  "backgroundColor": "transparent",
+                                  "borderColor": "#377dff",
+                                  "borderWidth": 2,
+                                  "pointRadius": 0,
+                                  "hoverBorderColor": "#377dff",
+                                  "pointBackgroundColor": "#377dff",
+                                  "pointBorderColor": "#fff",
+                                  "pointHoverRadius": 0,
+                                  "tension": 0.4
+                                },
+                                {
+                                  "data": [27,38,60,77,40,50,49,29,42,27,42,50],
+                                  "backgroundColor": "transparent",
+                                  "borderColor": "#00c9db",
+                                  "borderWidth": 2,
+                                  "pointRadius": 0,
+                                  "hoverBorderColor": "#00c9db",
+                                  "pointBackgroundColor": "#00c9db",
+                                  "pointBorderColor": "#fff",
+                                  "pointHoverRadius": 0,
+                                  "tension": 0.4
+                                }]
+                              },
+                              "options": {
+                                 "scales": {
+                                    "y": {
+                                      "grid": {
+                                        "color": "#e7eaf3",
+                                        "drawBorder": false,
+                                        "zeroLineColor": "#e7eaf3"
+                                      },
+                                      "ticks": {
+                                        "min": 0,
+                                        "max": 100,
+                                        "stepSize": 20,
+                                        "color": "#97a4af",
+                                        "font": {
+                                          "family": "Open Sans, sans-serif"
+                                        },
+                                        "padding": 10,
+                                        "postfix": "k"
+                                      }
+                                    },
+                                    "x": {
+                                      "grid": {
+                                        "display": false,
+                                        "drawBorder": false
+                                      },
+                                      "ticks": {
+                                        "color": "#97a4af",
+                                        "font": {
+                                          "size": 12,
+                                          "family": "Open Sans, sans-serif"
+                                        },
+                                        "padding": 5
+                                      }
+                                    }
+                                },
+                                "plugins": {
+                                  "tooltip": {
+                                    "prefix": "$",
+                                    "postfix": "k",
+                                    "hasIndicator": true,
+                                    "mode": "index",
+                                    "intersect": false,
+                                    "lineMode": true,
+                                    "lineWithLineColor": "rgba(19, 33, 68, 0.075)"
+                                  }
+                                },
+                                "hover": {
+                                  "mode": "nearest",
+                                  "intersect": true
+                                }
+                              }
+                            }'>
+              </canvas>
+            </div>
+            <!-- End Line Chart -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html1" role="tabpanel" aria-labelledby="nav-htmlTab1">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class=&quot;row align-items-sm-center mb-4&quot;&gt;
+              &lt;div class=&quot;col-sm mb-3 mb-sm-0&quot;&gt;
+                &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+                  &lt;span class=&quot;h1 mb-0&quot;&gt;$7,431.14 USD&lt;/span&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+
+              &lt;div class=&quot;col-sm-auto&quot;&gt;
+                &lt;!-- Legend Indicators --&gt;
+                &lt;div class=&quot;row font-size-sm&quot;&gt;
+                  &lt;div class=&quot;col-auto&quot;&gt;
+                    &lt;span class=&quot;legend-indicator bg-primary&quot;&gt;&lt;/span&gt; Income
+                  &lt;/div&gt;
+                  &lt;div class=&quot;col-auto&quot;&gt;
+                    &lt;span class=&quot;legend-indicator bg-info&quot;&gt;&lt;/span&gt; Expenses
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- End Legend Indicators --&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Line Chart --&gt;
+            &lt;div class=&quot;chartjs-custom&quot; style=&quot;height: 18rem;&quot;&gt;
+              &lt;canvas id=&quot;project&quot; class=&quot;js-chart&quot;
+                      data-hs-chartjs-options='{
+                              &quot;type&quot;: &quot;line&quot;,
+                              &quot;data&quot;: {
+                                 &quot;labels&quot;: [&quot;Feb&quot;,&quot;Jan&quot;,&quot;Mar&quot;,&quot;Apr&quot;,&quot;May&quot;,&quot;Jun&quot;,&quot;Jul&quot;,&quot;Aug&quot;,&quot;Sep&quot;,&quot;Oct&quot;,&quot;Nov&quot;,&quot;Dec&quot;],
+                                 &quot;datasets&quot;: [{
+                                  &quot;data&quot;: [18,51,60,38,88,50,40,52,88,80,60,70],
+                                  &quot;backgroundColor&quot;: &quot;transparent&quot;,
+                                  &quot;borderColor&quot;: &quot;#377dff&quot;,
+                                  &quot;borderWidth&quot;: 2,
+                                  &quot;pointRadius&quot;: 0,
+                                  &quot;hoverBorderColor&quot;: &quot;#377dff&quot;,
+                                  &quot;pointBackgroundColor&quot;: &quot;#377dff&quot;,
+                                  &quot;pointBorderColor&quot;: &quot;#fff&quot;,
+                                  &quot;pointHoverRadius&quot;: 0,
+                                  &quot;tension&quot;: 0.4
+                                },
+                                {
+                                  &quot;data&quot;: [27,38,60,77,40,50,49,29,42,27,42,50],
+                                  &quot;backgroundColor&quot;: &quot;transparent&quot;,
+                                  &quot;borderColor&quot;: &quot;#00c9db&quot;,
+                                  &quot;borderWidth&quot;: 2,
+                                  &quot;pointRadius&quot;: 0,
+                                  &quot;hoverBorderColor&quot;: &quot;#00c9db&quot;,
+                                  &quot;pointBackgroundColor&quot;: &quot;#00c9db&quot;,
+                                  &quot;pointBorderColor&quot;: &quot;#fff&quot;,
+                                  &quot;pointHoverRadius&quot;: 0,
+                                  &quot;tension&quot;: 0.4
+                                }]
+                              },
+                              &quot;options&quot;: {
+                                 &quot;scales&quot;: {
+                                    &quot;y&quot;: {
+                                      &quot;grid&quot;: {
+                                        &quot;color&quot;: &quot;#e7eaf3&quot;,
+                                        &quot;drawBorder&quot;: false,
+                                        &quot;zeroLineColor&quot;: &quot;#e7eaf3&quot;
+                                      },
+                                      &quot;ticks&quot;: {
+                                        &quot;min&quot;: 0,
+                                        &quot;max&quot;: 100,
+                                        &quot;stepSize&quot;: 20,
+                                        &quot;color&quot;: &quot;#97a4af&quot;,
+                                        &quot;font&quot;: {
+                                          &quot;family&quot;: &quot;Open Sans, sans-serif&quot;
+                                        },
+                                        &quot;padding&quot;: 10,
+                                        &quot;postfix&quot;: &quot;k&quot;
+                                      }
+                                    },
+                                    &quot;x&quot;: {
+                                      &quot;grid&quot;: {
+                                        &quot;display&quot;: false,
+                                        &quot;drawBorder&quot;: false
+                                      },
+                                      &quot;ticks&quot;: {
+                                        &quot;color&quot;: &quot;#97a4af&quot;,
+                                        &quot;font&quot;: {
+                                          &quot;size&quot;: 12,
+                                          &quot;family&quot;: &quot;Open Sans, sans-serif&quot;
+                                        },
+                                        &quot;padding&quot;: 5
+                                      }
+                                    }
+                                },
+                                &quot;plugins&quot;: {
+                                  &quot;tooltip&quot;: {
+                                    &quot;prefix&quot;: &quot;$&quot;,
+                                    &quot;postfix&quot;: &quot;k&quot;,
+                                    &quot;hasIndicator&quot;: true,
+                                    &quot;mode&quot;: &quot;index&quot;,
+                                    &quot;intersect&quot;: false,
+                                    &quot;lineMode&quot;: true,
+                                    &quot;lineWithLineColor&quot;: &quot;rgba(19, 33, 68, 0.075)&quot;
+                                  }
+                                },
+                                &quot;hover&quot;: {
+                                  &quot;mode&quot;: &quot;nearest&quot;,
+                                  &quot;intersect&quot;: true
+                                }
+                              }
+                            }'&gt;
+              &lt;/canvas&gt;
+            &lt;/div&gt;
+            &lt;!-- End Line Chart --&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="updating-line-chart" class="hs-docs-heading">
+        Updating line chart <a class="anchorjs-link" href="#updating-line-chart" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <p>Use <code>"gradientPosition": {"x0": 0, "y0": 0, "x1": 0, "y1": 200}</code> to set position for gradient.</p>
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab13" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab13" data-bs-toggle="pill" href="#nav-result13" role="tab" aria-controls="nav-result13" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab13" data-bs-toggle="pill" href="#nav-html13" role="tab" aria-controls="nav-html13" aria-selected="false">HTML</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-jsTab13" data-bs-toggle="pill" href="#nav-js13" role="tab" aria-controls="nav-js13" aria-selected="false">JS</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent13">
+          <div class="tab-pane fade p-4 show active" id="nav-result13" role="tabpanel" aria-labelledby="nav-resultTab13">
+            <div class="row align-items-sm-center mb-4">
+              <div class="col-sm mb-3 mb-sm-0">
+                <div class="d-flex align-items-center">
+                  <span class="h1 mb-0">$7,431.14 USD</span>
+                </div>
+              </div>
+
+              <div class="col-sm-auto">
+                <!-- Nav -->
+                <ul class="nav nav-segment" id="projectsTab" role="tablist">
+                  <li class="nav-item" data-toggle="chart" data-datasets="0" data-trigger="click" data-action="toggle">
+                    <a class="nav-link active" href="javascript:;" data-bs-toggle="tab">
+                      <span class="legend-indicator bg-primary"></span> This week
+                    </a>
+                  </li>
+                  <li class="nav-item" data-toggle="chart" data-datasets="1" data-trigger="click" data-action="toggle">
+                    <a class="nav-link" href="javascript:;" data-bs-toggle="tab">
+                      <span class="legend-indicator bg-info"></span> Last week
+                    </a>
+                  </li>
+                </ul>
+                <!-- End Nav -->
+              </div>
+            </div>
+
+            <!-- Line Chart -->
+            <div class="chartjs-custom" style="height: 18rem;">
+              <canvas id="updatingLineChart" data-hs-chartjs-options='{
+                              "type": "line",
+                              "data": {
+                                 "labels": ["Feb","Jan","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+                                 "datasets": [{
+                                  "backgroundColor": ["rgba(55, 125, 255, .5)", "rgba(255, 255, 255, .2)"],
+                                  "borderColor": "#377dff",
+                                  "borderWidth": 2,
+                                  "pointRadius": 0,
+                                  "hoverBorderColor": "#377dff",
+                                  "pointBackgroundColor": "#377dff",
+                                  "pointBorderColor": "#fff",
+                                  "pointHoverRadius": 0,
+                                  "tension": 0.4
+                                },
+                                {
+                                  "backgroundColor": ["rgba(0, 201, 219, .5)", "rgba(255, 255, 255, .2)"],
+                                  "borderColor": "#00c9db",
+                                  "borderWidth": 2,
+                                  "pointRadius": 0,
+                                  "hoverBorderColor": "#00c9db",
+                                  "pointBackgroundColor": "#00c9db",
+                                  "pointBorderColor": "#fff",
+                                  "pointHoverRadius": 0,
+                                  "tension": 0.4
+                                }]
+                              },
+                              "options": {
+                                "gradientPosition": {"y1": 200},
+                                 "scales": {
+                                    "y": {
+                                      "grid": {
+                                        "color": "#e7eaf3",
+                                        "drawBorder": false,
+                                        "zeroLineColor": "#e7eaf3"
+                                      },
+                                      "ticks": {
+                                        "min": 0,
+                                        "max": 100,
+                                        "stepSize": 20,
+                                        "color": "#97a4af",
+                                        "font": {
+                                          "family": "Open Sans, sans-serif"
+                                        },
+                                        "padding": 10,
+                                        "postfix": "k"
+                                      }
+                                    },
+                                    "x": {
+                                      "grid": {
+                                        "display": false,
+                                        "drawBorder": false
+                                      },
+                                      "ticks": {
+                                        "color": "#97a4af",
+                                        "font": {
+                                          "size": 12,
+                                          "family": "Open Sans, sans-serif"
+                                        },
+                                        "padding": 5
+                                      }
+                                    }
+                                },
+                                "plugins": {
+                                  "tooltip": {
+                                    "prefix": "$",
+                                    "postfix": "k",
+                                    "hasIndicator": true,
+                                    "mode": "index",
+                                    "intersect": false,
+                                    "lineMode": true,
+                                    "lineWithLineColor": "rgba(19, 33, 68, 0.075)"
+                                  }
+                                },
+                                "hover": {
+                                  "mode": "nearest",
+                                  "intersect": true
+                                }
+                              }
+                            }'>
+              </canvas>
+            </div>
+            <!-- End Line Chart -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html13" role="tabpanel" aria-labelledby="nav-htmlTab13">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class=&quot;row align-items-sm-center mb-4&quot;&gt;
+              &lt;div class=&quot;col-sm mb-3 mb-sm-0&quot;&gt;
+                &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+                  &lt;span class=&quot;h1 mb-0&quot;&gt;$7,431.14 USD&lt;/span&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+
+              &lt;div class=&quot;col-sm-auto&quot;&gt;
+                &lt;!-- Nav --&gt;
+                &lt;ul class=&quot;nav nav-segment&quot; id=&quot;projectsTab&quot; role=&quot;tablist&quot;&gt;
+                  &lt;li class=&quot;nav-item&quot; data-toggle=&quot;chart&quot; data-datasets=&quot;0&quot; data-trigger=&quot;click&quot; data-action=&quot;toggle&quot;&gt;
+                    &lt;a class=&quot;nav-link active&quot; href=&quot;javascript:;&quot; data-bs-toggle=&quot;tab&quot;&gt;
+                      &lt;span class=&quot;legend-indicator bg-primary&quot;&gt;&lt;/span&gt; This week
+                    &lt;/a&gt;
+                  &lt;/li&gt;
+                  &lt;li class=&quot;nav-item&quot; data-toggle=&quot;chart&quot; data-datasets=&quot;1&quot; data-trigger=&quot;click&quot; data-action=&quot;toggle&quot;&gt;
+                    &lt;a class=&quot;nav-link&quot; href=&quot;javascript:;&quot; data-bs-toggle=&quot;tab&quot;&gt;
+                      &lt;span class=&quot;legend-indicator bg-info&quot;&gt;&lt;/span&gt; Last week
+                    &lt;/a&gt;
+                  &lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;!-- End Nav --&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Line Chart --&gt;
+            &lt;div class=&quot;chartjs-custom&quot; style=&quot;height: 18rem;&quot;&gt;
+              &lt;canvas id=&quot;updatingLineChart&quot;
+                      data-hs-chartjs-options='{
+                              &quot;type&quot;: &quot;line&quot;,
+                              &quot;data&quot;: {
+                                 &quot;labels&quot;: [&quot;Feb&quot;,&quot;Jan&quot;,&quot;Mar&quot;,&quot;Apr&quot;,&quot;May&quot;,&quot;Jun&quot;,&quot;Jul&quot;,&quot;Aug&quot;,&quot;Sep&quot;,&quot;Oct&quot;,&quot;Nov&quot;,&quot;Dec&quot;],
+                                 &quot;datasets&quot;: [{
+                                  &quot;backgroundColor&quot;: [&quot;rgba(55, 125, 255, .5)&quot;, &quot;rgba(255, 255, 255, .2)&quot;],
+                                  &quot;borderColor&quot;: &quot;#377dff&quot;,
+                                  &quot;borderWidth&quot;: 2,
+                                  &quot;pointRadius&quot;: 0,
+                                  &quot;hoverBorderColor&quot;: &quot;#377dff&quot;,
+                                  &quot;pointBackgroundColor&quot;: &quot;#377dff&quot;,
+                                  &quot;pointBorderColor&quot;: &quot;#fff&quot;,
+                                  &quot;pointHoverRadius&quot;: 0,
+                                  &quot;tension&quot;: 0.4
+                                },
+                                {
+                                  &quot;backgroundColor&quot;: [&quot;rgba(0, 201, 219, .5)&quot;, &quot;rgba(255, 255, 255, .2)&quot;],
+                                  &quot;borderColor&quot;: &quot;#00c9db&quot;,
+                                  &quot;borderWidth&quot;: 2,
+                                  &quot;pointRadius&quot;: 0,
+                                  &quot;hoverBorderColor&quot;: &quot;#00c9db&quot;,
+                                  &quot;pointBackgroundColor&quot;: &quot;#00c9db&quot;,
+                                  &quot;pointBorderColor&quot;: &quot;#fff&quot;,
+                                  &quot;pointHoverRadius&quot;: 0,
+                                  &quot;tension&quot;: 0.4
+                                }]
+                              },
+                              &quot;options&quot;: {
+                                &quot;gradientPosition&quot;: {&quot;y1&quot;: 200},
+                                 &quot;scales&quot;: {
+                                    &quot;y&quot;: {
+                                      &quot;grid&quot;: {
+                                        &quot;color&quot;: &quot;#e7eaf3&quot;,
+                                        &quot;drawBorder&quot;: false,
+                                        &quot;zeroLineColor&quot;: &quot;#e7eaf3&quot;
+                                      },
+                                      &quot;ticks&quot;: {
+                                        &quot;min&quot;: 0,
+                                        &quot;max&quot;: 100,
+                                        &quot;stepSize&quot;: 20,
+                                        &quot;color&quot;: &quot;#97a4af&quot;,
+                                        &quot;font&quot;: {
+                                          &quot;family&quot;: &quot;Open Sans, sans-serif&quot;
+                                        },
+                                        &quot;padding&quot;: 10,
+                                        &quot;postfix&quot;: &quot;k&quot;
+                                      }
+                                    },
+                                    &quot;x&quot;: {
+                                      &quot;grid&quot;: {
+                                        &quot;display&quot;: false,
+                                        &quot;drawBorder&quot;: false
+                                      },
+                                      &quot;ticks&quot;: {
+                                        &quot;color&quot;: &quot;#97a4af&quot;,
+                                        &quot;font&quot;: {
+                                          &quot;size&quot;: 12,
+                                          &quot;family&quot;: &quot;Open Sans, sans-serif&quot;
+                                        },
+                                        &quot;padding&quot;: 5
+                                      }
+                                    }
+                                },
+                                &quot;plugins&quot;: {
+                                  &quot;tooltip&quot;: {
+                                    &quot;prefix&quot;: &quot;$&quot;,
+                                    &quot;postfix&quot;: &quot;k&quot;,
+                                    &quot;hasIndicator&quot;: true,
+                                    &quot;mode&quot;: &quot;index&quot;,
+                                    &quot;intersect&quot;: false,
+                                    &quot;lineMode&quot;: true,
+                                    &quot;lineWithLineColor&quot;: &quot;rgba(19, 33, 68, 0.075)&quot;
+                                  }
+                                },
+                                &quot;hover&quot;: {
+                                  &quot;mode&quot;: &quot;nearest&quot;,
+                                  &quot;intersect&quot;: true
+                                }
+                              }
+                            }'&gt;
+              &lt;/canvas&gt;
+            &lt;/div&gt;
+            &lt;!-- End Line Chart --&gt;
+              </code>
+            </pre>
+          </div>
+
+          <div class="tab-pane fade" id="nav-js13" role="tabpanel" aria-labelledby="nav-jsTab13">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;script&gt;
+                  (function () {
+                    // INITIALIZATION OF UPDATING CHARTJS
+                    // =======================================================
+                    const updatingChartDatasets = [
+                      [
+                        [18,51,60,38,88,50,40,52,88,80,60,70],
+                        [27,38,60,77,40,50,49,29,42,27,42,50]
+                      ],
+                      [
+                        [77,40,50,49,27,38,60,42,50,29,42,27],
+                        [60,38,18,51,88,50,40,52,60,70,88,80]
+                      ]
+                    ]
+
+                    HSCore.components.HSChartJS.init(document.querySelector('#updatingLineChart'), {
+                      data: {
+                        datasets: [
+                          {
+                            data: updatingChartDatasets[0][0]
+                          },
+                          {
+                            data: updatingChartDatasets[0][1]
+                          }
+                        ]
+                      }
+                    });
+
+                    const updatingLineChart = HSCore.components.HSChartJS.getItem('updatingLineChart')
+
+                    // Call when tab is clicked
+                    document.querySelectorAll('[data-toggle="chart"]').forEach(item => {
+                      item.addEventListener('click', e => {
+                        let keyDataset = e.currentTarget.getAttribute('data-datasets')
+
+                        // Update datasets for chart
+                        updatingLineChart.data.datasets.forEach(function(dataset, key) {
+                          dataset.data = updatingChartDatasets[keyDataset][key];
+                        })
+                        updatingLineChart.update()
+                      })
+                    })
+                  })()
+                &lt;/script&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="strong-line-chart" class="hs-docs-heading">
+        Strong line chart <a class="anchorjs-link" href="#strong-line-chart" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab3" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab3" data-bs-toggle="pill" href="#nav-result3" role="tab" aria-controls="nav-result3" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab3" data-bs-toggle="pill" href="#nav-html3" role="tab" aria-controls="nav-html3" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent3">
+          <div class="tab-pane fade p-4 show active" id="nav-result3" role="tabpanel" aria-labelledby="nav-resultTab3">
+            <!-- Chartjs -->
+            <div class="chartjs-custom" style="height: 18rem;">
+              <canvas id="strong-line-chart" class="js-chart" data-hs-chartjs-options='{
+                          "type": "line",
+                          "data": {
+                             "labels": ["6:00 PM","6:00 PM","6:01 PM","6:01 PM","6:02 PM","6:02 PM","6:03 PM","6:03 PM","6:04 PM","6:04 PM","6:05 PM","6:05 PM","6:06 PM","6:06 PM","6:07 PM","6:07 PM","6:08 PM","6:08 PM","6:09 PM","6:09 PM","6:10 PM","6:10 PM","6:11 PM","6:11 PM","6:12 PM","6:12 PM","6:13 PM","6:13 PM","6:14 PM","6:14 PM","6:15 PM","6:15 PM","6:16 PM","6:16 PM","6:17 PM","6:17 PM","6:18 PM","6:18 PM","6:19 PM","6:19 PM","6:20 PM","6:20 PM","6:21 PM","6:21 PM","6:22 PM","6:22 PM","6:23 PM","6:23 PM","6:24 PM","6:24 PM","6:25 PM","6:25 PM","6:26 PM","6:26 PM","6:27 PM","6:27 PM","6:28 PM","6:28 PM","6:29 PM","6:29 PM","6:30 PM","6:30 PM","6:31 PM","6:31 PM","6:32 PM","6:32 PM","6:33 PM","6:33 PM","6:34 PM","6:34 PM","6:35 PM","6:35 PM","6:36 PM","6:36 PM","6:37 PM","6:37 PM","6:38 PM","6:38 PM","6:39 PM","6:39 PM","6:40 PM","6:40 PM","6:41 PM","6:41 PM","6:42 PM","6:42 PM","6:43 PM","6:43 PM","6:44 PM","6:44 PM","6:45 PM","6:45 PM","6:46 PM","6:46 PM","6:47 PM","6:47 PM","6:48 PM","6:48 PM","6:49 PM","6:49 PM","6:50 PM","6:50 PM","6:51 PM","6:51 PM","6:52 PM","6:52 PM","6:53 PM","6:53 PM","6:54 PM","6:54 PM","6:55 PM","6:55 PM","6:56 PM","6:56 PM","6:57 PM","6:57 PM","6:58 PM","6:58 PM","6:59 PM","6:59 PM"],
+                             "datasets": [{
+                              "data": [8516, 8520, 8547, 8575, 8588, 8604, 8601, 8595, 8617, 8612, 8607, 8632, 8636, 8641, 8638, 8641, 8624, 8633, 8643, 8630, 8646, 8662, 8670, 8667, 8658, 8660, 8657, 8648, 8645, 8647, 8652, 8637, 8647, 8640, 8667, 8658, 8660, 8713, 8703, 8705, 8747, 8620, 8635, 8680, 8675, 8667, 8620, 8645, 8645, 8625, 8635, 8645, 8665, 8660, 8670, 8640, 8650, 8640, 8635, 8645, 8695, 8703, 8705, 8640, 8650, 8640, 8620, 8610, 8640, 8630, 8610, 8620, 8600, 8590, 8610, 8620, 8600, 8610, 8605, 8610, 8660, 8665, 8664, 8640, 8645, 8650, 8610, 8620, 8630, 8670, 8675, 8674, 8660, 8665, 8650, 8610, 8612, 8607, 8632, 8636, 8641, 8638, 8641, 8638, 8641, 8624, 8633, 8643, 8630, 8646, 8662, 8638, 8641, 8624, 8633, 8643, 8630, 8646, 8632, 8636],
+                              "backgroundColor": "transparent",
+                              "borderColor": "#377dff",
+                              "borderWidth": 2,
+                              "pointBackgroundColor": "transparent",
+                              "pointHoverBackgroundColor": "#377dff",
+                              "pointBorderColor": "transparent",
+                              "pointHoverBorderColor": "#377dff",
+                              "pointRadius": 2,
+                              "pointHoverRadius": 2,
+                              "tension": 0
+                            }]
+                          },
+                          "options": {
+                             "scales": {
+                                "y": {
+                                  "display": false
+                                },
+                                "x": {
+                                  "grid": {
+                                    "display": false,
+                                    "drawBorder": false
+                                  },
+                                  "ticks": {
+                                    "labelOffset": 40,
+                                    "maxTicksLimit": 6,
+                                    "padding": 20,
+                                    "maxRotation": 0,
+                                    "minRotation": 0,
+                                    "fontSize": 12,
+                                    "fontColor": "rgba(0, 0, 0, 0.4)"
+                                  }
+                                }
+                             },
+                            "hover": {
+                               "mode": "nearest",
+                               "intersect": false
+                             },
+                            "plugins": {
+                              "tooltip": {
+                                "prefix": "$",
+                                "intersect": false
+                              }
+                            }
+                          }
+                        }'>
+              </canvas>
+            </div>
+            <!-- End Chartjs -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html3" role="tabpanel" aria-labelledby="nav-htmlTab3">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                 &lt;!-- Chartjs --&gt;
+            &lt;div class=&quot;chartjs-custom&quot; style=&quot;height: 18rem;&quot;&gt;
+              &lt;canvas id=&quot;strong-line-chart&quot; class=&quot;js-chart&quot;
+                      data-hs-chartjs-options='{
+                          &quot;type&quot;: &quot;line&quot;,
+                          &quot;data&quot;: {
+                             &quot;labels&quot;: [&quot;6:00 PM&quot;,&quot;6:00 PM&quot;,&quot;6:01 PM&quot;,&quot;6:01 PM&quot;,&quot;6:02 PM&quot;,&quot;6:02 PM&quot;,&quot;6:03 PM&quot;,&quot;6:03 PM&quot;,&quot;6:04 PM&quot;,&quot;6:04 PM&quot;,&quot;6:05 PM&quot;,&quot;6:05 PM&quot;,&quot;6:06 PM&quot;,&quot;6:06 PM&quot;,&quot;6:07 PM&quot;,&quot;6:07 PM&quot;,&quot;6:08 PM&quot;,&quot;6:08 PM&quot;,&quot;6:09 PM&quot;,&quot;6:09 PM&quot;,&quot;6:10 PM&quot;,&quot;6:10 PM&quot;,&quot;6:11 PM&quot;,&quot;6:11 PM&quot;,&quot;6:12 PM&quot;,&quot;6:12 PM&quot;,&quot;6:13 PM&quot;,&quot;6:13 PM&quot;,&quot;6:14 PM&quot;,&quot;6:14 PM&quot;,&quot;6:15 PM&quot;,&quot;6:15 PM&quot;,&quot;6:16 PM&quot;,&quot;6:16 PM&quot;,&quot;6:17 PM&quot;,&quot;6:17 PM&quot;,&quot;6:18 PM&quot;,&quot;6:18 PM&quot;,&quot;6:19 PM&quot;,&quot;6:19 PM&quot;,&quot;6:20 PM&quot;,&quot;6:20 PM&quot;,&quot;6:21 PM&quot;,&quot;6:21 PM&quot;,&quot;6:22 PM&quot;,&quot;6:22 PM&quot;,&quot;6:23 PM&quot;,&quot;6:23 PM&quot;,&quot;6:24 PM&quot;,&quot;6:24 PM&quot;,&quot;6:25 PM&quot;,&quot;6:25 PM&quot;,&quot;6:26 PM&quot;,&quot;6:26 PM&quot;,&quot;6:27 PM&quot;,&quot;6:27 PM&quot;,&quot;6:28 PM&quot;,&quot;6:28 PM&quot;,&quot;6:29 PM&quot;,&quot;6:29 PM&quot;,&quot;6:30 PM&quot;,&quot;6:30 PM&quot;,&quot;6:31 PM&quot;,&quot;6:31 PM&quot;,&quot;6:32 PM&quot;,&quot;6:32 PM&quot;,&quot;6:33 PM&quot;,&quot;6:33 PM&quot;,&quot;6:34 PM&quot;,&quot;6:34 PM&quot;,&quot;6:35 PM&quot;,&quot;6:35 PM&quot;,&quot;6:36 PM&quot;,&quot;6:36 PM&quot;,&quot;6:37 PM&quot;,&quot;6:37 PM&quot;,&quot;6:38 PM&quot;,&quot;6:38 PM&quot;,&quot;6:39 PM&quot;,&quot;6:39 PM&quot;,&quot;6:40 PM&quot;,&quot;6:40 PM&quot;,&quot;6:41 PM&quot;,&quot;6:41 PM&quot;,&quot;6:42 PM&quot;,&quot;6:42 PM&quot;,&quot;6:43 PM&quot;,&quot;6:43 PM&quot;,&quot;6:44 PM&quot;,&quot;6:44 PM&quot;,&quot;6:45 PM&quot;,&quot;6:45 PM&quot;,&quot;6:46 PM&quot;,&quot;6:46 PM&quot;,&quot;6:47 PM&quot;,&quot;6:47 PM&quot;,&quot;6:48 PM&quot;,&quot;6:48 PM&quot;,&quot;6:49 PM&quot;,&quot;6:49 PM&quot;,&quot;6:50 PM&quot;,&quot;6:50 PM&quot;,&quot;6:51 PM&quot;,&quot;6:51 PM&quot;,&quot;6:52 PM&quot;,&quot;6:52 PM&quot;,&quot;6:53 PM&quot;,&quot;6:53 PM&quot;,&quot;6:54 PM&quot;,&quot;6:54 PM&quot;,&quot;6:55 PM&quot;,&quot;6:55 PM&quot;,&quot;6:56 PM&quot;,&quot;6:56 PM&quot;,&quot;6:57 PM&quot;,&quot;6:57 PM&quot;,&quot;6:58 PM&quot;,&quot;6:58 PM&quot;,&quot;6:59 PM&quot;,&quot;6:59 PM&quot;],
+                             &quot;datasets&quot;: [{
+                              &quot;data&quot;: [8516, 8520, 8547, 8575, 8588, 8604, 8601, 8595, 8617, 8612, 8607, 8632, 8636, 8641, 8638, 8641, 8624, 8633, 8643, 8630, 8646, 8662, 8670, 8667, 8658, 8660, 8657, 8648, 8645, 8647, 8652, 8637, 8647, 8640, 8667, 8658, 8660, 8713, 8703, 8705, 8747, 8620, 8635, 8680, 8675, 8667, 8620, 8645, 8645, 8625, 8635, 8645, 8665, 8660, 8670, 8640, 8650, 8640, 8635, 8645, 8695, 8703, 8705, 8640, 8650, 8640, 8620, 8610, 8640, 8630, 8610, 8620, 8600, 8590, 8610, 8620, 8600, 8610, 8605, 8610, 8660, 8665, 8664, 8640, 8645, 8650, 8610, 8620, 8630, 8670, 8675, 8674, 8660, 8665, 8650, 8610, 8612, 8607, 8632, 8636, 8641, 8638, 8641, 8638, 8641, 8624, 8633, 8643, 8630, 8646, 8662, 8638, 8641, 8624, 8633, 8643, 8630, 8646, 8632, 8636],
+                              &quot;backgroundColor&quot;: &quot;transparent&quot;,
+                              &quot;borderColor&quot;: &quot;#377dff&quot;,
+                              &quot;borderWidth&quot;: 2,
+                              &quot;pointBackgroundColor&quot;: &quot;transparent&quot;,
+                              &quot;pointHoverBackgroundColor&quot;: &quot;#377dff&quot;,
+                              &quot;pointBorderColor&quot;: &quot;transparent&quot;,
+                              &quot;pointHoverBorderColor&quot;: &quot;#377dff&quot;,
+                              &quot;pointRadius&quot;: 2,
+                              &quot;pointHoverRadius&quot;: 2,
+                              &quot;tension&quot;: 0
+                            }]
+                          },
+                          &quot;options&quot;: {
+                             &quot;scales&quot;: {
+                                &quot;y&quot;: {
+                                  &quot;display&quot;: false
+                                },
+                                &quot;x&quot;: {
+                                  &quot;grid&quot;: {
+                                    &quot;display&quot;: false,
+                                    &quot;drawBorder&quot;: false
+                                  },
+                                  &quot;ticks&quot;: {
+                                    &quot;labelOffset&quot;: 40,
+                                    &quot;maxTicksLimit&quot;: 6,
+                                    &quot;padding&quot;: 20,
+                                    &quot;maxRotation&quot;: 0,
+                                    &quot;minRotation&quot;: 0,
+                                    &quot;fontSize&quot;: 12,
+                                    &quot;fontColor&quot;: &quot;rgba(0, 0, 0, 0.4)&quot;
+                                  }
+                                }
+                             },
+                            &quot;hover&quot;: {
+                               &quot;mode&quot;: &quot;nearest&quot;,
+                               &quot;intersect&quot;: false
+                             },
+                            &quot;plugins&quot;: {
+                              &quot;tooltip&quot;: {
+                                &quot;prefix&quot;: &quot;$&quot;,
+                                &quot;intersect&quot;: false
+                              }
+                            }
+                          }
+                        }'&gt;
+              &lt;/canvas&gt;
+            &lt;/div&gt;
+            &lt;!-- End Chartjs --&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="line-chart-with-grid" class="hs-docs-heading">
+        Line chart with grid <a class="anchorjs-link" href="#line-chart-with-grid" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab4" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab4" data-bs-toggle="pill" href="#nav-result4" role="tab" aria-controls="nav-result4" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab4" data-bs-toggle="pill" href="#nav-html4" role="tab" aria-controls="nav-html4" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent4">
+          <div class="tab-pane fade p-4 show active" id="nav-result4" role="tabpanel" aria-labelledby="nav-resultTab4">
+            <!-- Legend Indicators -->
+            <div class="row justify-content-end mb-5">
+              <div class="col-auto">
+                <span class="legend-indicator bg-primary"></span> Income
+              </div>
+              <div class="col-auto">
+                <span class="legend-indicator"></span> Expenses
+              </div>
+            </div>
+            <!-- End Legend Indicators -->
+
+            <!-- Chartjs -->
+            <div class="chartjs-custom" style="height: 300px;">
+              <canvas id="line-chart-with-grid" class="js-chart" data-hs-chartjs-options='{
+                          "type": "line",
+                          "data": {
+                             "labels": ["1AM","2AM","3AM","4AM","5AM","6AM","7AM","8AM","9AM","10AM","11AM","12AM","1PM","2PM","3PM","4PM","5PM","6PM","7PM","8PM","9PM","10PM","11PM","12PM"],
+                             "datasets": [{
+                              "data": [30,30,30,32,33,34,35,34,33,32,31,30,30,30,30,32,33,34,35,34,33,32,31,30],
+                              "backgroundColor": "transparent",
+                              "borderColor": "#eeeef1",
+                              "borderWidth": 2,
+                              "pointRadius": 0,
+                              "pointHoverRadius": 1,
+                              "tension": 0,
+                              "borderDash": [10,5]
+                            },
+                            {
+                              "data": [70,52,47,58,38,40,57,40,31,53,60,43,70,52,47,58,38,40,57,40,31,53,60,43],
+                              "backgroundColor": "transparent",
+                              "borderColor": "#377dff",
+                              "borderWidth": 2,
+                              "pointRadius": 0,
+                              "pointHoverRadius": 1,
+                              "tension": 0
+                            }]
+                          },
+                          "options": {
+                             "scales": {
+                              "y": {
+                                "grid": {
+                                  "drawBorder": false,
+                                  "color": "#eeeef1"
+                                },
+                                "min": 25,
+                                "max": 150,
+                                "ticks": {
+                                  "stepSize": 25,
+                                  "color": "rgba(0, 0, 0, 0.4)",
+                                  "padding": 10
+                                }
+                              },
+                              "x": {
+                                "grid": {
+                                  "display": false,
+                                  "drawBorder": false
+                                },
+                                "ticks": {
+                                  "labelOffset": 20,
+                                  "maxTicksLimit": 11,
+                                  "padding": 20,
+                                  "maxRotation": 0,
+                                  "minRotation": 0,
+                                  "font": {
+                                    "size": 12
+                                  },
+                                  "color": "rgba(0, 0, 0, 0.4)"
+                                }
+                              }
+                            },
+                            "hover": {
+                               "mode": "nearest",
+                               "intersect": false
+                             },
+                            "plugins": {
+                              "tooltip": {
+                                "prefix": "$",
+                                "intersect": false
+                              }
+                            }
+                          }
+                        }'>
+              </canvas>
+            </div>
+            <!-- End Chartjs -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html4" role="tabpanel" aria-labelledby="nav-htmlTab4">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                 &lt;!-- Legend Indicators --&gt;
+            &lt;div class=&quot;row justify-content-end mb-5&quot;&gt;
+              &lt;div class=&quot;col-auto&quot;&gt;
+                &lt;span class=&quot;legend-indicator bg-primary&quot;&gt;&lt;/span&gt; Income
+              &lt;/div&gt;
+              &lt;div class=&quot;col-auto&quot;&gt;
+                &lt;span class=&quot;legend-indicator&quot;&gt;&lt;/span&gt; Expenses
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;!-- End Legend Indicators --&gt;
+
+            &lt;!-- Chartjs --&gt;
+            &lt;div class=&quot;chartjs-custom&quot; style=&quot;height: 300px;&quot;&gt;
+              &lt;canvas id=&quot;line-chart-with-grid&quot; class=&quot;js-chart&quot;
+                      data-hs-chartjs-options='{
+                          &quot;type&quot;: &quot;line&quot;,
+                          &quot;data&quot;: {
+                             &quot;labels&quot;: [&quot;1AM&quot;,&quot;2AM&quot;,&quot;3AM&quot;,&quot;4AM&quot;,&quot;5AM&quot;,&quot;6AM&quot;,&quot;7AM&quot;,&quot;8AM&quot;,&quot;9AM&quot;,&quot;10AM&quot;,&quot;11AM&quot;,&quot;12AM&quot;,&quot;1PM&quot;,&quot;2PM&quot;,&quot;3PM&quot;,&quot;4PM&quot;,&quot;5PM&quot;,&quot;6PM&quot;,&quot;7PM&quot;,&quot;8PM&quot;,&quot;9PM&quot;,&quot;10PM&quot;,&quot;11PM&quot;,&quot;12PM&quot;],
+                             &quot;datasets&quot;: [{
+                              &quot;data&quot;: [30,30,30,32,33,34,35,34,33,32,31,30,30,30,30,32,33,34,35,34,33,32,31,30],
+                              &quot;backgroundColor&quot;: &quot;transparent&quot;,
+                              &quot;borderColor&quot;: &quot;#eeeef1&quot;,
+                              &quot;borderWidth&quot;: 2,
+                              &quot;pointRadius&quot;: 0,
+                              &quot;pointHoverRadius&quot;: 1,
+                              &quot;tension&quot;: 0,
+                              &quot;borderDash&quot;: [10,5]
+                            },
+                            {
+                              &quot;data&quot;: [70,52,47,58,38,40,57,40,31,53,60,43,70,52,47,58,38,40,57,40,31,53,60,43],
+                              &quot;backgroundColor&quot;: &quot;transparent&quot;,
+                              &quot;borderColor&quot;: &quot;#377dff&quot;,
+                              &quot;borderWidth&quot;: 2,
+                              &quot;pointRadius&quot;: 0,
+                              &quot;pointHoverRadius&quot;: 1,
+                              &quot;tension&quot;: 0
+                            }]
+                          },
+                          &quot;options&quot;: {
+                             &quot;scales&quot;: {
+                              &quot;y&quot;: {
+                                &quot;grid&quot;: {
+                                  &quot;drawBorder&quot;: false,
+                                  &quot;color&quot;: &quot;#eeeef1&quot;
+                                },
+                                &quot;min&quot;: 25,
+                                &quot;max&quot;: 150,
+                                &quot;ticks&quot;: {
+                                  &quot;stepSize&quot;: 25,
+                                  &quot;color&quot;: &quot;rgba(0, 0, 0, 0.4)&quot;,
+                                  &quot;padding&quot;: 10
+                                }
+                              },
+                              &quot;x&quot;: {
+                                &quot;grid&quot;: {
+                                  &quot;display&quot;: false,
+                                  &quot;drawBorder&quot;: false
+                                },
+                                &quot;ticks&quot;: {
+                                  &quot;labelOffset&quot;: 20,
+                                  &quot;maxTicksLimit&quot;: 11,
+                                  &quot;padding&quot;: 20,
+                                  &quot;maxRotation&quot;: 0,
+                                  &quot;minRotation&quot;: 0,
+                                  &quot;font&quot;: {
+                                    &quot;size&quot;: 12
+                                  },
+                                  &quot;color&quot;: &quot;rgba(0, 0, 0, 0.4)&quot;
+                                }
+                              }
+                            },
+                            &quot;hover&quot;: {
+                               &quot;mode&quot;: &quot;nearest&quot;,
+                               &quot;intersect&quot;: false
+                             },
+                            &quot;plugins&quot;: {
+                              &quot;tooltip&quot;: {
+                                &quot;prefix&quot;: &quot;$&quot;,
+                                &quot;intersect&quot;: false
+                              }
+                            }
+                          }
+                        }'&gt;
+              &lt;/canvas&gt;
+            &lt;/div&gt;
+            &lt;!-- End Chartjs --&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="bar-chart" class="hs-docs-heading">
+        Bar chart <a class="anchorjs-link" href="#bar-chart" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab5" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab5" data-bs-toggle="pill" href="#nav-result5" role="tab" aria-controls="nav-result5" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab5" data-bs-toggle="pill" href="#nav-html5" role="tab" aria-controls="nav-html5" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent5">
+          <div class="tab-pane fade p-4 show active" id="nav-result5" role="tabpanel" aria-labelledby="nav-resultTab5">
+            <div class="d-flex align-items-center mb-4">
+              <span class="h1 mb-0">35%</span>
+            </div>
+
+            <!-- Bar Chart -->
+            <div class="chartjs-custom">
+              <canvas id="ecommerce-sales" class="js-chart" style="height: 20rem;" data-hs-chartjs-options='{
+                              "type": "bar",
+                              "data": {
+                                "labels": ["May 1", "May 2", "May 3", "May 4", "May 5", "May 6", "May 7", "May 8", "May 9", "May 10"],
+                                "datasets": [{
+                                  "data": [200, 300, 290, 350, 150, 350, 300, 100, 125, 220],
+                                  "backgroundColor": "#377dff",
+                                  "hoverBackgroundColor": "#377dff",
+                                  "borderColor": "#377dff",
+                                  "maxBarThickness": "10"
+                                }]
+                              },
+                              "options": {
+                                "scales": {
+                                  "y": {
+                                    "grid": {
+                                      "color": "#e7eaf3",
+                                      "drawBorder": false,
+                                      "zeroLineColor": "#e7eaf3"
+                                    },
+                                    "ticks": {
+                                      "beginAtZero": true,
+                                      "stepSize": 100,
+                                      "fontSize": 12,
+                                      "fontColor": "#97a4af",
+                                      "fontFamily": "Open Sans, sans-serif",
+                                      "padding": 10,
+                                      "postfix": "$"
+                                    }
+                                  },
+                                  "x": {
+                                    "grid": {
+                                      "display": false,
+                                      "drawBorder": false
+                                    },
+                                    "ticks": {
+                                      "font": {
+                                        "size": 12,
+                                        "family": "Open Sans, sans-serif"
+                                      },
+                                      "color": "#97a4af",
+                                      "padding": 5
+                                    },
+                                    "categoryPercentage": 0.5
+                                  }
+                                },
+                                "cornerRadius": 2,
+                                "plugins": {
+                                  "tooltip": {
+                                  "prefix": "$",
+                                  "hasIndicator": true,
+                                  "mode": "index",
+                                  "intersect": false
+                                  }
+                                },
+                                "hover": {
+                                  "mode": "nearest",
+                                  "intersect": true
+                                }
+                              }
+                            }'></canvas>
+            </div>
+            <!-- End Bar Chart -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html5" role="tabpanel" aria-labelledby="nav-htmlTab5">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class=&quot;d-flex align-items-center mb-4&quot;&gt;
+              &lt;span class=&quot;h1 mb-0&quot;&gt;35%&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Bar Chart --&gt;
+            &lt;div class=&quot;chartjs-custom&quot;&gt;
+              &lt;canvas id=&quot;ecommerce-sales&quot; class=&quot;js-chart&quot; style=&quot;height: 20rem;&quot;
+                      data-hs-chartjs-options='{
+                              &quot;type&quot;: &quot;bar&quot;,
+                              &quot;data&quot;: {
+                                &quot;labels&quot;: [&quot;May 1&quot;, &quot;May 2&quot;, &quot;May 3&quot;, &quot;May 4&quot;, &quot;May 5&quot;, &quot;May 6&quot;, &quot;May 7&quot;, &quot;May 8&quot;, &quot;May 9&quot;, &quot;May 10&quot;],
+                                &quot;datasets&quot;: [{
+                                  &quot;data&quot;: [200, 300, 290, 350, 150, 350, 300, 100, 125, 220],
+                                  &quot;backgroundColor&quot;: &quot;#377dff&quot;,
+                                  &quot;hoverBackgroundColor&quot;: &quot;#377dff&quot;,
+                                  &quot;borderColor&quot;: &quot;#377dff&quot;,
+                                  &quot;maxBarThickness&quot;: &quot;10&quot;
+                                }]
+                              },
+                              &quot;options&quot;: {
+                                &quot;scales&quot;: {
+                                  &quot;y&quot;: {
+                                    &quot;grid&quot;: {
+                                      &quot;color&quot;: &quot;#e7eaf3&quot;,
+                                      &quot;drawBorder&quot;: false,
+                                      &quot;zeroLineColor&quot;: &quot;#e7eaf3&quot;
+                                    },
+                                    &quot;ticks&quot;: {
+                                      &quot;beginAtZero&quot;: true,
+                                      &quot;stepSize&quot;: 100,
+                                      &quot;fontSize&quot;: 12,
+                                      &quot;fontColor&quot;: &quot;#97a4af&quot;,
+                                      &quot;fontFamily&quot;: &quot;Open Sans, sans-serif&quot;,
+                                      &quot;padding&quot;: 10,
+                                      &quot;postfix&quot;: &quot;$&quot;
+                                    }
+                                  },
+                                  &quot;x&quot;: {
+                                    &quot;grid&quot;: {
+                                      &quot;display&quot;: false,
+                                      &quot;drawBorder&quot;: false
+                                    },
+                                    &quot;ticks&quot;: {
+                                      &quot;font&quot;: {
+                                        &quot;size&quot;: 12,
+                                        &quot;family&quot;: &quot;Open Sans, sans-serif&quot;
+                                      },
+                                      &quot;color&quot;: &quot;#97a4af&quot;,
+                                      &quot;padding&quot;: 5
+                                    },
+                                    &quot;categoryPercentage&quot;: 0.5
+                                  }
+                                },
+                                &quot;cornerRadius&quot;: 2,
+                                &quot;plugins&quot;: {
+                                  &quot;tooltip&quot;: {
+                                  &quot;prefix&quot;: &quot;$&quot;,
+                                  &quot;hasIndicator&quot;: true,
+                                  &quot;mode&quot;: &quot;index&quot;,
+                                  &quot;intersect&quot;: false
+                                  }
+                                },
+                                &quot;hover&quot;: {
+                                  &quot;mode&quot;: &quot;nearest&quot;,
+                                  &quot;intersect&quot;: true
+                                }
+                              }
+                            }'&gt;&lt;/canvas&gt;
+            &lt;/div&gt;
+            &lt;!-- End Bar Chart --&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="updating-bar-chart" class="hs-docs-heading">
+        Updating bar chart <a class="anchorjs-link" href="#updating-bar-chart" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab6" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab6" data-bs-toggle="pill" href="#nav-result6" role="tab" aria-controls="nav-result6" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab6" data-bs-toggle="pill" href="#nav-html6" role="tab" aria-controls="nav-html6" aria-selected="false">HTML</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-jsTab6" data-bs-toggle="pill" href="#nav-js6" role="tab" aria-controls="nav-js6" aria-selected="false">JS</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent6">
+          <div class="tab-pane fade p-4 show active" id="nav-result6" role="tabpanel" aria-labelledby="nav-resultTab6">
+            <div class="d-flex justify-content-end mb-5">
+              <!-- Nav -->
+              <ul class="nav nav-segment" id="expensesTabEg1" role="tablist">
+                <li class="nav-item" data-toggle="chart-bar" data-datasets="thisWeek" data-trigger="click" data-action="toggle">
+                  <a class="nav-link active" href="javascript:;" data-bs-toggle="tab">This week</a>
+                </li>
+                <li class="nav-item" data-toggle="chart-bar" data-datasets="lastWeek" data-trigger="click" data-action="toggle">
+                  <a class="nav-link" href="javascript:;" data-bs-toggle="tab">Last week</a>
+                </li>
+              </ul>
+              <!-- End Nav -->
+            </div>
+
+            <!-- Bar Chart -->
+            <div class="chartjs-custom">
+              <canvas id="updatingBarChart" style="height: 20rem;" data-hs-chartjs-options='{
+                              "type": "bar",
+                              "data": {
+                                "labels": ["May 1", "May 2", "May 3", "May 4", "May 5", "May 6", "May 7", "May 8", "May 9", "May 10"],
+                                "datasets": [{
+                                  "data": [200, 300, 290, 350, 150, 350, 300, 100, 125, 220],
+                                  "backgroundColor": "#377dff",
+                                  "hoverBackgroundColor": "#377dff",
+                                  "borderColor": "#377dff",
+                                  "maxBarThickness": "10"
+                                },
+                                {
+                                  "data": [150, 230, 382, 204, 169, 290, 300, 100, 300, 225, 120],
+                                  "backgroundColor": "#e7eaf3",
+                                  "borderColor": "#e7eaf3",
+                                  "maxBarThickness": "10"
+                                }]
+                              },
+                              "options": {
+                                "scales": {
+                                  "y": {
+                                    "grid": {
+                                      "color": "#e7eaf3",
+                                      "drawBorder": false,
+                                      "zeroLineColor": "#e7eaf3"
+                                    },
+                                    "ticks": {
+                                      "beginAtZero": true,
+                                      "stepSize": 100,
+                                      "fontSize": 12,
+                                      "fontColor": "#97a4af",
+                                      "fontFamily": "Open Sans, sans-serif",
+                                      "padding": 10,
+                                      "postfix": "$"
+                                    }
+                                  },
+                                  "x": {
+                                    "grid": {
+                                      "display": false,
+                                      "drawBorder": false
+                                    },
+                                    "ticks": {
+                                      "font": {
+                                        "size": 12,
+                                        "family": "Open Sans, sans-serif"
+                                      },
+                                      "color": "#97a4af",
+                                      "padding": 5
+                                    },
+                                    "categoryPercentage": 0.5
+                                  }
+                                },
+                                "cornerRadius": 2,
+                                "plugins": {
+                                  "tooltip": {
+                                    "prefix": "$",
+                                    "hasIndicator": true,
+                                    "mode": "index",
+                                    "intersect": false
+                                  }
+                                },
+                                "hover": {
+                                  "mode": "nearest",
+                                  "intersect": true
+                                }
+                              }
+                            }'></canvas>
+            </div>
+            <!-- End Bar Chart -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html6" role="tabpanel" aria-labelledby="nav-htmlTab6">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class=&quot;d-flex justify-content-end mb-5&quot;&gt;
+              &lt;!-- Nav --&gt;
+              &lt;ul class=&quot;nav nav-segment&quot; id=&quot;expensesTabEg1&quot; role=&quot;tablist&quot;&gt;
+                &lt;li class=&quot;nav-item&quot; data-toggle=&quot;chart-bar&quot; data-datasets=&quot;thisWeek&quot; data-trigger=&quot;click&quot; data-action=&quot;toggle&quot;&gt;
+                  &lt;a class=&quot;nav-link active&quot; href=&quot;javascript:;&quot; data-bs-toggle=&quot;tab&quot;&gt;This week&lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;nav-item&quot; data-toggle=&quot;chart-bar&quot; data-datasets=&quot;lastWeek&quot; data-trigger=&quot;click&quot; data-action=&quot;toggle&quot;&gt;
+                  &lt;a class=&quot;nav-link&quot; href=&quot;javascript:;&quot; data-bs-toggle=&quot;tab&quot;&gt;Last week&lt;/a&gt;
+                &lt;/li&gt;
+              &lt;/ul&gt;
+              &lt;!-- End Nav --&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Bar Chart --&gt;
+            &lt;div class=&quot;chartjs-custom&quot;&gt;
+              &lt;canvas id=&quot;updatingBarChart&quot; style=&quot;height: 20rem;&quot;
+                      data-hs-chartjs-options='{
+                              &quot;type&quot;: &quot;bar&quot;,
+                              &quot;data&quot;: {
+                                &quot;labels&quot;: [&quot;May 1&quot;, &quot;May 2&quot;, &quot;May 3&quot;, &quot;May 4&quot;, &quot;May 5&quot;, &quot;May 6&quot;, &quot;May 7&quot;, &quot;May 8&quot;, &quot;May 9&quot;, &quot;May 10&quot;],
+                                &quot;datasets&quot;: [{
+                                  &quot;data&quot;: [200, 300, 290, 350, 150, 350, 300, 100, 125, 220],
+                                  &quot;backgroundColor&quot;: &quot;#377dff&quot;,
+                                  &quot;hoverBackgroundColor&quot;: &quot;#377dff&quot;,
+                                  &quot;borderColor&quot;: &quot;#377dff&quot;,
+                                  &quot;maxBarThickness&quot;: &quot;10&quot;
+                                },
+                                {
+                                  &quot;data&quot;: [150, 230, 382, 204, 169, 290, 300, 100, 300, 225, 120],
+                                  &quot;backgroundColor&quot;: &quot;#e7eaf3&quot;,
+                                  &quot;borderColor&quot;: &quot;#e7eaf3&quot;,
+                                  &quot;maxBarThickness&quot;: &quot;10&quot;
+                                }]
+                              },
+                              &quot;options&quot;: {
+                                &quot;scales&quot;: {
+                                  &quot;y&quot;: {
+                                    &quot;grid&quot;: {
+                                      &quot;color&quot;: &quot;#e7eaf3&quot;,
+                                      &quot;drawBorder&quot;: false,
+                                      &quot;zeroLineColor&quot;: &quot;#e7eaf3&quot;
+                                    },
+                                    &quot;ticks&quot;: {
+                                      &quot;beginAtZero&quot;: true,
+                                      &quot;stepSize&quot;: 100,
+                                      &quot;fontSize&quot;: 12,
+                                      &quot;fontColor&quot;: &quot;#97a4af&quot;,
+                                      &quot;fontFamily&quot;: &quot;Open Sans, sans-serif&quot;,
+                                      &quot;padding&quot;: 10,
+                                      &quot;postfix&quot;: &quot;$&quot;
+                                    }
+                                  },
+                                  &quot;x&quot;: {
+                                    &quot;grid&quot;: {
+                                      &quot;display&quot;: false,
+                                      &quot;drawBorder&quot;: false
+                                    },
+                                    &quot;ticks&quot;: {
+                                      &quot;font&quot;: {
+                                        &quot;size&quot;: 12,
+                                        &quot;family&quot;: &quot;Open Sans, sans-serif&quot;
+                                      },
+                                      &quot;color&quot;: &quot;#97a4af&quot;,
+                                      &quot;padding&quot;: 5
+                                    },
+                                    &quot;categoryPercentage&quot;: 0.5
+                                  }
+                                },
+                                &quot;cornerRadius&quot;: 2,
+                                &quot;plugins&quot;: {
+                                  &quot;tooltip&quot;: {
+                                    &quot;prefix&quot;: &quot;$&quot;,
+                                    &quot;hasIndicator&quot;: true,
+                                    &quot;mode&quot;: &quot;index&quot;,
+                                    &quot;intersect&quot;: false
+                                  }
+                                },
+                                &quot;hover&quot;: {
+                                  &quot;mode&quot;: &quot;nearest&quot;,
+                                  &quot;intersect&quot;: true
+                                }
+                              }
+                            }'&gt;&lt;/canvas&gt;
+            &lt;/div&gt;
+            &lt;!-- End Bar Chart --&gt;
+              </code>
+            </pre>
+          </div>
+
+          <div class="tab-pane fade" id="nav-js6" role="tabpanel" aria-labelledby="nav-jsTab6">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;script&gt;
+                  (function () {
+                    HSCore.components.HSChartJS.init(document.querySelector('#updatingBarChart'));
+
+                    const updatingBarChart = HSCore.components.HSChartJS.getItem('updatingBarChart')
+
+                    // Call when tab is clicked
+                    document.querySelectorAll('[data-toggle="chart-bar"]').forEach(item => {
+                      item.addEventListener('click', e => {
+                        let keyDataset = e.currentTarget.getAttribute('data-datasets')
+
+                        if (keyDataset === 'lastWeek') {
+                          updatingBarChart.data.labels = ["Apr 22", "Apr 23", "Apr 24", "Apr 25", "Apr 26", "Apr 27", "Apr 28", "Apr 29", "Apr 30", "Apr 31"];
+                          updatingBarChart.data.datasets = [
+                            {
+                              "data": [120, 250, 300, 200, 300, 290, 350, 100, 125, 320],
+                              "backgroundColor": "#377dff",
+                              "hoverBackgroundColor": "#377dff",
+                              "borderColor": "#377dff",
+                              "maxBarThickness": 10
+                            },
+                            {
+                              "data": [250, 130, 322, 144, 129, 300, 260, 120, 260, 245, 110],
+                              "backgroundColor": "#e7eaf3",
+                              "borderColor": "#e7eaf3",
+                              "maxBarThickness": 10
+                            }
+                          ];
+                          updatingBarChart.update();
+                        } else {
+                          updatingBarChart.data.labels = ["May 1", "May 2", "May 3", "May 4", "May 5", "May 6", "May 7", "May 8", "May 9", "May 10"];
+                          updatingBarChart.data.datasets = [
+                            {
+                              "data": [200, 300, 290, 350, 150, 350, 300, 100, 125, 220],
+                              "backgroundColor": "#377dff",
+                              "hoverBackgroundColor": "#377dff",
+                              "borderColor": "#377dff",
+                              "maxBarThickness": 10
+                            },
+                            {
+                              "data": [150, 230, 382, 204, 169, 290, 300, 100, 300, 225, 120],
+                              "backgroundColor": "#e7eaf3",
+                              "borderColor": "#e7eaf3",
+                              "maxBarThickness": 10
+                            }
+                          ]
+                          updatingBarChart.update();
+                        }
+                      })
+                    })
+                  })()
+                &lt;/script&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="doughnut-chart" class="hs-docs-heading">
+        Doughnut chart <a class="anchorjs-link" href="#doughnut-chart" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab7" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab7" data-bs-toggle="pill" href="#nav-result7" role="tab" aria-controls="nav-result7" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab7" data-bs-toggle="pill" href="#nav-html7" role="tab" aria-controls="nav-html7" aria-selected="false">HTML</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent7">
+          <div class="tab-pane fade p-4 show active" id="nav-result7" role="tabpanel" aria-labelledby="nav-resultTab7">
+            <!-- Pie Chart -->
+            <div class="chartjs-custom mb-3 mb-sm-5" style="height: 14rem;">
+              <canvas id="doughnut-chart" class="js-chart" data-hs-chartjs-options='{
+                              "type": "doughnut",
+                              "data": {
+                                "labels": ["USD", "USD", "USD"],
+                                "datasets": [{
+                                  "data": [45, 25, 30],
+                                  "backgroundColor": ["#377dff", "#00c9db", "#e7eaf3"],
+                                  "borderWidth": 5,
+                                  "hoverBorderColor": "#fff"
+                                }]
+                              },
+                              "options": {
+                                "cutout": "80%",
+                                "plugins": {
+                                  "tooltip": {
+                                    "postfix": "k",
+                                    "hasIndicator": true,
+                                    "mode": "index",
+                                    "intersect": false
+                                  }
+                                },
+                                "hover": {
+                                  "mode": "nearest",
+                                  "intersect": true
+                                }
+                              }
+                            }'></canvas>
+            </div>
+            <!-- End Pie Chart -->
+
+            <!-- Legend Indicators -->
+            <div class="row justify-content-center">
+              <div class="col-auto mb-3 mb-sm-0">
+                <span class="card-title h4">$2,332.00</span>
+                <span class="legend-indicator bg-primary"></span> Marketing
+              </div>
+
+              <div class="col-auto mb-3 mb-sm-0">
+                <span class="card-title h4">$10,452.00</span>
+                <span class="legend-indicator bg-info"></span> Bills
+              </div>
+
+              <div class="col-auto">
+                <span class="card-title h4">$56,856.00</span>
+                <span class="legend-indicator"></span> Others
+              </div>
+            </div>
+            <!-- End Legend Indicators -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html7" role="tabpanel" aria-labelledby="nav-htmlTab7">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;!-- Pie Chart --&gt;
+            &lt;div class=&quot;chartjs-custom mb-3 mb-sm-5&quot; style=&quot;height: 14rem;&quot;&gt;
+              &lt;canvas id=&quot;doughnut-chart&quot; class=&quot;js-chart&quot;
+                      data-hs-chartjs-options='{
+                              &quot;type&quot;: &quot;doughnut&quot;,
+                              &quot;data&quot;: {
+                                &quot;labels&quot;: [&quot;USD&quot;, &quot;USD&quot;, &quot;USD&quot;],
+                                &quot;datasets&quot;: [{
+                                  &quot;data&quot;: [45, 25, 30],
+                                  &quot;backgroundColor&quot;: [&quot;#377dff&quot;, &quot;#00c9db&quot;, &quot;#e7eaf3&quot;],
+                                  &quot;borderWidth&quot;: 5,
+                                  &quot;hoverBorderColor&quot;: &quot;#fff&quot;
+                                }]
+                              },
+                              &quot;options&quot;: {
+                                &quot;cutout&quot;: &quot;80%&quot;,
+                                &quot;plugins&quot;: {
+                                  &quot;tooltip&quot;: {
+                                    &quot;postfix&quot;: &quot;k&quot;,
+                                    &quot;hasIndicator&quot;: true,
+                                    &quot;mode&quot;: &quot;index&quot;,
+                                    &quot;intersect&quot;: false
+                                  }
+                                },
+                                &quot;hover&quot;: {
+                                  &quot;mode&quot;: &quot;nearest&quot;,
+                                  &quot;intersect&quot;: true
+                                }
+                              }
+                            }'&gt;&lt;/canvas&gt;
+            &lt;/div&gt;
+            &lt;!-- End Pie Chart --&gt;
+
+            &lt;!-- Legend Indicators --&gt;
+            &lt;div class=&quot;row justify-content-center&quot;&gt;
+              &lt;div class=&quot;col-auto mb-3 mb-sm-0&quot;&gt;
+                &lt;span class=&quot;card-title h4&quot;&gt;$2,332.00&lt;/span&gt;
+                &lt;span class=&quot;legend-indicator bg-primary&quot;&gt;&lt;/span&gt; Marketing
+              &lt;/div&gt;
+
+              &lt;div class=&quot;col-auto mb-3 mb-sm-0&quot;&gt;
+                &lt;span class=&quot;card-title h4&quot;&gt;$10,452.00&lt;/span&gt;
+                &lt;span class=&quot;legend-indicator bg-info&quot;&gt;&lt;/span&gt; Bills
+              &lt;/div&gt;
+
+              &lt;div class=&quot;col-auto&quot;&gt;
+                &lt;span class=&quot;card-title h4&quot;&gt;$56,856.00&lt;/span&gt;
+                &lt;span class=&quot;legend-indicator&quot;&gt;&lt;/span&gt; Others
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;!-- End Legend Indicators --&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="updating-doughnut-chart" class="hs-docs-heading">
+        Updating doughnut chart <a class="anchorjs-link" href="#updating-doughnut-chart" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab8" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab8" data-bs-toggle="pill" href="#nav-result8" role="tab" aria-controls="nav-result8" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab8" data-bs-toggle="pill" href="#nav-html8" role="tab" aria-controls="nav-html8" aria-selected="false">HTML</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-jsTab8" data-bs-toggle="pill" href="#nav-js8" role="tab" aria-controls="nav-js8" aria-selected="false">JS</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent8">
+          <div class="tab-pane fade p-4 show active" id="nav-result8" role="tabpanel" aria-labelledby="nav-resultTab8">
+            <div class="d-flex justify-content-end mb-3">
+              <!-- Nav -->
+              <ul class="nav nav-segment" id="expensesTabEg2" role="tablist">
+                <li class="nav-item" data-toggle="chart-doughnut" data-datasets="0" data-trigger="click" data-action="toggle">
+                  <a class="nav-link active" href="javascript:;" data-bs-toggle="tab">This week</a>
+                </li>
+                <li class="nav-item" data-toggle="chart-doughnut" data-datasets="1" data-trigger="click" data-action="toggle">
+                  <a class="nav-link" href="javascript:;" data-bs-toggle="tab">Last week</a>
+                </li>
+              </ul>
+              <!-- End Nav -->
+            </div>
+
+            <!-- Pie Chart -->
+            <div class="chartjs-custom mb-3 mb-sm-5" style="height: 14rem;">
+              <canvas id="updatingDoughnutChart" data-hs-chartjs-options='{
+                              "type": "doughnut",
+                              "data": {
+                                "labels": ["USD", "USD", "USD"],
+                                "datasets": [{
+                                  "backgroundColor": ["#377dff", "#00c9db", "#e7eaf3"],
+                                  "borderWidth": 5,
+                                  "hoverBorderColor": "#fff"
+                                }]
+                              },
+                              "options": {
+                                "cutout": "80%",
+                                "plugins": {
+                                  "tooltip": {
+                                    "postfix": "k",
+                                    "hasIndicator": true,
+                                    "mode": "index",
+                                    "intersect": false
+                                  }
+                                },
+                                "hover": {
+                                  "mode": "nearest",
+                                  "intersect": true
+                                }
+                              }
+                            }'></canvas>
+            </div>
+            <!-- End Pie Chart -->
+
+            <!-- Legend Indicators -->
+            <div class="row justify-content-center">
+              <div class="col-auto mb-3 mb-sm-0">
+                <span class="card-title h4">$2,332.00</span>
+                <span class="legend-indicator bg-primary"></span> Marketing
+              </div>
+
+              <div class="col-auto mb-3 mb-sm-0">
+                <span class="card-title h4">$10,452.00</span>
+                <span class="legend-indicator bg-info"></span> Bills
+              </div>
+
+              <div class="col-auto">
+                <span class="card-title h4">$56,856.00</span>
+                <span class="legend-indicator"></span> Others
+              </div>
+            </div>
+            <!-- End Legend Indicators -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html8" role="tabpanel" aria-labelledby="nav-htmlTab8">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class=&quot;d-flex justify-content-end mb-3&quot;&gt;
+              &lt;!-- Nav --&gt;
+              &lt;ul class=&quot;nav nav-segment&quot; id=&quot;expensesTabEg2&quot; role=&quot;tablist&quot;&gt;
+                &lt;li class=&quot;nav-item&quot; data-toggle=&quot;chart-doughnut&quot; data-datasets=&quot;0&quot; data-trigger=&quot;click&quot; data-action=&quot;toggle&quot;&gt;
+                  &lt;a class=&quot;nav-link active&quot; href=&quot;javascript:;&quot; data-bs-toggle=&quot;tab&quot;&gt;This week&lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;nav-item&quot; data-toggle=&quot;chart-doughnut&quot; data-datasets=&quot;1&quot; data-trigger=&quot;click&quot; data-action=&quot;toggle&quot;&gt;
+                  &lt;a class=&quot;nav-link&quot; href=&quot;javascript:;&quot; data-bs-toggle=&quot;tab&quot;&gt;Last week&lt;/a&gt;
+                &lt;/li&gt;
+              &lt;/ul&gt;
+              &lt;!-- End Nav --&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Pie Chart --&gt;
+            &lt;div class=&quot;chartjs-custom mb-3 mb-sm-5&quot; style=&quot;height: 14rem;&quot;&gt;
+              &lt;canvas id=&quot;updatingDoughnutChart&quot;
+                      data-hs-chartjs-options='{
+                              &quot;type&quot;: &quot;doughnut&quot;,
+                              &quot;data&quot;: {
+                                &quot;labels&quot;: [&quot;USD&quot;, &quot;USD&quot;, &quot;USD&quot;],
+                                &quot;datasets&quot;: [{
+                                  &quot;backgroundColor&quot;: [&quot;#377dff&quot;, &quot;#00c9db&quot;, &quot;#e7eaf3&quot;],
+                                  &quot;borderWidth&quot;: 5,
+                                  &quot;hoverBorderColor&quot;: &quot;#fff&quot;
+                                }]
+                              },
+                              &quot;options&quot;: {
+                                &quot;cutout&quot;: &quot;80%&quot;,
+                                &quot;plugins&quot;: {
+                                  &quot;tooltip&quot;: {
+                                    &quot;postfix&quot;: &quot;k&quot;,
+                                    &quot;hasIndicator&quot;: true,
+                                    &quot;mode&quot;: &quot;index&quot;,
+                                    &quot;intersect&quot;: false
+                                  }
+                                },
+                                &quot;hover&quot;: {
+                                  &quot;mode&quot;: &quot;nearest&quot;,
+                                  &quot;intersect&quot;: true
+                                }
+                              }
+                            }'&gt;&lt;/canvas&gt;
+            &lt;/div&gt;
+            &lt;!-- End Pie Chart --&gt;
+
+            &lt;!-- Legend Indicators --&gt;
+            &lt;div class=&quot;row justify-content-center&quot;&gt;
+              &lt;div class=&quot;col-auto mb-3 mb-sm-0&quot;&gt;
+                &lt;span class=&quot;card-title h4&quot;&gt;$2,332.00&lt;/span&gt;
+                &lt;span class=&quot;legend-indicator bg-primary&quot;&gt;&lt;/span&gt; Marketing
+              &lt;/div&gt;
+
+              &lt;div class=&quot;col-auto mb-3 mb-sm-0&quot;&gt;
+                &lt;span class=&quot;card-title h4&quot;&gt;$10,452.00&lt;/span&gt;
+                &lt;span class=&quot;legend-indicator bg-info&quot;&gt;&lt;/span&gt; Bills
+              &lt;/div&gt;
+
+              &lt;div class=&quot;col-auto&quot;&gt;
+                &lt;span class=&quot;card-title h4&quot;&gt;$56,856.00&lt;/span&gt;
+                &lt;span class=&quot;legend-indicator&quot;&gt;&lt;/span&gt; Others
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;!-- End Legend Indicators --&gt;
+              </code>
+            </pre>
+          </div>
+
+          <div class="tab-pane fade" id="nav-js8" role="tabpanel" aria-labelledby="nav-jsTab8">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;script&gt;
+                  (function () {
+                    HSCore.components.HSChartJS.init(document.querySelector('#updatingDoughnutChart'));
+
+                    // Datasets for chart, can be loaded from AJAX request
+                    var updatingDoughnutChartDatasets = [
+                      [
+                        [45, 25, 30]
+                      ],
+                      [
+                        [35, 50, 15]
+                      ]
+                    ]
+
+                    const updatingDoughnutChart = HSCore.components.HSChartJS.getItem('updatingDoughnutChart')
+
+                    // Set datasets for chart when page is loaded
+                    updatingDoughnutChart.data.datasets.forEach(function(dataset, key) {
+                      dataset.data = updatingDoughnutChartDatasets[0][key];
+                    });
+                    updatingDoughnutChart.update();
+
+                    // Call when tab is clicked
+                    document.querySelectorAll('[data-toggle="chart-doughnut"]').forEach(item => {
+                      item.addEventListener('click', e => {
+                        let keyDataset = e.currentTarget.getAttribute('data-datasets')
+
+                        // Update datasets for chart
+                        updatingDoughnutChart.data.datasets.forEach(function(dataset, key) {
+                          dataset.data = updatingDoughnutChartDatasets[keyDataset][key];
+                        });
+                        updatingDoughnutChart.update();
+                      })
+                    })
+                  })()
+                &lt;/script&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="half-cicle-chart" class="hs-docs-heading">
+        Half circle chart <a class="anchorjs-link" href="#half-cicle-chart" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab9" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab9" data-bs-toggle="pill" href="#nav-result9" role="tab" aria-controls="nav-result9" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab9" data-bs-toggle="pill" href="#nav-html9" role="tab" aria-controls="nav-html9" aria-selected="false">HTML</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-jsTab9" data-bs-toggle="pill" href="#nav-js9" role="tab" aria-controls="nav-js9" aria-selected="false">JS</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent9">
+          <div class="tab-pane fade p-4 show active" id="nav-result9" role="tabpanel" aria-labelledby="nav-resultTab9">
+            <!-- Chart Half -->
+            <div class="chartjs-doughnut-custom" style="height: 12rem;">
+              <canvas id="doughnutHalfChart" class="js-chartjs-doughnut-half" data-hs-chartjs-options='{
+                            "type": "doughnut",
+                            "data": {
+                              "labels": ["Current status", "Goal"],
+                              "datasets": [{
+                                "data": [64, 35],
+                                "backgroundColor": ["#377dff", "rgba(55, 125, 255, 0.35)"],
+                                "borderWidth": 4,
+                                "hoverBorderColor": "#ffffff"
+                              }]
+                            }
+                          }'></canvas>
+
+              <div class="chartjs-doughnut-custom-stat">
+                <small class="text-cap">Project balance</small>
+                <span class="h1">$150,238.00</span>
+              </div>
+            </div>
+            <!-- End Chart Half -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html9" role="tabpanel" aria-labelledby="nav-htmlTab9">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                 &lt;!-- Chart Half --&gt;
+            &lt;div class=&quot;chartjs-doughnut-custom&quot; style=&quot;height: 12rem;&quot;&gt;
+              &lt;canvas id=&quot;doughnutHalfChart&quot; class=&quot;js-chartjs-doughnut-half&quot;
+                      data-hs-chartjs-options='{
+                            &quot;type&quot;: &quot;doughnut&quot;,
+                            &quot;data&quot;: {
+                              &quot;labels&quot;: [&quot;Current status&quot;, &quot;Goal&quot;],
+                              &quot;datasets&quot;: [{
+                                &quot;data&quot;: [64, 35],
+                                &quot;backgroundColor&quot;: [&quot;#377dff&quot;, &quot;rgba(55, 125, 255, 0.35)&quot;],
+                                &quot;borderWidth&quot;: 4,
+                                &quot;hoverBorderColor&quot;: &quot;#ffffff&quot;
+                              }]
+                            }
+                          }'&gt;&lt;/canvas&gt;
+
+              &lt;div class=&quot;chartjs-doughnut-custom-stat&quot;&gt;
+                &lt;small class=&quot;text-cap&quot;&gt;Project balance&lt;/small&gt;
+                &lt;span class=&quot;h1&quot;&gt;$150,238.00&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;!-- End Chart Half --&gt;
+              </code>
+            </pre>
+          </div>
+
+          <div class="tab-pane fade" id="nav-js9" role="tabpanel" aria-labelledby="nav-jsTab9">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;script&gt;
+                  (function () {
+                    HSCore.components.HSChartJS.init(document.querySelector('.js-chartjs-doughnut-half'), {
+                      options: {
+                        plugins: {
+                          tooltip: {
+                            postfix: "%"
+                          }
+                        },
+                        cutout: '85%',
+                        rotation: '270',
+                        circumference: '180'
+                      }
+                    })
+                  })
+                &lt;/script&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="updating-half-cicle-chart" class="hs-docs-heading">
+        Updating half circle chart <a class="anchorjs-link" href="#updating-half-cicle-chart" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab12" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab12" data-bs-toggle="pill" href="#nav-result12" role="tab" aria-controls="nav-result12" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab12" data-bs-toggle="pill" href="#nav-html12" role="tab" aria-controls="nav-html12" aria-selected="false">HTML</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-jsTab12" data-bs-toggle="pill" href="#nav-js12" role="tab" aria-controls="nav-js12" aria-selected="false">JS</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent12">
+          <div class="tab-pane fade p-4 show active" id="nav-result12" role="tabpanel" aria-labelledby="nav-resultTab12">
+            <div class="d-flex justify-content-end mb-5">
+              <!-- Checkbox Switch -->
+              <div class="form-check form-switch form-switch-between">
+                <input id="updatingBarChartControl" class="form-check-input" type="checkbox">
+              </div>
+              <!-- End Checkbox Switch -->
+            </div>
+
+            <!-- Chart Half -->
+            <div class="chartjs-doughnut-custom" style="height: 12rem;">
+              <canvas id="updatingDoughnutHalfChart" class="js-chartjs-doughnut-half-dynamic" data-hs-chartjs-options='{
+                            "type": "doughnut",
+                            "data": {
+                              "labels": ["Current status", "Goal"],
+                              "datasets": [{
+                                "data": [64, 35],
+                                "backgroundColor": ["#377dff", "rgba(55, 125, 255, 0.35)"],
+                                "borderWidth": 4,
+                                "hoverBorderColor": "#ffffff"
+                              }]
+                            }
+                          }'></canvas>
+
+              <div class="chartjs-doughnut-custom-stat">
+                <small class="text-cap">Project balance</small>
+                <span id="js-chartjs-half-balance" class="h1">$150,238.00</span>
+              </div>
+            </div>
+            <!-- End Chart Half -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html12" role="tabpanel" aria-labelledby="nav-htmlTab12">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;div class=&quot;d-flex justify-content-end mb-5&quot;&gt;
+              &lt;!-- Checkbox Switch --&gt;
+              &lt;div class=&quot;form-check form-switch form-switch-between&quot;&gt;
+                &lt;input id=&quot;updatingBarChartControl&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
+              &lt;/div&gt;
+              &lt;!-- End Checkbox Switch --&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Chart Half --&gt;
+            &lt;div class=&quot;chartjs-doughnut-custom&quot; style=&quot;height: 12rem;&quot;&gt;
+              &lt;canvas id=&quot;updatingDoughnutHalfChart&quot; class=&quot;js-chartjs-doughnut-half-dynamic&quot;
+                      data-hs-chartjs-options='{
+                            &quot;type&quot;: &quot;doughnut&quot;,
+                            &quot;data&quot;: {
+                              &quot;labels&quot;: [&quot;Current status&quot;, &quot;Goal&quot;],
+                              &quot;datasets&quot;: [{
+                                &quot;data&quot;: [64, 35],
+                                &quot;backgroundColor&quot;: [&quot;#377dff&quot;, &quot;rgba(55, 125, 255, 0.35)&quot;],
+                                &quot;borderWidth&quot;: 4,
+                                &quot;hoverBorderColor&quot;: &quot;#ffffff&quot;
+                              }]
+                            }
+                          }'&gt;&lt;/canvas&gt;
+
+              &lt;div class=&quot;chartjs-doughnut-custom-stat&quot;&gt;
+                &lt;small class=&quot;text-cap&quot;&gt;Project balance&lt;/small&gt;
+                &lt;span id=&quot;js-chartjs-half-balance&quot; class=&quot;h1&quot;&gt;$150,238.00&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;!-- End Chart Half --&gt;
+              </code>
+            </pre>
+          </div>
+
+          <div class="tab-pane fade" id="nav-js12" role="tabpanel" aria-labelledby="nav-jsTab12">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;script&gt;
+                  (function () {
+                    HSCore.components.HSChartJS.init(document.querySelector('.js-chartjs-doughnut-half-dynamic'), {
+                      options: {
+                        tooltips: {
+                          postfix: "%"
+                        },
+                        cutout: '85%',
+                        rotation: '270',
+                        circumference: '180'
+                      }
+                    })
+
+                    const halfChart = HSCore.components.HSChartJS.getItem('updatingDoughnutHalfChart')
+
+                    document.querySelector('#updatingBarChartControl').addEventListener("change", e => {
+                      let $balance = document.querySelector('#js-chartjs-half-balance')
+                      if (e.target.checked) {
+                        halfChart.data.datasets[0].data[1] = 90
+                        $balance.innerHTML = "$110,351.00"
+                      } else {
+                        halfChart.data.datasets[0].data[1] = 35
+                        $balance.innerHTML = "$150,238.00"
+                      }
+
+                      halfChart.update()
+                    })
+                  })()
+                &lt;/script&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="bubble-chart" class="hs-docs-heading">
+        Bubble chart <a class="anchorjs-link" href="#bubble-chart" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab10" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab10" data-bs-toggle="pill" href="#nav-result10" role="tab" aria-controls="nav-result10" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab10" data-bs-toggle="pill" href="#nav-html10" role="tab" aria-controls="nav-html10" aria-selected="false">HTML</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-jsTab10" data-bs-toggle="pill" href="#nav-js10" role="tab" aria-controls="nav-js10" aria-selected="false">JS</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Alert -->
+        <div class="alert alert-soft-dark card-alert" role="alert">
+          This example uses <a class="alert-link" href="https://chartjs-plugin-datalabels.netlify.app/" target="_blank">Datalabels plugin for Chart.js <i class="tio-open-in-new"></i></a> library.
+        </div>
+        <!-- End Alert -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent10">
+          <div class="tab-pane fade p-4 show active" id="nav-result10" role="tabpanel" aria-labelledby="nav-resultTab10">
+            <!-- Chart -->
+            <div class="chartjs-custom mx-auto" style="height: 20rem;">
+              <canvas class="js-chart-datalabels" data-hs-chartjs-options='{
+                              "type": "bubble",
+                              "data": {
+                                "datasets": [
+                                  {
+                                    "label": "Label 1",
+                                    "data": [
+                                      {"x": 50, "y": 65, "r": 99}
+                                    ],
+                                    "color": "#fff",
+                                    "backgroundColor": "rgba(55, 125, 255, 0.9)",
+                                    "borderColor": "transparent"
+                                  },
+                                  {
+                                    "label": "Label 2",
+                                    "data": [
+                                      {"x": 46, "y": 42, "r": 65}
+                                    ],
+                                    "color": "#fff",
+                                    "backgroundColor": "rgba(100, 0, 214, 0.8)",
+                                    "borderColor": "transparent"
+                                  },
+                                  {
+                                    "label": "Label 3",
+                                    "data": [
+                                      {"x": 48, "y": 15, "r": 38}
+                                    ],
+                                    "color": "#fff",
+                                    "backgroundColor": "#00c9db",
+                                    "borderColor": "transparent"
+                                  },
+                                  {
+                                    "label": "Label 3",
+                                    "data": [
+                                      {"x": 55, "y": 2, "r": 61}
+                                    ],
+                                    "color": "#fff",
+                                    "backgroundColor": "#4338ca",
+                                    "borderColor": "transparent"
+                                  }
+                                ]
+                              },
+                              "options": {
+                                "scales": {
+                                  "y": {
+                                    "grid": {
+                                      "display": false,
+                                      "drawBorder": false
+                                    },
+                                    "ticks": {
+                                      "display": false,
+                                      "beginAtZero": true
+                                    },
+                                    "max": 500
+                                  },
+                                  "x": {
+                                   "grid": {
+                                      "display": false,
+                                      "drawBorder": false
+                                    },
+                                    "ticks": {
+                                      "display": false,
+                                      "max": 100,
+                                      "beginAtZero": true
+                                    }
+                                  }
+                                },
+                                "plugins": {
+                                  "tooltip": false
+                                }
+                              }
+                            }'></canvas>
+            </div>
+            <!-- End Chart -->
+
+            <!-- Legend Indicators -->
+            <div class="row justify-content-center">
+              <div class="col-auto">
+                <span class="legend-indicator bg-primary"></span> New
+              </div>
+
+              <div class="col-auto">
+                <span class="legend-indicator" style="background-color: #7000f2;"></span> Pending
+              </div>
+
+              <div class="col-auto">
+                <span class="legend-indicator bg-info"></span> Failed
+              </div>
+            </div>
+            <!-- End Legend Indicators -->
+          </div>
+
+          <div class="tab-pane fade" id="nav-html10" role="tabpanel" aria-labelledby="nav-htmlTab10">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;!-- Chart --&gt;
+            &lt;div class=&quot;chartjs-custom mx-auto&quot; style=&quot;height: 20rem;&quot;&gt;
+              &lt;canvas class=&quot;js-chart-datalabels&quot;
+                      data-hs-chartjs-options='{
+                              &quot;type&quot;: &quot;bubble&quot;,
+                              &quot;data&quot;: {
+                                &quot;datasets&quot;: [
+                                  {
+                                    &quot;label&quot;: &quot;Label 1&quot;,
+                                    &quot;data&quot;: [
+                                      {&quot;x&quot;: 50, &quot;y&quot;: 65, &quot;r&quot;: 99}
+                                    ],
+                                    &quot;color&quot;: &quot;#fff&quot;,
+                                    &quot;backgroundColor&quot;: &quot;rgba(55, 125, 255, 0.9)&quot;,
+                                    &quot;borderColor&quot;: &quot;transparent&quot;
+                                  },
+                                  {
+                                    &quot;label&quot;: &quot;Label 2&quot;,
+                                    &quot;data&quot;: [
+                                      {&quot;x&quot;: 46, &quot;y&quot;: 42, &quot;r&quot;: 65}
+                                    ],
+                                    &quot;color&quot;: &quot;#fff&quot;,
+                                    &quot;backgroundColor&quot;: &quot;rgba(100, 0, 214, 0.8)&quot;,
+                                    &quot;borderColor&quot;: &quot;transparent&quot;
+                                  },
+                                  {
+                                    &quot;label&quot;: &quot;Label 3&quot;,
+                                    &quot;data&quot;: [
+                                      {&quot;x&quot;: 48, &quot;y&quot;: 15, &quot;r&quot;: 38}
+                                    ],
+                                    &quot;color&quot;: &quot;#fff&quot;,
+                                    &quot;backgroundColor&quot;: &quot;#00c9db&quot;,
+                                    &quot;borderColor&quot;: &quot;transparent&quot;
+                                  },
+                                  {
+                                    &quot;label&quot;: &quot;Label 3&quot;,
+                                    &quot;data&quot;: [
+                                      {&quot;x&quot;: 55, &quot;y&quot;: 2, &quot;r&quot;: 61}
+                                    ],
+                                    &quot;color&quot;: &quot;#fff&quot;,
+                                    &quot;backgroundColor&quot;: &quot;#4338ca&quot;,
+                                    &quot;borderColor&quot;: &quot;transparent&quot;
+                                  }
+                                ]
+                              },
+                              &quot;options&quot;: {
+                                &quot;scales&quot;: {
+                                  &quot;y&quot;: {
+                                    &quot;grid&quot;: {
+                                      &quot;display&quot;: false,
+                                      &quot;drawBorder&quot;: false
+                                    },
+                                    &quot;ticks&quot;: {
+                                      &quot;display&quot;: false,
+                                      &quot;beginAtZero&quot;: true
+                                    },
+                                    &quot;max&quot;: 500
+                                  },
+                                  &quot;x&quot;: {
+                                   &quot;grid&quot;: {
+                                      &quot;display&quot;: false,
+                                      &quot;drawBorder&quot;: false
+                                    },
+                                    &quot;ticks&quot;: {
+                                      &quot;display&quot;: false,
+                                      &quot;max&quot;: 100,
+                                      &quot;beginAtZero&quot;: true
+                                    }
+                                  }
+                                },
+                                &quot;plugins&quot;: {
+                                  &quot;tooltip&quot;: false
+                                }
+                              }
+                            }'&gt;&lt;/canvas&gt;
+            &lt;/div&gt;
+            &lt;!-- End Chart --&gt;
+
+            &lt;!-- Legend Indicators --&gt;
+            &lt;div class=&quot;row justify-content-center&quot;&gt;
+              &lt;div class=&quot;col-auto&quot;&gt;
+                &lt;span class=&quot;legend-indicator bg-primary&quot;&gt;&lt;/span&gt; New
+              &lt;/div&gt;
+
+              &lt;div class=&quot;col-auto&quot;&gt;
+                &lt;span class=&quot;legend-indicator&quot; style=&quot;background-color: #7000f2;&quot;&gt;&lt;/span&gt; Pending
+              &lt;/div&gt;
+
+              &lt;div class=&quot;col-auto&quot;&gt;
+                &lt;span class=&quot;legend-indicator bg-info&quot;&gt;&lt;/span&gt; Failed
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;!-- End Legend Indicators --&gt;
+              </code>
+            </pre>
+          </div>
+
+          <div class="tab-pane fade" id="nav-js10" role="tabpanel" aria-labelledby="nav-jsTab10">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;!-- JS Implementing Plugins --&gt;
+                &lt;script src="../assets/vendor/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js"&gt;&lt;/script&gt;
+
+                &lt;script&gt;
+                  (function () {
+                   document.querySelectorAll('.js-chart-datalabels').forEach(item => {
+                      HSCore.components.HSChartJS.init(item, {
+                        plugins: [ChartDataLabels],
+                        options: {
+                          plugins: {
+                            datalabels: {
+                              color: function(context) {
+                                var value = context.dataset.data[context.dataIndex];
+                                return value.r < 20 ? context.dataset.backgroundColor : context.dataset.color;
+                              },
+                              font: function(context) {
+                                var value = context.dataset.data[context.dataIndex],
+                                        fontSize = 25;
+
+                                if (value.r > 50) {
+                                  fontSize = 35;
+                                }
+
+                                if (value.r > 70) {
+                                  fontSize = 55;
+                                }
+
+                                return {
+                                  weight: 'lighter',
+                                  size: fontSize
+                                };
+                              },
+                              formatter: function (value) {
+                                return value.r
+                              },
+                              offset: 2,
+                              padding: 0
+                            }
+                          }
+                        },
+                      })
+                    })
+                  })()
+                &lt;/script&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="matrix-chart" class="hs-docs-heading">
+        Matrix chart <a class="anchorjs-link" href="#matrix-chart" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Nav -->
+          <ul class="nav nav-segment" id="navTab11" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-resultTab11" data-bs-toggle="pill" href="#nav-result11" role="tab" aria-controls="nav-result11" aria-selected="true">Preview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-htmlTab11" data-bs-toggle="pill" href="#nav-html11" role="tab" aria-controls="nav-html11" aria-selected="false">HTML</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-jsTab11" data-bs-toggle="pill" href="#nav-js11" role="tab" aria-controls="nav-js11" aria-selected="false">JS</a>
+            </li>
+          </ul>
+          <!-- End Nav -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Alert -->
+        <div class="alert alert-soft-dark card-alert" role="alert">
+          This example uses <a class="alert-link" href="https://github.com/kurkle/chartjs-chart-matrix" target="_blank">Chart matrix module for Chart.js <i class="tio-open-in-new"></i></a> library.
+        </div>
+        <!-- End Alert -->
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="navTabContent11">
+          <div class="tab-pane fade p-4 show active" id="nav-result11" role="tabpanel" aria-labelledby="nav-resultTab11">
+            <!-- Matrix Chart -->
+            <div class="chartjs-matrix-custom mb-3" style="min-width: 100%; width: 700px;">
+              <canvas class="js-chart-matrix" style='min-height: 150px;' data-hs-chartjs-options='{
+                          "options": {
+                            "matrixBackgroundColord": {
+                               "color": "#377dff",
+                               "accent": 50,
+                               "additionToValue": 2
+                            },
+                            "matrixLegend": {
+                              "container": "#matrixLegend"
+                            }
+                          }
+                        }'></canvas>
+            </div>
+            <!-- End Matrix Chart -->
+
+            <!-- Matrix Legend -->
+            <ul id="matrixLegend" class="mb-0"></ul>
+          </div>
+
+          <div class="tab-pane fade" id="nav-html11" role="tabpanel" aria-labelledby="nav-htmlTab11">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;!-- Matrix Chart --&gt;
+                &lt;div class=&quot;chartjs-matrix-custom mb-3&quot; style=&quot;min-width: 100%; width: 700px;&quot;&gt;
+                  &lt;canvas class=&quot;js-chart-matrix&quot;
+                          style='min-height: 150px;'
+                          data-hs-chartjs-options='{
+                              &quot;options&quot;: {
+                                &quot;matrixBackgroundColord&quot;: {
+                                   &quot;color&quot;: &quot;#377dff&quot;,
+                                   &quot;accent&quot;: 50,
+                                   &quot;additionToValue&quot;: 2
+                                },
+                                &quot;matrixLegend&quot;: {
+                                  &quot;container&quot;: &quot;#matrixLegend&quot;
+                                }
+                              }
+                            }'&gt;&lt;/canvas&gt;
+                &lt;/div&gt;
+                &lt;!-- End Matrix Chart --&gt;
+
+                &lt;!-- Matrix Legend --&gt;
+                &lt;ul id=&quot;matrixLegend&quot; class=&quot;mb-0&quot;&gt;&lt;/ul&gt;
+              </code>
+            </pre>
+          </div>
+
+          <div class="tab-pane fade" id="nav-js11" role="tabpanel" aria-labelledby="nav-jsTab11">
+            <pre>
+              <code class="language-markup" data-lang="html">
+                &lt;!-- JS Implementing Plugins --&gt;
+                &lt;script src="../assets/vendor/chart.js/dist/Chart.min.js"&gt;&lt;/script&gt;
+                &lt;script src="../assets/vendor/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js"&gt;&lt;/script&gt;
+                &lt;script src="../assets/vendor/daterangepicker/moment.min.js"&gt;&lt;/script&gt;
+                &lt;script src="../assets/vendor/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"&gt;&lt;/script&gt;
+
+                &lt;!-- JS Front --&gt;
+
+                &lt;script&gt;
+                  (function () {
+                    // INITIALIZATION OF MATRIX CHARTJS WITH CHARTJS MATRIX PLUGIN
+                    // =======================================================
+                    function generateHoursData() {
+                      var data = [];
+                      var dt = moment().subtract(365, 'days').startOf('day');
+                      var end = moment().startOf('day');
+                      while(dt &lt;= end) {
+                        data.push({
+                          x: dt.format('YYYY-MM-DD'),
+                          y: dt.format('e'),
+                          d: dt.format('YYYY-MM-DD'),
+                          v: Math.random() * 24
+                        });
+                        dt = dt.add(1, 'day');
+                      }
+                      return data;
+                    }
+
+                    HSCore.components.HSChartMatrixJS.init(document.querySelector('.js-chart-matrix'), {
+                      data: {
+                        datasets: [{
+                          label: 'Commits',
+                          data: generateHoursData(),
+                          width(c) {
+                            const a = c.chart.chartArea || {};
+                            return (a.right - a.left) / 70;
+                          },
+                          height(c) {
+                            const a = c.chart.chartArea || {};
+                            return (a.bottom - a.top) / 7;
+                          }
+                        }]
+                      },
+                      options: {
+                        aspectRatio: 5,
+                        plugins: {
+                          tooltip: {
+                            callbacks: {
+                              title: function() { return '';},
+                              label: function(item) {
+                                var v = item.dataset.data[item.datasetIndex]
+
+                                if (v.v.toFixed() &gt; 0) {
+                                  return '&lt;span class=&quot;fw-semibold&quot;&gt;' + v.v.toFixed() + 'hours&lt;/span&gt; on ' + v.d;
+                                }  else {
+                                  return '&lt;span class=&quot;fw-semibold&quot;&gt;No time&lt;/span&gt; on ' + v.d;
+                                }
+                              }
+                            }
+                          },
+                        },
+                        scales: {
+                          y: {
+                            type: 'time',
+                            offset: true,
+                            time: {
+                              unit: 'day',
+                              round: 'day',
+                              isoWeekday: 1,
+                              parser: 'i',
+                              displayFormats: {
+                                day: 'iiiiii'
+                              }
+                            },
+                            reverse: true,
+                            ticks: {
+                              font: {
+                                size: 12,
+                              },
+                              maxTicksLimit: 5,
+                              color: &quot;rgba(22, 52, 90, 0.5)&quot;,
+                              maxRotation: 0,
+                              autoSkip: true
+                            },
+                            grid: {
+                              display: false,
+                              drawBorder: false,
+                              tickLength: 0
+                            }
+                          },
+                          x: {
+                            type: 'time',
+                            position: 'bottom',
+                            offset: true,
+                            time: {
+                              unit: 'week',
+                              round: 'week',
+                              isoWeekday: 1,
+                              displayFormats: {
+                                week: 'MMM dd'
+                              }
+                            },
+                            ticks: {
+                              font: {
+                                size: 12,
+                              },
+                              maxTicksLimit: 5,
+                              color: &quot;rgba(22, 52, 90, 0.5)&quot;,
+                              maxRotation: 0,
+                              autoSkip: true
+                            },
+                            grid: {
+                              display: false,
+                              drawBorder: false,
+                              tickLength: 0,
+                            }
+                          }
+                        }
+                      }
+                    })
+                  })()
+                &lt;/script&gt;
+              </code>
+            </pre>
+          </div>
+        </div>
+        <!-- End Tab Content -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="chartjs-methods" class="hs-docs-heading">
+        ChartJS methods <a class="anchorjs-link" href="#chartjs-methods" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Table -->
+        <div class="table-responsive">
+          <table class="table table-thead-bordered card-table">
+            <thead class="thead-light">
+              <tr>
+                <th>Parameters</th>
+                <th style="width: 50%;">Description</th>
+                <th class="text-nowrap">Default value</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td><code>options.scales.y.ticks.prefix</code></td>
+                <td>Preffix for y.</td>
+                <td><code>false</code></td>
+              </tr>
+
+              <tr>
+                <td><code>options.scales.y.ticks.postfix</code></td>
+                <td>Postfix for y.</td>
+                <td><code>false</code></td>
+              </tr>
+
+              <tr>
+                <td><code>options.scales.y.ticks.metric</code></td>
+                <td>Metric output for axes <code>(1k, 1kk, etc..)</code>.</td>
+                <td><code>false</code></td>
+              </tr>
+
+              <tr>
+                <td><code>options.responsive</code></td>
+                <td>Responsive chart.</td>
+                <td><code>true</code></td>
+              </tr>
+
+              <tr>
+                <td><code>options.maintainAspectRatio</code></td>
+                <td>Maintain the original canvas aspect ratio <code>(width / height)</code> when resizing.</td>
+                <td><code>false</code></td>
+              </tr>
+
+              <tr>
+                <td><code>options.legend.display</code></td>
+                <td>Legend for chart.</td>
+                <td><code>false</code></td>
+              </tr>
+
+              <tr>
+                <td><code>options.plugins.tooltip.enabled</code></td>
+                <td>Enable or disable tooltips.</td>
+                <td><code>false</code></td>
+              </tr>
+
+              <tr>
+                <td><code>options.plugins.tooltip.prefix</code></td>
+                <td>Prefix for tooltip text.</td>
+                <td><code>false</code></td>
+              </tr>
+
+              <tr>
+                <td><code>options.plugins.tooltip.postfix</code></td>
+                <td>Postfix for tooltip text.</td>
+                <td><code>false</code></td>
+              </tr>
+
+              <tr>
+                <td><code>options.plugins.tooltip.yearStamp</code></td>
+                <td>Added year after title.</td>
+                <td><code>true</code></td>
+              </tr>
+
+              <tr>
+                <td><code>options.plugins.tooltip.hasIndicator</code></td>
+                <td>Add indicator for tooltip.</td>
+                <td><code>false</code></td>
+              </tr>
+
+              <tr>
+                <td><code>options.plugins.tooltip.indicatorWidth</code></td>
+                <td>Width indicator.</td>
+                <td><code>8px</code></td>
+              </tr>
+
+              <tr>
+                <td><code>options.plugins.tooltip.indicatorHeight</code></td>
+                <td>Height indicator.</td>
+                <td><code>8px</code></td>
+              </tr>
+
+              <tr>
+                <td><code>options.plugins.tooltip.lineMode</code></td>
+                <td>Set line tooltip type.</td>
+                <td><code>false</code></td>
+              </tr>
+
+              <tr>
+                <td><code>options.plugins.tooltip.lineWithLineColor</code></td>
+                <td>Set color for line.</td>
+                <td><code>null</code></td>
+              </tr>
+
+              <tr>
+                <td><code>options.plugins.tooltip.lineWithLineBottomOffset</code></td>
+                <td>Offset of the top for line.</td>
+                <td><code>7</code></td>
+              </tr>
+
+              <tr>
+                <td><code>options.plugins.tooltip.lineWithLineBottomOffset</code></td>
+                <td>Offset of the bottom for line.</td>
+                <td><code>43</code></td>
+              </tr>
+
+              <tr>
+                <td><code>options.gradientPosition</code></td>
+                <td>Gradient position.</td>
+                <td><code>{
+                x0: 0,
+                y0: 0,
+                x1: 0,
+                y1: 0
+                }</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- End Table -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Heading -->
+      <h2 id="matrix-methods" class="hs-docs-heading">
+        Matrix methods <a class="anchorjs-link" href="#matrix-methods" aria-label="Anchor" data-anchorjs-icon="#"></a>
+      </h2>
+      <!-- End Heading -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Table -->
+        <div class="table-responsive">
+          <table class="table table-thead-bordered card-table">
+            <thead class="thead-light">
+              <tr>
+                <th>Parameters</th>
+                <th style="width: 50%;">Description</th>
+                <th class="text-nowrap">Default value</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td><code>options.matrixBackgroundColor.color</code></td>
+                <td>Set color for matrix chart.</td>
+                <td><code>null</code></td>
+              </tr>
+              <tr>
+                <td><code>options.matrixBackgroundColor.accent</code></td>
+                <td>Set accent color for matrix chart. Usually this is the maximum value from datasets.</td>
+                <td><code>null</code></td>
+              </tr>
+              <tr>
+                <td><code>options.matrixBackgroundColor.nullColor</code></td>
+                <td>Set custom color for empty items in matrix chart.</td>
+                <td><code>false</code></td>
+              </tr>
+              <tr>
+                <td><code>options.matrixBackgroundColor.additionToValue</code></td>
+                <td>Add addition value to value of item in matrix chart.</td>
+                <td><code>5</code></td>
+              </tr>
+              <tr>
+                <td><code>options.matrixLegend.container</code></td>
+                <td>Wrapper for custom legends.</td>
+                <td><code>5</code></td>
+              </tr>
+              <tr>
+                <td><code>options.matrixLegend.stepSize</code></td>
+                <td>Step size for legends.</td>
+                <td><code>max / 10</code></td>
+              </tr>
+              <tr>
+                <td><code>options.matrixLegend.metric</code></td>
+                <td>Metric output for legend values <code>(1k, 1kk, etc..)</code>.</td>
+                <td><code>false</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- End Table -->
+      </div>
+      <!-- End Card -->
+    </div>
+    <!-- End Content -->
+  </main>
+  <!-- ========== END MAIN CONTENT ========== -->
+
+  <!-- ========== SECONDARY CONTENTS ========== -->
+  <!-- Go To -->
+  <a class="js-go-to go-to position-fixed" href="javascript:;" style="visibility: hidden;" data-hs-go-to-options='{
+       "offsetTop": 700,
+       "position": {
+         "init": {
+           "right": "2rem"
+         },
+         "show": {
+           "bottom": "2rem"
+         },
+         "hide": {
+           "bottom": "-2rem"
+         }
+       }
+     }'>
+    <i class="bi-chevron-up"></i>
+  </a>
+  <!-- ========== END SECONDARY CONTENTS ========== -->
+
+  <!-- JS Global Compulsory  -->
+  <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JS Implementing Plugins -->
+  <script src="../assets/vendor/hs-header/dist/hs-header.min.js"></script>
+  <script src="../assets/vendor/hs-nav-scroller/dist/hs-nav-scroller.min.js"></script>
+  <script src="../assets/vendor/list.js/dist/list.min.js"></script>
+  <script src="../assets/vendor/hs-go-to/dist/hs-go-to.min.js"></script>
+  <script src="../assets/vendor/prism/prism.js"></script>
+  <script src="../assets/vendor/daterangepicker/moment.min.js"></script>
+  <script src="../assets/vendor/chart.js/dist/Chart.min.js"></script>
+  <script src="../assets/vendor/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js"></script>
+  <script src="../assets/vendor/chartjs-chart-matrix/dist/chartjs-chart-matrix.min.js"></script>
+  <script src="../assets/vendor/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+
+  <!-- JS Front -->
+  <script src="../assets/js/theme.min.js"></script>
+  <script src="../assets/js/hs.theme-appearance-charts.js"></script>
+
+  <!-- JS Plugins Init. -->
+  <script>
+    (function() {
+      // INITIALIZATION OF HEADER
+      // =======================================================
+      new HSHeader('#header').init()
+
+
+      // INITIALIZATION OF NAV SCROLLER
+      // =======================================================
+      new HsNavScroller('.js-nav-scroller', {
+        delay: 400,
+        offset: 140
+      })
+
+
+      // INITIALIZATION OF LISTJS COMPONENT
+      // =======================================================
+      HSCore.components.HSList.init('#docsSearch');
+      const docsSearch = HSCore.components.HSList.getItem('docsSearch');
+
+
+      // GET JSON FILE RESULTS
+      // =======================================================
+      fetch('../assets/json/docs-search.json')
+      .then(response => response.json())
+      .then(data => {
+        docsSearch.add(data)
+      })
+
+
+      // INITIALIZATION OF GO TO
+      // =======================================================
+      new HSGoTo('.js-go-to')
+
+
+      // INITIALIZATION OF CHARTJS
+      // =======================================================
+      HSCore.components.HSChartJS.init('.js-chart')
+
+
+      // INITIALIZATION OF LINE UPDATING CHARTJS
+      // =======================================================
+      const updatingChartDatasets = [
+        [
+          [18,51,60,38,88,50,40,52,88,80,60,70],
+          [27,38,60,77,40,50,49,29,42,27,42,50]
+        ],
+        [
+          [77,40,50,49,27,38,60,42,50,29,42,27],
+          [60,38,18,51,88,50,40,52,60,70,88,80]
+        ]
+      ]
+
+      HSCore.components.HSChartJS.init(document.querySelector('#updatingLineChart'), {
+        data: {
+          datasets: [
+            {
+              data: updatingChartDatasets[0][0]
+            },
+            {
+              data: updatingChartDatasets[0][1]
+            }
+          ]
+        }
+      })
+
+      const updatingLineChart = HSCore.components.HSChartJS.getItem('updatingLineChart')
+
+      // Call when tab is clicked
+      document.querySelectorAll('[data-toggle="chart"]').forEach(item => {
+        item.addEventListener('click', e => {
+          let keyDataset = e.currentTarget.getAttribute('data-datasets')
+
+          // Update datasets for chart
+          updatingLineChart.data.datasets.forEach(function(dataset, key) {
+            dataset.data = updatingChartDatasets[keyDataset][key];
+          })
+          updatingLineChart.update()
+        })
+      })
+
+
+      // INITIALIZATION OF BAR UPDATING CHARTJS
+      // =======================================================
+      HSCore.components.HSChartJS.init(document.querySelector('#updatingBarChart'));
+
+      const updatingBarChart = HSCore.components.HSChartJS.getItem('updatingBarChart')
+
+      // Call when tab is clicked
+      document.querySelectorAll('[data-toggle="chart-bar"]').forEach(item => {
+        item.addEventListener('click', e => {
+          let keyDataset = e.currentTarget.getAttribute('data-datasets')
+
+          if (keyDataset === 'lastWeek') {
+            updatingBarChart.data.labels = ["Apr 22", "Apr 23", "Apr 24", "Apr 25", "Apr 26", "Apr 27", "Apr 28", "Apr 29", "Apr 30", "Apr 31"];
+            updatingBarChart.data.datasets = [
+              {
+                "data": [120, 250, 300, 200, 300, 290, 350, 100, 125, 320],
+                "backgroundColor": "#377dff",
+                "hoverBackgroundColor": "#377dff",
+                "borderColor": "#377dff",
+                "maxBarThickness": 10
+              },
+              {
+                "data": [250, 130, 322, 144, 129, 300, 260, 120, 260, 245, 110],
+                "backgroundColor": "#e7eaf3",
+                "borderColor": "#e7eaf3",
+                "maxBarThickness": 10
+              }
+            ];
+            updatingBarChart.update();
+          } else {
+            updatingBarChart.data.labels = ["May 1", "May 2", "May 3", "May 4", "May 5", "May 6", "May 7", "May 8", "May 9", "May 10"];
+            updatingBarChart.data.datasets = [
+              {
+                "data": [200, 300, 290, 350, 150, 350, 300, 100, 125, 220],
+                "backgroundColor": "#377dff",
+                "hoverBackgroundColor": "#377dff",
+                "borderColor": "#377dff",
+                "maxBarThickness": 10
+              },
+              {
+                "data": [150, 230, 382, 204, 169, 290, 300, 100, 300, 225, 120],
+                "backgroundColor": "#e7eaf3",
+                "borderColor": "#e7eaf3",
+                "maxBarThickness": 10
+              }
+            ]
+            updatingBarChart.update();
+          }
+        })
+      })
+
+
+      // INITIALIZATION OF DOUGHNUT UPDATING CHARTJS
+      // =======================================================
+      HSCore.components.HSChartJS.init(document.querySelector('#updatingDoughnutChart'));
+
+      var updatingDoughnutChart =  HSCore.components.HSChartJS.getItem('updatingDoughnutChart')
+
+      // Datasets for chart, can be loaded from AJAX request
+      var updatingDoughnutChartDatasets = [
+        [
+          [45, 25, 30]
+        ],
+        [
+          [35, 50, 15]
+        ]
+      ]
+
+      // Set datasets for chart when page is loaded
+      updatingDoughnutChart.data.datasets.forEach(function(dataset, key) {
+        dataset.data = updatingDoughnutChartDatasets[0][key];
+      });
+      updatingDoughnutChart.update();
+
+      // Call when tab is clicked
+      document.querySelectorAll('[data-toggle="chart-doughnut"]').forEach(item => {
+        item.addEventListener('click', e => {
+          let keyDataset = e.currentTarget.getAttribute('data-datasets')
+
+          // Update datasets for chart
+          updatingDoughnutChart.data.datasets.forEach(function(dataset, key) {
+            dataset.data = updatingDoughnutChartDatasets[keyDataset][key];
+          });
+          updatingDoughnutChart.update();
+        })
+      })
+
+
+      // INITIALIZATION OF DOUGHNUT-HALF CHARTJS
+      // =======================================================
+      HSCore.components.HSChartJS.init(document.querySelector('.js-chartjs-doughnut-half'), {
+        options: {
+          plugins: {
+            tooltip: {
+              postfix: "%"
+            }
+          },
+          cutout: '85%',
+          rotation: '270',
+          circumference: '180'
+        }
+      })
+
+
+      // INITIALIZATION OF DOUGHNUT-HALF UPDATING CHARTJS
+      // =======================================================
+      HSCore.components.HSChartJS.init(document.querySelector('.js-chartjs-doughnut-half-dynamic'), {
+        options: {
+          tooltips: {
+            postfix: "%"
+          },
+          cutout: '85%',
+          rotation: '270',
+          circumference: '180'
+        }
+      })
+
+      const halfChart = HSCore.components.HSChartJS.getItem('updatingDoughnutHalfChart')
+
+      document.querySelector('#updatingBarChartControl').addEventListener("change", e => {
+        let $balance = document.querySelector('#js-chartjs-half-balance')
+        if (e.target.checked) {
+          halfChart.data.datasets[0].data[1] = 90
+          $balance.innerHTML = "$110,351.00"
+        } else {
+          halfChart.data.datasets[0].data[1] = 35
+          $balance.innerHTML = "$150,238.00"
+        }
+
+        halfChart.update();
+      })
+
+      // INITIALIZATION OF BUBBLE CHARTJS WITH DATALABELS PLUGIN
+      // =======================================================
+      document.querySelectorAll('.js-chart-datalabels').forEach(item => {
+        HSCore.components.HSChartJS.init(item, {
+          plugins: [ChartDataLabels],
+          options: {
+            plugins: {
+              datalabels: {
+                color: function(context) {
+                  var value = context.dataset.data[context.dataIndex];
+                  return value.r < 20 ? context.dataset.backgroundColor : context.dataset.color;
+                },
+                font: function(context) {
+                  var value = context.dataset.data[context.dataIndex],
+                          fontSize = 25;
+
+                  if (value.r > 50) {
+                    fontSize = 35;
+                  }
+
+                  if (value.r > 70) {
+                    fontSize = 55;
+                  }
+
+                  return {
+                    weight: 'lighter',
+                    size: fontSize
+                  };
+                },
+                formatter: function (value) {
+                  return value.r
+                },
+                offset: 2,
+                padding: 0
+              }
+            }
+          },
+        });
+      })
+
+      // INITIALIZATION OF MATRIX CHARTJS WITH CHARTJS MATRIX PLUGIN
+      // =======================================================
+      function generateHoursData() {
+        var data = [];
+        var dt = moment().subtract(365, 'days').startOf('day');
+        var end = moment().startOf('day');
+        while(dt <= end) {
+          data.push({
+            x: dt.format('YYYY-MM-DD'),
+            y: dt.format('e'),
+            d: dt.format('YYYY-MM-DD'),
+            v: Math.random() * 24
+          });
+          dt = dt.add(1, 'day');
+        }
+        return data;
+      }
+
+      HSCore.components.HSChartMatrixJS.init(document.querySelector('.js-chart-matrix'), {
+        data: {
+          datasets: [{
+            label: 'Commits',
+            data: generateHoursData(),
+            width(c) {
+              const a = c.chart.chartArea || {};
+              return (a.right - a.left) / 70;
+            },
+            height(c) {
+              const a = c.chart.chartArea || {};
+              return (a.bottom - a.top) / 7;
+            }
+          }]
+        },
+        options: {
+          aspectRatio: 5,
+          plugins: {
+            tooltip: {
+              callbacks: {
+                title: function() { return '';},
+                label: function(item) {
+                  var v = item.dataset.data[item.datasetIndex]
+
+                  if (v.v.toFixed() > 0) {
+                    return '<span class="fw-semibold">' + v.v.toFixed() + 'hours</span> on ' + v.d;
+                  }  else {
+                    return '<span class="fw-semibold">No time</span> on ' + v.d;
+                  }
+                }
+              }
+            },
+          },
+          scales: {
+            y: {
+              type: 'time',
+              offset: true,
+              time: {
+                unit: 'day',
+                round: 'day',
+                isoWeekday: 1,
+                parser: 'i',
+                displayFormats: {
+                  day: 'iiiiii'
+                }
+              },
+              reverse: true,
+              ticks: {
+                font: {
+                  size: 12,
+                },
+                maxTicksLimit: 5,
+                color: "rgba(22, 52, 90, 0.5)",
+                maxRotation: 0,
+                autoSkip: true
+              },
+              grid: {
+                display: false,
+                drawBorder: false,
+                tickLength: 0
+              }
+            },
+            x: {
+              type: 'time',
+              position: 'bottom',
+              offset: true,
+              time: {
+                unit: 'week',
+                round: 'week',
+                isoWeekday: 1,
+                displayFormats: {
+                  week: 'MMM dd'
+                }
+              },
+              ticks: {
+                font: {
+                  size: 12,
+                },
+                maxTicksLimit: 5,
+                color: "rgba(22, 52, 90, 0.5)",
+                maxRotation: 0,
+                autoSkip: true
+              },
+              grid: {
+                display: false,
+                drawBorder: false,
+                tickLength: 0,
+              }
+            }
+          }
+        }
+      })
+    })()
+  </script>
+</body>
+</html>

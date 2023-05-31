@@ -181,6 +181,12 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
+        Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
+
+     
+
 
         /*
          * Package Service Providers...
@@ -197,6 +203,8 @@ return [
 
     ],
 
+    
+
     /*
     |--------------------------------------------------------------------------
     | Class Aliases
@@ -209,7 +217,9 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'ExampleClass' => App\Example\ExampleClass::class,
+       
     ])->toArray(),
+    'MediaLibrary' => Spatie\MediaLibrary\MediaLibraryFacade::class,
+
 
 ];
