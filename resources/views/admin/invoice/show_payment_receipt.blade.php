@@ -151,9 +151,9 @@
                                     <div class="card-body ">
                                         <h5 class="card-title">Bukti Pembayaran - {{ @$invoice->customer->name_pic }}
                                             - {{ @$invoice->payment_time }}</h5>
-                                        <img src="{{ asset('storage/' . $invoice->payment_receipt) }}"
+                                            <img src="{{ asset('storage/' . $invoice->payment_receipt) }}"
                                             class="img-fluid" alt="Bukti Pembayaran">
-
+                                       
 
                                         <div class="d-flex justify-content-end mt-3">
                                             <a href="{{ route('admin.download-payment-receipt', $invoice) }}"
