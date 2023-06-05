@@ -29,8 +29,8 @@
     <link rel="preload" href="{{ asset('dist') }}/assets/css/theme.min.css" data-hs-appearance="default"
         as="style">
 
-    <script src="{{ asset('dist') }}/assets/vendor/chart.js/dist/Chart.min.js"></script>
-    <script src="{{ asset('dist') }}/assets/vendor/chart.js/dist/Chart.min.js"></script>
+    <script src="{{ asset('dist') }}/assets/vendor/chart.js/dist/chart.min.js"></script>
+    <script src="{{ asset('dist') }}/assets/vendor/chart.js/dist/chart.min.js"></script>
 
 
 
