@@ -1,4 +1,16 @@
 <x-app-layout>
+    @push('styles')
+        <style>
+            .card-body {
+                position: relative;
+            }
+
+            #preview-image {
+                width: 100%;
+                height: auto;
+            }
+        </style>
+    @endpush
     <div class="content container-fluid">
         <!-- Page Header -->
         <div class="page mb-5">
@@ -56,13 +68,15 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="" class="form-label fw-bold fs-4">A.N/Atas Nama PIC</label>
-                            <input type="text" disabled class="form-control" value="{{ $invoice->customer->name_pic }}">
+                            <input type="text" disabled class="form-control"
+                                value="{{ $invoice->customer->name_pic }}">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="" class="form-label fw-bold fs-4">Name Unit</label>
-                            <input type="text" disabled class="form-control" value="{{ $invoice->customer->name_unit }}">
+                            <input type="text" disabled class="form-control"
+                                value="{{ $invoice->customer->name_unit }}">
                         </div>
                     </div>
                 </div>
@@ -76,7 +90,8 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="" class="form-label fw-bold fs-4">No Handphone</label>
-                            <input type="text" disabled class="form-control" value="{{ $invoice->customer->no_handphone }}">
+                            <input type="text" disabled class="form-control"
+                                value="{{ $invoice->customer->no_handphone }}">
                         </div>
                     </div>
                 </div>
