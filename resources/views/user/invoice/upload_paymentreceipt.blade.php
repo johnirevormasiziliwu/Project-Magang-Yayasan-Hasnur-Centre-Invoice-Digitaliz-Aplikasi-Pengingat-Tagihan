@@ -108,7 +108,7 @@
                     </div>
                 </div>
 
-                @if ($invoice->is_paid == null && $invoice->payment_receipt == null)
+                @if ($invoice->is_paid == 0 && $invoice->payment_receipt == null)
                     <form action="{{ route('user.upload-payment-receipt', $invoice) }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
