@@ -157,76 +157,73 @@
                         </div>
 
                         <!-- Bar Chart -->
-                        <div class="d-flex align-items-center mb-4">
-                            <span class="h1 mb-0">35%</span>
-                        </div>
-
-                        <!-- Bar Chart -->
                         <div class="chartjs-custom">
-                            <canvas id="ecommerce-sales" class="js-chart" style="height: 20rem;"
+                            <canvas id="ecommerce-sales" class="js-chart" style="height: 20rem; width: 100%;"
                                 data-hs-chartjs-options='{
-                                            "type": "bar",
-                                            "data": {
-                                              "labels": ["May 1", "May 2", "May 3", "May 4", "May 5", "May 6", "May 7", "May 8", "May 9", "May 10"],
-                                              "datasets": [{
-                                                "data": [200, 300, 290, 350, 150, 350, 300, 100, 125, 220],
-                                                "backgroundColor": "#377dff",
-                                                "hoverBackgroundColor": "#377dff",
-                                                "borderColor": "#377dff",
-                                                "maxBarThickness": "10"
-                                              }]
-                                            },
-                                            "options": {
-                                              "scales": {
-                                                "y": {
-                                                  "grid": {
+                                    "type": "bar",
+                                    "data": {
+                                        "labels": <?= json_encode($labels) ?>,
+                                        "datasets": [{
+                                            "data": <?= json_encode(array_values($totalPaidByMonth)) ?>,
+                                            "backgroundColor": "#6E11F4",
+                                            "hoverBackgroundColor": "#6E11F4",
+                                            "borderColor": "#6E11F4",
+                                            "maxBarThickness": "100",
+                                            "borderRadius": 10
+                                        }]
+                                    },
+                                    "options": {
+                                        "responsive": true,
+                                        "maintainAspectRatio": false,
+                                        "scales": {
+                                            "y": {
+                                                "grid": {
                                                     "color": "#e7eaf3",
                                                     "drawBorder": false,
                                                     "zeroLineColor": "#e7eaf3"
-                                                  },
-                                                  "ticks": {
+                                                },
+                                                "ticks": {
                                                     "beginAtZero": true,
                                                     "stepSize": 100,
                                                     "fontSize": 12,
                                                     "fontColor": "#97a4af",
                                                     "fontFamily": "Open Sans, sans-serif",
                                                     "padding": 10,
-                                                    "postfix": "$"
-                                                  }
-                                                },
-                                                "x": {
-                                                  "grid": {
+                                                    "postfix": "Rp"
+                                                }
+                                            },
+                                            "x": {
+                                                "grid": {
                                                     "display": false,
                                                     "drawBorder": false
-                                                  },
-                                                  "ticks": {
+                                                },
+                                                "ticks": {
                                                     "font": {
-                                                      "size": 12,
-                                                      "family": "Open Sans, sans-serif"
+                                                        "size": 12,
+                                                        "family": "Open Sans, sans-serif"
                                                     },
                                                     "color": "#97a4af",
                                                     "padding": 5
-                                                  },
-                                                  "categoryPercentage": 0.5
-                                                }
-                                              },
-                                              "cornerRadius": 2,
-                                              "plugins": {
-                                                "tooltip": {
-                                                "prefix": "$",
+                                                },
+                                                "categoryPercentage": 0.5
+                                            }
+                                        },
+                                        "cornerRadius": 2,
+                                        "plugins": {
+                                            "tooltip": {
+                                                "prefix": "Rp.",
                                                 "hasIndicator": true,
                                                 "mode": "index",
                                                 "intersect": false
-                                                }
-                                              },
-                                              "hover": {
-                                                "mode": "nearest",
-                                                "intersect": true
-                                              }
                                             }
-                                          }'></canvas>
+                                        },
+                                        "hover": {
+                                            "mode": "nearest",
+                                            "intersect": true
+                                        }
+                                    }
+                                }'></canvas>
                         </div>
-                        <!-- End Bar Chart -->
                         <!-- End Bar Chart -->
                     </div>
                 </div>
@@ -361,9 +358,15 @@
 
     </div>
 
-  
+    <script>
+        (function() {
+            // INITIALIZATION OF CHARTJS
+            // =======================================================
+            document.querySelectorAll('.js-chart').forEach(item => {
+                HSCore.components.HSChartJS.init(item)
+            })
+        })();
 
-    {{-- <script>
         var adaTotalTransaksi = false; // Ubah menjadi true jika ada total transaksi
         var warnaBatang = adaTotalTransaksi ? "#6E11F4" :
             "#DECBFB"; // Warna batang berdasarkan ada atau tidak adanya total transaksi
@@ -378,5 +381,5 @@
         chartConfig.data.datasets[0].backgroundColor = warnaBatang;
         chartConfig.data.datasets[0].hoverBackgroundColor = warnaBatang;
         chartConfig.data.datasets[0].borderColor = warnaBatang
-    </script> --}}
+    </script>
 </x-app-layout>

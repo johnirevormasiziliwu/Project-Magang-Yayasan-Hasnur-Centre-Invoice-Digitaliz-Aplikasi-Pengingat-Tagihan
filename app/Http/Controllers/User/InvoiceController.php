@@ -84,12 +84,11 @@ class InvoiceController extends Controller
         ]);
     
         
-        $folder = 'invoices'; 
-        Storage::disk('local')->makeDirectory('public/' . $folder);
+       
     
        
         $file = $request->file('payment_receipt');
-        $path = $folder . '/' . time() . '_' . str_replace(' ', '_', $invoice->customer->name_unit) . '_' . $invoice->id . '.' . $file->getClientOriginalExtension();
+        $path =  time() . '_' . str_replace(' ', '_', $invoice->customer->name_unit) . '_' . $invoice->id . '.' . $file->getClientOriginalExtension();
         Storage::disk('local')->put('public/' . $path, file_get_contents($file));
     
         $invoice->update([
