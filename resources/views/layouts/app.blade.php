@@ -31,7 +31,7 @@
 
     <script src="{{ asset('dist') }}/assets/vendor/chart.js/dist/Chart.min.js"></script>
     <script src="{{ asset('dist') }}/assets/vendor/chart.js/dist/Chart.min.js"></script>
- 
+
 
 
 
@@ -44,7 +44,7 @@
 
         body {
             opacity: 0;
-            
+
         }
     </style>
 
@@ -267,12 +267,11 @@
                         <!-- Account -->
                         <div class="dropdown">
                             <a class="navbar-dropdown-account-wrapper" href="javascript:;" id="accountNavbarDropdown"
-                            data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
-                            data-bs-dropdown-animation
-                            style="color: black; text-decoration: none;">
-                            <span class="fw-bold fs-4">{{ Auth::user()->name }}</span>
-                          </a>
-                          
+                                data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                                data-bs-dropdown-animation style="color: black; text-decoration: none;">
+                                <span class="fw-bold fs-4">{{ Auth::user()->name }}</span>
+                            </a>
+
 
                             <div class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless navbar-dropdown-account"
                                 aria-labelledby="accountNavbarDropdown" style="width: 16rem;">
@@ -280,11 +279,12 @@
                                     <div class="d-flex align-items-center">
                                         <div class="d-flex align-items-center">
                                             <div class="avatar avatar-sm avatar-circle">
-                                                <i class="bi bi-person" style="font-size: 2rem; width: 3.5rem; height: 3.5rem;"></i>
+                                                <i class="bi bi-person"
+                                                    style="font-size: 2rem; width: 3.5rem; height: 3.5rem;"></i>
                                             </div>
                                             <h4 class="mx-2 mt-3">Hi, {{ Auth::user()->name }}</h4>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
 
@@ -296,14 +296,18 @@
                                     @csrf
                                     <button class="dropdown-item d-flex" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                    this.closest('form').submit();"><i class="bi bi-arrow-right-circle" style="font-size: 2rem; width: 3.5rem; height: 3.5rem;"></i> <h4 class="mt-3">Logout
-                                        </h4> </button> 
+                                    this.closest('form').submit();"><i
+                                            class="bi bi-arrow-right-circle"
+                                            style="font-size: 2rem; width: 3.5rem; height: 3.5rem;"></i>
+                                        <h4 class="mt-3">Logout
+                                        </h4>
+                                    </button>
                                 </form>
                             </div>
                         </div>
                         <!-- End Account -->
                     </li>
-                </ul>                                                                                                   
+                </ul>
                 <!-- End Navbar -->
             </div>
         </div>
@@ -372,7 +376,9 @@
                             <div class="nav-item  mt-2">
                                 <a href="{{ route('admin.invoice.index') }}"
                                     class="nav-link {{ Request()->routeIs('admin.invoice.*', 'admin.invoiceitems.show', 'admin.invoiceitems.edit', 'admin.invoice.search') ? 'active ' : '' }}"
-                                    @if (Request()->routeIs('admin.invoice.*', 'admin.invoiceitems.show', 'admin.invoiceitems.edit', 'admin.search') ? 'active ' : '') style="background-color: #6E11F4; color:#ffff" @endif>
+                                    @if (Request()->routeIs('admin.invoice.*', 'admin.invoiceitems.show', 'admin.invoiceitems.edit', 'admin.search')
+                                            ? 'active '
+                                            : '') style="background-color: #6E11F4; color:#ffff" @endif>
                                     <i class="nav-icon ">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 ">
@@ -458,7 +464,8 @@
     <script src="{{ asset('dist') }}/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- JS Implementing Plugins -->
-
+    <script src="{{ asset('dist') }}/node_modules/chart.js/dist/Chart.min.js"></script>
+    <script src="{{ asset('dist') }}assets/js/hs.chartjs.js"></script>
     <script src="{{ asset('dist') }}/assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside.min.js"></script>
     <script src="{{ asset('dist') }}/assets/vendor/hs-form-search/dist/hs-form-search.min.js"></script>
 
@@ -754,6 +761,16 @@
                 setActiveStyle()
             })
         })()
+    </script>
+
+    <script>
+        (function() {
+            // INITIALIZATION OF CHARTJS
+            // =======================================================
+            document.querySelectorAll('.js-chart').forEach(item => {
+                HSCore.components.HSChartJS.init(item)
+            })
+        })();
     </script>
 
 
