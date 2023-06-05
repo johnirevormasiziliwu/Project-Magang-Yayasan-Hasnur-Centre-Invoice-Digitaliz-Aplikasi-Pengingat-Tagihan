@@ -191,4 +191,7 @@ class CetakController extends Controller
 
         return $dompdf->download('Laporan Invoice Digitaliz.pdf');
     }
+    
+   
+    
 }

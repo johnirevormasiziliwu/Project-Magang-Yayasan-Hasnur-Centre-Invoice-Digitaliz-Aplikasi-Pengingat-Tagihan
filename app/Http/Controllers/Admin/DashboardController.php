@@ -15,7 +15,7 @@ class DashboardController extends Controller
         $now = Carbon::now();
         $oneWeekAhead = $now->copy()->addWeek();
         $oneWeekBeforeDueDate = $oneWeekAhead->copy()->subWeek();
-        
+
         // Menampilkan data transaksi yang jatuh tempo satu minggu sebelum tanggal sekarang
         $invoicesDueThisWeek = Invoice::whereBetween('due_date', [$oneWeekBeforeDueDate, $oneWeekAhead])
             ->where('is_paid', false)
@@ -23,13 +23,13 @@ class DashboardController extends Controller
             ->orderBy('due_date')
             ->take(3)
             ->get();
-        
+
         // Menampilkan jumlah transaksi yang jatuh tempo satu minggu sebelum tanggal sekarang
         $invoicesCount = Invoice::whereBetween('due_date', [$oneWeekBeforeDueDate, $oneWeekAhead])
             ->where('is_paid', false)
             ->whereNull('payment_receipt')
             ->count();
-        
+
 
         $invoices = Invoice::paginate(10)->withQueryString();
 
@@ -51,19 +51,21 @@ class DashboardController extends Controller
 
 
 
-        // Menghitung total nominal keseluruhan invoice yang sudah dibayar berdasarkan bulan
         $totalPaidByMonth = Invoice::join('invoice_items', 'invoices.id', '=', 'invoice_items.invoice_id')
             ->select(DB::raw('SUM(invoice_items.nominal) as total'), DB::raw('MONTH(invoices.created_at) as month'))
             ->where('invoices.is_paid', true)
+            ->where(DB::raw('MONTH(invoices.created_at)'), '>=', Carbon::now()->month)
             ->groupBy(DB::raw('MONTH(invoices.created_at)'))
             ->get()
             ->pluck('total', 'month')
             ->toArray();
 
-        $currentMonth = Carbon::now()->format('F');
+        $currentMonth = Carbon::now();
+
         $labels = [];
         for ($i = 0; $i < 6; $i++) {
-            $labels[] = Carbon::now()->addMonths($i)->format('F');
+            $labels[] = $currentMonth->format('F');
+            $currentMonth->addMonth();
         }
 
 

@@ -1,4 +1,16 @@
 <x-app-layout>
+    @push('styles')
+        <style>
+            .card-body {
+                position: relative;
+            }
+
+            #preview-image {
+                width: 100%;
+                height: auto;
+            }
+        </style>
+    @endpush
     <div class="content container-fluid">
         <!-- Page Header -->
         <div class="page mb-5">
@@ -53,30 +65,33 @@
                     <input type="text" disabled class="form-control" value="{{ $invoice->title }}">
                 </div>
                 <div class="row">
-                    <div class="col">
+                    <div class="col-md-6">
                         <div class="mb-3">
                             <label for="" class="form-label fw-bold fs-4">A.N/Atas Nama PIC</label>
-                            <input type="text" disabled class="form-control" value="{{ $invoice->customer->name_pic }}">
+                            <input type="text" disabled class="form-control"
+                                value="{{ $invoice->customer->name_pic }}">
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-md-6">
                         <div class="mb-3">
                             <label for="" class="form-label fw-bold fs-4">Name Unit</label>
-                            <input type="text" disabled class="form-control" value="{{ $invoice->customer->name_unit }}">
+                            <input type="text" disabled class="form-control"
+                                value="{{ $invoice->customer->name_unit }}">
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col">
+                    <div class="col-md-6">
                         <div class="mb-3">
                             <label for="" class="form-label fw-bold fs-4">Alamat E-mail</label>
                             <input type="text" disabled class="form-control" value="{{ $invoice->customer->email }}">
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-md-6">
                         <div class="mb-3">
                             <label for="" class="form-label fw-bold fs-4">No Handphone</label>
-                            <input type="text" disabled class="form-control" value="{{ $invoice->customer->no_handphone }}">
+                            <input type="text" disabled class="form-control"
+                                value="{{ $invoice->customer->no_handphone }}">
                         </div>
                     </div>
                 </div>
@@ -85,7 +100,7 @@
                 @foreach ($invoice->invoiceItems as $invoiceItem)
                     @php($totalInvoiceNominal += $invoiceItem->nominal)
                 @endforeach
-                <div class="col">
+                <div class="col-md-6">
                     <div class="mb-3">
                         <label for="" class="form-label fw-bold fs-4">Nominal</label>
                         <input type="text" disabled class="form-control"
@@ -98,7 +113,7 @@
                         enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-                            <div class="col">
+                            <div class="col-md-6">
                                 <label for="payment_receipt" class="form-label"><span class="fs-4 fw-bold">Upload Bukti
                                         Pembayaran</span> (jpeg,jpg,pdf,png)</label>
                                 <input type="file" name="payment_receipt" id="payment_receipt"
@@ -109,7 +124,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="col">
+                            <div class="col-md-6">
                                 <label for="" class="form-label fs-4 fw-bold">Bukti Pembayaran</label>
                                 <div class="mb-3">
                                     <img src="#" id="preview-image" style="display:none; width:400px;">

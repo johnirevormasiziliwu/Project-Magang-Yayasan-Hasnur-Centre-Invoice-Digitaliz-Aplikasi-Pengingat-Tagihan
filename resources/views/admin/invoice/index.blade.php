@@ -1,4 +1,13 @@
 <x-app-layout>
+    @push('styles')
+        <style>
+            @media (max-width: 576px) {
+                .flex-md-row .btn {
+                    margin-bottom: 10px;
+                }
+            }
+        </style>
+    @endpush
     <div class="content container-fluid ">
         <!-- Page Header -->
         <div class="page mb-3">
@@ -17,40 +26,36 @@
                                     </span>
                                 </div>
                             </div>
-
                         </div>
 
                         <div class="flex-grow-1 ms-3">
-
                             <h1 class="text-hover-primary fw-bold">Invoice</h1>
-
                             <span class="d-block fs-3">Data-data invoice ada disini</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-sm-auto">
-
                     <a class="btn btn-sm text-white fw-bold" href="{{ route('admin.invoice.create') }}"
                         style="background: #6e11f4">
                         <i class="bi bi-plus fs-4"></i> Buat Invoice
                     </a>
-
                 </div>
             </div>
         </div>
+
         <!-- End Page Header -->
 
         <!-- Star pencarian dan filter status invoices -->
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 mb-3">
                 <label for="keyword" class="form-label fs-4 fw-bold">Cari</label>
                 <form action="{{ route('admin.invoice.search') }}" method="get">
                     <div class="input-group">
                         <input type="text" name="keyword" class="form-control"
                             placeholder="Cari Invoice ID, Judul, Unit....">
                         <div class="input-group-append">
-                            <button class="btn  rounded-top-bottom " type="submit"
+                            <button class="btn rounded-top-bottom" type="submit"
                                 style="background: #6e11f4; color:#fff;">
                                 <i class="bi bi-search fs-5 fw-bold"></i>
                             </button>
@@ -58,10 +63,10 @@
                     </div>
                 </form>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 mb-3">
                 <label for="#" class="form-label fs-5 fw-bold">Filter</label>
                 <form action="{{ route('admin.invoice.index') }}" method="GET">
-                    <select class="form-select form-select-lg mb-3 fs-5 fw-bold" id="filter" name="filter"
+                    <select class="form-select form-select-lg fs-5 fw-bold" id="filter" name="filter"
                         style="background-color:#F5F5F5; color:#404040;">
                         <option value="all" {{ request('filter') == 'all' ? 'selected' : '' }}>All</option>
                         <option value="paid" {{ request('filter') == 'paid' ? 'selected' : '' }}>Paid</option>
@@ -76,6 +81,7 @@
                 </form>
             </div>
         </div>
+
         <!-- End pencarian dan filter status invoices -->
 
         <!-- button konfirmasi, hapus dan print -->
@@ -85,23 +91,28 @@
 
             <div class="container mt-8">
                 <div class="row">
-                    <div class="text-end ">
-
+                    <div class="col-md-12 d-flex flex-wrap nowrap justify-content-end flex-column flex-md-row">
                         <input type="hidden" name="action" value="">
-                        <button type="submit" class="btn bg-white   me-3 border border-dark fs-5 "
-                            onclick="setAction('confirm')" id="btn-confirm" disabled><i class="bi bi-file-earmark-text"
-                                name="action" value="confirm"></i> Konfirmasi
-                            Pembayaran</button>
-                        <a href="{{ route('admin.print-invoice-all') }}" class="btn bg-white border border-dark fs-5 me-3 ">
+                        <button type="submit" class="btn bg-white me-3 border border-dark fs-5"
+                            onclick="setAction('confirm')" id="btn-confirm" disabled>
+                            <i class="bi bi-file-earmark-text" name="action" value="confirm"></i> Konfirmasi Pembayaran
+                        </button>
+                        <a href="{{ route('admin.print-invoice-all') }}"
+                            class="btn bg-white border border-dark fs-5 me-3">
                             <i class="bi bi-download"></i>
                         </a>
-                        <button type="submit" class="btn bg-white delete-btn  border border-dark fs-5"
-                            onclick="setAction('delete')" id="btn-delete" disabled><i class="bi bi-trash3"
-                                name="action" value="delete"></i></button>
-
+                        <button type="submit" class="btn bg-white me-3 delete-btn border border-dark fs-5"
+                            onclick="setAction('delete')" id="btn-delete" disabled>
+                            <i class="bi bi-trash3" name="action" value="delete"></i>
+                        </button>
                     </div>
                 </div>
             </div>
+
+
+
+
+
             <!-- end konfirmasi, hapus dan print -->
 
 
@@ -128,7 +139,8 @@
                             <tbody>
                                 @forelse ($invoices as $invoice)
                                     <tr>
-                                        <th><input type="checkbox" name="invoice[]" value="{{ $invoice->id }}" class="checkbox-item">
+                                        <th><input type="checkbox" name="invoice[]" value="{{ $invoice->id }}"
+                                                class="checkbox-item">
                                         </th>
                                         <td>
                                             <a

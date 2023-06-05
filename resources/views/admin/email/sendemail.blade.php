@@ -29,6 +29,12 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-sm-auto">
+                    <a class="btn btn-sm text-white fw-bold" href="{{ route('admin.email.index') }}"
+                        style="background: #EFEFEF">
+                        <i class="bi bi-arrow-left text-black fs-5 fw-bold"></i>
+                    </a>
+                </div>
 
             </div>
         </div>
@@ -45,14 +51,14 @@
                     <input type="text" class="form-control" value="{{ $invoice->title }}">
                 </div>
                 <div class="row">
-                    <div class="col">
+                    <div class="col-md-6">
                         <div class="mb-3">
                             <label for="" class="form-label fs-4 fw-bold">Tanggal Invoice</label>
                             <input type="date" name="" class="form-control" id=""
                                 value="{{ $invoice->invoice_date }}">
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-md-6">
                         <div class="mb-3">
                             <label for="" class="form-label fs-4 fw-bold">Tanggal Jatuh Tempo</label>
                             <input type="date" name="" class="form-control" id=""
@@ -61,7 +67,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col">
+                    <div class="col-md-6">
                         <label for="" class="form-label fs-4 fw-bold">Tujuan</label>
                         <!-- Select -->
 
@@ -80,26 +86,30 @@
 
                         <!-- End Select -->
                     </div>
-                    <div class="col">
+                    <div class="col-md-6">
                         <label for="" class="form-label fs-4 fw-bold">Name PIC</label>
                         <input type="text" class="form-control" value="{{ $invoice->customer->name_pic }}">
                     </div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col">
+                    <div class="col-md-6">
                         <div class="mb-3">
                             <label for="" class="form-label fs-4 fw-bold">Alamat E-mail</label>
                             <input type="text" class="form-control" value="{{ $invoice->customer->email }}">
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-md-6">
                         <label for="" class="form-label fs-4 fw-bold">No Handphone</label>
                         <input type="text" class="form-control" value="{{ $invoice->customer->no_handphone }}">
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="address" class="form-label"><span class="fs-4 fw-bold">Alamat</span><i>(Nama
-                            Jalan,Gedung,RT/RW,Kecamatan,Kabupate,Kode Pos dll)</i></label>
+                    <label for="address" class="col-form-label d-md-inline-block text-truncate"
+                    style="max-width: 100%;">
+                    <span class="form-label fs-4 fs-md-3 fs-lg-4 fw-bold d-inline-block">Alamat</span>
+                    <i class="d-inline-block"> (Nama Jalan, Gedung, RT/RW, Kecamatan, Kabupaten, Kode Pos
+                        dll)</i>
+                </label>
                     <textarea name="address" id="address" cols="30" rows="8" class="form-control">{{ $invoice->customer->address }}</textarea>
                 </div>
                 <div class="card mt-5">
@@ -168,24 +178,29 @@ Yayasan Hasnur Center
                 </div>
 
                 <!-- button email dan whatshap -->
-
+                <label for="" class="form-label fs-4 fw-bold">Kirim</label>
                 <div class="row">
-                    <label for="" class="form-label fs-4 fw-bold">Kirim</label>
-                    <div class="col">
-                        <a   class="btn btn-white " href="{{ route('admin.markInvoiceAsPaid', $invoice) }}">
-                            <img src="{{ asset('images/icon/gmail.png') }}" alt="Gambar Tombol Email"
-                                style="width: 30px">
-                            <b>{{ $invoice->customer->email }}</b>
-                        </a>
+                    <div class="col-md-6">
+                        <div class="mb-3 ">
+                            <a   class="btn btn-white col-8" href="{{ route('admin.markInvoiceAsPaid', $invoice) }}">
+                                <img src="{{ asset('images/icon/gmail.png') }}" alt="Gambar Tombol Email"
+                                    style="width: 30px">
+                                <b>{{ $invoice->customer->email }}</b>
+                            </a>
+                        </div>
                     </div>
                     <div class="col-md-6">
-                        <a onclick="whatsapp()"  target="_blank" class="btn btn-white ">
-                            <img src="{{ asset('images/icon/whatsapp.png') }}" alt="Gambar Tombol No Handphone"
-                                style="width: 25px">
-                            {{ $invoice->customer->no_handphone }}
-                        </a>
+                        <div class="mb-3">
+                            <a onclick="whatsapp()"  target="_blank" class="btn btn-white col-8 ">
+                                <img src="{{ asset('images/icon/whatsapp.png') }}" alt="Gambar Tombol No Handphone"
+                                    style="width: 25px">
+                                {{ $invoice->customer->no_handphone }}
+                            </a>
+                        </div>
                     </div>
                 </div>
+
+               
 
 
                 <div class="container mt-5">

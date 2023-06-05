@@ -26,12 +26,15 @@ class EmailController extends Controller
 
         if ($filter == 'newest_due') {
             $invoices->where('is_paid', false)
+                ->whereNull('payment_receipt')
                 ->orderBy('due_date', 'asc');
         } elseif ($filter == 'oldest_due') {
             $invoices->where('is_paid', false)
+                ->whereNull('payment_receipt')
                 ->orderBy('due_date', 'desc');
         } else {
-            $invoices->where('is_paid', false);
+            $invoices->where('is_paid', false)
+                ->whereNull('payment_receipt');
         }
 
         $invoices = $invoices->get();
@@ -71,36 +74,37 @@ class EmailController extends Controller
         $customers = Customer::all();
         $invoiceItems = InvoiceItem::where('invoice_id', $id)->get();
         $nmrwa = $this->formatHp($invoice->customer->no_handphone);
-        return view ('admin.email.sendemail', compact('invoice','customers','invoiceItems','nmrwa'));
+        return view('admin.email.sendemail', compact('invoice', 'customers', 'invoiceItems', 'nmrwa'));
     }
 
-    public function formatHp($nohp){
+    public function formatHp($nohp)
+    {
         $hp = $nohp;
-         // kadang ada penulisan no hp 0811 239 345
-         $nohp = str_replace(" ","",$nohp);
-         // kadang ada penulisan no hp (0274) 778787
-         $nohp = str_replace("(","",$nohp);
-         // kadang ada penulisan no hp (0274) 778787
-         $nohp = str_replace(")","",$nohp);
-         // kadang ada penulisan no hp 0811.239.345
-         $nohp = str_replace(".","",$nohp);
-     
-         // cek apakah no hp mengandung karakter + dan 0-9
-         if(!preg_match('/[^+0-9]/',trim($nohp))){
-             // cek apakah no hp karakter 1-3 adalah +62
-             if(substr(trim($nohp), 0, 3)=='+62'){
-                 $hp = trim($nohp);
-             }
-             // cek apakah no hp karakter 1 adalah 0
-             elseif(substr(trim($nohp), 0, 1)=='0'){
-                 $hp = '+62'.substr(trim($nohp), 1);
-             }
-         }else{
+        // kadang ada penulisan no hp 0811 239 345
+        $nohp = str_replace(" ", "", $nohp);
+        // kadang ada penulisan no hp (0274) 778787
+        $nohp = str_replace("(", "", $nohp);
+        // kadang ada penulisan no hp (0274) 778787
+        $nohp = str_replace(")", "", $nohp);
+        // kadang ada penulisan no hp 0811.239.345
+        $nohp = str_replace(".", "", $nohp);
+
+        // cek apakah no hp mengandung karakter + dan 0-9
+        if (!preg_match('/[^+0-9]/', trim($nohp))) {
+            // cek apakah no hp karakter 1-3 adalah +62
+            if (substr(trim($nohp), 0, 3) == '+62') {
+                $hp = trim($nohp);
+            }
+            // cek apakah no hp karakter 1 adalah 0
+            elseif (substr(trim($nohp), 0, 1) == '0') {
+                $hp = '+62' . substr(trim($nohp), 1);
+            }
+        } else {
             $hp = $nohp;
-         }
-         return $hp;
-     }
-    
+        }
+        return $hp;
+    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -162,23 +166,23 @@ class EmailController extends Controller
         ]);
 
         $path = time();
-        $pdf->save(public_path('temp/'.$path.'.pdf'));
+        $pdf->save(public_path('temp/' . $path . '.pdf'));
 
         $mailData = array(
-                   'nama'           => $invoice->user->name,
-                   'judul'          => $invoice->title,
-                   'invoice_number' => $invoice->invoice_number,
-                   'due_date'       => $invoice->due_date,
-                   'tagihan'        => 'Rp.'.$tagihan,
-                   'path'           => $path,
-                  );
+            'nama'           => $invoice->user->name,
+            'judul'          => $invoice->title,
+            'invoice_number' => $invoice->invoice_number,
+            'due_date'       => $invoice->due_date,
+            'tagihan'        => 'Rp.' . $tagihan,
+            'path'           => $path,
+        );
 
         Mail::to("user@digitaliz.id")->send(new invoiceEmail($mailData));
 
         return "Email telah dikirim";
     }
 
-   
+
 
 
     /**

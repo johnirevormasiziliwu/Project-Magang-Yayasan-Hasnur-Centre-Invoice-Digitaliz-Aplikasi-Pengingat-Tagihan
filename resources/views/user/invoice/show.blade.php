@@ -48,7 +48,7 @@
         <div class="container">
             <div class="row">
                 <div class="text-end ">
-                    <a href="{{ route('user.print-invoice', $invoice) }}"  class="btn fs-5"
+                    <a href="{{ route('user.print-invoice', $invoice) }}" class="btn fs-5"
                         style="border-color:#6e11f4; border-width:2px; color: #6e11f4;">
                         <i class="bi bi-printer"></i>
                     </a>
@@ -163,6 +163,10 @@
                     .note {
                         font-size: 12px;
                     }
+
+                    .table-responsive {
+                        overflow-x: auto;
+                    }
                 </style>
                 </head>
 
@@ -216,58 +220,60 @@
                         <div class="processing">PROCESSING</div>
                     @endif
                     <div class="invoice">INVOICE</div>
+                    <div class="table table-responsive">
+                        <table>
 
-                    <table>
-
-                        <tr>
-                            <td rowspan="3">
-                                <p class="mt-3">Kepada :</p>
-                                <h3 class="name_unit">{{ $invoice->customer->name_unit }}</h3>
-                                <p class="address">{{ $invoice->customer->address }}</p>
-                                <p class="mt-5 mb-5">UP: Bagian Keuangan</p>
-                            </td>
-                            <td colspan="5">
-                                No Invoice: {{ $invoice->invoice_number }} <br>
-                                Tanggal Invoice: {{ $invoice->invoice_date }} <br>
-                                Tanggal Jatuh Tempo: {{ $invoice->due_date }} <br>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="5" class="dokumen_pendukung">Dokumen Pendukung</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">Dokumen : <br> {{ $invoice->title }}</td>
-                            <td colspan="3">Tanggal :</td>
-                        </tr>
-                        <tr class="keterangan">
-                            <th>Uraian</th>
-                            <th>Kuantitas</th>
-                            <th>Harga (Rp)</th>
-                            <th>Jumlah (Rp)</th>
-                        </tr>
-                        @php($total = 0)
-                        @foreach ($invoice->invoiceItems as $invoiceitem)
                             <tr>
-                                <td>{{ $invoiceitem->description }}</td>
-                                <td class="text-center">{{ $invoiceitem->stock }}</td>
-                                <td class="text-center">{{ \App\Helper\Util::rupiah($invoiceitem->price) }}</td>
-                                <td class="text-center">{{ \App\Helper\Util::rupiah($invoiceitem->nominal) }}</td>
+                                <td rowspan="3">
+                                    <p class="mt-3">Kepada :</p>
+                                    <h3 class="name_unit">{{ $invoice->customer->name_unit }}</h3>
+                                    <p class="address">{{ $invoice->customer->address }}</p>
+                                    <p class="mt-5 mb-5">UP: Bagian Keuangan</p>
+                                </td>
+                                <td colspan="5">
+                                    No Invoice: {{ $invoice->invoice_number }} <br>
+                                    Tanggal Invoice: {{ $invoice->invoice_date }} <br>
+                                    Tanggal Jatuh Tempo: {{ $invoice->due_date }} <br>
+                                </td>
                             </tr>
-                            @php($total += $invoiceitem->nominal)
-                        @endforeach
-                        <tr>
-                            <td class="subtotal" colspan="3">TOTAL</td>
-                            <td class="total" colspan="3">{{ \App\Helper\Util::rupiah($total) }}</td>
-                        </tr>
+                            <tr>
+                                <td colspan="5" class="dokumen_pendukung">Dokumen Pendukung</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Dokumen : <br> {{ $invoice->title }}</td>
+                                <td colspan="3">Tanggal :</td>
+                            </tr>
+                            <tr class="keterangan">
+                                <th>Uraian</th>
+                                <th>Kuantitas</th>
+                                <th>Harga (Rp)</th>
+                                <th>Jumlah (Rp)</th>
+                            </tr>
+                            @php($total = 0)
+                            @foreach ($invoice->invoiceItems as $invoiceitem)
+                                <tr>
+                                    <td>{{ $invoiceitem->description }}</td>
+                                    <td class="text-center">{{ $invoiceitem->stock }}</td>
+                                    <td class="text-center">{{ \App\Helper\Util::rupiah($invoiceitem->price) }}</td>
+                                    <td class="text-center">{{ \App\Helper\Util::rupiah($invoiceitem->nominal) }}</td>
+                                </tr>
+                                @php($total += $invoiceitem->nominal)
+                            @endforeach
+                            <tr>
+                                <td class="subtotal" colspan="3">TOTAL</td>
+                                <td class="total" colspan="3">{{ \App\Helper\Util::rupiah($total) }}</td>
+                            </tr>
 
 
-                        <tr>
-                            <td colspan="6" class="terbilang">
-                                <strong>TERBILANG</strong><br>
-                                <p style="text-align: center; padding-top: 20px;"><?php echo $terbilang; ?> Rupiah</p>
-                            </td>
-                        </tr>
-                    </table>
+                            <tr>
+                                <td colspan="6" class="terbilang">
+                                    <strong>TERBILANG</strong><br>
+                                    <p style="text-align: center; padding-top: 20px;"><?php echo $terbilang; ?> Rupiah</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
 
 
                     Note:<br>

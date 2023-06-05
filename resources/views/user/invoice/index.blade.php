@@ -33,42 +33,42 @@
         <!-- End Page Header -->
 
 
-       <!-- Star pencarian dan filter status invoices -->
-       <div class="row">
-        <div class="col-md-4">
-            <label for="keyword" class="form-label fs-4 fw-bold text-black">Cari</label>
-            <form action="{{ route('user.search') }}" method="get">
-                <div class="input-group">
-                    <input type="text" name="keyword" class="form-control"
-                        placeholder="Cari Invoice ID, Judul, Unit....">
-                    <div class="input-group-append">
-                        <button class="btn  rounded-top-bottom " type="submit"
-                            style="background: #6e11f4; color:#fff;">
-                            <i class="bi bi-search fs-5 fw-bold text-black"></i>
-                        </button>
+        <!-- Star pencarian dan filter status invoices -->
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label for="keyword" class="form-label fs-4 fw-bold">Cari</label>
+                <form action="{{ route('user.search') }}" method="get">
+                    <div class="input-group">
+                        <input type="text" name="keyword" class="form-control"
+                            placeholder="Cari Invoice ID, Judul, Unit....">
+                        <div class="input-group-append">
+                            <button class="btn rounded-top-bottom" type="submit"
+                                style="background: #6e11f4; color:#fff;">
+                                <i class="bi bi-search fs-5 fw-bold"></i>
+                            </button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="#" class="form-label fs-5 fw-bold">Filter</label>
+                <form action="{{ route('user.invoice.index') }}" method="GET">
+                    <select class="form-select form-select-lg fs-5 fw-bold" id="filter" name="filter"
+                        style="background-color:#F5F5F5; color:#404040;">
+                        <option value="all" {{ request('filter') == 'all' ? 'selected' : '' }}>All</option>
+                        <option value="paid" {{ request('filter') == 'paid' ? 'selected' : '' }}>Paid</option>
+                        <option value="unpaid" {{ request('filter') == 'unpaid' ? 'selected' : '' }}>Unpaid</option>
+                        <option value="processing" {{ request('filter') == 'processing' ? 'selected' : '' }}>Processing
+                        </option>
+                        <option value="newest_due" {{ request('filter') == 'newest_due' ? 'selected' : '' }}>Newest Due
+                        </option>
+                        <option value="oldest_due" {{ request('filter') == 'oldest_due' ? 'selected' : '' }}>Oldest Due
+                        </option>
+                    </select>
+                </form>
+            </div>
         </div>
-        <div class="col-md-4">
-            <label for="#" class="form-label fs-5 fw-bold text-black">Filter</label>
-            <form action="{{ route('user.invoice.index') }}" method="GET">
-                <select class="form-select form-select-lg mb-3 fs-5 fw-bold text-black" id="filter" name="filter"
-                    style="background-color:#F5F5F5; color:#404040;">
-                    <option value="all" {{ request('filter') == 'all' ? 'selected' : '' }}>All</option>
-                    <option value="paid" {{ request('filter') == 'paid' ? 'selected' : '' }}>Paid</option>
-                    <option value="unpaid" {{ request('filter') == 'unpaid' ? 'selected' : '' }}>Unpaid</option>
-                    <option value="processing" {{ request('filter') == 'processing' ? 'selected' : '' }}>Processing
-                    </option>
-                    <option value="newest_due" {{ request('filter') == 'newest_due' ? 'selected' : '' }}>Newest Due
-                    </option>
-                    <option value="oldest_due" {{ request('filter') == 'oldest_due' ? 'selected' : '' }}>Oldest Due
-                    </option>
-                </select>
-            </form>
-        </div>
-    </div>
-    <!-- End pencarian dan filter status invoices -->
+        <!-- End pencarian dan filter status invoices -->
 
         <div class="card mt-10">
             <div class="card-body ">
@@ -126,7 +126,8 @@
                                     <td>{{ \App\Helper\Util::rupiah($totalInvoiceNominal) }}</td>
                                     <td style="display: flex; flex-direction: row;">
 
-                                        <a href="{{ route('user.payment-receipt', $invoice) }}" class="nav-icon" style="color:#404040;">
+                                        <a href="{{ route('user.payment-receipt', $invoice) }}" class="nav-icon"
+                                            style="color:#404040;">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                 strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                                 <path strokeLinecap="round" strokeLinejoin="round"
@@ -137,12 +138,12 @@
 
                                 </tr>
                             @empty
-                            <tr>
-                                <td colspan="8" class="text-center text-danger">
-                                    <i class="bi bi-exclamation-triangle-fill d-block mx-auto my-3"
-                                        style="font-size: 3rem;"></i> No Data Invoices
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td colspan="8" class="text-center text-danger">
+                                        <i class="bi bi-exclamation-triangle-fill d-block mx-auto my-3"
+                                            style="font-size: 3rem;"></i> No Data Invoices
+                                    </td>
+                                </tr>
                             @endforelse
 
                         </tbody>

@@ -19,19 +19,14 @@
                                     </span>
                                 </div>
                             </div>
-
                         </div>
-
                         <div class="flex-grow-1 ms-3">
-
                             <h1 class="text-hover-primary fw-bold text-black">User</h1>
-
                             <span class="d-block fs-3">Akses menu dan informasi penting lainya disini</span>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-sm-auto">
+                <div class="col-sm-auto mt-3 mt-sm-0">
                     <a class="btn btn-sm text-white fw-bold text-black" href="{{ route('admin.customer.create') }}"
                         style="background: #6e11f4">
                         <i class="bi bi-plus fs-4"></i> Buat User
@@ -39,32 +34,29 @@
                 </div>
             </div>
         </div>
+        
         <!-- End Page Header -->
 
 
 
 
         <div class="card mt-5">
-
             <div class="card-body">
-                <!-- Stars  button hapus  -->
                 <form action="{{ route('admin.multi-delete') }}" method="post">
                     @csrf
                     <div class="row mb-3">
-                        <div class="text-end ">
-
+                        <div class="text-end">
                             <input type="hidden" name="action" value="">
                             <button type="submit" class="btn btn-sm bg-white delete-btn  border border-dark fs-5"
-                                onclick="setAction('delete')" id="btn-delete" disabled><i class="bi bi-trash3"
-                                    name="action" value="delete"></i> Delete</button>
+                                onclick="setAction('delete')" id="btn-delete" disabled>
+                                <i class="bi bi-trash3" name="action" value="delete"></i> Delete
+                            </button>
                         </div>
                     </div>
-
-                    <!-- End button hapus  -->
-                    <div class="table table-responsive">
-                        <!-- Table -->
+        
+                    <div class="table-responsive">
                         <table class="table table-borderless table-thead-bordered table-align-middle">
-                            <thead class="thead-light ">
+                            <thead class="thead-light">
                                 <tr>
                                     <th><input type="checkbox" class="check_all" id="checkAll"></th>
                                     <th scope="col" class="fw-bold">Nama Instansi</th>
@@ -76,8 +68,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-
-
                                 @forelse ($customers as $customer)
                                     <tr>
                                         <td><input type="checkbox" name="customer[]" value="{{ $customer->id }}"
@@ -87,38 +77,36 @@
                                         <td>{{ $customer->name_pic }}</td>
                                         <td>{{ $customer->no_handphone }}</td>
                                         <td>{{ $customer->email }}</td>
-                                        <td style="display: flex; flex-direction: row;">
-                                            <a href="{{ route('admin.customer.show', $customer) }}">
-                                                <u style="color: #6e11f4">Detail</u>
-                                            </a>
-                                            <a class="text-dark ms-3"
-                                                href="{{ route('admin.customer.edit', $customer) }}">
-                                                <i class="bi bi-pencil mr-3"></i>
-                                            </a>
+                                        <td>
+                                            <div class="d-flex flex-row">
+                                                <a href="{{ route('admin.customer.show', $customer) }}">
+                                                    <u style="color: #6e11f4">Detail</u>
+                                                </a>
+                                                <a class="text-dark ms-3" href="{{ route('admin.customer.edit', $customer) }}">
+                                                    <i class="bi bi-pencil mr-3"></i>
+                                                </a>
+                                            </div>
                                         </td>
                                     </tr>
-
                                 @empty
-                                <tr>
-                                    <td colspan="8" class="text-center text-danger">
-                                        <i class="bi bi-exclamation-triangle-fill d-block mx-auto my-3"
-                                            style="font-size: 3rem;"></i> No Data User
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td colspan="7" class="text-center text-danger">
+                                            <i class="bi bi-exclamation-triangle-fill d-block mx-auto my-3"
+                                                style="font-size: 3rem;"></i> No Data User
+                                        </td>
+                                    </tr>
                                 @endforelse
                             </tbody>
                         </table>
+                    </div>
                 </form>
-                <!-- End Table -->
-                <!-- Stars Menu Pagination-->
+        
                 <div class="d-flex justify-content-center mt-5">
                     {{ $customers->links() }}
                 </div>
-
-                <!-- End Menu Pagination-->
-
             </div>
         </div>
+        
     </div>
     </div>
 

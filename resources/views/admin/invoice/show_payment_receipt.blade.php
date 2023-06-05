@@ -51,14 +51,14 @@
                         <input type="text" disabled class="form-control" value="{{ @$invoice->title }}">
                     </div>
                     <div class="row">
-                        <div class="col">
+                        <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="" class="form-label fw-bold fs-4">A.N/Atas Nama PIC</label>
                                 <input type="text" disabled class="form-control"
                                     value="{{ @$invoice->customer->name_pic }}">
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="" class="form-label fw-bold fs-4">Name Unit</label>
                                 <input type="text" disabled class="form-control"
@@ -67,14 +67,14 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col">
+                        <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="" class="form-label fw-bold fs-4">Alamat E-mail</label>
                                 <input type="text" disabled class="form-control"
                                     value="{{ @$invoice->customer->email }}">
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="" class="form-label fw-bold fs-4">No Handphone</label>
                                 <input type="text" disabled class="form-control"
@@ -83,7 +83,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col">
+                        <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="" class="form-label fw-bold fs-4">Tanggal Pembayaran</label>
                                 <input type="text" class="form-control" disabled
@@ -94,7 +94,7 @@
                         @foreach ($invoice->invoiceItems as $invoiceItem)
                             @php($totalInvoiceNominal += $invoiceItem->nominal)
                         @endforeach
-                        <div class="col">
+                        <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="" class="form-label fw-bold fs-4">Nominal</label>
                                 <input type="text" disabled class="form-control"
