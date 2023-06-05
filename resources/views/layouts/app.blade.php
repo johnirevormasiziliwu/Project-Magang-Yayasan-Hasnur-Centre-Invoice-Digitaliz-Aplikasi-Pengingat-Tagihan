@@ -464,8 +464,7 @@
     <script src="{{ asset('dist') }}/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- JS Implementing Plugins -->
-    <script src="{{ asset('dist') }}/node_modules/chart.js/dist/Chart.min.js"></script>
-    <script src="{{ asset('dist') }}assets/js/hs.chartjs.js"></script>
+
     <script src="{{ asset('dist') }}/assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside.min.js"></script>
     <script src="{{ asset('dist') }}/assets/vendor/hs-form-search/dist/hs-form-search.min.js"></script>
 
@@ -478,6 +477,10 @@
     <script src="{{ asset('dist') }}/assets/vendor/clipboard/dist/clipboard.min.js"></script>
     <script src="{{ asset('dist') }}/assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
     <script src="{{ asset('dist') }}/assets/vendor/datatables.net.extensions/select/select.min.js"></script>
+    <script src="{{ asset('dist') }}/assets/vendor/chart.js/dist/Chart.min.js"></script>
+
+
+
 
     <!-- JS Front -->
     <script src="{{ asset('dist') }}/assets/js/theme.min.js"></script>
@@ -559,6 +562,15 @@
                     elVal !== 'null' ? elVal : '').draw()
             })
         })
+    </script>
+    <script>
+        (function() {
+            // INITIALIZATION OF CHARTJS
+            // =======================================================
+            document.querySelectorAll('.js-chart').forEach(item => {
+                HSCore.components.HSChartJS.init(item)
+            })
+        })();
     </script>
 
     <script>
@@ -761,16 +773,6 @@
                 setActiveStyle()
             })
         })()
-    </script>
-
-    <script>
-        (function() {
-            // INITIALIZATION OF CHARTJS
-            // =======================================================
-            document.querySelectorAll('.js-chart').forEach(item => {
-                HSCore.components.HSChartJS.init(item)
-            })
-        })();
     </script>
 
 
