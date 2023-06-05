@@ -359,7 +359,13 @@
     </div>
 
     <script>
-        
+        (function() {
+            // INITIALIZATION OF CHARTJS
+            // =======================================================
+            document.querySelectorAll('.js-chart').forEach(item => {
+                HSCore.components.HSChartJS.init(item)
+            })
+        })();
 
         var adaTotalTransaksi = false; // Ubah menjadi true jika ada total transaksi
         var warnaBatang = adaTotalTransaksi ? "#6E11F4" :
