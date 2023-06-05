@@ -468,7 +468,7 @@
     <script src="{{ asset('dist') }}/assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside.min.js"></script>
     <script src="{{ asset('dist') }}/assets/vendor/hs-form-search/dist/hs-form-search.min.js"></script>
 
-    <script src="{{ asset('dist') }}/assets/vendor/chart.js/dist/Chart.min.js"></script>
+    <script src="{{ asset('dist') }}/assets/vendor/chart.js/dist/chart.min.js"></script>
     <script src="{{ asset('dist') }}/assets/vendor/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js">
     </script>
     <script src="{{ asset('dist') }}/assets/vendor/daterangepicker/moment.min.js"></script>
@@ -477,7 +477,7 @@
     <script src="{{ asset('dist') }}/assets/vendor/clipboard/dist/clipboard.min.js"></script>
     <script src="{{ asset('dist') }}/assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
     <script src="{{ asset('dist') }}/assets/vendor/datatables.net.extensions/select/select.min.js"></script>
-    <script src="{{ asset('dist') }}/assets/vendor/chart.js/dist/Chart.min.js"></script>
+    <script src="{{ asset('dist') }}/assets/vendor/chart.js/dist/chart.min.js"></script>
 
 
 
