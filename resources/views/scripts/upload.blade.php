@@ -20,4 +20,11 @@
             });
         });
     </script>
+
+<style>
+    .swal2-confirm {
+        margin-right: 10px;
+    }
+</style>
+
 @endpush
