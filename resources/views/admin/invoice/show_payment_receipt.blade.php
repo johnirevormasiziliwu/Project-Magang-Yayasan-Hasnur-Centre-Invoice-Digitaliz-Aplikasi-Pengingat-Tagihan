@@ -105,7 +105,7 @@
 
                     <!-- Button trigger modal -->
                     <div class="d-flex justify-content-star ">
-                        @if ($invoice->is_paid === 0 && $invoice->payment_receipt == null)
+                        @if ($invoice->is_paid == 0 && $invoice->payment_receipt == null)
                             <button disabled type="button" class="btn btn-primary d-inline-block me-5"
                                 data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 Lihat Bukti Pembayaran
@@ -123,7 +123,7 @@
                                     tabindex="-1">
                                     <i class="bi bi-check-circle"></i> Success Konfirmasi
                                 </button>
-                            @elseif($invoice->is_paid === 0 && $invoice->payment_receipt == null)
+                            @elseif($invoice->is_paid == 0 && $invoice->payment_receipt == null)
                                 <button disabled type="submit" class="btn confirm-btn d-inline-block confirm-btn"
                                     style="background: #6e11f4; color:#fff">
                                     Konfirmasi Pembayaran
