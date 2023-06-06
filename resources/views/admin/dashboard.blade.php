@@ -165,11 +165,11 @@
                                         "labels": <?= json_encode($labels) ?>,
                                         "datasets": [{
                                             "data": <?= json_encode(array_values($totalPaidByMonth)) ?>,
-                                            "backgroundColor": "#6E11F4",
+                                            "backgroundColor": "#DECBFB",
                                             "hoverBackgroundColor": "#6E11F4",
                                             "borderColor": "#6E11F4",
                                             "maxBarThickness": "100",
-                                            "borderRadius": 10
+                                            "borderRadius": 8
                                         }]
                                     },
                                     "options": {
@@ -178,11 +178,13 @@
                                         "scales": {
                                             "y": {
                                                 "grid": {
+                                                    "display" : false,
                                                     "color": "#e7eaf3",
                                                     "drawBorder": false,
                                                     "zeroLineColor": "#e7eaf3"
                                                 },
                                                 "ticks": {
+                                                    "display" : false,
                                                     "beginAtZero": true,
                                                     "stepSize": 100,
                                                     "fontSize": 12,
