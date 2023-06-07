@@ -101,31 +101,31 @@ class InvoiceController extends Controller
     
 
     //function untuk download invoice
-    public function downloadInvoice(string $id)
-    {
-        $invoice = Invoice::findOrFail($id);
-        $data = ['invoice' => $invoice];
+    // public function downloadInvoice(string $id)
+    // {
+    //     $invoice = Invoice::findOrFail($id);
+    //     $data = ['invoice' => $invoice];
 
-        $view = view('user.invoice.show', $data)->render(); 
+    //     $view = view('user.invoice.show', $data)->render(); 
 
-        $posStart = strpos($view, "<title>Invoice #6</title>"); 
+    //     $posStart = strpos($view, "<title>Invoice #6</title>"); 
 
-        $posEnd = strpos($view, "</body>"); 
+    //     $posEnd = strpos($view, "</body>"); 
 
-        $view = substr($view, $posStart, $posEnd - $posStart); 
+    //     $view = substr($view, $posStart, $posEnd - $posStart); 
 
 
-        $pdf = PDF::loadHTML($view);
+    //     $pdf = PDF::loadHTML($view);
 
-        // Set the font configuration options
-        $pdf->setOptions([
-            'font_path' => base_path('resources/fonts/'), // Replace with the actual path to your font files
-            'font_family' => 'sans-serif',
-            'font_size' => 10,
-            'tempDir' => public_path('temp/') // Replace with the path to your temporary directory
-        ]);
+    //     // Set the font configuration options
+    //     $pdf->setOptions([
+    //         'font_path' => base_path('resources/fonts/'), // Replace with the actual path to your font files
+    //         'font_family' => 'sans-serif',
+    //         'font_size' => 10,
+    //         'tempDir' => public_path('temp/') // Replace with the path to your temporary directory
+    //     ]);
 
-        $toDay = Carbon::now()->format('d-m-Y');
-        return $pdf->download('invoice' . $invoice->id . '-' . $toDay . '.pdf');
-    }
+    //     $toDay = Carbon::now()->format('d-m-Y');
+    //     return $pdf->download('invoice' . $invoice->id . '-' . $toDay . '.pdf');
+    // }
 }

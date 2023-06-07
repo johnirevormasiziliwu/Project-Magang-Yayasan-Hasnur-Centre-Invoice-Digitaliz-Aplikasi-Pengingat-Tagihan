@@ -261,64 +261,6 @@ class InvoiceController extends Controller
         return Storage::download($path);
     }
 
-    // function untuk download invoice
-    public function downloadInvoice(string $id)
-    {
-        $invoice = Invoice::findOrFail($id);
-        $data = ['invoice' => $invoice];
-
-        $view = view('admin.invoice.show', $data)->render();
-
-        $posStart = strpos($view, "<title>Invoice #6</title>");
-
-        $posEnd = strpos($view, "</body>");
-
-        $view = substr($view, $posStart, $posEnd - $posStart);
-
-
-        $pdf = PDF::loadHTML($view);
-
-        // Set the font configuration options
-        $pdf->setOptions([
-            'font_path' => base_path('resources/fonts/'), // Replace with the actual path to your font files
-            'font_family' => "Bookman Old Style",
-            'font_size' => 10,
-            'tempDir' => public_path('temp/') // Replace with the path to your temporary directory
-        ]);
-
-        $toDay = Carbon::now()->format('d-m-Y');
-        return $pdf->download('invoice' . $invoice->id . '-' . $toDay . '.pdf');
-
-    }
-
-    public function generatePdfInvoice(string $id)
-    {
-        $invoice = Invoice::findOrFail($id);
-        $data = ['invoice' => $invoice];
-
-        $view = view('admin.invoice.show', $data)->render();
-
-        $posStart = strpos($view, "<title>Invoice #6</title>");
-
-        $posEnd = strpos($view, "</body>");
-
-        $view = substr($view, $posStart, $posEnd - $posStart);
-
-
-        $pdf = PDF::loadHTML($view);
-
-        // Set the font configuration options
-        $pdf->setOptions([
-            'font_path' => base_path('resources/fonts/'), // Replace with the actual path to your font files
-            'font_family' => 'sans-serif',
-            'font_size' => 10,
-            'tempDir' => public_path('temp/') // Replace with the path to your temporary directory
-        ]);
-
-        $toDay = Carbon::now()->format('d-m-Y');
-        return $pdf->download('invoice' . $invoice->customer->name_unit . '-' . $toDay . '.pdf');
-    }
-
     public function printAllInvoices()
     {
         $invoices = Invoice::all();
@@ -335,4 +277,64 @@ class InvoiceController extends Controller
 
         return $dompdf->stream('invoice.pdf');
     }
+
+    // // function untuk download invoice
+    // public function downloadInvoice(string $id)
+    // {
+    //     $invoice = Invoice::findOrFail($id);
+    //     $data = ['invoice' => $invoice];
+
+    //     $view = view('admin.invoice.show', $data)->render();
+
+    //     $posStart = strpos($view, "<title>Invoice #6</title>");
+
+    //     $posEnd = strpos($view, "</body>");
+
+    //     $view = substr($view, $posStart, $posEnd - $posStart);
+
+
+    //     $pdf = PDF::loadHTML($view);
+
+    //     // Set the font configuration options
+    //     $pdf->setOptions([
+    //         'font_path' => base_path('resources/fonts/'), // Replace with the actual path to your font files
+    //         'font_family' => "Bookman Old Style",
+    //         'font_size' => 10,
+    //         'tempDir' => public_path('temp/') // Replace with the path to your temporary directory
+    //     ]);
+
+    //     $toDay = Carbon::now()->format('d-m-Y');
+    //     return $pdf->download('invoice' . $invoice->id . '-' . $toDay . '.pdf');
+
+    // }
+
+    // public function generatePdfInvoice(string $id)
+    // {
+    //     $invoice = Invoice::findOrFail($id);
+    //     $data = ['invoice' => $invoice];
+
+    //     $view = view('admin.invoice.show', $data)->render();
+
+    //     $posStart = strpos($view, "<title>Invoice #6</title>");
+
+    //     $posEnd = strpos($view, "</body>");
+
+    //     $view = substr($view, $posStart, $posEnd - $posStart);
+
+
+    //     $pdf = PDF::loadHTML($view);
+
+    //     // Set the font configuration options
+    //     $pdf->setOptions([
+    //         'font_path' => base_path('resources/fonts/'), // Replace with the actual path to your font files
+    //         'font_family' => 'sans-serif',
+    //         'font_size' => 10,
+    //         'tempDir' => public_path('temp/') // Replace with the path to your temporary directory
+    //     ]);
+
+    //     $toDay = Carbon::now()->format('d-m-Y');
+    //     return $pdf->download('invoice' . $invoice->customer->name_unit . '-' . $toDay . '.pdf');
+    // }
+
+   
 }
