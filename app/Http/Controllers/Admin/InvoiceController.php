@@ -211,9 +211,9 @@ class InvoiceController extends Controller
     {
         $invoiceIds = $request->input('invoice');
         $selectedInvoices = Invoice::whereIn('id', $invoiceIds)->get();
-
+    
         $action = $request->input('action');
-
+    
         if ($action == 'delete') {
             foreach ($selectedInvoices as $invoice) {
                 $invoiceItems = $invoice->invoiceItems;
@@ -223,16 +223,24 @@ class InvoiceController extends Controller
                     }
                     $invoiceItem->delete();
                 }
+    
+                // Delete the payment receipt file if it exists
+                $paymentReceiptPath = $invoice->payment_receipt;
+                if ($paymentReceiptPath) {
+                    Storage::disk('local')->delete('public/' . $paymentReceiptPath);
+                }
+    
                 $invoice->delete();
             }
         } else if ($action == 'confirm') {
             $invoices = Invoice::whereIn('id', $invoiceIds)->get();
             return view('admin.invoice.show_payment_receipt', compact('invoices'));
         }
-
+    
         alert()->success('Data invoice berhasil dihapus.');
         return redirect()->back();
     }
+k    
 
 
     // function untuk confirmasi pembayaran
