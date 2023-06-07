@@ -294,12 +294,12 @@
                     <table class="table table-borderless table-thead-bordered">
                         <thead style="background: #F7F1FF">
                             <tr class="rounded-pill">
-                                <th scope="col" class=" fw-bold text-black fs-5">Invoice ID</th>
-                                <th scope="col" class=" fw-bold text-black fs-5">Unit</th>
-                                <th scope="col" class=" fw-bold text-black fs-5">Payment Date</th>
-                                <th scope="col" class=" fw-bold text-black fs-5">Due Date</th>
-                                <th scope="col" class=" fw-bold text-black fs-5">Status</th>
-                                <th scope="col" class=" fw-bold text-black fs-5">Nominal</th>
+                                <th scope="col" class="fw-bold text-black fs-5">Invoice ID</th>
+                                <th scope="col" class="fw-bold text-black fs-5">Unit</th>
+                                <th scope="col" class="fw-bold text-black fs-5">Payment Date</th>
+                                <th scope="col" class="fw-bold text-black fs-5">Due Date</th>
+                                <th scope="col" class="fw-bold text-black fs-5">Status</th>
+                                <th scope="col" class="fw-bold text-black fs-5">Nominal</th>
                             </tr>
                         </thead>
                         <tbody>
