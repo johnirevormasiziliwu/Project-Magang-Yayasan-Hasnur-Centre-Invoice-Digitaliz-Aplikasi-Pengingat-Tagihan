@@ -151,7 +151,8 @@
                                     <div class="card-body ">
                                         <h5 class="card-title">Bukti Pembayaran - {{ @$invoice->customer->name_pic }}
                                             - {{ @$invoice->payment_time }}</h5>
-                                            <img src="{{ url('storage/' . $invoice->payment_receipt) }}" class="img-fluid" alt="Bukti Pembayaran">
+                                            <img src="{{ asset('storage/' . $invoice->payment_receipt) }}" class="img-fluid" alt="Payment Receipt">
+
 
 
                                         <div class="d-flex justify-content-end mt-3">
