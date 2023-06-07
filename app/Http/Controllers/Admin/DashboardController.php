@@ -12,23 +12,22 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $now = Carbon::now();
-        $oneWeekAhead = $now->copy()->addWeek();
-        $oneWeekBeforeDueDate = $oneWeekAhead->copy()->subWeek();
+        $now = Carbon::now(); // Waktu sekarang (7 Juni 2023)
+        $dueDate = $now->copy()->addMonth(); // Due Date (7 Juli 2023)
+        $oneWeekBeforeDueDate = $dueDate->copy()->subWeek(); // Tanggal satu minggu sebelum due date (30 Juni 2023)
 
-        // Menampilkan data transaksi yang jatuh tempo satu minggu sebelum tanggal sekarang
-        $invoicesDueThisWeek = Invoice::whereBetween('due_date', [$oneWeekBeforeDueDate, $oneWeekAhead])
+        $invoicesDueThisWeek = Invoice::where('due_date', '<=', $oneWeekBeforeDueDate)
             ->where('is_paid', false)
             ->whereNull('payment_receipt')
             ->orderBy('due_date')
             ->take(3)
             ->get();
 
-        // Menampilkan jumlah transaksi yang jatuh tempo satu minggu sebelum tanggal sekarang
-        $invoicesCount = Invoice::whereBetween('due_date', [$oneWeekBeforeDueDate, $oneWeekAhead])
+        $invoicesCount = Invoice::where('due_date', '<=', $oneWeekBeforeDueDate)
             ->where('is_paid', false)
             ->whereNull('payment_receipt')
             ->count();
+
 
 
         $invoices = Invoice::paginate(10)->withQueryString();

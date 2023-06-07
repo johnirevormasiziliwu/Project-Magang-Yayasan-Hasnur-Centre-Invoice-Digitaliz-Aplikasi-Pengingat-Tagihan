@@ -80,7 +80,7 @@ class InvoiceController extends Controller
         $validate = $request->validate([
             'invoice_number' => 'required|unique:invoices,invoice_number',
             'title' => 'required|max:225',
-            'invoice_date' => 'required',
+            'invoice_date' => 'required|date|date_equals:today',
             'due_date' => 'required',
             'customer_id' => 'required',
         ]);
@@ -176,10 +176,12 @@ class InvoiceController extends Controller
     {
         $validate = $request->validate([
             'title' => 'required|max:225',
-            'invoice_date' => 'required',
-            'due_date' => 'required',
+            'invoice_date' => 'required|date|date_equals:today',
+            'due_date' => 'required|date|before_or_equal:' . now()->addMonth(),
             'customer_id' => 'required',
         ]);
+        
+        
         $invoice = Invoice::findOrFail($id);
         $invoice->update($validate);
 
