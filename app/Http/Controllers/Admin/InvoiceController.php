@@ -240,7 +240,7 @@ class InvoiceController extends Controller
         alert()->success('Data invoice berhasil dihapus.');
         return redirect()->back();
     }
-k    
+  
 
 
     // function untuk confirmasi pembayaran
