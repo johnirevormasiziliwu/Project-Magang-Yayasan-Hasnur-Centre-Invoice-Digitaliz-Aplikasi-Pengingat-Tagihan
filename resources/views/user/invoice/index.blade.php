@@ -45,7 +45,7 @@
                             <button class="btn rounded-top-bottom" type="submit"
                                 style="background: #6e11f4; color:#fff;">
                                 <i class="bi bi-search fs-5 fw-bold"></i>
-                            </button>
+                            </button> 
                         </div>
                     </div>
                 </form>

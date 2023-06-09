@@ -236,7 +236,7 @@
                         <h3 class="card-title fw-bold">Due This Week</h3>
                         @if (count($invoicesDueThisWeek) > 0)
                             @foreach ($invoicesDueThisWeek as $invoice)
-                                <div class="row mt-3">
+                                <div class="row mt-7">
                                     <div class="col-6 col-sm-2">
                                         <div class="d-flex align-items-center justify-content-center">
                                             <div class="avatar avatar-circle" style="background: #6e11f4; color:#fff">
@@ -260,8 +260,12 @@
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6 mt-3 mt-sm-0 text-sm-end">
+                                        @php($totalInvoiceNominal = 0)
+                                    @foreach ($invoice->invoiceItems as $invoiceItem)
+                                        @php($totalInvoiceNominal += $invoiceItem->nominal)
+                                    @endforeach
                                         <span class="fw-bold fs-5"
-                                            style="color:#9E9E9E;">{{ \App\Helper\Util::rupiah($invoiceItemTotals[$invoice->id]) }}</span>
+                                            style="color:#9E9E9E;">{{ \App\Helper\Util::rupiah($totalInvoiceNominal) }}</span>
                                     </div>
                                 </div>
                             @endforeach
@@ -336,7 +340,11 @@
                                                 style="color: #CD7B2E; font-size: 10px; font-weight: 700; font-style: normal; line-height: 150%; background:  #FFF7EB; display: flex; flex-direction: row; justify-content:center;padding:4px;gap:10px ">Processing</span>
                                         </td>
                                     @endif
-                                    <td>{{ \App\Helper\Util::rupiah($invoiceItemTotals[$invoice->id]) }}</td>
+                                    @php($totalInvoiceNominal = 0)
+                                    @foreach ($invoice->invoiceItems as $invoiceItem)
+                                        @php($totalInvoiceNominal += $invoiceItem->nominal)
+                                    @endforeach
+                                    <td>{{ \App\Helper\Util::rupiah($totalInvoiceNominal) }}</td>
                                 </tr>
                             @empty
                                 <tr>
