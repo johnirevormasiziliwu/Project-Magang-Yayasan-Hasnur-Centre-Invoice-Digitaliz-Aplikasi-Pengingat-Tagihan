@@ -11,7 +11,7 @@ use App\Http\Controllers\Admin\CetakController as AdminCetakController;
 use App\Http\Controllers\User\CetakController as UserCetakController;
 use App\Http\Controllers\User\SearchController as UserSearchController;
 use App\Http\Controllers\User\InvoiceController as UserInvoiceController;
-use App\Helper\Controllers\DownloadInvoiceController;
+use App\Http\Controllers\DownloadInvoiceController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Invoice;
 use Illuminate\Support\Facades\Auth;
