@@ -10,9 +10,10 @@
                 text: "Pastikan Anda telah memeriksa kembali data yang diinputkan sebelum melakukan pembayaran ini!",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
+                confirmButtonColor: '#6E11F4',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, confirm it!'
+                confirmButtonText: 'Ya, Kirim',
+                cancelButtonText: 'Batal'
             }).then((result) => {
                 if (result.isConfirmed) {
                     form.submit();
