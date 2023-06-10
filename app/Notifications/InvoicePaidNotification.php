@@ -39,7 +39,7 @@ class InvoicePaidNotification extends Notification implements ShouldQueue
     {
         $invoice = $this->invoice;
         return (new MailMessage)
-                    ->line("Dear".$this->invoice->customer->name_unit)
+                    ->line("Dear, ".$this->invoice->customer->name_unit)
                     ->line("Saya berharap email ini menemukan Anda dalam keadaan sehat dan baik-baik saja. Saya ingin mengingatkan Anda bahwa faktur kami nomor **".$this->invoice->invoice_number."** berjudul **".$this->invoice->title."** dengan tanggal jatuh tempo pada tanggal **".date('d F Y', strtotime($this->invoice->due_date))."** masih belum dibayarkan.")
                     ->line("Jumlah yang harus dibayarkan adalah **".$this->total."** seperti yang tertera pada faktur. Sesuai dengan persyaratan kontrak kami, pembayaran harus dibuat tepat waktu. Kami telah memberikan layanan kepada Anda dengan sepenuh hati dan kami berharap Anda juga dapat memenuhi kewajiban Anda dalam hal pembayaran. Kami sangat menghargai hubungan bisnis yang baik dengan Anda dan kami berharap dapat terus bekerja sama dengan Anda dalam jangka panjang.")
                     ->line("Saya meminta Anda untuk segera membayar faktur ini dalam waktu 10 hari. Jika ada masalah dengan faktur atau informasi tambahan yang dibutuhkan, silakan hubungi kami segera.")
