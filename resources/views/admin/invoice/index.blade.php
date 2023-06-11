@@ -146,13 +146,13 @@
                                     <tr>
                                         <th><input type="checkbox" name="invoice[]" value="{{ $invoice->id }}"
                                                 class="checkbox-item"></th>
-                                        <td class="text-nowrap" style="max-width: 150px;"><a
+                                        <td class="text-nowrap" ><a
                                                 href="{{ route('admin.invoice.show', $invoice) }}">{{ $invoice->invoice_number }}</a>
                                         </td>
                                         <td class="text-nowrap">{{ $invoice->title }}</td>
-                                        <td class="text-nowrap" style="max-width: 150px;">
+                                        <td class="text-nowrap" >
                                             {{ $invoice->customer->name_unit }}</td>
-                                        <td class="text-nowrap" style="max-width: 150px;">{{ $invoice->due_date }}
+                                        <td class="text-nowrap" >{{ $invoice->due_date }}
                                         </td>
 
                                         @if ($invoice->is_paid == true)
@@ -175,7 +175,7 @@
                                         @foreach ($invoice->invoiceItems as $invoiceItem)
                                             @php($totalInvoiceNominal += $invoiceItem->nominal)
                                         @endforeach
-                                        <td class="text-nowrap" style="max-width: 150px;">
+                                        <td class="text-nowrap" >
                                             {{ \App\Helper\Util::rupiah($totalInvoiceNominal) }}</td>
                                         <td class="d-flex">
                                             <a class="text-dark ms-4 fs-5"

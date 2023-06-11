@@ -78,17 +78,17 @@
                             <tr class="rounded-pill">
                                 <th c>
                                     Invoice ID</th>
-                                <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap" style="max-width: 150px;">
+                                <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap" >
                                     Judul</th>
-                                <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap" style="max-width: 150px; ">
+                                <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap">
                                     Unit</th>
-                                <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap" style="max-width: 150px; ">Due
+                                <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap">Due
                                     Date</th>
-                                <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap" style="max-width: 150px; ">
+                                <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap">
                                     Status</th>
-                                <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap" style="max-width: 150px; ">
+                                <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap">
                                     Nominal</th>
-                                <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap" style="max-width: 150px; ">
+                                <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap">
                                     Invoice</th>
                             </tr>
                         </thead>
@@ -98,15 +98,15 @@
                             @forelse ($invoices as $invoice)
 
                                 <tr>
-                                    <td class="text-nowrap" style="max-width: 150px;">
+                                    <td class="text-nowrap" >
                                         {{ $invoice->invoice_number }}
                                     </td>
                                     <td class="text-nowrap">{{ $invoice->title }}</td>
-                                    <td class="text-nowrap" style="max-width: 150px;">
+                                    <td class="text-nowrap" >
                                         {{ $invoice->customer->name_unit }}</td>
-                                    <td class="text-nowrap" style="max-width: 150px;">
+                                    <td class="text-nowrap" >
                                         {{ date('d-M-Y', strtotime($invoice->due_date)) }}</td>
-                                    <td class="text-nowrap" style="max-width: 150px;">
+                                    <td class="text-nowrap" >
                                         <span class="rounded"
                                             style="color: #CD412E; font-size: 10px; font-weight: 700; font-style: normal; line-height: 150%; background: #FFEDEB; display: flex; flex-direction: row; justify-content: center; padding: 4px; gap: 10px">Unpaid</span>
                                     </td>
@@ -114,7 +114,7 @@
                                     @foreach ($invoice->invoiceItems as $invoiceItem)
                                         @php($totalInvoiceNominal += $invoiceItem->nominal)
                                     @endforeach
-                                    <td class="text-nowrap" style="max-width: 150px;">
+                                    <td class="text-nowrap" >
                                         {{ \App\Helper\Util::rupiah($totalInvoiceNominal) }}</td>
                                     <td style="display: flex; flex-direction: row;">
                                         {{-- <a href="{{ route('goEmail', [$invoice->id]) }}" class="btn btn-sm btn-warning">

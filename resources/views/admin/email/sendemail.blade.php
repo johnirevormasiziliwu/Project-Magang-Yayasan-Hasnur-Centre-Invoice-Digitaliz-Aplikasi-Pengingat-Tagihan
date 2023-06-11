@@ -120,15 +120,15 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap"
-                                            style="max-width: 150px;">No</th>
+                                            >No</th>
                                         <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap"
-                                            style="max-width: 150px;">Keterangan</th>
+                                            >Keterangan</th>
                                         <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap"
-                                            style="max-width: 150px;">Kuantitas</th>
+                                            >Kuantitas</th>
                                         <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap"
-                                            style="max-width: 150px;">Satuan</th>
+                                            >Satuan</th>
                                         <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap"
-                                            style="max-width: 150px;">Nominal</th>
+                                            >Nominal</th>
                                         {{-- @if ($invoice->is_paid == false && $invoice->payment_receipt == false)
                                         <th scope="col" class="fw-bold">Action</th>
                                         @endif  --}}

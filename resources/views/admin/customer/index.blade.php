@@ -60,17 +60,17 @@
                                 <tr>
                                     <th><input type="checkbox" class="check_all" id="checkAll"></th>
                                     <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap"
-                                        style="max-width: 150px;">Nama Instansi</th>
+                                        >Nama Instansi</th>
                                     <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap"
-                                        style="max-width: 150px;">Nama Unit</th>
+                                        >Nama Unit</th>
                                     <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap"
-                                        style="max-width: 150px;">Nama PIC</th>
+                                        >Nama PIC</th>
                                     <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap"
-                                        style="max-width: 150px;">No Handphone</th>
+                                        >No Handphone</th>
                                     <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap"
-                                        style="max-width: 150px;">Email</th>
+                                        >Email</th>
                                     <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap"
-                                        style="max-width: 150px;">Profile</th>
+                                        >Profile</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -78,15 +78,15 @@
                                     <tr>
                                         <td><input type="checkbox" name="customer[]" value="{{ $customer->id }}"
                                                 class="checkbox-item"></td>
-                                        <td class="text-nowrap" style="max-width: 150px;">{{ $customer->name_agency }}
+                                        <td class="text-nowrap" >{{ $customer->name_agency }}
                                         </td>
-                                        <td class="text-nowrap" style="max-width: 150px;">{{ $customer->name_unit }}
+                                        <td class="text-nowrap" >{{ $customer->name_unit }}
                                         </td>
                                         <td class="text-nowrap">{{ $customer->name_pic }}</td>
-                                        <td class="text-nowrap" style="max-width: 150px;">{{ $customer->no_handphone }}
+                                        <td class="text-nowrap" >{{ $customer->no_handphone }}
                                         </td>
                                         <td class="text-nowrap">{{ $customer->email }}</td>
-                                        <td class="text-nowrap" style="max-width: 150px;">
+                                        <td class="text-nowrap" >
                                             <div class="d-flex flex-row">
                                                 <a href="{{ route('admin.customer.show', $customer) }}">
                                                     <u style="color: #6e11f4">Detail</u>

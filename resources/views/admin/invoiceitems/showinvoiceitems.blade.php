@@ -51,13 +51,13 @@
                     <table class="table table-borderless table-thead-bordered">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap" style="max-width: 150px;">No</th>
-                                <th scope="col" class="fw-bold  text-black  tex-nowrap fs-5 tex-nowrap" style="max-width: 150px;">Keterangan</th>
-                                <th scope="col" class="fw-bold  text-black  text-center tex-nowrap fs-5 tex-nowrap" style="max-width: 150px;">Kuantitas</th>
-                                <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap" style="max-width: 150px;">Satuan</th>
-                                <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap" style="max-width: 150px;">Nominal</th>
+                                <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap" >No</th>
+                                <th scope="col" class="fw-bold  text-black  tex-nowrap fs-5 tex-nowrap" >Keterangan</th>
+                                <th scope="col" class="fw-bold  text-black  text-center tex-nowrap fs-5 tex-nowrap" >Kuantitas</th>
+                                <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap" >Satuan</th>
+                                <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap" >Nominal</th>
                                 @if ($invoice->is_paid == false && $invoice->payment_receipt == false)
-                                    <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap" style="max-width: 150px;">Action</th>
+                                    <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap" >Action</th>
                                 @endif
                             </tr>
                         </thead>
@@ -69,8 +69,8 @@
                                     <td>{{ $nomor++ }}</td>
                                     <td class="text-nowrap">{{ $invoiceitem->description }}</td>
                                     <td class="text-nowrap text-center">{{ $invoiceitem->stock }}</td>
-                                    <td class="text-nowrap" style="max-width: 150px;">{{ \App\Helper\Util::rupiah($invoiceitem->price) }}</td>
-                                    <td class="text-nowrap" style="max-width: 150px;">{{ \App\Helper\Util::rupiah($invoiceitem->nominal) }}</td>
+                                    <td class="text-nowrap" >{{ \App\Helper\Util::rupiah($invoiceitem->price) }}</td>
+                                    <td class="text-nowrap" >{{ \App\Helper\Util::rupiah($invoiceitem->nominal) }}</td>
                                     @if ($invoice->is_paid == false && $invoice->payment_receipt == false)
                                         <td class="text-nowrap">
                                             <a

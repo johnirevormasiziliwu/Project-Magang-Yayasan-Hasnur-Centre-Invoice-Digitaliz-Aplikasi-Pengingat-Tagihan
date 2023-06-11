@@ -316,20 +316,20 @@
                             @php($nomor = 1)
                             @forelse ($invoices as $invoice)
                                 <tr>
-                                    <td class="text-nowrap" style="max-width: 150px;">
+                                    <td class="text-nowrap" >
                                         <a href="{{ route('admin.invoice.show', $invoice) }}">
                                             {{ $invoice->invoice_number }}
                                         </a>
                                     </td>
-                                    <td class="text-nowrap" style="max-width: 150px;">{{ $invoice->customer->name_unit }}</td>
-                                    <td class="text-nowrap" style="max-width: 150px;">
+                                    <td class="text-nowrap" >{{ $invoice->customer->name_unit }}</td>
+                                    <td class="text-nowrap" >
                                         @if ($invoice->payment_time)
                                             {{ date('d M Y', strtotime($invoice->payment_time)) }}
                                         @else
                                             <span class="justify-content-center">-</span>
                                         @endif
                                     </td>
-                                    <td class="text-nowrap" style="max-width: 150px;">{{ date('d M Y', strtotime($invoice->due_date)) }}</td>
+                                    <td class="text-nowrap" >{{ date('d M Y', strtotime($invoice->due_date)) }}</td>
                                     @if ($invoice->is_paid == true)
                                         <td>
                                             <span class="rounded"
@@ -350,7 +350,7 @@
                                     @foreach ($invoice->invoiceItems as $invoiceItem)
                                         @php($totalInvoiceNominal += $invoiceItem->nominal)
                                     @endforeach
-                                    <td class="text-nowrap" style="max-width: 150px;">{{ \App\Helper\Util::rupiah($totalInvoiceNominal) }}</td>
+                                    <td class="text-nowrap" >{{ \App\Helper\Util::rupiah($totalInvoiceNominal) }}</td>
                                 </tr>
                             @empty
                                 <tr>

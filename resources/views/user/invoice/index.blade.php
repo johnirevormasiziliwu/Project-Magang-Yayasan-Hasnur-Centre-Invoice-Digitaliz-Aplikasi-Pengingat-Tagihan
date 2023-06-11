@@ -99,15 +99,15 @@
                             @php($nomor = 1)
                             @forelse ($invoices as $invoice)
                                 <tr>
-                                    <td class="text-nowrap" style="max-width: 150px;">
+                                    <td class="text-nowrap" >
 
                                         <a href="{{ route('user.invoice.show', $invoice) }}">
                                             <u>{{ $invoice->invoice_number }}</u>
                                         </a>
                                     </td>
                                     <td class="text-nowrap">{{ $invoice->title }}</td>
-                                    <td class="text-nowrap" style="max-width: 150px;">{{ $invoice->customer->name_unit }}</td>
-                                    <td class="text-nowrap" style="max-width: 150px;">{{ date('d-M-Y', strtotime($invoice->due_date)) }}</td>
+                                    <td class="text-nowrap" >{{ $invoice->customer->name_unit }}</td>
+                                    <td class="text-nowrap" >{{ date('d-M-Y', strtotime($invoice->due_date)) }}</td>
 
                                     @if ($invoice->is_paid == true)
                                         <td>
@@ -129,7 +129,7 @@
                                     @foreach ($invoice->invoiceItems as $invoiceItem)
                                         @php($totalInvoiceNominal += $invoiceItem->nominal)
                                     @endforeach
-                                    <td class="text-nowrap" style="max-width: 150px;">{{ \App\Helper\Util::rupiah($totalInvoiceNominal) }}</td>
+                                    <td class="text-nowrap" >{{ \App\Helper\Util::rupiah($totalInvoiceNominal) }}</td>
                                     <td style="display: flex; flex-direction: row;">
 
                                         <a href="{{ route('user.payment-receipt', $invoice) }}" class="nav-icon"
