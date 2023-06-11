@@ -177,7 +177,7 @@ class InvoiceController extends Controller
     {
         $validate = $request->validate([
             'title' => 'required|max:225',
-            'invoice_date' => 'required|date|after_or_equal:today',
+            'invoice_date' => 'required|date|',
             'due_date' => 'required|date|after_or_equal:invoice_date|before_or_equal:' . now()->addMonth(),
             'customer_id' => 'required',
         ]);
