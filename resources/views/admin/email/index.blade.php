@@ -76,7 +76,7 @@
                     <table class="table table-borderless table-thead-bordered ">
                         <thead style="background: #F7F1FF">
                             <tr class="rounded-pill">
-                                <th c>
+                                <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap">
                                     Invoice ID</th>
                                 <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap" >
                                     Judul</th>
