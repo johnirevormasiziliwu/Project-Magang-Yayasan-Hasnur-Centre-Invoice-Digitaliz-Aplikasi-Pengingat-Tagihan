@@ -78,7 +78,7 @@
                                                 <i class="bi bi-pencil"></i>
                                             </a>
 
-                                            <form
+                                            {{-- <form
                                                 action="{{ route('admin.invoiceitems.destroy', ['invoice' => $invoice->id, 'invoiceitem' => $invoiceitem->id]) }}"
                                                 method="POST" class="d-inline">
                                                 @csrf
@@ -86,7 +86,7 @@
                                                 <button class="btn delete-btn">
                                                     <i class="bi bi-trash3 text-danger"></i>
                                                 </button>
-                                            </form>
+                                            </form> --}}
                                         </td>
                                     @endif
                                 </tr>
