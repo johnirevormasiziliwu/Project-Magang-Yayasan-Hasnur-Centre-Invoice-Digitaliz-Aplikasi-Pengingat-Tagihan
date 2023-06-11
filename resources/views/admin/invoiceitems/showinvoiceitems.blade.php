@@ -51,13 +51,13 @@
                     <table class="table table-borderless table-thead-bordered">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col" class="fw-bold">No</th>
-                                <th scope="col" class="fw-bold">Keterangan</th>
-                                <th scope="col" class="fw-bold">Kuantitas</th>
-                                <th scope="col" class="fw-bold">Satuan</th>
-                                <th scope="col" class="fw-bold">Nominal</th>
+                                <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap" style="max-width: 150px;">No</th>
+                                <th scope="col" class="fw-bold  text-black  tex-nowrap fs-5 tex-nowrap" style="max-width: 150px;">Keterangan</th>
+                                <th scope="col" class="fw-bold  text-black  text-center tex-nowrap fs-5 tex-nowrap" style="max-width: 150px;">Kuantitas</th>
+                                <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap" style="max-width: 150px;">Satuan</th>
+                                <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap" style="max-width: 150px;">Nominal</th>
                                 @if ($invoice->is_paid == false && $invoice->payment_receipt == false)
-                                    <th scope="col" class="fw-bold">Action</th>
+                                    <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap" style="max-width: 150px;">Action</th>
                                 @endif
                             </tr>
                         </thead>
@@ -67,12 +67,12 @@
                             @foreach ($invoiceitems as $invoiceitem)
                                 <tr>
                                     <td>{{ $nomor++ }}</td>
-                                    <td>{{ $invoiceitem->description }}</td>
-                                    <td>{{ $invoiceitem->stock }}</td>
-                                    <td>{{ \App\Helper\Util::rupiah($invoiceitem->price) }}</td>
-                                    <td>{{ \App\Helper\Util::rupiah($invoiceitem->nominal) }}</td>
+                                    <td class="text-nowrap">{{ $invoiceitem->description }}</td>
+                                    <td class="text-nowrap text-center">{{ $invoiceitem->stock }}</td>
+                                    <td class="text-nowrap" style="max-width: 150px;">{{ \App\Helper\Util::rupiah($invoiceitem->price) }}</td>
+                                    <td class="text-nowrap" style="max-width: 150px;">{{ \App\Helper\Util::rupiah($invoiceitem->nominal) }}</td>
                                     @if ($invoice->is_paid == false && $invoice->payment_receipt == false)
-                                        <td>
+                                        <td class="text-nowrap">
                                             <a
                                                 href="{{ route('admin.invoiceitems.edit', ['invoice' => $invoice->id, 'invoiceitem' => $invoiceitem->id]) }}">
                                                 <i class="bi bi-pencil"></i>
@@ -97,7 +97,7 @@
                             <tr>
                                 <td colspan="3"></td>
                                 <th style="font-size: 1rem; font-weight: 900">Total:</th>
-                                <td style="font-size: 1rem; font-weight: 900">{{ \App\Helper\Util::rupiah($total) }}
+                                <td class="text-nowrap" style=" max-width: 150px; font-size: 1rem; font-weight: 900">{{ \App\Helper\Util::rupiah($total) }}
                                 </td>
                             </tr>
                         </tfoot>

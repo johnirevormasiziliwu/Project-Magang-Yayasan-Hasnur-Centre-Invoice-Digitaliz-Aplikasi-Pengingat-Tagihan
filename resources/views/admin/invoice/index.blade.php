@@ -123,25 +123,38 @@
                         <table class="table table-borderless table-thead-bordered">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col" class="fw-bold"><input type="checkbox" name="#" id="select-all"></th>
-                                    <th scope="col" class="fw-bold fs-5 text-black">Invoice ID</th>
-                                    <th scope="col" class="fw-bold fs-5 text-black">Judul</th>
-                                    <th scope="col" class="fw-bold fs-5 text-black">Name Unit</th>
-                                    <th scope="col" class="fw-bold fs-5 text-black">Due Date</th>
-                                    <th scope="col" class="fw-bold fs-5 text-black">Status</th>
-                                    <th scope="col" class="fw-bold fs-5 text-black">Nominal</th>
-                                    <th scope="col" class="fw-bold fs-5 text-black">Action</th>
+                                    <th scope="col" class="fw-bold "><input type="checkbox" name="#"
+                                            id="select-all"></th>
+                                    <th scope="col" class=" text-nowrap fs-5 tex-black fw-bold"
+                                        style="max-width: 150%;">Invoice ID</th>
+                                    <th scope="col" class=" text-nowrap fs-5 tex-black fw-bold"
+                                        style="max-width: 150%;">Judul</th>
+                                    <th scope="col" class=" text-nowrap fs-5 tex-black fw-bold"
+                                        style="max-width: 150%;">Name Unit</th>
+                                    <th scope="col" class=" text-nowrap fs-5 tex-black fw-bold"
+                                        style="max-width: 150%;">Due Date</th>
+                                    <th scope="col" class=" text-nowrap fs-5 tex-black fw-bold"
+                                        style="max-width: 150%;">Status</th>
+                                    <th scope="col" class=" text-nowrap fs-5 tex-black fw-bold"
+                                        style="max-width: 150%;">Nominal</th>
+                                    <th scope="col" class=" text-nowrap fs-5 tex-black fw-bold"
+                                        style="max-width: 150%;">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @forelse ($invoices as $invoice)
                                     <tr>
-                                        <th><input type="checkbox" name="invoice[]" value="{{ $invoice->id }}" class="checkbox-item"></th>
-                                        <td class="text-nowrap" style="max-width: 150px;"><a href="{{ route('admin.invoice.show', $invoice) }}">{{ $invoice->invoice_number }}</a></td>
+                                        <th><input type="checkbox" name="invoice[]" value="{{ $invoice->id }}"
+                                                class="checkbox-item"></th>
+                                        <td class="text-nowrap" style="max-width: 150px;"><a
+                                                href="{{ route('admin.invoice.show', $invoice) }}">{{ $invoice->invoice_number }}</a>
+                                        </td>
                                         <td class="text-nowrap">{{ $invoice->title }}</td>
-                                        <td class="text-nowrap" style="max-width: 150px;">{{ $invoice->customer->name_unit }}</td>
-                                        <td class="text-nowrap" style="max-width: 150px;">{{ $invoice->due_date }}</td>
-            
+                                        <td class="text-nowrap" style="max-width: 150px;">
+                                            {{ $invoice->customer->name_unit }}</td>
+                                        <td class="text-nowrap" style="max-width: 150px;">{{ $invoice->due_date }}
+                                        </td>
+
                                         @if ($invoice->is_paid == true)
                                             <td>
                                                 <span class="rounded"
@@ -162,12 +175,16 @@
                                         @foreach ($invoice->invoiceItems as $invoiceItem)
                                             @php($totalInvoiceNominal += $invoiceItem->nominal)
                                         @endforeach
-                                        <td class="text-nowrap" style="max-width: 150px;">{{ \App\Helper\Util::rupiah($totalInvoiceNominal) }}</td>
+                                        <td class="text-nowrap" style="max-width: 150px;">
+                                            {{ \App\Helper\Util::rupiah($totalInvoiceNominal) }}</td>
                                         <td class="d-flex">
-                                            <a class="text-dark ms-4 fs-5" href="{{ route('admin.invoice.edit', $invoice) }}" style="margin-right: 20px;">
+                                            <a class="text-dark ms-4 fs-5"
+                                                href="{{ route('admin.invoice.edit', $invoice) }}"
+                                                style="margin-right: 20px;">
                                                 <i class="bi bi-pencil"></i>
                                             </a>
-                                            <a class="rounded bg-info" href="{{ route('admin.invoiceitems.show', ['invoice' => $invoice->id, 'invoiceItem' => $invoice->invoiceItems->first()->id]) }}"
+                                            <a class="rounded bg-info"
+                                                href="{{ route('admin.invoiceitems.show', ['invoice' => $invoice->id, 'invoiceItem' => $invoice->invoiceItems->first()->id]) }}"
                                                 style="color: #fff; font-size: 10px; font-weight: 700; font-style: normal; line-height: 150%; display: flex; flex-direction: row; justify-content:center;padding:4px;gap:10px;">Detail
                                                 Tagihan</a>
                                         </td>
@@ -175,7 +192,8 @@
                                 @empty
                                     <tr>
                                         <td colspan="8" class="text-center text-danger">
-                                            <i class="bi bi-exclamation-triangle-fill d-block mx-auto my-3" style="font-size: 3rem;"></i> No Data Invoices
+                                            <i class="bi bi-exclamation-triangle-fill d-block mx-auto my-3"
+                                                style="font-size: 3rem;"></i> No Data Invoices
                                         </td>
                                     </tr>
                                 @endforelse
@@ -188,7 +206,7 @@
                     {{ $invoices->links() }}
                 </div>
             </div>
-            
+
 
 
 

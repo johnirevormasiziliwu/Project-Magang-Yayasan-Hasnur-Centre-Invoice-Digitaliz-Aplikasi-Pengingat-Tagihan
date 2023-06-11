@@ -105,25 +105,30 @@
                 </div>
                 <div class="mb-3">
                     <label for="address" class="col-form-label d-md-inline-block text-truncate"
-                    style="max-width: 100%;">
-                    <span class="form-label fs-4 fs-md-3 fs-lg-4 fw-bold d-inline-block">Alamat</span>
-                    <i class="d-inline-block"> (Nama Jalan, Gedung, RT/RW, Kecamatan, Kabupaten, Kode Pos
-                        dll)</i>
-                </label>
+                        style="max-width: 100%;">
+                        <span class="form-label fs-4 fs-md-3 fs-lg-4 fw-bold d-inline-block">Alamat</span>
+                        <i class="d-inline-block"> (Nama Jalan, Gedung, RT/RW, Kecamatan, Kabupaten, Kode Pos
+                            dll)</i>
+                    </label>
                     <textarea name="address" id="address" cols="30" rows="8" class="form-control">{{ $invoice->customer->address }}</textarea>
                 </div>
                 <div class="card mt-5">
                     <div class="card-body">
-                       <div class="h3 mb-5">Review Invoice</div>
+                        <div class="h3 mb-5">Review Invoice</div>
                         <div class="table-responsive">
                             <table class="table table-borderless table-thead-bordered">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th scope="col" class="fw-bold">No</th>
-                                        <th scope="col" class="fw-bold">Keterangan</th>
-                                        <th scope="col" class="fw-bold">Kuantitas</th>
-                                        <th scope="col" class="fw-bold">Satuan</th>
-                                        <th scope="col" class="fw-bold">Nominal</th>
+                                        <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap"
+                                            style="max-width: 150px;">No</th>
+                                        <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap"
+                                            style="max-width: 150px;">Keterangan</th>
+                                        <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap"
+                                            style="max-width: 150px;">Kuantitas</th>
+                                        <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap"
+                                            style="max-width: 150px;">Satuan</th>
+                                        <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap"
+                                            style="max-width: 150px;">Nominal</th>
                                         {{-- @if ($invoice->is_paid == false && $invoice->payment_receipt == false)
                                         <th scope="col" class="fw-bold">Action</th>
                                         @endif  --}}
@@ -134,11 +139,13 @@
                                     @php($total = 0)
                                     @foreach ($invoiceItems as $invoiceitem)
                                         <tr>
-                                            <td>{{ $nomor++ }}</td>
-                                            <td>{{ $invoiceitem->description }}</td>
-                                            <td>{{ $invoiceitem->stock }}</td>
-                                            <td>{{ \App\Helper\Util::rupiah($invoiceitem->price) }}</td>
-                                            <td>{{ \App\Helper\Util::rupiah($invoiceitem->nominal) }}</td>
+                                            <td class="text-nowrap">{{ $nomor++ }}</td>
+                                            <td class="text-nowrap">{{ $invoiceitem->description }}</td>
+                                            <td class="text-nowrap">{{ $invoiceitem->stock }}</td>
+                                            <td class="text-nowrap">
+                                                {{ \App\Helper\Util::rupiah($invoiceitem->price) }}</td>
+                                            <td class="text-nowrap">
+                                                {{ \App\Helper\Util::rupiah($invoiceitem->nominal) }}</td>
                                         </tr>
                                         @php($total += $invoiceitem->nominal)
                                     @endforeach
@@ -147,19 +154,20 @@
                                     <tr>
                                         <td colspan="3"></td>
                                         <th style="font-size: 1rem; font-weight: 900">Total:</th>
-                                        <td style="font-size: 1rem; font-weight: 900">{{ \App\Helper\Util::rupiah($total) }}
+                                        <td class="text-nowrap" style="font-size: 1rem; font-weight: 900">
+                                            {{ \App\Helper\Util::rupiah($total) }}
                                         </td>
                                     </tr>
                                 </tfoot>
                             </table>
                         </div>
-        
+
                     </div>
                 </div>
-               
+
                 <div class="mb-3 mt-5">
                     <label for="" class="form-label fs-4 fw-bold">Pesan</label>
-                    <textarea name="" id="" cols="30" rows="20" class="form-control">
+                    <textarea name="" id="" cols="30" rows="20" class="form-control ">
 Dear {{ $invoice->customer->name_unit }},
 
 Saya berharap pesan ini menemukan Anda dalam keadaan sehat dan baik-baik saja. Saya ingin mengingatkan Anda bahwa faktur kami nomor {{ $invoice->invoice_id }} berjudul {{ $invoice->title }} dengan tanggal jatuh tempo pada tanggal {{ date('d F Y', strtotime($invoice->due_date)) }} masih belum dibayarkan.
@@ -182,7 +190,7 @@ Yayasan Hasnur Center
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-3 ">
-                            <a   class="btn btn-white col-8" href="{{ route('admin.markInvoiceAsPaid', $invoice) }}">
+                            <a class="btn btn-white col" href="{{ route('admin.markInvoiceAsPaid', $invoice) }}">
                                 <img src="{{ asset('images/icon/gmail.png') }}" alt="Gambar Tombol Email"
                                     style="width: 30px">
                                 <b>{{ $invoice->customer->email }}</b>
@@ -191,7 +199,7 @@ Yayasan Hasnur Center
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <a onclick="whatsapp()"  target="_blank" class="btn btn-white col-8 ">
+                            <a onclick="whatsapp()" target="_blank" class="btn btn-white col ">
                                 <img src="{{ asset('images/icon/whatsapp.png') }}" alt="Gambar Tombol No Handphone"
                                     style="width: 25px">
                                 {{ $invoice->customer->no_handphone }}
@@ -200,50 +208,38 @@ Yayasan Hasnur Center
                     </div>
                 </div>
 
-               
-
-
-                <div class="container mt-5">
-                    <div class="row">
-                        <div class="col-12 d-flex  justify-content-end">
-                            <a href="{{ route('admin.email.index') }}" class="btn fs-5 me-5"
-                                style="border-color: #6e11f4; color: #6e11f4;">
-                                Batal
-                            </a>
-                            <form action="#" method="post">
-                                <button type="submit" class="btn" style="background: #6e11f4; color:#fff;">
-                                    Kirim
-                                </button>
-                            </form>
-                        </div>
-                    </div>
+                <div class="card-footer float-end">
+                    <a href="{{ route('admin.email.index') }}" class="btn text-white"
+                        style="background: #6e11f4;">
+                        Batal
+                    </a>
                 </div>
 
             </div>
         </div>
-    </x-app-layout>
+</x-app-layout>
 
-    <script type="text/javascript">
-        function whatsapp() {
-          var customerName = "{{ $invoice->customer->name_unit }}";
-          var invoiceId = "{{ $invoice->invoice_number }}";
-          var invoiceTitle = "{{ $invoice->title }}";
-          var dueDate = "{{ date('d F Y', strtotime($invoice->due_date)) }}";
-          var totalAmount = "{{ \App\Helper\Util::rupiah($total) }}";
-      
-          var message = "Dear *"+ customerName + "* ,\n\n" +
-            "Saya berharap pesan ini menemukan Anda dalam keadaan sehat dan baik-baik saja. Saya ingin mengingatkan Anda bahwa faktur kami nomor *" + invoiceId + "* berjudul *" + invoiceTitle + "* dengan tanggal jatuh tempo pada tanggal *" + dueDate + "* masih belum dibayarkan.\n\n" +
-            "Jumlah yang harus dibayarkan adalah  *" + totalAmount + "* seperti yang tertera pada faktur. Sesuai dengan persyaratan kontrak kami, pembayaran harus dibuat tepat waktu. Kami telah memberikan layanan kepada Anda dengan sepenuh hati dan kami berharap Anda juga dapat memenuhi kewajiban Anda dalam hal pembayaran. Kami sangat menghargai hubungan bisnis yang baik dengan Anda dan kami berharap dapat terus bekerja sama dengan Anda dalam jangka panjang.\n\n" +
+<script type="text/javascript">
+    function whatsapp() {
+        var customerName = "{{ $invoice->customer->name_unit }}";
+        var invoiceId = "{{ $invoice->invoice_number }}";
+        var invoiceTitle = "{{ $invoice->title }}";
+        var dueDate = "{{ date('d F Y', strtotime($invoice->due_date)) }}";
+        var totalAmount = "{{ \App\Helper\Util::rupiah($total) }}";
+
+        var message = "Dear *" + customerName + "* ,\n\n" +
+            "Saya berharap pesan ini menemukan Anda dalam keadaan sehat dan baik-baik saja. Saya ingin mengingatkan Anda bahwa faktur kami nomor *" +
+            invoiceId + "* berjudul *" + invoiceTitle + "* dengan tanggal jatuh tempo pada tanggal *" + dueDate +
+            "* masih belum dibayarkan.\n\n" +
+            "Jumlah yang harus dibayarkan adalah  *" + totalAmount +
+            "* seperti yang tertera pada faktur. Sesuai dengan persyaratan kontrak kami, pembayaran harus dibuat tepat waktu. Kami telah memberikan layanan kepada Anda dengan sepenuh hati dan kami berharap Anda juga dapat memenuhi kewajiban Anda dalam hal pembayaran. Kami sangat menghargai hubungan bisnis yang baik dengan Anda dan kami berharap dapat terus bekerja sama dengan Anda dalam jangka panjang.\n\n" +
             "Saya meminta Anda untuk segera membayar faktur ini dalam waktu 10 hari. Jika ada masalah dengan faktur atau informasi tambahan yang dibutuhkan, silakan hubungi kami segera.\n\n" +
             "Terima kasih atas perhatian Anda pada masalah ini. Saya berharap dapat menerima pembayaran dari Anda segera.\n\n" +
             "Hormat saya,\n\n" +
             "Yayasan Hasnur Center";
-      
-          var encodedMessage = encodeURIComponent(message);
-          var url = "https://wa.me/{{$nmrwa}}?text=" + encodedMessage;
-          window.open(url, "_blank");
-        }
-      </script>
-      
 
-
+        var encodedMessage = encodeURIComponent(message);
+        var url = "https://wa.me/{{ $nmrwa }}?text=" + encodedMessage;
+        window.open(url, "_blank");
+    }
+</script>

@@ -34,7 +34,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- End Page Header -->
 
 
@@ -53,18 +53,24 @@
                             </button>
                         </div>
                     </div>
-        
+
                     <div class="table-responsive">
                         <table class="table table-borderless table-thead-bordered table-align-middle">
                             <thead class="thead-light">
                                 <tr>
                                     <th><input type="checkbox" class="check_all" id="checkAll"></th>
-                                    <th scope="col" class="fw-bold">Nama Instansi</th>
-                                    <th scope="col" class="fw-bold">Nama Unit</th>
-                                    <th scope="col" class="fw-bold">Nama PIC</th>
-                                    <th scope="col" class="fw-bold">No Handphone</th>
-                                    <th scope="col" class="fw-bold">Email</th>
-                                    <th scope="col" class="fw-bold">Profile</th>
+                                    <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap"
+                                        style="max-width: 150px;">Nama Instansi</th>
+                                    <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap"
+                                        style="max-width: 150px;">Nama Unit</th>
+                                    <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap"
+                                        style="max-width: 150px;">Nama PIC</th>
+                                    <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap"
+                                        style="max-width: 150px;">No Handphone</th>
+                                    <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap"
+                                        style="max-width: 150px;">Email</th>
+                                    <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap"
+                                        style="max-width: 150px;">Profile</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -72,17 +78,21 @@
                                     <tr>
                                         <td><input type="checkbox" name="customer[]" value="{{ $customer->id }}"
                                                 class="checkbox-item"></td>
-                                        <td>{{ $customer->name_agency }}</td>
-                                        <td>{{ $customer->name_unit }}</td>
-                                        <td>{{ $customer->name_pic }}</td>
-                                        <td>{{ $customer->no_handphone }}</td>
-                                        <td>{{ $customer->email }}</td>
-                                        <td>
+                                        <td class="text-nowrap" style="max-width: 150px;">{{ $customer->name_agency }}
+                                        </td>
+                                        <td class="text-nowrap" style="max-width: 150px;">{{ $customer->name_unit }}
+                                        </td>
+                                        <td class="text-nowrap">{{ $customer->name_pic }}</td>
+                                        <td class="text-nowrap" style="max-width: 150px;">{{ $customer->no_handphone }}
+                                        </td>
+                                        <td class="text-nowrap">{{ $customer->email }}</td>
+                                        <td class="text-nowrap" style="max-width: 150px;">
                                             <div class="d-flex flex-row">
                                                 <a href="{{ route('admin.customer.show', $customer) }}">
                                                     <u style="color: #6e11f4">Detail</u>
                                                 </a>
-                                                <a class="text-dark ms-3" href="{{ route('admin.customer.edit', $customer) }}">
+                                                <a class="text-dark ms-3"
+                                                    href="{{ route('admin.customer.edit', $customer) }}">
                                                     <i class="bi bi-pencil mr-3"></i>
                                                 </a>
                                             </div>
@@ -100,13 +110,13 @@
                         </table>
                     </div>
                 </form>
-        
+
                 <div class="d-flex justify-content-center mt-5">
                     {{ $customers->links() }}
                 </div>
             </div>
         </div>
-        
+
     </div>
     </div>
 
@@ -114,7 +124,7 @@
     @include('scripts.btndeletecustomer')
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        </script>
+    </script>
 
     <script>
         function setAction(action) {
@@ -138,19 +148,18 @@
 
             });
         });
-       
-       $("#checkAll").click(function () {
 
-             if ($(this).prop("checked"))  {
+        $("#checkAll").click(function() {
+
+            if ($(this).prop("checked")) {
                 btnDelete.disabled = false;
             } else {
                 btnDelete.disabled = true;
             }
             $('input:checkbox').not(this).prop('checked', this.checked);
         });
-
     </script>
-   
-    
-    
+
+
+
 </x-app-layout>

@@ -298,32 +298,38 @@
                     <table class="table table-borderless table-thead-bordered">
                         <thead style="background: #F7F1FF">
                             <tr class="rounded-pill">
-                                <th scope="col" class="fw-bold text-black fs-5">Invoice ID</th>
-                                <th scope="col" class="fw-bold text-black fs-5">Unit</th>
-                                <th scope="col" class="fw-bold text-black fs-5">Payment Date</th>
-                                <th scope="col" class="fw-bold text-black fs-5">Due Date</th>
-                                <th scope="col" class="fw-bold text-black fs-5">Status</th>
-                                <th scope="col" class="fw-bold text-black fs-5">Nominal</th>
+                                <th scope="col" class=" text-nowrap fs-5 tex-black fw-bold"
+                                        style="max-width: 150%;"">Invoice ID</th>
+                                <th scope="col" class=" text-nowrap fs-5 tex-black fw-bold"
+                                        style="max-width: 150%;"">Unit</th>
+                                <th scope="col" class=" text-nowrap fs-5 tex-black fw-bold"
+                                        style="max-width: 150%;"">Payment Date</th>
+                                <th scope="col" class=" text-nowrap fs-5 tex-black fw-bold"
+                                        style="max-width: 150%;"">Due Date</th>
+                                <th scope="col" class=" text-nowrap fs-5 tex-black fw-bold"
+                                        style="max-width: 150%;"">Status</th>
+                                <th scope="col" class=" text-nowrap fs-5 tex-black fw-bold"
+                                        style="max-width: 150%;"">Nominal</th>
                             </tr>
                         </thead>
                         <tbody>
                             @php($nomor = 1)
                             @forelse ($invoices as $invoice)
                                 <tr>
-                                    <td>
+                                    <td class="text-nowrap" style="max-width: 150px;">
                                         <a href="{{ route('admin.invoice.show', $invoice) }}">
                                             {{ $invoice->invoice_number }}
                                         </a>
                                     </td>
-                                    <td>{{ $invoice->customer->name_unit }}</td>
-                                    <td>
+                                    <td class="text-nowrap" style="max-width: 150px;">{{ $invoice->customer->name_unit }}</td>
+                                    <td class="text-nowrap" style="max-width: 150px;">
                                         @if ($invoice->payment_time)
                                             {{ date('d M Y', strtotime($invoice->payment_time)) }}
                                         @else
                                             <span class="justify-content-center">-</span>
                                         @endif
                                     </td>
-                                    <td>{{ date('d M Y', strtotime($invoice->due_date)) }}</td>
+                                    <td class="text-nowrap" style="max-width: 150px;">{{ date('d M Y', strtotime($invoice->due_date)) }}</td>
                                     @if ($invoice->is_paid == true)
                                         <td>
                                             <span class="rounded"
@@ -344,7 +350,7 @@
                                     @foreach ($invoice->invoiceItems as $invoiceItem)
                                         @php($totalInvoiceNominal += $invoiceItem->nominal)
                                     @endforeach
-                                    <td>{{ \App\Helper\Util::rupiah($totalInvoiceNominal) }}</td>
+                                    <td class="text-nowrap" style="max-width: 150px;">{{ \App\Helper\Util::rupiah($totalInvoiceNominal) }}</td>
                                 </tr>
                             @empty
                                 <tr>

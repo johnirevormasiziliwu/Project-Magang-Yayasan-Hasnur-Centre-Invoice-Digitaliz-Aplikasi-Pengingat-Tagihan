@@ -22,7 +22,7 @@
 
                         <div class="flex-grow-1 ms-3">
 
-                            <h1 class="text-hover-primary fw-bold  text-black">E-mail</h1>
+                            <h1 class="text-hover-primary fw-bold  text-black tex-nowrap fs-5 tex-nowrap">E-mail</h1>
 
                             <span class="d-block ">Akses Menu dan Informasi Penting Lainya Disini</span>
                         </div>
@@ -37,24 +37,25 @@
         <!-- Star pencarian dan filter status invoices -->
         <div class="row">
             <div class="col-md-6 col-lg-4 mb-3">
-                <label for="keyword" class="form-label fw-bold text-black">Cari</label>
+                <label for="keyword" class="form-label fw-bold text-black tex-nowrap fs-5 tex-nowrap">Cari</label>
                 <form action="{{ route('admin.email.search') }}" method="get">
                     <div class="input-group">
                         <input type="text" name="keyword" class="form-control"
                             placeholder="Cari Invoice ID, Judul, Unit....">
                         <div class="input-group-append">
-                            <button class="btn rounded-top-bottom" type="submit" style="background: #6e11f4; color:#fff;">
-                                <i class="bi bi-search fs-5 fw-bold text-black"></i>
+                            <button class="btn rounded-top-bottom" type="submit"
+                                style="background: #6e11f4; color:#fff;">
+                                <i class="bi bi-search fs-5 fw-bold text-black tex-nowrap fs-5 tex-nowrap"></i>
                             </button>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="col-md-6 col-lg-4 mb-3">
-                <label for="#" class="form-label fs-5 fw-bold text-black">Filter</label>
+                <label for="#" class="form-label fs-5 fw-bold text-black tex-nowrap fs-5 tex-nowrap">Filter</label>
                 <form action="{{ route('admin.email.index') }}" method="GET">
-                    <select class="form-select form-select-lg fs-5 fw-bold text-black" id="filter" name="filter"
-                        style="background-color:#F5F5F5; color:#404040;">
+                    <select class="form-select form-select-lg fs-5 fw-bold text-black tex-nowrap fs-5 tex-nowrap" id="filter"
+                        name="filter" style="background-color:#F5F5F5; color:#404040;">
                         <option value="all" {{ request('filter') == 'all' ? 'selected' : '' }}>All</option>
                         <option value="newest_due" {{ request('filter') == 'newest_due' ? 'selected' : '' }}>Newest Due
                         </option>
@@ -64,7 +65,7 @@
                 </form>
             </div>
         </div>
-        
+
         <!-- End pencarian dan filter status invoices -->
 
         <div class="card mt-10">
@@ -75,15 +76,20 @@
                     <table class="table table-borderless table-thead-bordered ">
                         <thead style="background: #F7F1FF">
                             <tr class="rounded-pill">
-                                <th scope="col" class="fw-bold  text-black">Invoice ID</th>
-                                <th scope="col" class="fw-bold  text-black">Judul</th>
-                                <th scope="col" class="fw-bold  text-black">Unit</th>
-                                <th scope="col" class="fw-bold text-black">
-                                    Due Date
-                                </th>
-                                <th scope="col" class="fw-bold  text-black">Status</th>
-                                <th scope="col" class="fw-bold  text-black">Nominal</th>
-                                <th scope="col" class="fw-bold  text-black">Invoice</th>
+                                <th c>
+                                    Invoice ID</th>
+                                <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap" style="max-width: 150px;">
+                                    Judul</th>
+                                <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap" style="max-width: 150px; ">
+                                    Unit</th>
+                                <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap" style="max-width: 150px; ">Due
+                                    Date</th>
+                                <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap" style="max-width: 150px; ">
+                                    Status</th>
+                                <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap" style="max-width: 150px; ">
+                                    Nominal</th>
+                                <th scope="col" class="fw-bold  text-black tex-nowrap fs-5 tex-nowrap" style="max-width: 150px; ">
+                                    Invoice</th>
                             </tr>
                         </thead>
 
@@ -92,13 +98,15 @@
                             @forelse ($invoices as $invoice)
 
                                 <tr>
-                                    <td>
+                                    <td class="text-nowrap" style="max-width: 150px;">
                                         {{ $invoice->invoice_number }}
                                     </td>
-                                    <td>{{ $invoice->title }}</td>
-                                    <td>{{ $invoice->customer->name_unit }}</td>
-                                    <td>{{ date('d-M-Y', strtotime($invoice->due_date)) }}</td>
-                                    <td>
+                                    <td class="text-nowrap">{{ $invoice->title }}</td>
+                                    <td class="text-nowrap" style="max-width: 150px;">
+                                        {{ $invoice->customer->name_unit }}</td>
+                                    <td class="text-nowrap" style="max-width: 150px;">
+                                        {{ date('d-M-Y', strtotime($invoice->due_date)) }}</td>
+                                    <td class="text-nowrap" style="max-width: 150px;">
                                         <span class="rounded"
                                             style="color: #CD412E; font-size: 10px; font-weight: 700; font-style: normal; line-height: 150%; background: #FFEDEB; display: flex; flex-direction: row; justify-content: center; padding: 4px; gap: 10px">Unpaid</span>
                                     </td>
@@ -106,7 +114,8 @@
                                     @foreach ($invoice->invoiceItems as $invoiceItem)
                                         @php($totalInvoiceNominal += $invoiceItem->nominal)
                                     @endforeach
-                                    <td>{{ \App\Helper\Util::rupiah($totalInvoiceNominal) }}</td>
+                                    <td class="text-nowrap" style="max-width: 150px;">
+                                        {{ \App\Helper\Util::rupiah($totalInvoiceNominal) }}</td>
                                     <td style="display: flex; flex-direction: row;">
                                         {{-- <a href="{{ route('goEmail', [$invoice->id]) }}" class="btn btn-sm btn-warning">
                                             <i class="bi bi-send"></i>

@@ -45,7 +45,7 @@
                             <button class="btn rounded-top-bottom" type="submit"
                                 style="background: #6e11f4; color:#fff;">
                                 <i class="bi bi-search fs-5 fw-bold"></i>
-                            </button> 
+                            </button>
                         </div>
                     </div>
                 </form>
@@ -78,14 +78,20 @@
                     <table class="table table-borderless table-thead-bordered ">
                         <thead style="background: #F7F1FF">
                             <tr class="rounded-pill">
-                                <th scope="col" class="fw-bold text-black">Invoice ID</th>
-                                <th scope="col" class="fw-bold text-black">Judul</th>
-                                <th scope="col" class="fw-bold text-black">Unit</th>
-                                <th scope="col" class="fw-bold text-black">Due Date <i
-                                        class="bi bi-chevron-expand ms-2  fs-5 fw-bold text-black"></i></th>
-                                <th scope="col" class="fw-bold text-black">Status</th>
-                                <th scope="col" class="fw-bold text-black">Nominal</th>
-                                <th scope="col" class="fw-bold text-black">Invoice</th>
+                                <th scope="col" class="fw-bold text-black text-nowrap" style="max-width: 150%;">
+                                    Invoice ID</th>
+                                <th scope="col" class="fw-bold text-black text-nowrap" style="max-width: 150%;">Judul
+                                </th>
+                                <th scope="col" class="fw-bold text-black text-nowrap" style="max-width: 150%;">Unit
+                                </th>
+                                <th scope="col" class="fw-bold text-black text-nowrap" style="max-width: 150%;">Due
+                                    Date</th>
+                                <th scope="col" class="fw-bold text-black text-nowrap" style="max-width: 150%;">
+                                    Status</th>
+                                <th scope="col" class="fw-bold text-black text-nowrap" style="max-width: 150%;">
+                                    Nominal</th>
+                                <th scope="col" class="fw-bold text-black text-nowrap" style="max-width: 150%;">
+                                    Invoice</th>
                             </tr>
                         </thead>
 
@@ -93,15 +99,15 @@
                             @php($nomor = 1)
                             @forelse ($invoices as $invoice)
                                 <tr>
-                                    <td>
+                                    <td class="text-nowrap" style="max-width: 150px;">
 
                                         <a href="{{ route('user.invoice.show', $invoice) }}">
                                             <u>{{ $invoice->invoice_number }}</u>
                                         </a>
                                     </td>
-                                    <td>{{ $invoice->title }}</td>
-                                    <td>{{ $invoice->customer->name_unit }}</td>
-                                    <td>{{ date('d-M-Y', strtotime($invoice->due_date)) }}</td>
+                                    <td class="text-nowrap">{{ $invoice->title }}</td>
+                                    <td class="text-nowrap" style="max-width: 150px;">{{ $invoice->customer->name_unit }}</td>
+                                    <td class="text-nowrap" style="max-width: 150px;">{{ date('d-M-Y', strtotime($invoice->due_date)) }}</td>
 
                                     @if ($invoice->is_paid == true)
                                         <td>
@@ -123,7 +129,7 @@
                                     @foreach ($invoice->invoiceItems as $invoiceItem)
                                         @php($totalInvoiceNominal += $invoiceItem->nominal)
                                     @endforeach
-                                    <td>{{ \App\Helper\Util::rupiah($totalInvoiceNominal) }}</td>
+                                    <td class="text-nowrap" style="max-width: 150px;">{{ \App\Helper\Util::rupiah($totalInvoiceNominal) }}</td>
                                     <td style="display: flex; flex-direction: row;">
 
                                         <a href="{{ route('user.payment-receipt', $invoice) }}" class="nav-icon"
