@@ -165,7 +165,7 @@
                                         "labels": <?= json_encode($labels) ?>,
                                         "datasets": [{
                                             "data": <?= json_encode(array_values($totalPaidByMonth)) ?>,
-                                            "backgroundColor": "#DECBFB",
+                                            "backgroundColor": "#6E11F4",
                                             "hoverBackgroundColor": "#6E11F4",
                                             "borderColor": "#6E11F4",
                                             "maxBarThickness": "100",
